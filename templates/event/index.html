@@ -5,59 +5,78 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>행사 초대장 - 당신을 초대합니다</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
+        :root {
+            --bg-primary: #0a0e27;
+            --bg-secondary: #1a1f3a;
+            --text-primary: #ffffff;
+            --text-secondary: #b4b4b4;
+            --accent: #a855f7;
+            --accent-pink: #ec4899;
+            --glass-bg: rgba(255, 255, 255, 0.05);
+            --glass-border: rgba(255, 255, 255, 0.1);
+        }
+
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
             line-height: 1.6;
-            color: #333;
-            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
-            min-height: 100vh;
+            color: var(--text-primary);
+            background: var(--bg-primary);
+            overflow-x: hidden;
+        }
+
+        .bg-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            background: radial-gradient(circle at 30% 20%, rgba(168, 85, 247, 0.15) 0%, transparent 50%),
+                        radial-gradient(circle at 70% 80%, rgba(236, 72, 153, 0.15) 0%, transparent 50%);
+            animation: bgFloat 20s ease-in-out infinite;
+        }
+
+        @keyframes bgFloat {
+            0%, 100% { transform: translate(0, 0); }
+            50% { transform: translate(20px, -20px); }
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
             padding: 2rem;
+            position: relative;
+            z-index: 1;
         }
 
         .invitation-card {
-            max-width: 900px;
-            margin: 0 auto;
-            background: white;
-            border-radius: 30px;
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 40px;
             overflow: hidden;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            margin: 4rem auto;
+            box-shadow: 0 30px 80px rgba(168, 85, 247, 0.3);
         }
 
         .card-header {
-            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-            color: white;
-            padding: 4rem 2rem;
+            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-pink) 100%);
+            padding: 5rem 2rem;
             text-align: center;
             position: relative;
         }
 
-        .card-header::before {
-            content: '✨';
-            position: absolute;
-            top: 1rem;
-            left: 2rem;
-            font-size: 3rem;
-            opacity: 0.3;
-        }
-
-        .card-header::after {
-            content: '✨';
-            position: absolute;
-            bottom: 1rem;
-            right: 2rem;
-            font-size: 3rem;
-            opacity: 0.3;
-        }
-
         .event-icon {
             font-size: 5rem;
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
             animation: bounce 2s infinite;
         }
 
@@ -67,195 +86,227 @@
         }
 
         .card-header h1 {
-            font-size: 3rem;
-            margin-bottom: 0.5rem;
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-weight: 900;
+            margin-bottom: 1rem;
         }
 
         .card-header .subtitle {
-            font-size: 1.3rem;
-            opacity: 0.9;
+            font-size: 1.4rem;
+            opacity: 0.95;
+            font-weight: 300;
         }
 
         .card-body {
-            padding: 3rem 2rem;
+            padding: 4rem 2rem;
         }
 
-        .invitation-text {
+        .intro-text {
             text-align: center;
             font-size: 1.2rem;
             line-height: 2;
-            margin-bottom: 3rem;
-            color: #555;
+            margin-bottom: 4rem;
+            color: var(--text-secondary);
+            font-weight: 300;
         }
 
-        .event-details {
-            background: #f8f9fa;
-            border-radius: 20px;
-            padding: 2rem;
-            margin-bottom: 2rem;
-        }
-
-        .detail-item {
-            display: flex;
-            align-items: flex-start;
-            gap: 1rem;
-            padding: 1rem 0;
-            border-bottom: 1px solid #dee2e6;
-        }
-
-        .detail-item:last-child {
-            border-bottom: none;
-        }
-
-        .detail-icon {
-            font-size: 2rem;
-            min-width: 40px;
-        }
-
-        .detail-content h3 {
-            color: #f5576c;
-            margin-bottom: 0.3rem;
-            font-size: 1.2rem;
-        }
-
-        .detail-content p {
-            color: #666;
-            font-size: 1.1rem;
-        }
-
-        .schedule {
+        .details-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
             margin: 3rem 0;
         }
 
-        .schedule h2 {
+        .detail-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            padding: 2.5rem;
             text-align: center;
-            color: #f5576c;
+            transition: all 0.3s;
+        }
+
+        .detail-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--accent);
+        }
+
+        .detail-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-pink) 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
             font-size: 2rem;
-            margin-bottom: 2rem;
+        }
+
+        .detail-card h3 {
+            color: var(--accent);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+            font-weight: 700;
+        }
+
+        .detail-card p {
+            color: var(--text-secondary);
+            font-weight: 300;
+            line-height: 1.7;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin: 4rem 0 2rem;
+            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-pink) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .schedule-timeline {
+            margin: 3rem 0;
         }
 
         .schedule-item {
             display: flex;
             gap: 2rem;
-            margin-bottom: 1.5rem;
-            padding: 1rem;
-            background: #fff;
-            border-radius: 10px;
-            border-left: 4px solid #f5576c;
+            margin-bottom: 2rem;
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 2rem;
+            border-left: 4px solid var(--accent);
+            transition: all 0.3s;
+        }
+
+        .schedule-item:hover {
+            transform: translateX(10px);
+            border-left-color: var(--accent-pink);
         }
 
         .schedule-time {
-            font-weight: bold;
-            color: #f5576c;
-            font-size: 1.2rem;
+            font-weight: 800;
+            font-size: 1.5rem;
+            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-pink) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
             min-width: 100px;
         }
 
-        .schedule-desc {
-            flex: 1;
+        .schedule-content h4 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
         }
 
-        .speakers {
+        .schedule-content p {
+            color: var(--text-secondary);
+            font-weight: 300;
+        }
+
+        .speakers-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 2rem;
             margin: 3rem 0;
         }
 
-        .speakers h2 {
-            text-align: center;
-            color: #f5576c;
-            font-size: 2rem;
-            margin-bottom: 2rem;
-        }
-
-        .speaker-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2rem;
-        }
-
         .speaker-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            padding: 2rem;
             text-align: center;
-            padding: 1.5rem;
-            background: #f8f9fa;
-            border-radius: 15px;
-            transition: transform 0.3s;
+            transition: all 0.3s;
         }
 
         .speaker-card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-10px);
+            border-color: var(--accent);
         }
 
-        .speaker-photo {
+        .speaker-avatar {
             width: 120px;
             height: 120px;
             border-radius: 50%;
-            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-            margin: 0 auto 1rem;
+            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-pink) 100%);
+            margin: 0 auto 1.5rem;
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 3rem;
+            box-shadow: 0 10px 30px rgba(168, 85, 247, 0.4);
         }
 
         .speaker-card h4 {
-            color: #f5576c;
-            margin-bottom: 0.3rem;
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
         }
 
         .speaker-card .title {
-            color: #666;
+            color: var(--accent);
             font-size: 0.9rem;
+            font-weight: 500;
         }
 
         .map-section {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 30px;
+            padding: 3rem;
             margin: 3rem 0;
-            padding: 2rem;
-            background: #f8f9fa;
-            border-radius: 20px;
-        }
-
-        .map-section h2 {
-            text-align: center;
-            color: #f5576c;
-            font-size: 2rem;
-            margin-bottom: 1rem;
         }
 
         .map-placeholder {
             width: 100%;
             height: 300px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            border-radius: 15px;
+            background: linear-gradient(135deg, rgba(168, 85, 247, 0.2) 0%, rgba(236, 72, 153, 0.2) 100%);
+            border-radius: 20px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 4rem;
-            margin-bottom: 1rem;
+            font-size: 5rem;
+            margin-bottom: 2rem;
         }
 
         .address {
             text-align: center;
             font-size: 1.1rem;
-            color: #666;
+            line-height: 1.8;
+            color: var(--text-secondary);
+            font-weight: 300;
         }
 
         .rsvp-section {
-            text-align: center;
-            padding: 3rem 2rem;
-            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-            border-radius: 20px;
-            color: white;
-            margin: 2rem 0;
+            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-pink) 100%);
+            border-radius: 30px;
+            padding: 4rem 3rem;
+            margin: 4rem 0;
         }
 
         .rsvp-section h2 {
+            text-align: center;
             font-size: 2.5rem;
-            margin-bottom: 1rem;
+            font-weight: 900;
+            margin-bottom: 1.5rem;
         }
 
-        .rsvp-section p {
+        .rsvp-section > p {
+            text-align: center;
             font-size: 1.2rem;
-            margin-bottom: 2rem;
-            opacity: 0.9;
+            margin-bottom: 3rem;
+            opacity: 0.95;
+            font-weight: 300;
         }
 
         .rsvp-form {
@@ -265,277 +316,311 @@
 
         .form-group {
             margin-bottom: 1.5rem;
-            text-align: left;
         }
 
         .form-group label {
             display: block;
-            margin-bottom: 0.5rem;
-            font-weight: bold;
+            margin-bottom: 0.8rem;
+            font-weight: 600;
         }
 
         .form-group input,
         .form-group select {
             width: 100%;
-            padding: 1rem;
+            padding: 1.2rem;
             border: none;
-            border-radius: 10px;
+            border-radius: 15px;
             font-size: 1rem;
+            background: rgba(255, 255, 255, 0.95);
+            color: var(--bg-primary);
+            font-family: inherit;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus {
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.5);
         }
 
         .btn {
-            display: inline-block;
-            padding: 1.2rem 3rem;
+            width: 100%;
+            padding: 1.3rem;
             background: white;
-            color: #f5576c;
-            text-decoration: none;
-            border-radius: 50px;
-            font-weight: bold;
-            font-size: 1.2rem;
+            color: var(--accent);
             border: none;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: 700;
             cursor: pointer;
             transition: all 0.3s;
+            margin-top: 1rem;
         }
 
         .btn:hover {
             transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
         }
 
-        .footer {
+        footer {
             text-align: center;
-            padding: 2rem;
-            color: #666;
+            padding: 3rem 2rem;
+            color: var(--text-secondary);
+            font-weight: 300;
         }
 
         .social-links {
             display: flex;
             justify-content: center;
-            gap: 1rem;
-            margin-top: 1rem;
+            gap: 1.5rem;
+            margin: 2rem 0;
         }
 
-        .social-icon {
+        .social-link {
             width: 50px;
             height: 50px;
-            background: #f5576c;
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: white;
             font-size: 1.5rem;
+            transition: all 0.3s;
             text-decoration: none;
-            transition: transform 0.3s;
         }
 
-        .social-icon:hover {
-            transform: scale(1.1);
+        .social-link:hover {
+            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-pink) 100%);
+            border-color: transparent;
+            transform: translateY(-5px);
         }
 
         @media (max-width: 768px) {
-            body {
-                padding: 1rem;
+            .schedule-item {
+                flex-direction: column;
+                gap: 1rem;
             }
 
-            .card-header h1 {
+            .section-title {
                 font-size: 2rem;
             }
 
-            .schedule-item {
-                flex-direction: column;
-                gap: 0.5rem;
+            .card-header {
+                padding: 3rem 1rem;
             }
+        }
 
-            .detail-item {
-                flex-direction: column;
-                text-align: center;
-            }
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
     </style>
 </head>
 <body>
-    <div class="invitation-card">
-        <div class="card-header">
-            <div class="event-icon">🎉</div>
-            <h1>2024 테크 컨퍼런스</h1>
-            <p class="subtitle">미래를 함께 만들어갈 당신을 초대합니다</p>
-        </div>
+    <div class="bg-animation"></div>
 
-        <div class="card-body">
-            <div class="invitation-text">
-                <p>
-                    안녕하세요,<br>
-                    귀하를 2024 테크 컨퍼런스에 초대합니다.<br>
-                    업계 최고의 전문가들과 함께<br>
-                    미래 기술의 비전을 나누는 특별한 시간을 가져보세요.
-                </p>
+    <div class="container">
+        <div class="invitation-card">
+            <div class="card-header">
+                <div class="event-icon">🎉</div>
+                <h1>2024 테크 컨퍼런스</h1>
+                <p class="subtitle">미래를 함께 만들어갈 당신을 초대합니다</p>
             </div>
 
-            <div class="event-details">
-                <div class="detail-item">
-                    <div class="detail-icon">📅</div>
-                    <div class="detail-content">
+            <div class="card-body">
+                <div class="intro-text">
+                    <p>
+                        안녕하세요,<br>
+                        귀하를 2024 테크 컨퍼런스에 초대합니다.<br>
+                        업계 최고의 전문가들과 함께<br>
+                        미래 기술의 비전을 나누는 특별한 시간을 가져보세요.
+                    </p>
+                </div>
+
+                <div class="details-grid fade-in">
+                    <div class="detail-card">
+                        <div class="detail-icon">📅</div>
                         <h3>일시</h3>
-                        <p>2024년 12월 15일 (토요일) 오후 2시 - 6시</p>
+                        <p>2024년 12월 15일 (토)<br>오후 2시 - 6시</p>
                     </div>
-                </div>
 
-                <div class="detail-item">
-                    <div class="detail-icon">📍</div>
-                    <div class="detail-content">
+                    <div class="detail-card">
+                        <div class="detail-icon">📍</div>
                         <h3>장소</h3>
-                        <p>서울 강남구 테헤란로 123 코엑스 컨퍼런스홀</p>
+                        <p>서울 강남구<br>코엑스 컨퍼런스홀</p>
                     </div>
-                </div>
 
-                <div class="detail-item">
-                    <div class="detail-icon">👥</div>
-                    <div class="detail-content">
+                    <div class="detail-card">
+                        <div class="detail-icon">👥</div>
                         <h3>참가 대상</h3>
-                        <p>개발자, 디자이너, PM, 스타트업 관계자 등 모든 테크 관심자</p>
+                        <p>개발자, 디자이너, PM<br>모든 테크 관심자</p>
                     </div>
-                </div>
 
-                <div class="detail-item">
-                    <div class="detail-icon">💰</div>
-                    <div class="detail-content">
+                    <div class="detail-card">
+                        <div class="detail-icon">💰</div>
                         <h3>참가비</h3>
-                        <p>얼리버드: 50,000원 | 정규: 80,000원 (다과 포함)</p>
+                        <p>얼리버드: 50,000원<br>정규: 80,000원</p>
                     </div>
                 </div>
-            </div>
 
-            <div class="schedule">
-                <h2>🕐 행사 일정</h2>
-                <div class="schedule-item">
-                    <div class="schedule-time">14:00</div>
-                    <div class="schedule-desc">
-                        <strong>오프닝 및 환영사</strong>
-                        <p>행사 소개 및 참가자 네트워킹</p>
+                <h2 class="section-title">🕐 행사 일정</h2>
+                <div class="schedule-timeline fade-in">
+                    <div class="schedule-item">
+                        <div class="schedule-time">14:00</div>
+                        <div class="schedule-content">
+                            <h4>오프닝 및 환영사</h4>
+                            <p>행사 소개 및 참가자 네트워킹</p>
+                        </div>
                     </div>
-                </div>
-                <div class="schedule-item">
-                    <div class="schedule-time">14:30</div>
-                    <div class="schedule-desc">
-                        <strong>기조연설: AI의 미래</strong>
-                        <p>김AI 박사 - 인공지능이 바꿀 세상</p>
-                    </div>
-                </div>
-                <div class="schedule-item">
-                    <div class="schedule-time">15:30</div>
-                    <div class="schedule-desc">
-                        <strong>세션 1: 클라우드 아키텍처</strong>
-                        <p>이클라우드 - 확장 가능한 시스템 설계</p>
-                    </div>
-                </div>
-                <div class="schedule-item">
-                    <div class="schedule-time">16:00</div>
-                    <div class="schedule-desc">
-                        <strong>휴식 및 네트워킹</strong>
-                        <p>다과 및 자유로운 교류 시간</p>
-                    </div>
-                </div>
-                <div class="schedule-item">
-                    <div class="schedule-time">16:30</div>
-                    <div class="schedule-desc">
-                        <strong>세션 2: 스타트업 성공 스토리</strong>
-                        <p>박창업 대표 - 0에서 100억까지</p>
-                    </div>
-                </div>
-                <div class="schedule-item">
-                    <div class="schedule-time">17:30</div>
-                    <div class="schedule-desc">
-                        <strong>패널 토론 및 Q&A</strong>
-                        <p>전체 연사 참여 토론 세션</p>
-                    </div>
-                </div>
-            </div>
 
-            <div class="speakers">
-                <h2>🎤 연사 소개</h2>
-                <div class="speaker-grid">
+                    <div class="schedule-item">
+                        <div class="schedule-time">14:30</div>
+                        <div class="schedule-content">
+                            <h4>기조연설: AI의 미래</h4>
+                            <p>김AI 박사 - 인공지능이 바꿀 세상</p>
+                        </div>
+                    </div>
+
+                    <div class="schedule-item">
+                        <div class="schedule-time">15:30</div>
+                        <div class="schedule-content">
+                            <h4>세션 1: 클라우드 아키텍처</h4>
+                            <p>이클라우드 - 확장 가능한 시스템 설계</p>
+                        </div>
+                    </div>
+
+                    <div class="schedule-item">
+                        <div class="schedule-time">16:00</div>
+                        <div class="schedule-content">
+                            <h4>휴식 및 네트워킹</h4>
+                            <p>다과 및 자유로운 교류 시간</p>
+                        </div>
+                    </div>
+
+                    <div class="schedule-item">
+                        <div class="schedule-time">16:30</div>
+                        <div class="schedule-content">
+                            <h4>세션 2: 스타트업 성공 스토리</h4>
+                            <p>박창업 대표 - 0에서 100억까지</p>
+                        </div>
+                    </div>
+
+                    <div class="schedule-item">
+                        <div class="schedule-time">17:30</div>
+                        <div class="schedule-content">
+                            <h4>패널 토론 및 Q&A</h4>
+                            <p>전체 연사 참여 토론 세션</p>
+                        </div>
+                    </div>
+                </div>
+
+                <h2 class="section-title">🎤 연사 소개</h2>
+                <div class="speakers-grid fade-in">
                     <div class="speaker-card">
-                        <div class="speaker-photo">👨‍💼</div>
+                        <div class="speaker-avatar">👨‍💼</div>
                         <h4>김AI</h4>
                         <p class="title">AI 연구소 소장</p>
                     </div>
+
                     <div class="speaker-card">
-                        <div class="speaker-photo">👩‍💻</div>
+                        <div class="speaker-avatar">👩‍💻</div>
                         <h4>이클라우드</h4>
                         <p class="title">클라우드 아키텍트</p>
                     </div>
+
                     <div class="speaker-card">
-                        <div class="speaker-photo">👨‍🎨</div>
+                        <div class="speaker-avatar">👨‍🎨</div>
                         <h4>박창업</h4>
                         <p class="title">테크 스타트업 CEO</p>
                     </div>
+
                     <div class="speaker-card">
-                        <div class="speaker-photo">👩‍🔬</div>
+                        <div class="speaker-avatar">👩‍🔬</div>
                         <h4>최데이터</h4>
                         <p class="title">데이터 사이언티스트</p>
                     </div>
                 </div>
-            </div>
 
-            <div class="map-section">
-                <h2>🗺️ 오시는 길</h2>
-                <div class="map-placeholder">📍</div>
-                <div class="address">
-                    <p><strong>서울 강남구 테헤란로 123 코엑스 컨퍼런스홀</strong></p>
-                    <p>지하철 2호선 삼성역 5번 출구 도보 5분</p>
-                    <p>주차: 코엑스 주차장 이용 가능 (4시간 무료)</p>
-                </div>
-            </div>
-
-            <div class="rsvp-section">
-                <h2>참가 신청하기</h2>
-                <p>지금 신청하고 얼리버드 할인을 받으세요!</p>
-                <div class="rsvp-form">
-                    <div class="form-group">
-                        <label>이름 *</label>
-                        <input type="text" placeholder="홍길동" required>
+                <h2 class="section-title">🗺️ 오시는 길</h2>
+                <div class="map-section fade-in">
+                    <div class="map-placeholder">📍</div>
+                    <div class="address">
+                        <p><strong>서울 강남구 테헤란로 123 코엑스 컨퍼런스홀</strong></p>
+                        <p>지하철 2호선 삼성역 5번 출구 도보 5분</p>
+                        <p>주차: 코엑스 주차장 이용 가능 (4시간 무료)</p>
                     </div>
-                    <div class="form-group">
-                        <label>이메일 *</label>
-                        <input type="email" placeholder="example@email.com" required>
-                    </div>
-                    <div class="form-group">
-                        <label>소속</label>
-                        <input type="text" placeholder="회사명 또는 소속">
-                    </div>
-                    <div class="form-group">
-                        <label>참가 유형 *</label>
-                        <select required>
-                            <option value="">선택하세요</option>
-                            <option value="earlybird">얼리버드 (50,000원)</option>
-                            <option value="regular">정규 등록 (80,000원)</option>
-                        </select>
-                    </div>
-                    <button class="btn">참가 신청하기</button>
-                </div>
-            </div>
-
-            <div class="footer">
-                <p><strong>문의사항이 있으신가요?</strong></p>
-                <p>이메일: event@example.com | 전화: 02-1234-5678</p>
-
-                <div class="social-links">
-                    <a href="#" class="social-icon">📘</a>
-                    <a href="#" class="social-icon">📷</a>
-                    <a href="#" class="social-icon">🐦</a>
-                    <a href="#" class="social-icon">💼</a>
                 </div>
 
-                <p style="margin-top: 2rem; font-size: 0.9rem;">
-                    &copy; 2024 Tech Conference. All rights reserved.
-                </p>
+                <div class="rsvp-section">
+                    <h2>참가 신청하기</h2>
+                    <p>지금 신청하고 얼리버드 할인을 받으세요!</p>
+                    <div class="rsvp-form">
+                        <div class="form-group">
+                            <label>이름 *</label>
+                            <input type="text" placeholder="홍길동" required>
+                        </div>
+                        <div class="form-group">
+                            <label>이메일 *</label>
+                            <input type="email" placeholder="example@email.com" required>
+                        </div>
+                        <div class="form-group">
+                            <label>소속</label>
+                            <input type="text" placeholder="회사명 또는 소속">
+                        </div>
+                        <div class="form-group">
+                            <label>참가 유형 *</label>
+                            <select required>
+                                <option value="">선택하세요</option>
+                                <option value="earlybird">얼리버드 (50,000원)</option>
+                                <option value="regular">정규 등록 (80,000원)</option>
+                            </select>
+                        </div>
+                        <button class="btn">참가 신청하기</button>
+                    </div>
+                </div>
             </div>
         </div>
+
+        <footer>
+            <p><strong>문의사항이 있으신가요?</strong></p>
+            <p>이메일: event@example.com | 전화: 02-1234-5678</p>
+
+            <div class="social-links">
+                <a href="#" class="social-link">📘</a>
+                <a href="#" class="social-link">📷</a>
+                <a href="#" class="social-link">🐦</a>
+                <a href="#" class="social-link">💼</a>
+            </div>
+
+            <p>&copy; 2024 Tech Conference. All rights reserved.</p>
+        </footer>
     </div>
 
     <script>
-        // 폼 제출 처리
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
         document.querySelector('.btn').addEventListener('click', function(e) {
             e.preventDefault();
             const inputs = document.querySelectorAll('input[required], select[required]');
@@ -556,28 +641,6 @@
             } else {
                 alert('필수 항목을 모두 입력해주세요.');
             }
-        });
-
-        // 스크롤 애니메이션
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                }
-            });
-        }, observerOptions);
-
-        document.querySelectorAll('.schedule-item, .speaker-card, .detail-item').forEach(el => {
-            el.style.opacity = '0';
-            el.style.transform = 'translateY(20px)';
-            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-            observer.observe(el);
         });
     </script>
 </body>

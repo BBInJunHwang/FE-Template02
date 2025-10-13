@@ -5,228 +5,379 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About Us - 회사 소개</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: #333;
+        :root {
+            --bg-primary: #0a0e27;
+            --bg-secondary: #1a1f3a;
+            --text-primary: #ffffff;
+            --text-secondary: #b4b4b4;
+            --accent: #3b82f6;
+            --accent-cyan: #06b6d4;
+            --glass-bg: rgba(255, 255, 255, 0.05);
+            --glass-border: rgba(255, 255, 255, 0.1);
         }
 
-        header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 2rem 0;
-            text-align: center;
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background: var(--bg-primary);
+            overflow-x: hidden;
+        }
+
+        .bg-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            background: radial-gradient(circle at 20% 50%, rgba(59, 130, 246, 0.15) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 50%, rgba(6, 182, 212, 0.15) 0%, transparent 50%);
+            animation: bgMove 25s ease-in-out infinite;
+        }
+
+        @keyframes bgMove {
+            0%, 100% { transform: translate(0, 0); }
+            50% { transform: translate(30px, 30px); }
         }
 
         nav {
-            background: #fff;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            padding: 1rem 0;
-            position: sticky;
-            top: 0;
-            z-index: 100;
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1000;
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 50px;
+            padding: 12px 30px;
         }
 
         nav ul {
             list-style: none;
             display: flex;
-            justify-content: center;
             gap: 2rem;
-            flex-wrap: wrap;
         }
 
         nav a {
             text-decoration: none;
-            color: #667eea;
-            font-weight: 600;
+            color: var(--text-primary);
+            font-weight: 500;
+            font-size: 0.95rem;
             transition: color 0.3s;
         }
 
         nav a:hover {
-            color: #764ba2;
+            color: var(--accent);
+        }
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 8rem 2rem 4rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: clamp(3rem, 8vw, 5rem);
+            font-weight: 900;
+            margin-bottom: 1.5rem;
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-cyan) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: 1.4rem;
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin: 0 auto;
+            font-weight: 300;
+        }
+
+        section {
+            position: relative;
+            z-index: 1;
+            padding: 6rem 2rem;
         }
 
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 2rem;
         }
 
-        .hero {
+        .section-header {
             text-align: center;
-            padding: 4rem 0;
+            margin-bottom: 4rem;
         }
 
-        .hero h1 {
-            font-size: 3rem;
+        .section-header h2 {
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            font-weight: 800;
             margin-bottom: 1rem;
         }
 
-        .hero p {
-            font-size: 1.3rem;
-            opacity: 0.9;
-        }
-
-        .section {
-            padding: 4rem 0;
-        }
-
-        .section-title {
-            text-align: center;
-            font-size: 2.5rem;
-            margin-bottom: 3rem;
-            color: #667eea;
+        .section-header p {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            font-weight: 300;
         }
 
         .mission-vision {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
             gap: 2rem;
-            margin-bottom: 4rem;
         }
 
         .card {
-            background: #f8f9fa;
-            padding: 2rem;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            transition: transform 0.3s;
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 30px;
+            padding: 3rem;
+            transition: all 0.4s;
         }
 
         .card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-10px);
+            border-color: var(--accent);
+            box-shadow: 0 20px 60px rgba(59, 130, 246, 0.3);
+        }
+
+        .card-icon {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
         }
 
         .card h3 {
-            color: #667eea;
-            margin-bottom: 1rem;
-            font-size: 1.8rem;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-cyan) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
-        .values {
+        .card p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--text-secondary);
+            font-weight: 300;
+        }
+
+        .values-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 2rem;
         }
 
-        .value-item {
+        .value-card {
             text-align: center;
-            padding: 2rem;
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            padding: 2.5rem;
+            transition: all 0.3s;
+        }
+
+        .value-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--accent);
         }
 
         .value-icon {
             width: 80px;
             height: 80px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-cyan) 100%);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: 0 auto 1rem;
-            font-size: 2rem;
+            margin: 0 auto 1.5rem;
+            font-size: 2.5rem;
         }
 
-        .team {
+        .value-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .value-card p {
+            color: var(--text-secondary);
+            font-weight: 300;
+        }
+
+        .team-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 2rem;
         }
 
         .team-member {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            padding: 2.5rem;
             text-align: center;
-            background: white;
-            padding: 2rem;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+        }
+
+        .team-member:hover {
+            transform: translateY(-10px);
+            border-color: var(--accent);
         }
 
         .team-photo {
-            width: 150px;
-            height: 150px;
+            width: 140px;
+            height: 140px;
             border-radius: 50%;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            margin: 0 auto 1rem;
+            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-cyan) 100%);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 3rem;
-            color: white;
+            margin: 0 auto 1.5rem;
+            font-size: 4rem;
+            box-shadow: 0 10px 30px rgba(59, 130, 246, 0.4);
         }
 
         .team-member h4 {
-            color: #667eea;
+            font-size: 1.3rem;
             margin-bottom: 0.5rem;
+            font-weight: 700;
         }
 
         .team-member .role {
-            color: #666;
-            font-style: italic;
+            color: var(--accent);
+            font-weight: 600;
             margin-bottom: 1rem;
+        }
+
+        .team-member p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            font-weight: 300;
         }
 
         .timeline {
             position: relative;
-            padding: 2rem 0;
+            padding-left: 3rem;
+            margin-top: 3rem;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: linear-gradient(180deg, var(--accent) 0%, var(--accent-cyan) 100%);
         }
 
         .timeline-item {
-            display: flex;
-            gap: 2rem;
-            margin-bottom: 2rem;
+            margin-bottom: 3rem;
             position: relative;
         }
 
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -3.6rem;
+            top: 0;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-cyan) 100%);
+            box-shadow: 0 0 0 4px var(--bg-primary), 0 0 0 6px var(--accent);
+        }
+
         .timeline-year {
-            font-size: 2rem;
-            font-weight: bold;
-            color: #667eea;
-            min-width: 100px;
+            display: inline-block;
+            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-cyan) 100%);
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 700;
+            margin-bottom: 1rem;
         }
 
         .timeline-content {
-            flex: 1;
-            background: #f8f9fa;
-            padding: 1.5rem;
-            border-radius: 10px;
-            border-left: 4px solid #667eea;
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 2rem;
+        }
+
+        .timeline-content h4 {
+            font-size: 1.4rem;
+            margin-bottom: 0.8rem;
+            font-weight: 700;
+        }
+
+        .timeline-content p {
+            color: var(--text-secondary);
+            line-height: 1.7;
+            font-weight: 300;
         }
 
         footer {
-            background: #2c3e50;
-            color: white;
+            background: var(--bg-secondary);
+            padding: 3rem 2rem;
             text-align: center;
-            padding: 2rem 0;
-            margin-top: 4rem;
+            border-top: 1px solid var(--glass-border);
+        }
+
+        .footer-text {
+            color: var(--text-secondary);
+            font-weight: 300;
         }
 
         @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2rem;
-            }
-
-            .section-title {
-                font-size: 2rem;
-            }
-
             nav ul {
                 gap: 1rem;
             }
+
+            .timeline {
+                padding-left: 2rem;
+            }
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
     </style>
 </head>
 <body>
-    <header>
-        <div class="container hero">
-            <h1>우리 회사 소개</h1>
-            <p>혁신과 신뢰로 미래를 만들어갑니다</p>
-        </div>
-    </header>
+    <div class="bg-animation"></div>
 
     <nav>
         <ul>
@@ -238,155 +389,194 @@
         </ul>
     </nav>
 
-    <main>
-        <section id="about" class="section">
-            <div class="container">
-                <h2 class="section-title">회사 소개</h2>
-                <div class="card">
-                    <p style="font-size: 1.1rem; line-height: 1.8;">
-                        2015년에 설립된 저희 회사는 혁신적인 기술과 창의적인 솔루션으로
-                        고객의 비즈니스 성장을 돕고 있습니다. 전문성과 열정을 갖춘 팀원들과 함께
-                        끊임없이 변화하는 시장에서 최고의 가치를 제공하기 위해 노력하고 있습니다.
+    <section class="hero">
+        <div>
+            <h1>
+                <span class="gradient-text">혁신</span>과 <span class="gradient-text">신뢰</span>로<br>
+                미래를 만들어갑니다
+            </h1>
+            <p>
+                최고의 기술과 열정으로 고객의 성공을 만들어가는<br>
+                여러분의 비즈니스 파트너입니다
+            </p>
+        </div>
+    </section>
+
+    <section id="about">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2>회사 소개</h2>
+                <p>우리는 누구인가</p>
+            </div>
+
+            <div class="card fade-in" style="text-align: center;">
+                <p style="font-size: 1.2rem; line-height: 2; max-width: 900px; margin: 0 auto;">
+                    2015년에 설립된 저희 회사는 혁신적인 기술과 창의적인 솔루션으로
+                    고객의 비즈니스 성장을 돕고 있습니다. 전문성과 열정을 갖춘 팀원들과 함께
+                    끊임없이 변화하는 시장에서 최고의 가치를 제공하기 위해 노력하고 있습니다.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section id="mission">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2>미션 & 비전</h2>
+                <p>우리가 나아가는 방향</p>
+            </div>
+
+            <div class="mission-vision">
+                <div class="card fade-in">
+                    <div class="card-icon">🎯</div>
+                    <h3>미션</h3>
+                    <p>
+                        혁신적인 기술과 창의적인 아이디어로 고객의 성공을 실현하고,
+                        지속 가능한 가치를 창출하여 사회에 기여합니다.
+                    </p>
+                </div>
+                <div class="card fade-in">
+                    <div class="card-icon">🚀</div>
+                    <h3>비전</h3>
+                    <p>
+                        업계를 선도하는 글로벌 기업으로 성장하여,
+                        기술 혁신을 통해 더 나은 미래를 만들어가는 것을 목표로 합니다.
                     </p>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <section id="mission" class="section" style="background: #f8f9fa;">
-            <div class="container">
-                <h2 class="section-title">미션 & 비전</h2>
-                <div class="mission-vision">
-                    <div class="card">
-                        <h3>🎯 미션</h3>
-                        <p>
-                            혁신적인 기술과 창의적인 아이디어로 고객의 성공을 실현하고,
-                            지속 가능한 가치를 창출하여 사회에 기여합니다.
-                        </p>
+    <section id="values">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2>핵심 가치</h2>
+                <p>우리를 움직이는 원동력</p>
+            </div>
+
+            <div class="values-grid">
+                <div class="value-card fade-in">
+                    <div class="value-icon">💡</div>
+                    <h3>혁신</h3>
+                    <p>끊임없는 도전과 창의적 사고로 새로운 가치를 창출합니다</p>
+                </div>
+                <div class="value-card fade-in">
+                    <div class="value-icon">🤝</div>
+                    <h3>신뢰</h3>
+                    <p>투명하고 정직한 소통으로 고객과의 신뢰를 구축합니다</p>
+                </div>
+                <div class="value-card fade-in">
+                    <div class="value-icon">⭐</div>
+                    <h3>탁월함</h3>
+                    <p>최고의 품질과 서비스로 고객 만족을 실현합니다</p>
+                </div>
+                <div class="value-card fade-in">
+                    <div class="value-icon">🌱</div>
+                    <h3>성장</h3>
+                    <p>지속적인 학습과 발전으로 함께 성장합니다</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="team">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2>팀 소개</h2>
+                <p>함께 만들어가는 사람들</p>
+            </div>
+
+            <div class="team-grid">
+                <div class="team-member fade-in">
+                    <div class="team-photo">👨‍💼</div>
+                    <h4>김대표</h4>
+                    <p class="role">대표이사 / CEO</p>
+                    <p>20년 경력의 기술 전문가로 회사의 비전을 선도합니다</p>
+                </div>
+
+                <div class="team-member fade-in">
+                    <div class="team-photo">👩‍💻</div>
+                    <h4>이부장</h4>
+                    <p class="role">기술이사 / CTO</p>
+                    <p>혁신적인 기술 솔루션 개발을 책임집니다</p>
+                </div>
+
+                <div class="team-member fade-in">
+                    <div class="team-photo">👨‍🎨</div>
+                    <h4>박팀장</h4>
+                    <p class="role">디자인팀장</p>
+                    <p>사용자 경험을 최우선으로 하는 디자인을 추구합니다</p>
+                </div>
+
+                <div class="team-member fade-in">
+                    <div class="team-photo">👩‍💼</div>
+                    <h4>최이사</h4>
+                    <p class="role">마케팅이사</p>
+                    <p>전략적 마케팅으로 브랜드 가치를 높입니다</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="history">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2>연혁</h2>
+                <p>우리의 성장 스토리</p>
+            </div>
+
+            <div class="timeline">
+                <div class="timeline-item fade-in">
+                    <div class="timeline-year">2024</div>
+                    <div class="timeline-content">
+                        <h4>글로벌 시장 진출</h4>
+                        <p>해외 3개국 진출 및 파트너십 체결</p>
                     </div>
-                    <div class="card">
-                        <h3>🚀 비전</h3>
-                        <p>
-                            업계를 선도하는 글로벌 기업으로 성장하여,
-                            기술 혁신을 통해 더 나은 미래를 만들어가는 것을 목표로 합니다.
-                        </p>
+                </div>
+
+                <div class="timeline-item fade-in">
+                    <div class="timeline-year">2022</div>
+                    <div class="timeline-content">
+                        <h4>신규 서비스 런칭</h4>
+                        <p>차세대 플랫폼 서비스 출시 및 10만 사용자 달성</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item fade-in">
+                    <div class="timeline-year">2020</div>
+                    <div class="timeline-content">
+                        <h4>시리즈 A 투자 유치</h4>
+                        <p>100억원 규모 투자 유치 및 조직 확대</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item fade-in">
+                    <div class="timeline-year">2018</div>
+                    <div class="timeline-content">
+                        <h4>첫 제품 출시</h4>
+                        <p>혁신적인 첫 제품 출시 및 시장 긍정적 반응</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item fade-in">
+                    <div class="timeline-year">2015</div>
+                    <div class="timeline-content">
+                        <h4>회사 설립</h4>
+                        <p>5명의 창업 멤버와 함께 회사 설립</p>
                     </div>
                 </div>
             </div>
-        </section>
-
-        <section id="values" class="section">
-            <div class="container">
-                <h2 class="section-title">핵심 가치</h2>
-                <div class="values">
-                    <div class="value-item">
-                        <div class="value-icon">💡</div>
-                        <h3>혁신</h3>
-                        <p>끊임없는 도전과 창의적 사고로 새로운 가치를 창출합니다</p>
-                    </div>
-                    <div class="value-item">
-                        <div class="value-icon">🤝</div>
-                        <h3>신뢰</h3>
-                        <p>투명하고 정직한 소통으로 고객과의 신뢰를 구축합니다</p>
-                    </div>
-                    <div class="value-item">
-                        <div class="value-icon">⭐</div>
-                        <h3>탁월함</h3>
-                        <p>최고의 품질과 서비스로 고객 만족을 실현합니다</p>
-                    </div>
-                    <div class="value-item">
-                        <div class="value-icon">🌱</div>
-                        <h3>성장</h3>
-                        <p>지속적인 학습과 발전으로 함께 성장합니다</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="team" class="section" style="background: #f8f9fa;">
-            <div class="container">
-                <h2 class="section-title">팀 소개</h2>
-                <div class="team">
-                    <div class="team-member">
-                        <div class="team-photo">👨‍💼</div>
-                        <h4>김대표</h4>
-                        <p class="role">대표이사 / CEO</p>
-                        <p>20년 경력의 기술 전문가로 회사의 비전을 선도합니다</p>
-                    </div>
-                    <div class="team-member">
-                        <div class="team-photo">👩‍💻</div>
-                        <h4>이부장</h4>
-                        <p class="role">기술이사 / CTO</p>
-                        <p>혁신적인 기술 솔루션 개발을 책임집니다</p>
-                    </div>
-                    <div class="team-member">
-                        <div class="team-photo">👨‍🎨</div>
-                        <h4>박팀장</h4>
-                        <p class="role">디자인팀장</p>
-                        <p>사용자 경험을 최우선으로 하는 디자인을 추구합니다</p>
-                    </div>
-                    <div class="team-member">
-                        <div class="team-photo">👩‍💼</div>
-                        <h4>최이사</h4>
-                        <p class="role">마케팅이사</p>
-                        <p>전략적 마케팅으로 브랜드 가치를 높입니다</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="history" class="section">
-            <div class="container">
-                <h2 class="section-title">연혁</h2>
-                <div class="timeline">
-                    <div class="timeline-item">
-                        <div class="timeline-year">2024</div>
-                        <div class="timeline-content">
-                            <h4>글로벌 시장 진출</h4>
-                            <p>해외 3개국 진출 및 파트너십 체결</p>
-                        </div>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-year">2022</div>
-                        <div class="timeline-content">
-                            <h4>신규 서비스 런칭</h4>
-                            <p>차세대 플랫폼 서비스 출시 및 10만 사용자 달성</p>
-                        </div>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-year">2020</div>
-                        <div class="timeline-content">
-                            <h4>시리즈 A 투자 유치</h4>
-                            <p>100억원 규모 투자 유치 및 조직 확대</p>
-                        </div>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-year">2018</div>
-                        <div class="timeline-content">
-                            <h4>첫 제품 출시</h4>
-                            <p>혁신적인 첫 제품 출시 및 시장 긍정적 반응</p>
-                        </div>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-year">2015</div>
-                        <div class="timeline-content">
-                            <h4>회사 설립</h4>
-                            <p>5명의 창업 멤버와 함께 회사 설립</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
+        </div>
+    </section>
 
     <footer>
         <div class="container">
-            <p>&copy; 2024 우리 회사. All rights reserved.</p>
-            <p>문의: contact@example.com | Tel: 02-1234-5678</p>
+            <p class="footer-text">&copy; 2024 우리 회사. All rights reserved.</p>
+            <p class="footer-text">문의: contact@example.com | Tel: 02-1234-5678</p>
         </div>
     </footer>
 
     <script>
-        // 부드러운 스크롤 효과
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -400,7 +590,6 @@
             });
         });
 
-        // 스크롤 애니메이션
         const observerOptions = {
             threshold: 0.1,
             rootMargin: '0px 0px -100px 0px'
@@ -409,16 +598,12 @@
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
+                    entry.target.classList.add('visible');
                 }
             });
         }, observerOptions);
 
-        document.querySelectorAll('.card, .value-item, .team-member, .timeline-item').forEach(el => {
-            el.style.opacity = '0';
-            el.style.transform = 'translateY(20px)';
-            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+        document.querySelectorAll('.fade-in').forEach(el => {
             observer.observe(el);
         });
     </script>

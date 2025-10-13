@@ -5,147 +5,284 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>제품 안내 - Product Showcase</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
+        :root {
+            --bg-primary: #0a0e27;
+            --bg-secondary: #1a1f3a;
+            --text-primary: #ffffff;
+            --text-secondary: #b4b4b4;
+            --accent: #6366f1;
+            --accent-cyan: #06b6d4;
+            --glass-bg: rgba(255, 255, 255, 0.05);
+            --glass-border: rgba(255, 255, 255, 0.1);
+        }
+
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
             line-height: 1.6;
-            color: #333;
-            background: #fff;
+            color: var(--text-primary);
+            background: var(--bg-primary);
+            overflow-x: hidden;
         }
 
-        .header {
-            background: linear-gradient(135deg, #2193b0 0%, #6dd5ed 100%);
-            color: white;
-            padding: 4rem 2rem;
-            text-align: center;
+        .bg-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            background: radial-gradient(circle at 20% 30%, rgba(99, 102, 241, 0.12) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 70%, rgba(6, 182, 212, 0.12) 0%, transparent 50%);
+            animation: bgPulse 15s ease-in-out infinite;
         }
 
-        .header h1 {
-            font-size: 3rem;
-            margin-bottom: 1rem;
+        @keyframes bgPulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.8; transform: scale(1.1); }
         }
 
-        .header p {
-            font-size: 1.3rem;
-            opacity: 0.95;
+        nav {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1000;
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 50px;
+            padding: 12px 30px;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--text-primary);
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: all 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--accent);
+        }
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 8rem 2rem 4rem;
+            position: relative;
+            z-index: 1;
         }
 
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 2rem;
+            width: 100%;
         }
 
-        .section {
-            padding: 4rem 0;
-        }
-
-        .section-title {
-            text-align: center;
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-            color: #2193b0;
-        }
-
-        .section-subtitle {
-            text-align: center;
-            font-size: 1.2rem;
-            color: #666;
-            margin-bottom: 3rem;
-        }
-
-        .product-hero {
+        .hero-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 3rem;
+            gap: 4rem;
             align-items: center;
-            margin-bottom: 4rem;
         }
 
-        .product-image {
+        .hero-content h1 {
+            font-size: clamp(3rem, 6vw, 4.5rem);
+            font-weight: 900;
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-cyan) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .price-tag {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--accent-cyan);
+            margin: 1.5rem 0;
+        }
+
+        .price-tag span {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            font-weight: 400;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            line-height: 1.8;
+            font-weight: 300;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 1.2rem 3rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-cyan) 100%);
+            color: white;
+            box-shadow: 0 10px 40px rgba(99, 102, 241, 0.4);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 50px rgba(99, 102, 241, 0.6);
+        }
+
+        .btn-secondary {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            color: white;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-3px);
+        }
+
+        .product-visual {
             width: 100%;
-            height: 400px;
-            background: linear-gradient(135deg, #2193b0 0%, #6dd5ed 100%);
-            border-radius: 20px;
+            height: 500px;
+            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-cyan) 100%);
+            border-radius: 30px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 5rem;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            font-size: 8rem;
+            box-shadow: 0 30px 80px rgba(99, 102, 241, 0.5);
+            position: relative;
         }
 
-        .product-info h2 {
-            font-size: 2.5rem;
-            color: #2193b0;
+        .product-visual::before {
+            content: '';
+            position: absolute;
+            inset: -3px;
+            border-radius: 30px;
+            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-cyan) 100%);
+            z-index: -1;
+            filter: blur(30px);
+            opacity: 0.7;
+        }
+
+        section {
+            position: relative;
+            z-index: 1;
+            padding: 6rem 2rem;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-header h2 {
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            font-weight: 800;
             margin-bottom: 1rem;
         }
 
-        .product-info .price {
-            font-size: 2rem;
-            color: #27ae60;
-            font-weight: bold;
-            margin-bottom: 1rem;
+        .section-header p {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            font-weight: 300;
         }
 
-        .product-info .description {
-            font-size: 1.1rem;
-            line-height: 1.8;
-            margin-bottom: 2rem;
-        }
-
-        .features {
+        .features-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
-            margin-top: 3rem;
         }
 
         .feature-card {
-            background: white;
-            padding: 2rem;
-            border-radius: 15px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-            transition: transform 0.3s, box-shadow 0.3s;
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            padding: 2.5rem;
+            transition: all 0.4s;
         }
 
         .feature-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            border-color: var(--accent);
+            box-shadow: 0 20px 60px rgba(99, 102, 241, 0.3);
         }
 
         .feature-icon {
-            width: 60px;
-            height: 60px;
-            background: linear-gradient(135deg, #2193b0 0%, #6dd5ed 100%);
-            border-radius: 50%;
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-cyan) 100%);
+            border-radius: 18px;
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 2rem;
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
         }
 
         .feature-card h3 {
-            color: #2193b0;
-            margin-bottom: 0.5rem;
             font-size: 1.5rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
         }
 
-        .specs {
-            background: #f8f9fa;
+        .feature-card p {
+            color: var(--text-secondary);
+            line-height: 1.8;
+            font-weight: 300;
+        }
+
+        .specs-section {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 30px;
             padding: 3rem;
-            border-radius: 15px;
-            margin-top: 3rem;
+            margin: 4rem 0;
         }
 
         .specs-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
         }
 
@@ -156,380 +293,414 @@
         }
 
         .spec-item strong {
-            color: #2193b0;
-            min-width: 120px;
+            color: var(--accent);
+            min-width: 140px;
+            font-weight: 600;
         }
 
-        .pricing-cards {
+        .spec-item span {
+            color: var(--text-secondary);
+            font-weight: 300;
+        }
+
+        .pricing-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 2rem;
-            margin-top: 3rem;
         }
 
         .pricing-card {
-            background: white;
-            border-radius: 20px;
-            padding: 2.5rem;
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 30px;
+            padding: 3rem 2.5rem;
             text-align: center;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-            transition: transform 0.3s;
-            border: 3px solid transparent;
+            transition: all 0.4s;
+            position: relative;
         }
 
         .pricing-card:hover {
-            transform: scale(1.05);
-            border-color: #2193b0;
+            transform: translateY(-10px);
+            border-color: var(--accent);
         }
 
         .pricing-card.featured {
-            background: linear-gradient(135deg, #2193b0 0%, #6dd5ed 100%);
-            color: white;
+            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-cyan) 100%);
+            border: none;
             transform: scale(1.05);
+        }
+
+        .pricing-card.featured:hover {
+            transform: scale(1.08) translateY(-10px);
+        }
+
+        .pricing-badge {
+            position: absolute;
+            top: -15px;
+            right: 30px;
+            background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+            color: var(--bg-primary);
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.9rem;
         }
 
         .pricing-card h3 {
             font-size: 1.8rem;
             margin-bottom: 1rem;
+            font-weight: 700;
         }
 
-        .pricing-card .price {
-            font-size: 3rem;
-            font-weight: bold;
-            margin: 1rem 0;
+        .price {
+            font-size: 3.5rem;
+            font-weight: 900;
+            margin: 1.5rem 0;
         }
 
-        .pricing-card .period {
-            font-size: 1rem;
-            opacity: 0.8;
-        }
-
-        .pricing-card ul {
+        .pricing-features {
             list-style: none;
             margin: 2rem 0;
             text-align: left;
         }
 
-        .pricing-card li {
-            padding: 0.5rem 0;
-            border-bottom: 1px solid rgba(0,0,0,0.1);
+        .pricing-features li {
+            padding: 1rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            font-weight: 300;
         }
 
-        .pricing-card.featured li {
-            border-bottom-color: rgba(255,255,255,0.3);
-        }
-
-        .btn {
-            display: inline-block;
-            padding: 1rem 2.5rem;
-            background: #2193b0;
-            color: white;
-            text-decoration: none;
-            border-radius: 50px;
-            font-weight: bold;
-            transition: all 0.3s;
-            border: none;
-            cursor: pointer;
-            font-size: 1.1rem;
-        }
-
-        .btn:hover {
-            background: #1a7a8f;
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-        }
-
-        .btn-secondary {
-            background: white;
-            color: #2193b0;
-            border: 2px solid #2193b0;
-        }
-
-        .btn-secondary:hover {
-            background: #2193b0;
-            color: white;
-        }
-
-        .gallery {
+        .gallery-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 1.5rem;
-            margin-top: 3rem;
         }
 
         .gallery-item {
             height: 250px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            border-radius: 15px;
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.2) 0%, rgba(6, 182, 212, 0.2) 100%);
+            border-radius: 20px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 3rem;
+            font-size: 4rem;
             cursor: pointer;
-            transition: transform 0.3s;
+            transition: all 0.3s;
+            border: 1px solid var(--glass-border);
         }
 
         .gallery-item:hover {
             transform: scale(1.05);
+            box-shadow: 0 20px 40px rgba(99, 102, 241, 0.3);
         }
 
         .cta-section {
-            background: linear-gradient(135deg, #2193b0 0%, #6dd5ed 100%);
-            color: white;
-            padding: 4rem 2rem;
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 40px;
+            padding: 5rem 2rem;
             text-align: center;
-            border-radius: 20px;
             margin: 4rem 0;
         }
 
         .cta-section h2 {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            font-weight: 900;
+            margin-bottom: 1.5rem;
         }
 
         .cta-section p {
             font-size: 1.3rem;
-            margin-bottom: 2rem;
+            color: var(--text-secondary);
+            margin-bottom: 2.5rem;
+            font-weight: 300;
         }
 
         footer {
-            background: #2c3e50;
-            color: white;
+            background: var(--bg-secondary);
+            padding: 3rem 2rem;
             text-align: center;
-            padding: 2rem;
+            border-top: 1px solid var(--glass-border);
+        }
+
+        .footer-text {
+            color: var(--text-secondary);
+            font-weight: 300;
         }
 
         @media (max-width: 768px) {
-            .header h1 {
-                font-size: 2rem;
-            }
-
-            .product-hero {
+            .hero-grid {
                 grid-template-columns: 1fr;
             }
 
-            .section-title {
-                font-size: 2rem;
+            nav ul {
+                gap: 1rem;
             }
 
             .pricing-card.featured {
                 transform: scale(1);
             }
         }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
     </style>
 </head>
 <body>
-    <header class="header">
-        <h1>혁신적인 제품을 소개합니다</h1>
-        <p>당신의 비즈니스를 한 단계 업그레이드하세요</p>
-    </header>
+    <div class="bg-animation"></div>
 
-    <main>
-        <section class="section">
-            <div class="container">
-                <div class="product-hero">
-                    <div class="product-image">📱</div>
-                    <div class="product-info">
-                        <h2>프리미엄 비즈니스 솔루션</h2>
-                        <div class="price">₩99,000 <span style="font-size: 1rem;">/월</span></div>
-                        <p class="description">
-                            업무 효율성을 극대화하는 올인원 비즈니스 솔루션입니다.
-                            클라우드 기반의 강력한 기능과 직관적인 인터페이스로
-                            언제 어디서나 편리하게 업무를 관리할 수 있습니다.
-                        </p>
-                        <button class="btn">무료 체험 시작하기</button>
-                        <button class="btn btn-secondary" style="margin-left: 1rem;">데모 보기</button>
+    <nav>
+        <ul>
+            <li><a href="#features">기능</a></li>
+            <li><a href="#specs">사양</a></li>
+            <li><a href="#pricing">요금</a></li>
+            <li><a href="#gallery">갤러리</a></li>
+        </ul>
+    </nav>
+
+    <section class="hero">
+        <div class="container">
+            <div class="hero-grid">
+                <div class="hero-content">
+                    <h1>
+                        <span class="gradient-text">프리미엄</span><br>
+                        비즈니스 솔루션
+                    </h1>
+                    <div class="price-tag">₩99,000 <span>/월</span></div>
+                    <p>
+                        업무 효율성을 극대화하는 올인원 비즈니스 솔루션입니다.
+                        클라우드 기반의 강력한 기능과 직관적인 인터페이스로
+                        언제 어디서나 편리하게 업무를 관리할 수 있습니다.
+                    </p>
+                    <div class="cta-buttons">
+                        <button class="btn btn-primary">무료 체험 시작</button>
+                        <button class="btn btn-secondary">데모 보기</button>
+                    </div>
+                </div>
+                <div class="product-visual">📱</div>
+            </div>
+        </div>
+    </section>
+
+    <section id="features">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2>주요 기능</h2>
+                <p>비즈니스 성공을 위한 모든 기능을 제공합니다</p>
+            </div>
+
+            <div class="features-grid">
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">⚡</div>
+                    <h3>초고속 처리</h3>
+                    <p>최신 기술을 활용한 빠른 데이터 처리 속도로 업무 효율성을 극대화합니다.</p>
+                </div>
+
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">🔒</div>
+                    <h3>강력한 보안</h3>
+                    <p>은행급 보안 시스템으로 고객 데이터를 안전하게 보호합니다.</p>
+                </div>
+
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">☁️</div>
+                    <h3>클라우드 기반</h3>
+                    <p>언제 어디서나 접근 가능한 클라우드 인프라를 제공합니다.</p>
+                </div>
+
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">📊</div>
+                    <h3>실시간 분석</h3>
+                    <p>직관적인 대시보드로 비즈니스 데이터를 실시간으로 분석합니다.</p>
+                </div>
+
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">🤝</div>
+                    <h3>팀 협업</h3>
+                    <p>팀원들과 실시간으로 소통하고 협업할 수 있는 도구를 제공합니다.</p>
+                </div>
+
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">🔄</div>
+                    <h3>자동화</h3>
+                    <p>반복적인 작업을 자동화하여 시간을 절약할 수 있습니다.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="specs">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2>제품 사양</h2>
+                <p>상세 스펙을 확인하세요</p>
+            </div>
+
+            <div class="specs-section fade-in">
+                <div class="specs-grid">
+                    <div class="spec-item">
+                        <strong>플랫폼</strong>
+                        <span>Web, iOS, Android, Desktop</span>
+                    </div>
+                    <div class="spec-item">
+                        <strong>지원 언어</strong>
+                        <span>한국어, 영어, 중국어, 일본어</span>
+                    </div>
+                    <div class="spec-item">
+                        <strong>저장 용량</strong>
+                        <span>기본 100GB (확장 가능)</span>
+                    </div>
+                    <div class="spec-item">
+                        <strong>동시 사용자</strong>
+                        <span>무제한</span>
+                    </div>
+                    <div class="spec-item">
+                        <strong>API 제공</strong>
+                        <span>RESTful API, GraphQL</span>
+                    </div>
+                    <div class="spec-item">
+                        <strong>고객 지원</strong>
+                        <span>24/7 이메일, 채팅, 전화</span>
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <section class="section" style="background: #f8f9fa;">
-            <div class="container">
-                <h2 class="section-title">주요 기능</h2>
-                <p class="section-subtitle">비즈니스 성공을 위한 모든 기능을 제공합니다</p>
+    <section id="pricing">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2>요금제</h2>
+                <p>비즈니스 규모에 맞는 최적의 요금제를 선택하세요</p>
+            </div>
 
-                <div class="features">
-                    <div class="feature-card">
-                        <div class="feature-icon">⚡</div>
-                        <h3>초고속 처리</h3>
-                        <p>최신 기술을 활용한 빠른 데이터 처리 속도로 업무 효율성을 극대화합니다.</p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon">🔒</div>
-                        <h3>강력한 보안</h3>
-                        <p>은행급 보안 시스템으로 고객 데이터를 안전하게 보호합니다.</p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon">☁️</div>
-                        <h3>클라우드 기반</h3>
-                        <p>언제 어디서나 접근 가능한 클라우드 인프라를 제공합니다.</p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon">📊</div>
-                        <h3>실시간 분석</h3>
-                        <p>직관적인 대시보드로 비즈니스 데이터를 실시간으로 분석합니다.</p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon">🤝</div>
-                        <h3>팀 협업</h3>
-                        <p>팀원들과 실시간으로 소통하고 협업할 수 있는 도구를 제공합니다.</p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon">🔄</div>
-                        <h3>자동화</h3>
-                        <p>반복적인 작업을 자동화하여 시간을 절약할 수 있습니다.</p>
-                    </div>
+            <div class="pricing-grid">
+                <div class="pricing-card fade-in">
+                    <h3>스타터</h3>
+                    <div class="price">₩29,000</div>
+                    <ul class="pricing-features">
+                        <li>✓ 사용자 5명</li>
+                        <li>✓ 저장공간 50GB</li>
+                        <li>✓ 기본 기능</li>
+                        <li>✓ 이메일 지원</li>
+                        <li>✓ 모바일 앱</li>
+                    </ul>
+                    <button class="btn btn-secondary" style="width: 100%;">시작하기</button>
+                </div>
+
+                <div class="pricing-card featured fade-in">
+                    <div class="pricing-badge">추천</div>
+                    <h3>프로페셔널</h3>
+                    <div class="price">₩99,000</div>
+                    <ul class="pricing-features">
+                        <li>✓ 사용자 50명</li>
+                        <li>✓ 저장공간 500GB</li>
+                        <li>✓ 모든 기능</li>
+                        <li>✓ 우선 지원</li>
+                        <li>✓ API 접근</li>
+                        <li>✓ 고급 분석</li>
+                    </ul>
+                    <button class="btn btn-primary" style="width: 100%; background: white; color: var(--accent);">추천 플랜</button>
+                </div>
+
+                <div class="pricing-card fade-in">
+                    <h3>엔터프라이즈</h3>
+                    <div class="price">문의</div>
+                    <ul class="pricing-features">
+                        <li>✓ 무제한 사용자</li>
+                        <li>✓ 무제한 저장공간</li>
+                        <li>✓ 커스터마이징</li>
+                        <li>✓ 전담 매니저</li>
+                        <li>✓ 24/7 전화 지원</li>
+                        <li>✓ 온사이트 교육</li>
+                    </ul>
+                    <button class="btn btn-secondary" style="width: 100%;">상담하기</button>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <section class="section">
-            <div class="container">
-                <h2 class="section-title">제품 사양</h2>
-                <div class="specs">
-                    <div class="specs-grid">
-                        <div class="spec-item">
-                            <strong>플랫폼:</strong>
-                            <span>Web, iOS, Android, Desktop</span>
-                        </div>
-                        <div class="spec-item">
-                            <strong>지원 언어:</strong>
-                            <span>한국어, 영어, 중국어, 일본어</span>
-                        </div>
-                        <div class="spec-item">
-                            <strong>저장 용량:</strong>
-                            <span>기본 100GB (확장 가능)</span>
-                        </div>
-                        <div class="spec-item">
-                            <strong>동시 사용자:</strong>
-                            <span>무제한</span>
-                        </div>
-                        <div class="spec-item">
-                            <strong>API 제공:</strong>
-                            <span>RESTful API, GraphQL</span>
-                        </div>
-                        <div class="spec-item">
-                            <strong>고객 지원:</strong>
-                            <span>24/7 이메일, 채팅, 전화</span>
-                        </div>
-                    </div>
-                </div>
+    <section id="gallery">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2>제품 갤러리</h2>
+                <p>다양한 화면을 둘러보세요</p>
             </div>
-        </section>
 
-        <section class="section" style="background: #f8f9fa;">
-            <div class="container">
-                <h2 class="section-title">요금제</h2>
-                <p class="section-subtitle">비즈니스 규모에 맞는 최적의 요금제를 선택하세요</p>
-
-                <div class="pricing-cards">
-                    <div class="pricing-card">
-                        <h3>스타터</h3>
-                        <div class="price">₩29,000</div>
-                        <div class="period">월</div>
-                        <ul>
-                            <li>✓ 사용자 5명</li>
-                            <li>✓ 저장공간 50GB</li>
-                            <li>✓ 기본 기능</li>
-                            <li>✓ 이메일 지원</li>
-                            <li>✓ 모바일 앱</li>
-                        </ul>
-                        <button class="btn">시작하기</button>
-                    </div>
-
-                    <div class="pricing-card featured">
-                        <h3>프로페셔널</h3>
-                        <div class="price">₩99,000</div>
-                        <div class="period">월</div>
-                        <ul>
-                            <li>✓ 사용자 50명</li>
-                            <li>✓ 저장공간 500GB</li>
-                            <li>✓ 모든 기능</li>
-                            <li>✓ 우선 지원</li>
-                            <li>✓ API 접근</li>
-                            <li>✓ 고급 분석</li>
-                        </ul>
-                        <button class="btn" style="background: white; color: #2193b0;">추천 플랜</button>
-                    </div>
-
-                    <div class="pricing-card">
-                        <h3>엔터프라이즈</h3>
-                        <div class="price">문의</div>
-                        <div class="period">맞춤형</div>
-                        <ul>
-                            <li>✓ 무제한 사용자</li>
-                            <li>✓ 무제한 저장공간</li>
-                            <li>✓ 커스터마이징</li>
-                            <li>✓ 전담 매니저</li>
-                            <li>✓ 24/7 전화 지원</li>
-                            <li>✓ 온사이트 교육</li>
-                        </ul>
-                        <button class="btn">상담하기</button>
-                    </div>
-                </div>
+            <div class="gallery-grid">
+                <div class="gallery-item fade-in">🖥️</div>
+                <div class="gallery-item fade-in">📱</div>
+                <div class="gallery-item fade-in">⌨️</div>
+                <div class="gallery-item fade-in">🎨</div>
+                <div class="gallery-item fade-in">📊</div>
+                <div class="gallery-item fade-in">🔧</div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <section class="section">
-            <div class="container">
-                <h2 class="section-title">제품 갤러리</h2>
-                <div class="gallery">
-                    <div class="gallery-item">🖥️</div>
-                    <div class="gallery-item">📱</div>
-                    <div class="gallery-item">⌨️</div>
-                    <div class="gallery-item">🎨</div>
-                    <div class="gallery-item">📊</div>
-                    <div class="gallery-item">🔧</div>
-                </div>
+    <section>
+        <div class="container">
+            <div class="cta-section fade-in">
+                <h2>지금 바로 시작하세요!</h2>
+                <p>14일 무료 체험, 신용카드 불필요</p>
+                <button class="btn btn-primary" style="font-size: 1.2rem; padding: 1.3rem 3.5rem;">
+                    무료로 시작하기
+                </button>
             </div>
-        </section>
-
-        <section class="section">
-            <div class="container">
-                <div class="cta-section">
-                    <h2>지금 바로 시작하세요!</h2>
-                    <p>14일 무료 체험, 신용카드 불필요</p>
-                    <button class="btn" style="background: white; color: #2193b0; font-size: 1.2rem; padding: 1.2rem 3rem;">무료로 시작하기</button>
-                </div>
-            </div>
-        </section>
-    </main>
+        </div>
+    </section>
 
     <footer>
         <div class="container">
-            <p>&copy; 2024 Your Company. All rights reserved.</p>
-            <p>문의: sales@example.com | Tel: 02-1234-5678</p>
+            <p class="footer-text">&copy; 2024 Your Company. All rights reserved.</p>
+            <p class="footer-text">문의: sales@example.com | Tel: 02-1234-5678</p>
         </div>
     </footer>
 
     <script>
-        // 스크롤 애니메이션
         const observerOptions = {
             threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
+            rootMargin: '0px 0px -100px 0px'
         };
 
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
+                    entry.target.classList.add('visible');
                 }
             });
         }, observerOptions);
 
-        document.querySelectorAll('.feature-card, .pricing-card, .gallery-item').forEach(el => {
-            el.style.opacity = '0';
-            el.style.transform = 'translateY(30px)';
-            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+        document.querySelectorAll('.fade-in').forEach(el => {
             observer.observe(el);
         });
 
-        // 버튼 클릭 이벤트
         document.querySelectorAll('.btn').forEach(btn => {
-            btn.addEventListener('click', function() {
-                alert('서비스 준비 중입니다. 곧 만나요!');
+            btn.addEventListener('click', () => {
+                alert('서비스 준비 중입니다!');
+            });
+        });
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
             });
         });
     </script>
