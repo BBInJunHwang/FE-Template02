@@ -1,0 +1,22 @@
+{
+  "name": "static-templates",
+  "version": "1.0.0",
+  "description": "정적 페이지 템플릿 모음",
+  "scripts": {
+    "start": "live-server --port=3000 --open=templates/",
+    "serve": "http-server -p 3000 -o templates/",
+    "dev": "live-server --port=3000"
+  },
+  "keywords": [
+    "templates",
+    "static",
+    "landing-page",
+    "portfolio"
+  ],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "http-server": "^14.1.1",
+    "live-server": "^1.2.2"
+  }
+}

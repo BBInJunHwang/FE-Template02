@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - 회사 소개</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+        }
+
+        nav {
+            background: #fff;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #667eea;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #764ba2;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 4rem 0;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            opacity: 0.9;
+        }
+
+        .section {
+            padding: 4rem 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #667eea;
+        }
+
+        .mission-vision {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .card {
+            background: #f8f9fa;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card h3 {
+            color: #667eea;
+            margin-bottom: 1rem;
+            font-size: 1.8rem;
+        }
+
+        .values {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .value-item {
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .value-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            font-size: 2rem;
+        }
+
+        .team {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .team-member {
+            text-align: center;
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .team-photo {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            margin: 0 auto 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: white;
+        }
+
+        .team-member h4 {
+            color: #667eea;
+            margin-bottom: 0.5rem;
+        }
+
+        .team-member .role {
+            color: #666;
+            font-style: italic;
+            margin-bottom: 1rem;
+        }
+
+        .timeline {
+            position: relative;
+            padding: 2rem 0;
+        }
+
+        .timeline-item {
+            display: flex;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            position: relative;
+        }
+
+        .timeline-year {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #667eea;
+            min-width: 100px;
+        }
+
+        .timeline-content {
+            flex: 1;
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 10px;
+            border-left: 4px solid #667eea;
+        }
+
+        footer {
+            background: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 4rem;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            nav ul {
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container hero">
+            <h1>우리 회사 소개</h1>
+            <p>혁신과 신뢰로 미래를 만들어갑니다</p>
+        </div>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#about">회사 소개</a></li>
+            <li><a href="#mission">미션 & 비전</a></li>
+            <li><a href="#values">핵심 가치</a></li>
+            <li><a href="#team">팀 소개</a></li>
+            <li><a href="#history">연혁</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <section id="about" class="section">
+            <div class="container">
+                <h2 class="section-title">회사 소개</h2>
+                <div class="card">
+                    <p style="font-size: 1.1rem; line-height: 1.8;">
+                        2015년에 설립된 저희 회사는 혁신적인 기술과 창의적인 솔루션으로
+                        고객의 비즈니스 성장을 돕고 있습니다. 전문성과 열정을 갖춘 팀원들과 함께
+                        끊임없이 변화하는 시장에서 최고의 가치를 제공하기 위해 노력하고 있습니다.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section id="mission" class="section" style="background: #f8f9fa;">
+            <div class="container">
+                <h2 class="section-title">미션 & 비전</h2>
+                <div class="mission-vision">
+                    <div class="card">
+                        <h3>🎯 미션</h3>
+                        <p>
+                            혁신적인 기술과 창의적인 아이디어로 고객의 성공을 실현하고,
+                            지속 가능한 가치를 창출하여 사회에 기여합니다.
+                        </p>
+                    </div>
+                    <div class="card">
+                        <h3>🚀 비전</h3>
+                        <p>
+                            업계를 선도하는 글로벌 기업으로 성장하여,
+                            기술 혁신을 통해 더 나은 미래를 만들어가는 것을 목표로 합니다.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="values" class="section">
+            <div class="container">
+                <h2 class="section-title">핵심 가치</h2>
+                <div class="values">
+                    <div class="value-item">
+                        <div class="value-icon">💡</div>
+                        <h3>혁신</h3>
+                        <p>끊임없는 도전과 창의적 사고로 새로운 가치를 창출합니다</p>
+                    </div>
+                    <div class="value-item">
+                        <div class="value-icon">🤝</div>
+                        <h3>신뢰</h3>
+                        <p>투명하고 정직한 소통으로 고객과의 신뢰를 구축합니다</p>
+                    </div>
+                    <div class="value-item">
+                        <div class="value-icon">⭐</div>
+                        <h3>탁월함</h3>
+                        <p>최고의 품질과 서비스로 고객 만족을 실현합니다</p>
+                    </div>
+                    <div class="value-item">
+                        <div class="value-icon">🌱</div>
+                        <h3>성장</h3>
+                        <p>지속적인 학습과 발전으로 함께 성장합니다</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="team" class="section" style="background: #f8f9fa;">
+            <div class="container">
+                <h2 class="section-title">팀 소개</h2>
+                <div class="team">
+                    <div class="team-member">
+                        <div class="team-photo">👨‍💼</div>
+                        <h4>김대표</h4>
+                        <p class="role">대표이사 / CEO</p>
+                        <p>20년 경력의 기술 전문가로 회사의 비전을 선도합니다</p>
+                    </div>
+                    <div class="team-member">
+                        <div class="team-photo">👩‍💻</div>
+                        <h4>이부장</h4>
+                        <p class="role">기술이사 / CTO</p>
+                        <p>혁신적인 기술 솔루션 개발을 책임집니다</p>
+                    </div>
+                    <div class="team-member">
+                        <div class="team-photo">👨‍🎨</div>
+                        <h4>박팀장</h4>
+                        <p class="role">디자인팀장</p>
+                        <p>사용자 경험을 최우선으로 하는 디자인을 추구합니다</p>
+                    </div>
+                    <div class="team-member">
+                        <div class="team-photo">👩‍💼</div>
+                        <h4>최이사</h4>
+                        <p class="role">마케팅이사</p>
+                        <p>전략적 마케팅으로 브랜드 가치를 높입니다</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="history" class="section">
+            <div class="container">
+                <h2 class="section-title">연혁</h2>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-year">2024</div>
+                        <div class="timeline-content">
+                            <h4>글로벌 시장 진출</h4>
+                            <p>해외 3개국 진출 및 파트너십 체결</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2022</div>
+                        <div class="timeline-content">
+                            <h4>신규 서비스 런칭</h4>
+                            <p>차세대 플랫폼 서비스 출시 및 10만 사용자 달성</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2020</div>
+                        <div class="timeline-content">
+                            <h4>시리즈 A 투자 유치</h4>
+                            <p>100억원 규모 투자 유치 및 조직 확대</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2018</div>
+                        <div class="timeline-content">
+                            <h4>첫 제품 출시</h4>
+                            <p>혁신적인 첫 제품 출시 및 시장 긍정적 반응</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2015</div>
+                        <div class="timeline-content">
+                            <h4>회사 설립</h4>
+                            <p>5명의 창업 멤버와 함께 회사 설립</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 우리 회사. All rights reserved.</p>
+            <p>문의: contact@example.com | Tel: 02-1234-5678</p>
+        </div>
+    </footer>
+
+    <script>
+        // 부드러운 스크롤 효과
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // 스크롤 애니메이션
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.card, .value-item, .team-member, .timeline-item').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
