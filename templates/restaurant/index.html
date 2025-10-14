@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LA MAISON - 파인 다이닝 레스토랑</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            background: #0a0a0a;
+            color: #fff;
+            line-height: 1.6;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1.5rem 0;
+            border-bottom: 1px solid rgba(197, 169, 115, 0.2);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: 300;
+            letter-spacing: 4px;
+            color: #C5A973;
+            font-family: 'Palatino', serif;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 3rem;
+            list-style: none;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: #fff;
+            font-weight: 300;
+            letter-spacing: 2px;
+            font-size: 0.9rem;
+            transition: color 0.3s;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        }
+
+        .nav-menu a:hover {
+            color: #C5A973;
+        }
+
+        .reserve-btn {
+            padding: 0.8rem 2rem;
+            background: transparent;
+            border: 1px solid #C5A973;
+            color: #C5A973;
+            border-radius: 0;
+            cursor: pointer;
+            letter-spacing: 2px;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+        }
+
+        .reserve-btn:hover {
+            background: #C5A973;
+            color: #0a0a0a;
+        }
+
+        /* Hero Section */
+        .hero {
+            margin-top: 80px;
+            height: 100vh;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+                        url('data:image/svg+xml,<svg width="1920" height="1080" xmlns="http://www.w3.org/2000/svg"><rect width="1920" height="1080" fill="%231a1a1a"/></svg>');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        .hero-content {
+            text-align: center;
+            max-width: 900px;
+            padding: 2rem;
+        }
+
+        .hero h1 {
+            font-size: 5rem;
+            margin-bottom: 1rem;
+            font-weight: 300;
+            letter-spacing: 8px;
+            color: #C5A973;
+        }
+
+        .hero-subtitle {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            letter-spacing: 4px;
+            font-weight: 300;
+            opacity: 0.9;
+        }
+
+        .hero-description {
+            font-size: 1.1rem;
+            margin-bottom: 3rem;
+            line-height: 2;
+            font-style: italic;
+            color: #ddd;
+        }
+
+        /* About Section */
+        .about {
+            padding: 8rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 6rem;
+            align-items: center;
+        }
+
+        .about-image {
+            width: 100%;
+            height: 500px;
+            background: linear-gradient(135deg, #C5A973 0%, #8B7355 100%);
+            border-radius: 2px;
+        }
+
+        .about-content h2 {
+            font-size: 3rem;
+            margin-bottom: 2rem;
+            font-weight: 300;
+            letter-spacing: 4px;
+            color: #C5A973;
+        }
+
+        .about-content p {
+            font-size: 1.1rem;
+            line-height: 2;
+            margin-bottom: 1.5rem;
+            color: #ccc;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        }
+
+        /* Menu Section */
+        .menu {
+            background: #111;
+            padding: 8rem 2rem;
+        }
+
+        .menu-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            font-weight: 300;
+            letter-spacing: 6px;
+            color: #C5A973;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.1rem;
+            margin-bottom: 5rem;
+            letter-spacing: 3px;
+            color: #999;
+            font-weight: 300;
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 4rem;
+        }
+
+        .menu-item {
+            padding-bottom: 2rem;
+            border-bottom: 1px solid rgba(197, 169, 115, 0.2);
+        }
+
+        .menu-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 1rem;
+        }
+
+        .menu-name {
+            font-size: 1.5rem;
+            color: #C5A973;
+            font-weight: 300;
+            letter-spacing: 2px;
+        }
+
+        .menu-price {
+            font-size: 1.3rem;
+            color: #C5A973;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        }
+
+        .menu-description {
+            color: #999;
+            line-height: 1.8;
+            font-size: 0.95rem;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        }
+
+        /* Chef Section */
+        .chef {
+            padding: 8rem 2rem;
+            background: #0a0a0a;
+        }
+
+        .chef-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 6rem;
+            align-items: center;
+        }
+
+        .chef-image {
+            width: 100%;
+            height: 600px;
+            background: linear-gradient(135deg, #8B7355 0%, #C5A973 100%);
+            border-radius: 2px;
+        }
+
+        .chef-content h2 {
+            font-size: 3rem;
+            margin-bottom: 2rem;
+            font-weight: 300;
+            letter-spacing: 4px;
+            color: #C5A973;
+        }
+
+        .chef-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 3rem;
+            font-weight: 300;
+            letter-spacing: 3px;
+            color: #999;
+        }
+
+        .chef-content p {
+            font-size: 1.1rem;
+            line-height: 2;
+            margin-bottom: 1.5rem;
+            color: #ccc;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        }
+
+        .awards {
+            margin-top: 3rem;
+            padding-top: 3rem;
+            border-top: 1px solid rgba(197, 169, 115, 0.2);
+        }
+
+        .award-item {
+            margin-bottom: 1rem;
+            color: #C5A973;
+            font-size: 1.1rem;
+            letter-spacing: 2px;
+        }
+
+        /* Reservation Section */
+        .reservation {
+            background: linear-gradient(135deg, #C5A973 0%, #8B7355 100%);
+            padding: 8rem 2rem;
+            text-align: center;
+        }
+
+        .reservation h2 {
+            font-size: 3.5rem;
+            margin-bottom: 2rem;
+            font-weight: 300;
+            letter-spacing: 6px;
+            color: #0a0a0a;
+        }
+
+        .reservation p {
+            font-size: 1.2rem;
+            margin-bottom: 3rem;
+            color: rgba(10, 10, 10, 0.8);
+            letter-spacing: 2px;
+        }
+
+        .reservation-form {
+            max-width: 600px;
+            margin: 0 auto;
+            display: grid;
+            gap: 1.5rem;
+        }
+
+        .form-group {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        input, select, textarea {
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.95);
+            border: none;
+            font-size: 1rem;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            letter-spacing: 1px;
+        }
+
+        textarea {
+            height: 120px;
+            resize: none;
+        }
+
+        .submit-btn {
+            padding: 1.2rem;
+            background: #0a0a0a;
+            color: #C5A973;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            letter-spacing: 3px;
+            transition: all 0.3s;
+            margin-top: 1rem;
+        }
+
+        .submit-btn:hover {
+            background: #1a1a1a;
+        }
+
+        /* Info Section */
+        .info {
+            padding: 8rem 2rem;
+            background: #111;
+        }
+
+        .info-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 4rem;
+        }
+
+        .info-box h3 {
+            font-size: 1.8rem;
+            margin-bottom: 2rem;
+            font-weight: 300;
+            letter-spacing: 3px;
+            color: #C5A973;
+        }
+
+        .info-box p {
+            color: #999;
+            line-height: 2;
+            font-size: 1.05rem;
+            margin-bottom: 1rem;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        }
+
+        /* Footer */
+        footer {
+            background: #0a0a0a;
+            padding: 4rem 2rem 2rem;
+            border-top: 1px solid rgba(197, 169, 115, 0.2);
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .footer-logo {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            letter-spacing: 6px;
+            color: #C5A973;
+            font-family: 'Palatino', serif;
+            font-weight: 300;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            margin-bottom: 2rem;
+        }
+
+        .social-icon {
+            width: 50px;
+            height: 50px;
+            border: 1px solid #C5A973;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .social-icon:hover {
+            background: #C5A973;
+        }
+
+        .footer-bottom {
+            padding-top: 2rem;
+            color: #666;
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 3rem; }
+            .about, .chef-container { grid-template-columns: 1fr; }
+            .menu-grid { grid-template-columns: 1fr; }
+            .form-group { grid-template-columns: 1fr; }
+            .nav-menu { display: none; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo">LA MAISON</div>
+            <ul class="nav-menu">
+                <li><a href="#about">ABOUT</a></li>
+                <li><a href="#menu">MENU</a></li>
+                <li><a href="#chef">CHEF</a></li>
+                <li><a href="#contact">CONTACT</a></li>
+            </ul>
+            <button class="reserve-btn">RESERVE</button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>LA MAISON</h1>
+            <p class="hero-subtitle">FINE DINING EXPERIENCE</p>
+            <p class="hero-description">
+                프랑스 전통 요리법과 현대적 감각이 어우러진<br>
+                특별한 미식 경험을 선사합니다
+            </p>
+            <button class="reserve-btn" style="padding: 1rem 3rem; font-size: 1rem;">예약하기</button>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="about-image"></div>
+        <div class="about-content">
+            <h2>OUR STORY</h2>
+            <p>
+                2010년 서울 강남에 문을 연 LA MAISON은 정통 프랑스 요리의 정수를
+                현대적으로 재해석한 파인 다이닝 레스토랑입니다.
+            </p>
+            <p>
+                엄선된 제철 식재료와 정교한 조리법, 그리고 예술적인 플레이팅으로
+                잊을 수 없는 미식 경험을 제공합니다.
+            </p>
+            <p>
+                미슐랭 2스타의 영예를 5년 연속 유지하며, 대한민국 최고의
+                파인 다이닝 레스토랑으로 자리매김했습니다.
+            </p>
+        </div>
+    </section>
+
+    <!-- Menu Section -->
+    <section class="menu" id="menu">
+        <div class="menu-container">
+            <h2 class="section-title">MENU</h2>
+            <p class="section-subtitle">SIGNATURE DISHES</p>
+
+            <div class="menu-grid">
+                <div>
+                    <div class="menu-item">
+                        <div class="menu-header">
+                            <h3 class="menu-name">Foie Gras Terrine</h3>
+                            <span class="menu-price">58,000</span>
+                        </div>
+                        <p class="menu-description">
+                            프랑스산 푸아그라 테린, 브리오슈, 무화과 콩피
+                        </p>
+                    </div>
+
+                    <div class="menu-item">
+                        <div class="menu-header">
+                            <h3 class="menu-name">Lobster Bisque</h3>
+                            <span class="menu-price">45,000</span>
+                        </div>
+                        <p class="menu-description">
+                            랍스터 비스크 수프, 코냑, 타라곤
+                        </p>
+                    </div>
+
+                    <div class="menu-item">
+                        <div class="menu-header">
+                            <h3 class="menu-name">Beef Wellington</h3>
+                            <span class="menu-price">125,000</span>
+                        </div>
+                        <p class="menu-description">
+                            호주산 와규 안심, 뒤셀 소스, 퍼프 페이스트리
+                        </p>
+                    </div>
+
+                    <div class="menu-item">
+                        <div class="menu-header">
+                            <h3 class="menu-name">Duck Confit</h3>
+                            <span class="menu-price">89,000</span>
+                        </div>
+                        <p class="menu-description">
+                            프랑스식 오리 꽁피, 그라탱 도피누아
+                        </p>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="menu-item">
+                        <div class="menu-header">
+                            <h3 class="menu-name">Sea Bass en Papillote</h3>
+                            <span class="menu-price">95,000</span>
+                        </div>
+                        <p class="menu-description">
+                            농어 파피요트, 지중해 허브, 레몬 버터 소스
+                        </p>
+                    </div>
+
+                    <div class="menu-item">
+                        <div class="menu-header">
+                            <h3 class="menu-name">Rack of Lamb</h3>
+                            <span class="menu-price">115,000</span>
+                        </div>
+                        <p class="menu-description">
+                            뉴질랜드산 양갈비, 로즈마리, 적포도주 소스
+                        </p>
+                    </div>
+
+                    <div class="menu-item">
+                        <div class="menu-header">
+                            <h3 class="menu-name">Crème Brûlée</h3>
+                            <span class="menu-price">28,000</span>
+                        </div>
+                        <p class="menu-description">
+                            바닐라 크렘 브륄레, 베리 컴포트
+                        </p>
+                    </div>
+
+                    <div class="menu-item">
+                        <div class="menu-header">
+                            <h3 class="menu-name">Tarte Tatin</h3>
+                            <span class="menu-price">32,000</span>
+                        </div>
+                        <p class="menu-description">
+                            캐러멜 사과 타르트, 바닐라 아이스크림
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Chef Section -->
+    <section class="chef" id="chef">
+        <div class="chef-container">
+            <div class="chef-image"></div>
+            <div class="chef-content">
+                <h2>CHEF</h2>
+                <h3>Jean-Pierre Dubois</h3>
+                <p>
+                    파리 Le Cordon Bleu를 수석 졸업한 뒤, 미슐랭 3스타
+                    레스토랑에서 15년간 경력을 쌓았습니다.
+                </p>
+                <p>
+                    프랑스 전통 요리의 정수를 지키면서도 현대적 감각을
+                    더해 새로운 미식의 세계를 열어가고 있습니다.
+                </p>
+                <p>
+                    "요리는 단순히 음식을 만드는 것이 아닙니다.
+                    그것은 예술이며, 사랑이고, 삶입니다."
+                </p>
+
+                <div class="awards">
+                    <div class="award-item">⭐⭐ Michelin Star (2019-2024)</div>
+                    <div class="award-item">🏆 Best Chef Award 2022</div>
+                    <div class="award-item">📚 Author of "Modern French Cuisine"</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reservation Section -->
+    <section class="reservation" id="contact">
+        <h2>RESERVATION</h2>
+        <p>특별한 경험을 위한 예약</p>
+
+        <form class="reservation-form">
+            <div class="form-group">
+                <input type="text" placeholder="성함" required>
+                <input type="tel" placeholder="연락처" required>
+            </div>
+            <div class="form-group">
+                <input type="date" required>
+                <select required>
+                    <option value="">시간 선택</option>
+                    <option value="18:00">18:00</option>
+                    <option value="18:30">18:30</option>
+                    <option value="19:00">19:00</option>
+                    <option value="19:30">19:30</option>
+                    <option value="20:00">20:00</option>
+                    <option value="20:30">20:30</option>
+                </select>
+            </div>
+            <select required>
+                <option value="">인원 선택</option>
+                <option value="2">2명</option>
+                <option value="3">3명</option>
+                <option value="4">4명</option>
+                <option value="5">5명</option>
+                <option value="6+">6명 이상</option>
+            </select>
+            <textarea placeholder="특별한 요청사항 (선택)"></textarea>
+            <button type="submit" class="submit-btn">예약하기</button>
+        </form>
+    </section>
+
+    <!-- Info Section -->
+    <section class="info">
+        <div class="info-container">
+            <div class="info-box">
+                <h3>HOURS</h3>
+                <p>화요일 - 토요일<br>18:00 - 22:00</p>
+                <p>일요일 - 월요일<br>정기 휴무</p>
+            </div>
+            <div class="info-box">
+                <h3>LOCATION</h3>
+                <p>서울특별시 강남구<br>청담동 123-45</p>
+                <p>청담역 3번 출구<br>도보 5분</p>
+            </div>
+            <div class="info-box">
+                <h3>CONTACT</h3>
+                <p>전화: 02-1234-5678<br>이메일: info@lamaison.kr</p>
+                <p>예약 문의<br>평일 10:00 - 17:00</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">LA MAISON</div>
+            <div class="social-icons">
+                <div class="social-icon">📷</div>
+                <div class="social-icon">📘</div>
+                <div class="social-icon">📺</div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 LA MAISON. ALL RIGHTS RESERVED.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

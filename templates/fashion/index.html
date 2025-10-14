@@ -1,0 +1,799 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NOIR - Contemporary Fashion Brand</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: #fff;
+            color: #000;
+            line-height: 1.6;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1.5rem 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .nav-container {
+            max-width: 1600px;
+            margin: 0 auto;
+            padding: 0 3rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: 300;
+            letter-spacing: 8px;
+            color: #000;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 3rem;
+            list-style: none;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: #000;
+            font-weight: 300;
+            letter-spacing: 2px;
+            font-size: 0.9rem;
+            transition: opacity 0.3s;
+        }
+
+        .nav-menu a:hover {
+            opacity: 0.5;
+        }
+
+        .nav-icons {
+            display: flex;
+            gap: 1.5rem;
+            font-size: 1.2rem;
+        }
+
+        .icon {
+            cursor: pointer;
+            transition: opacity 0.3s;
+        }
+
+        .icon:hover {
+            opacity: 0.5;
+        }
+
+        /* Hero Section */
+        .hero {
+            margin-top: 80px;
+            height: 100vh;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #000;
+            color: #fff;
+        }
+
+        .hero-content {
+            text-align: center;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: 8rem;
+            margin-bottom: 2rem;
+            font-weight: 300;
+            letter-spacing: 20px;
+            animation: fadeInUp 1s ease;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            letter-spacing: 4px;
+            font-weight: 300;
+            margin-bottom: 3rem;
+            animation: fadeInUp 1s ease 0.3s both;
+        }
+
+        .shop-btn {
+            padding: 1.2rem 4rem;
+            background: transparent;
+            color: #fff;
+            border: 1px solid #fff;
+            cursor: pointer;
+            font-size: 1rem;
+            letter-spacing: 3px;
+            font-weight: 300;
+            transition: all 0.3s;
+            animation: fadeInUp 1s ease 0.6s both;
+        }
+
+        .shop-btn:hover {
+            background: #fff;
+            color: #000;
+        }
+
+        /* New Collection Section */
+        .new-collection {
+            padding: 8rem 3rem;
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 6rem;
+        }
+
+        .section-title {
+            font-size: 3.5rem;
+            font-weight: 300;
+            letter-spacing: 8px;
+            margin-bottom: 1rem;
+        }
+
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: #666;
+            letter-spacing: 3px;
+            font-weight: 300;
+        }
+
+        .collection-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 3rem;
+        }
+
+        .collection-item {
+            position: relative;
+            cursor: pointer;
+            overflow: hidden;
+        }
+
+        .collection-image {
+            width: 100%;
+            height: 600px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            transition: transform 0.6s ease;
+        }
+
+        .collection-item:hover .collection-image {
+            transform: scale(1.05);
+        }
+
+        .collection-info {
+            margin-top: 1.5rem;
+            text-align: center;
+        }
+
+        .collection-category {
+            font-size: 0.85rem;
+            letter-spacing: 3px;
+            color: #999;
+            margin-bottom: 0.5rem;
+        }
+
+        .collection-name {
+            font-size: 1.3rem;
+            font-weight: 300;
+            letter-spacing: 2px;
+            margin-bottom: 0.5rem;
+        }
+
+        .collection-price {
+            font-size: 1.1rem;
+            color: #000;
+            font-weight: 400;
+        }
+
+        /* Featured Section */
+        .featured {
+            padding: 8rem 0;
+            background: #f8f8f8;
+        }
+
+        .featured-container {
+            max-width: 1600px;
+            margin: 0 auto;
+            padding: 0 3rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 6rem;
+            align-items: center;
+        }
+
+        .featured-image {
+            width: 100%;
+            height: 700px;
+            background: linear-gradient(135deg, #000 0%, #333 100%);
+        }
+
+        .featured-content h2 {
+            font-size: 4rem;
+            font-weight: 300;
+            letter-spacing: 6px;
+            margin-bottom: 2rem;
+            line-height: 1.2;
+        }
+
+        .featured-content p {
+            font-size: 1.1rem;
+            color: #666;
+            line-height: 2;
+            margin-bottom: 2rem;
+            letter-spacing: 1px;
+        }
+
+        /* Lookbook Section */
+        .lookbook {
+            padding: 8rem 3rem;
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+
+        .lookbook-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+        }
+
+        .lookbook-item {
+            position: relative;
+            height: 500px;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .lookbook-item:nth-child(1) {
+            grid-column: span 2;
+            grid-row: span 2;
+            height: auto;
+        }
+
+        .lookbook-image {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            transition: transform 0.6s ease;
+        }
+
+        .lookbook-item:hover .lookbook-image {
+            transform: scale(1.1);
+        }
+
+        .lookbook-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 2rem;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+            color: white;
+            transform: translateY(100%);
+            transition: transform 0.3s;
+        }
+
+        .lookbook-item:hover .lookbook-overlay {
+            transform: translateY(0);
+        }
+
+        /* Brand Story Section */
+        .brand-story {
+            padding: 8rem 3rem;
+            background: #000;
+            color: #fff;
+            text-align: center;
+        }
+
+        .brand-story-content {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .brand-story h2 {
+            font-size: 4rem;
+            font-weight: 300;
+            letter-spacing: 8px;
+            margin-bottom: 3rem;
+        }
+
+        .brand-story p {
+            font-size: 1.3rem;
+            line-height: 2.2;
+            font-weight: 300;
+            letter-spacing: 2px;
+            margin-bottom: 2rem;
+            color: #ccc;
+        }
+
+        /* Categories Section */
+        .categories {
+            padding: 8rem 3rem;
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+        }
+
+        .category-card {
+            text-align: center;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .category-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .category-image {
+            width: 100%;
+            height: 400px;
+            background: #f8f8f8;
+            margin-bottom: 1.5rem;
+            transition: background 0.3s;
+        }
+
+        .category-card:hover .category-image {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .category-name {
+            font-size: 1.3rem;
+            letter-spacing: 3px;
+            font-weight: 300;
+        }
+
+        /* Newsletter Section */
+        .newsletter {
+            padding: 8rem 3rem;
+            background: #f8f8f8;
+            text-align: center;
+        }
+
+        .newsletter h2 {
+            font-size: 3rem;
+            font-weight: 300;
+            letter-spacing: 6px;
+            margin-bottom: 2rem;
+        }
+
+        .newsletter p {
+            font-size: 1.1rem;
+            color: #666;
+            letter-spacing: 2px;
+            margin-bottom: 3rem;
+        }
+
+        .newsletter-form {
+            max-width: 600px;
+            margin: 0 auto;
+            display: flex;
+            gap: 1rem;
+        }
+
+        .newsletter-input {
+            flex: 1;
+            padding: 1.2rem;
+            border: 1px solid #ddd;
+            font-size: 1rem;
+            letter-spacing: 2px;
+        }
+
+        .newsletter-btn {
+            padding: 1.2rem 3rem;
+            background: #000;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            letter-spacing: 2px;
+            transition: background 0.3s;
+        }
+
+        .newsletter-btn:hover {
+            background: #333;
+        }
+
+        /* Instagram Section */
+        .instagram {
+            padding: 8rem 3rem;
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+
+        .instagram-grid {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 1rem;
+        }
+
+        .instagram-item {
+            height: 250px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .instagram-item:hover {
+            transform: scale(0.95);
+        }
+
+        /* Footer */
+        footer {
+            background: #000;
+            color: #fff;
+            padding: 6rem 3rem 3rem;
+        }
+
+        .footer-container {
+            max-width: 1600px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 4rem;
+            margin-bottom: 4rem;
+        }
+
+        .footer-section h3 {
+            font-size: 1.2rem;
+            font-weight: 300;
+            letter-spacing: 3px;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 1rem;
+        }
+
+        .footer-section a {
+            color: #999;
+            text-decoration: none;
+            font-size: 0.95rem;
+            letter-spacing: 2px;
+            font-weight: 300;
+            transition: color 0.3s;
+        }
+
+        .footer-section a:hover {
+            color: #fff;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 3rem;
+            border-top: 1px solid #333;
+            color: #666;
+            letter-spacing: 2px;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 3rem; letter-spacing: 10px; }
+            .collection-grid { grid-template-columns: 1fr; }
+            .featured-container { grid-template-columns: 1fr; }
+            .lookbook-grid { grid-template-columns: 1fr; }
+            .lookbook-item:nth-child(1) { grid-column: span 1; grid-row: span 1; }
+            .categories-grid { grid-template-columns: repeat(2, 1fr); }
+            .instagram-grid { grid-template-columns: repeat(3, 1fr); }
+            .nav-menu { display: none; }
+            .newsletter-form { flex-direction: column; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo">NOIR</div>
+            <ul class="nav-menu">
+                <li><a href="#new">NEW IN</a></li>
+                <li><a href="#women">WOMEN</a></li>
+                <li><a href="#men">MEN</a></li>
+                <li><a href="#lookbook">LOOKBOOK</a></li>
+                <li><a href="#about">ABOUT</a></li>
+            </ul>
+            <div class="nav-icons">
+                <span class="icon">🔍</span>
+                <span class="icon">❤️</span>
+                <span class="icon">🛍️</span>
+                <span class="icon">👤</span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>NOIR</h1>
+            <p>2024 WINTER COLLECTION</p>
+            <button class="shop-btn">SHOP NOW</button>
+        </div>
+    </section>
+
+    <!-- New Collection Section -->
+    <section class="new-collection" id="new">
+        <div class="section-header">
+            <h2 class="section-title">NEW ARRIVALS</h2>
+            <p class="section-subtitle">최신 컬렉션을 만나보세요</p>
+        </div>
+
+        <div class="collection-grid">
+            <div class="collection-item">
+                <div class="collection-image"></div>
+                <div class="collection-info">
+                    <p class="collection-category">OUTERWEAR</p>
+                    <h3 class="collection-name">Wool Blend Coat</h3>
+                    <p class="collection-price">₩489,000</p>
+                </div>
+            </div>
+
+            <div class="collection-item">
+                <div class="collection-image" style="background: linear-gradient(135deg, #FA8BFF 0%, #2BD2FF 100%);"></div>
+                <div class="collection-info">
+                    <p class="collection-category">KNITWEAR</p>
+                    <h3 class="collection-name">Cashmere Turtleneck</h3>
+                    <p class="collection-price">₩329,000</p>
+                </div>
+            </div>
+
+            <div class="collection-item">
+                <div class="collection-image" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);"></div>
+                <div class="collection-info">
+                    <p class="collection-category">TAILORING</p>
+                    <h3 class="collection-name">Double-Breasted Blazer</h3>
+                    <p class="collection-price">₩589,000</p>
+                </div>
+            </div>
+
+            <div class="collection-item">
+                <div class="collection-image" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);"></div>
+                <div class="collection-info">
+                    <p class="collection-category">DRESSES</p>
+                    <h3 class="collection-name">Silk Midi Dress</h3>
+                    <p class="collection-price">₩429,000</p>
+                </div>
+            </div>
+
+            <div class="collection-item">
+                <div class="collection-image" style="background: linear-gradient(135deg, #FDBB2D 0%, #22C1C3 100%);"></div>
+                <div class="collection-info">
+                    <p class="collection-category">ACCESSORIES</p>
+                    <h3 class="collection-name">Leather Handbag</h3>
+                    <p class="collection-price">₩729,000</p>
+                </div>
+            </div>
+
+            <div class="collection-item">
+                <div class="collection-image" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);"></div>
+                <div class="collection-info">
+                    <p class="collection-category">FOOTWEAR</p>
+                    <h3 class="collection-name">Ankle Boots</h3>
+                    <p class="collection-price">₩389,000</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Section -->
+    <section class="featured">
+        <div class="featured-container">
+            <div class="featured-image"></div>
+            <div class="featured-content">
+                <h2>TIMELESS<br>ELEGANCE</h2>
+                <p>
+                    시간을 초월한 우아함. NOIR의 2024 겨울 컬렉션은
+                    클래식한 실루엣과 현대적인 감각이 조화를 이룹니다.
+                </p>
+                <p>
+                    최고급 원단과 정교한 디테일로 완성된 프리미엄 의류는
+                    당신의 일상에 특별함을 더합니다.
+                </p>
+                <button class="shop-btn" style="color: #000; border-color: #000;">
+                    DISCOVER MORE
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lookbook Section -->
+    <section class="lookbook" id="lookbook">
+        <div class="section-header">
+            <h2 class="section-title">LOOKBOOK</h2>
+            <p class="section-subtitle">2024 Winter Collection</p>
+        </div>
+
+        <div class="lookbook-grid">
+            <div class="lookbook-item">
+                <div class="lookbook-image"></div>
+                <div class="lookbook-overlay">
+                    <h3>WINTER ESSENTIALS</h3>
+                </div>
+            </div>
+            <div class="lookbook-item">
+                <div class="lookbook-image" style="background: linear-gradient(135deg, #FA8BFF 0%, #2BD2FF 100%);"></div>
+                <div class="lookbook-overlay">
+                    <h3>TAILORED SUITING</h3>
+                </div>
+            </div>
+            <div class="lookbook-item">
+                <div class="lookbook-image" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);"></div>
+                <div class="lookbook-overlay">
+                    <h3>EVENING WEAR</h3>
+                </div>
+            </div>
+            <div class="lookbook-item">
+                <div class="lookbook-image" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);"></div>
+                <div class="lookbook-overlay">
+                    <h3>CASUAL CHIC</h3>
+                </div>
+            </div>
+            <div class="lookbook-item">
+                <div class="lookbook-image" style="background: linear-gradient(135deg, #FDBB2D 0%, #22C1C3 100%);"></div>
+                <div class="lookbook-overlay">
+                    <h3>LAYERING</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Brand Story Section -->
+    <section class="brand-story" id="about">
+        <div class="brand-story-content">
+            <h2>OUR STORY</h2>
+            <p>
+                2015년 서울에서 시작된 NOIR는 미니멀하면서도 세련된 디자인으로
+                현대 여성과 남성의 라이프스타일을 재정의합니다.
+            </p>
+            <p>
+                우리는 시간이 지나도 변하지 않는 가치,
+                지속 가능한 패션, 그리고 완벽한 핏을 추구합니다.
+            </p>
+            <p>
+                NOIR와 함께 당신만의 스타일을 완성하세요.
+            </p>
+        </div>
+    </section>
+
+    <!-- Categories Section -->
+    <section class="categories">
+        <div class="section-header">
+            <h2 class="section-title">SHOP BY CATEGORY</h2>
+            <p class="section-subtitle">카테고리별로 둘러보세요</p>
+        </div>
+
+        <div class="categories-grid">
+            <div class="category-card">
+                <div class="category-image"></div>
+                <h3 class="category-name">OUTERWEAR</h3>
+            </div>
+            <div class="category-card">
+                <div class="category-image"></div>
+                <h3 class="category-name">KNITWEAR</h3>
+            </div>
+            <div class="category-card">
+                <div class="category-image"></div>
+                <h3 class="category-name">TAILORING</h3>
+            </div>
+            <div class="category-card">
+                <div class="category-image"></div>
+                <h3 class="category-name">ACCESSORIES</h3>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="newsletter">
+        <h2>STAY UPDATED</h2>
+        <p>최신 컬렉션과 특별 혜택을 가장 먼저 받아보세요</p>
+
+        <form class="newsletter-form">
+            <input type="email" class="newsletter-input" placeholder="이메일 주소를 입력하세요" required>
+            <button type="submit" class="newsletter-btn">SUBSCRIBE</button>
+        </form>
+    </section>
+
+    <!-- Instagram Section -->
+    <section class="instagram">
+        <div class="section-header">
+            <h2 class="section-title">@NOIR_OFFICIAL</h2>
+            <p class="section-subtitle">Instagram에서 더 많은 스타일을 만나보세요</p>
+        </div>
+
+        <div class="instagram-grid">
+            <div class="instagram-item"></div>
+            <div class="instagram-item" style="background: linear-gradient(135deg, #FA8BFF 0%, #2BD2FF 100%);"></div>
+            <div class="instagram-item" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);"></div>
+            <div class="instagram-item" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);"></div>
+            <div class="instagram-item" style="background: linear-gradient(135deg, #FDBB2D 0%, #22C1C3 100%);"></div>
+            <div class="instagram-item" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);"></div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-section">
+                <h3>CUSTOMER SERVICE</h3>
+                <ul>
+                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">Shipping & Returns</a></li>
+                    <li><a href="#">Size Guide</a></li>
+                    <li><a href="#">FAQs</a></li>
+                    <li><a href="#">Track Order</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>ABOUT NOIR</h3>
+                <ul>
+                    <li><a href="#">Our Story</a></li>
+                    <li><a href="#">Sustainability</a></li>
+                    <li><a href="#">Careers</a></li>
+                    <li><a href="#">Press</a></li>
+                    <li><a href="#">Stores</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>FOLLOW US</h3>
+                <ul>
+                    <li><a href="#">Instagram</a></li>
+                    <li><a href="#">Facebook</a></li>
+                    <li><a href="#">Pinterest</a></li>
+                    <li><a href="#">YouTube</a></li>
+                    <li><a href="#">TikTok</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>NEWSLETTER</h3>
+                <p style="color: #999; margin-bottom: 1.5rem; line-height: 1.8; font-size: 0.95rem;">
+                    최신 컬렉션과 특별 이벤트 소식을 가장 먼저 받아보세요.
+                </p>
+                <p style="color: #fff; font-size: 1.1rem; letter-spacing: 2px;">
+                    📧 hello@noir.com<br>
+                    📞 1588-0000
+                </p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 NOIR. ALL RIGHTS RESERVED. | PRIVACY POLICY | TERMS & CONDITIONS</p>
+        </div>
+    </footer>
+</body>
+</html>
