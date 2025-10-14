@@ -8,6 +8,7 @@
     "serve": "http-server -p 3000 -o templates/",
     "dev": "live-server --port=3000",
     "export:pdf": "node export-pdf.js",
+    "screenshots": "node generate-screenshots.js",
     "open:saas": "open templates/landing-saas/index.html",
     "open:agency": "open templates/landing-agency/index.html",
     "open:app": "open templates/landing-app/index.html",

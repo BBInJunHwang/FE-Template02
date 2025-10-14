@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern Web Templates - 템플릿 갤러리</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 2rem;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            color: white;
+            margin-bottom: 4rem;
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .subtitle {
+            font-size: 1.3rem;
+            opacity: 0.9;
+        }
+
+        .templates-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .template-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .template-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .template-image {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-bottom: 3px solid #667eea;
+        }
+
+        .template-content {
+            padding: 2rem;
+        }
+
+        .template-badge {
+            display: inline-block;
+            padding: 0.3rem 1rem;
+            background: #667eea;
+            color: white;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .template-title {
+            font-size: 1.6rem;
+            margin-bottom: 0.5rem;
+            color: #2d3748;
+        }
+
+        .template-description {
+            color: #718096;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .template-link {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 10px;
+            font-weight: 600;
+            transition: transform 0.3s;
+        }
+
+        .template-link:hover {
+            transform: scale(1.05);
+        }
+
+        .section-title {
+            color: white;
+            font-size: 2rem;
+            margin: 3rem 0 2rem;
+            text-align: center;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        footer {
+            text-align: center;
+            color: white;
+            margin-top: 4rem;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+        }
+
+        footer a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🎨 Modern Web Templates</h1>
+            <p class="subtitle">프로덕션 레디 정적 페이지 템플릿 모음</p>
+        </header>
+
+        <h2 class="section-title">📄 기본 페이지 템플릿</h2>
+        <div class="templates-grid">
+            <div class="template-card">
+                <img src="./screenshots/about-us.png" alt="About Us" class="template-image">
+                <div class="template-content">
+                    <span class="template-badge">기본</span>
+                    <h3 class="template-title">회사 소개</h3>
+                    <p class="template-description">
+                        회사 소개, 미션/비전, 팀 소개 및 회사 연혁을 담은 페이지
+                    </p>
+                    <a href="./templates/about-us/" class="template-link">미리보기 →</a>
+                </div>
+            </div>
+
+            <div class="template-card">
+                <img src="./screenshots/product.png" alt="Product" class="template-image">
+                <div class="template-content">
+                    <span class="template-badge">기본</span>
+                    <h3 class="template-title">제품 소개</h3>
+                    <p class="template-description">
+                        제품 기능, 사양, 요금제를 소개하는 페이지
+                    </p>
+                    <a href="./templates/product/" class="template-link">미리보기 →</a>
+                </div>
+            </div>
+
+            <div class="template-card">
+                <img src="./screenshots/event.png" alt="Event" class="template-image">
+                <div class="template-content">
+                    <span class="template-badge">기본</span>
+                    <h3 class="template-title">행사 안내</h3>
+                    <p class="template-description">
+                        행사 일정, 연사 소개, 참가 신청 폼을 담은 초대 페이지
+                    </p>
+                    <a href="./templates/event/" class="template-link">미리보기 →</a>
+                </div>
+            </div>
+
+            <div class="template-card">
+                <img src="./screenshots/portfolio.png" alt="Portfolio" class="template-image">
+                <div class="template-content">
+                    <span class="template-badge">기본</span>
+                    <h3 class="template-title">포트폴리오</h3>
+                    <p class="template-description">
+                        개인 브랜딩을 위한 프로젝트 갤러리 및 경력 소개 페이지
+                    </p>
+                    <a href="./templates/portfolio/" class="template-link">미리보기 →</a>
+                </div>
+            </div>
+
+            <div class="template-card">
+                <img src="./screenshots/landing.png" alt="Landing" class="template-image">
+                <div class="template-content">
+                    <span class="template-badge">기본</span>
+                    <h3 class="template-title">랜딩 페이지</h3>
+                    <p class="template-description">
+                        전환율 최적화된 홍보용 랜딩 페이지
+                    </p>
+                    <a href="./templates/landing/" class="template-link">미리보기 →</a>
+                </div>
+            </div>
+        </div>
+
+        <h2 class="section-title">🚀 프리미엄 랜딩 페이지 (2024 트렌드)</h2>
+        <div class="templates-grid">
+            <div class="template-card">
+                <img src="./screenshots/landing-saas.png" alt="SaaS Landing" class="template-image">
+                <div class="template-content">
+                    <span class="template-badge" style="background: #7C3AED;">프리미엄</span>
+                    <h3 class="template-title">SaaS 랜딩</h3>
+                    <p class="template-description">
+                        미니멀 + 그라데이션 스타일의 SaaS 제품 소개 페이지
+                    </p>
+                    <a href="./templates/landing-saas/" class="template-link">미리보기 →</a>
+                </div>
+            </div>
+
+            <div class="template-card">
+                <img src="./screenshots/landing-agency.png" alt="Agency Landing" class="template-image">
+                <div class="template-content">
+                    <span class="template-badge" style="background: #00FFFF; color: #000;">프리미엄</span>
+                    <h3 class="template-title">에이전시 랜딩</h3>
+                    <p class="template-description">
+                        다크 + 네온 스타일의 크리에이티브 에이전시 페이지
+                    </p>
+                    <a href="./templates/landing-agency/" class="template-link">미리보기 →</a>
+                </div>
+            </div>
+
+            <div class="template-card">
+                <img src="./screenshots/landing-app.png" alt="App Landing" class="template-image">
+                <div class="template-content">
+                    <span class="template-badge" style="background: #A78BFA;">프리미엄</span>
+                    <h3 class="template-title">앱 런칭</h3>
+                    <p class="template-description">
+                        글래스모피즘 스타일의 모바일 앱 런칭 페이지
+                    </p>
+                    <a href="./templates/landing-app/" class="template-link">미리보기 →</a>
+                </div>
+            </div>
+
+            <div class="template-card">
+                <img src="./screenshots/landing-ai.png" alt="AI Landing" class="template-image">
+                <div class="template-content">
+                    <span class="template-badge" style="background: #00FFFF; color: #000;">프리미엄</span>
+                    <h3 class="template-title">AI/Tech 제품</h3>
+                    <p class="template-description">
+                        사이버펑크 스타일의 AI 플랫폼 소개 페이지
+                    </p>
+                    <a href="./templates/landing-ai/" class="template-link">미리보기 →</a>
+                </div>
+            </div>
+
+            <div class="template-card">
+                <img src="./screenshots/landing-startup.png" alt="Startup Landing" class="template-image">
+                <div class="template-content">
+                    <span class="template-badge" style="background: #FF5722;">프리미엄</span>
+                    <h3 class="template-title">스타트업 랜딩</h3>
+                    <p class="template-description">
+                        볼드 타이포그래피 스타일의 스타트업 소개 페이지
+                    </p>
+                    <a href="./templates/landing-startup/" class="template-link">미리보기 →</a>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p>
+                <strong>총 10개 템플릿</strong> | 제로 디펜던시 | 100% 반응형<br>
+                <a href="https://github.com/yourusername/yourrepo" target="_blank">GitHub에서 보기</a>
+            </p>
+        </footer>
+    </div>
+</body>
+</html>

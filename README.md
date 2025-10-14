@@ -7,6 +7,48 @@
 [![CSS3](https://img.shields.io/badge/CSS3-1572B6?logo=css3&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/CSS)
 [![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?logo=javascript&logoColor=black)](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
 
+## 🌐 라이브 데모
+
+### 🎯 전체 템플릿 갤러리
+**👉 [템플릿 갤러리 보기](https://yourusername.github.io/yourrepo/)**
+
+### 📱 개별 템플릿 데모 (클릭하여 즉시 확인!)
+- 🔗 [SaaS Landing](https://yourusername.github.io/yourrepo/templates/landing-saas/)
+- 🔗 [Agency Landing](https://yourusername.github.io/yourrepo/templates/landing-agency/)
+- 🔗 [App Landing](https://yourusername.github.io/yourrepo/templates/landing-app/)
+- 🔗 [AI/Tech Landing](https://yourusername.github.io/yourrepo/templates/landing-ai/)
+- 🔗 [Startup Landing](https://yourusername.github.io/yourrepo/templates/landing-startup/)
+- 🔗 [Portfolio](https://yourusername.github.io/yourrepo/templates/portfolio/)
+- 🔗 [Event Page](https://yourusername.github.io/yourrepo/templates/event/)
+
+<details>
+<summary><b>💡 GitHub Pages 활성화하는 방법 (1분 소요)</b></summary>
+
+1. **저장소에 파일 올리기**
+   ```bash
+   git add .
+   git commit -m "Add modern web templates"
+   git push
+   ```
+
+2. **GitHub Pages 활성화**
+   - GitHub 저장소 페이지로 이동
+   - `Settings` 탭 클릭
+   - 왼쪽 메뉴에서 `Pages` 클릭
+   - **Source** 드롭다운에서 `main` branch 선택
+   - `Save` 버튼 클릭
+
+3. **몇 분 후 접속**
+   - URL: `https://yourusername.github.io/yourrepo/`
+   - 위 "라이브 데모" 링크의 `yourusername`과 `yourrepo`를 본인 것으로 바꿔서 접속!
+
+**예시:**
+- 저장소명이 `my-templates`이고 사용자명이 `john`이면
+- 접속 URL: `https://john.github.io/my-templates/`
+- Event 페이지: `https://john.github.io/my-templates/templates/event/`
+
+</details>
+
 ## ✨ 특징
 
 - 🚀 **즉시 사용 가능** - 별도 빌드나 설정 불필요
@@ -112,6 +154,10 @@ templates/
 ### 1️⃣ SaaS Landing Page
 **경로**: `templates/landing-saas/` | **스타일**: 미니멀 + 그라데이션
 
+<div align="center">
+<img src="./screenshots/landing-saas.png" alt="SaaS Landing Page" width="800">
+</div>
+
 ```
 🎨 디자인 특징
 ├─ Floating gradient blobs (떠다니는 그라데이션)
@@ -128,10 +174,16 @@ templates/
 
 **주요 섹션**: Hero + Stats + Features Grid + Pricing (3단계) + CTA + Footer
 
+[🔗 라이브 데모](https://yourusername.github.io/yourrepo/templates/landing-saas/) | [📁 코드 보기](./templates/landing-saas/)
+
 ---
 
 ### 2️⃣ Creative Agency Landing
 **경로**: `templates/landing-agency/` | **스타일**: 다크 + 네온
+
+<div align="center">
+<img src="./screenshots/landing-agency.png" alt="Agency Landing Page" width="800">
+</div>
 
 ```
 🎨 디자인 특징
@@ -150,10 +202,16 @@ templates/
 
 **주요 섹션**: Hero + Services (6개) + Portfolio Grid + Stats + CTA + Footer
 
+[🔗 라이브 데모](https://yourusername.github.io/yourrepo/templates/landing-agency/) | [📁 코드 보기](./templates/landing-agency/)
+
 ---
 
 ### 3️⃣ App Launch Landing
 **경로**: `templates/landing-app/` | **스타일**: 글래스모피즘
+
+<div align="center">
+<img src="./screenshots/landing-app.png" alt="App Landing Page" width="800">
+</div>
 
 ```
 🎨 디자인 특징
@@ -172,10 +230,16 @@ templates/
 
 **주요 섹션**: Hero + Phone Mockup + Features (6개) + Screenshots Slider + Testimonials + Download CTA
 
+[🔗 라이브 데모](https://yourusername.github.io/yourrepo/templates/landing-app/) | [📁 코드 보기](./templates/landing-app/)
+
 ---
 
 ### 4️⃣ AI/Tech Product Landing
 **경로**: `templates/landing-ai/` | **스타일**: 사이버펑크
+
+<div align="center">
+<img src="./screenshots/landing-ai.png" alt="AI Landing Page" width="800">
+</div>
 
 ```
 🎨 디자인 특징
@@ -196,10 +260,16 @@ templates/
 
 **주요 섹션**: Hero + Terminal + Stats Bar + Features (6개) + Tech Stack + CTA
 
+[🔗 라이브 데모](https://yourusername.github.io/yourrepo/templates/landing-ai/) | [📁 코드 보기](./templates/landing-ai/)
+
 ---
 
 ### 5️⃣ Startup Landing
 **경로**: `templates/landing-startup/` | **스타일**: 볼드 타이포그래피
+
+<div align="center">
+<img src="./screenshots/landing-startup.png" alt="Startup Landing Page" width="800">
+</div>
 
 ```
 🎨 디자인 특징
@@ -219,6 +289,8 @@ templates/
 ```
 
 **주요 섹션**: Hero + Features (4개) + Stats + Testimonials + Bold CTA
+
+[🔗 라이브 데모](https://yourusername.github.io/yourrepo/templates/landing-startup/) | [📁 코드 보기](./templates/landing-startup/)
 
 ---
 
