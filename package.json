@@ -4,17 +4,22 @@
   "description": "🎨 Modern Web Templates Collection - Production-ready static page templates with 2024-2025 design trends",
   "main": "templates/index.html",
   "scripts": {
-    "start": "live-server --port=3000 --open=templates/",
-    "serve": "http-server -p 3000 -o templates/",
+    "start": "live-server --port=3000 --open=./",
+    "serve": "http-server -p 3000 -o",
     "dev": "live-server --port=3000",
     "export:pdf": "node export-pdf.js",
-    "screenshots": "node generate-screenshots.js",
+    "screenshots": "node capture-screenshots.js",
     "open:saas": "open templates/landing-saas/index.html",
     "open:agency": "open templates/landing-agency/index.html",
     "open:app": "open templates/landing-app/index.html",
     "open:ai": "open templates/landing-ai/index.html",
     "open:startup": "open templates/landing-startup/index.html",
-    "open:portfolio": "open templates/portfolio/index.html"
+    "open:portfolio": "open templates/portfolio/index.html",
+    "open:ecommerce": "open templates/ecommerce/index.html",
+    "open:restaurant": "open templates/restaurant/index.html",
+    "open:fitness": "open templates/fitness/index.html",
+    "open:realestate": "open templates/realestate/index.html",
+    "open:fashion": "open templates/fashion/index.html"
   },
   "keywords": [
     "templates",

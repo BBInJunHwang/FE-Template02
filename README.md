@@ -99,216 +99,285 @@ templates/
 
 ## 📄 기본 페이지 템플릿
 
-<table>
-<tr>
-<td width="50%">
+### 1️⃣ About Us 🏢
+**경로**: `templates/about-us/` | **스타일**: 그라데이션 & 애니메이션
 
-### 🏢 About Us
-회사 소개 및 팀 페이지
-- 미션/비전, 핵심 가치
-- 팀 소개, 회사 연혁
-- 그라데이션 배경
-- 스크롤 애니메이션
+<div align="center">
+<img src="./screenshots/about-us.png" alt="About Us Page" width="800">
+</div>
 
-📂 `templates/about-us/`
+**🎨 디자인 특징**
+- 그라데이션 배경 (보라 → 핑크)
+- 카드 기반 레이아웃
+- 부드러운 스크롤 애니메이션
+- 팀 프로필 그리드
+- 타임라인 인터랙션
 
-</td>
-<td width="50%">
+**💼 주요 기능**
+- 회사 미션/비전 소개
+- 핵심 가치 (4개 카드)
+- 팀 멤버 프로필 (6명)
+- 회사 연혁 타임라인
+- 통계 카운터 (성과 지표)
 
-### 📦 Product
-제품 소개 및 가격 페이지
-- 제품 기능 카드
-- 요금제 비교 (3단계)
-- 제품 갤러리
+**📂 주요 섹션**: Hero + Mission/Vision + Core Values + Team + Timeline + Stats
+
+[🔗 라이브 데모](https://bbinjunhwang.github.io/FE-Template02/templates/about-us/) | [📁 코드 보기](./templates/about-us/)
+
+---
+
+### 2️⃣ Product 📦
+**경로**: `templates/product/` | **스타일**: 모던 & 프로페셔널
+
+<div align="center">
+<img src="./screenshots/product.png" alt="Product Page" width="800">
+</div>
+
+**🎨 디자인 특징**
+- 클린한 화이트 베이스
+- 제품 기능 카드 레이아웃
+- 3단계 가격 비교표
+- 호버 인터랙션
+- 반응형 그리드
+
+**💼 주요 기능**
+- 제품 주요 기능 소개 (6개 카드)
+- 상세 사양 및 스펙
+- 3단계 요금제 비교 (Basic/Pro/Enterprise)
+- 제품 갤러리/스크린샷
+- 고객 후기
 - CTA 버튼
 
-📂 `templates/product/`
+**📂 주요 섹션**: Hero + Features + Specifications + Pricing + Gallery + Testimonials + CTA
 
-</td>
-</tr>
-<tr>
-<td width="50%">
+[🔗 라이브 데모](https://bbinjunhwang.github.io/FE-Template02/templates/product/) | [📁 코드 보기](./templates/product/)
 
-### 🎉 Event
-행사 안내 및 초대 페이지
-- 일시/장소/참가비
-- 타임테이블, 연사 소개
+---
+
+### 3️⃣ Event 🎉
+**경로**: `templates/event/` | **스타일**: 초대장 & 엘레강스
+
+<div align="center">
+<img src="./screenshots/event.png" alt="Event Page" width="800">
+</div>
+
+**🎨 디자인 특징**
+- 초대장 스타일 디자인
+- 우아한 타이포그래피
+- 이벤트 날짜 카운트다운
+- 타임테이블 레이아웃
+- 등록 폼 디자인
+
+**💼 주요 기능**
+- 행사 일시/장소/참가비 정보
+- 타임테이블 (시간별 세션)
+- 연사 소개 (6명 프로필)
 - 참가 신청 폼
-- 초대장 스타일
+- 오시는 길 안내
+- FAQ 섹션
 
-📂 `templates/event/`
+**📂 주요 섹션**: Hero + Event Info + Schedule + Speakers + Registration Form + Location + FAQ
 
-</td>
-<td width="50%">
+[🔗 라이브 데모](https://bbinjunhwang.github.io/FE-Template02/templates/event/) | [📁 코드 보기](./templates/event/)
 
-### 👤 Portfolio
-개인 포트폴리오 페이지
-- 히어로 섹션, 스킬
-- 프로젝트 갤러리 (6개)
+---
+
+### 4️⃣ Portfolio 👤
+**경로**: `templates/portfolio/` | **스타일**: 개인 브랜딩 & 크리에이티브
+
+<div align="center">
+<img src="./screenshots/portfolio.png" alt="Portfolio Page" width="800">
+</div>
+
+**🎨 디자인 특징**
+- 다크 모드 배경
+- 그리드 기반 프로젝트 갤러리
+- 스킬 프로그레스 바
+- 타임라인 형식 경력
+- 인터랙티브 연락 폼
+
+**💼 주요 기능**
+- 히어로 섹션 (자기소개)
+- 스킬셋 (프로그레스 바)
+- 프로젝트 포트폴리오 (6개 작품)
 - 경력 타임라인
 - 연락처 폼
+- 소셜 미디어 링크
 
-📂 `templates/portfolio/`
+**📂 주요 섹션**: Hero + About + Skills + Portfolio Gallery + Experience Timeline + Contact
 
-</td>
-</tr>
-<tr>
-<td colspan="2">
+[🔗 라이브 데모](https://bbinjunhwang.github.io/FE-Template02/templates/portfolio/) | [📁 코드 보기](./templates/portfolio/)
 
-### 🚀 Landing
-홍보용 랜딩 페이지
+---
+
+### 5️⃣ Landing 🚀
+**경로**: `templates/landing/` | **스타일**: 전환율 최적화
+
+<div align="center">
+<img src="./screenshots/landing.png" alt="Landing Page" width="800">
+</div>
+
+**🎨 디자인 특징**
+- 그라데이션 배경
+- 명확한 CTA 버튼
+- 통계 카운터
+- 고객 후기 카드
+- 요금제 비교표
+
+**💼 주요 기능**
 - 히어로 섹션 with CTA
-- 주요 기능 (6개), 통계, 고객 후기
-- 요금제 비교, 최종 CTA
+- 주요 기능 소개 (6개 카드)
+- 통계/성과 지표
+- 고객 후기 (별점 + 리뷰)
+- 요금제 비교 (3단계)
+- 최종 전환 CTA
 
-📂 `templates/landing/`
+**📂 주요 섹션**: Hero + Features + Stats + Testimonials + Pricing + Final CTA + Footer
 
-</td>
-</tr>
-</table>
+[🔗 라이브 데모](https://bbinjunhwang.github.io/FE-Template02/templates/landing/) | [📁 코드 보기](./templates/landing/)
 
 ---
 
 ## 🚀 프리미엄 랜딩 페이지 (2024 최신 트렌드)
 
-### 1️⃣ SaaS Landing Page
+### 1️⃣ SaaS Landing Page 💼
 **경로**: `templates/landing-saas/` | **스타일**: 미니멀 + 그라데이션
 
 <div align="center">
 <img src="./screenshots/landing-saas.png" alt="SaaS Landing Page" width="800">
 </div>
 
-```
-🎨 디자인 특징
-├─ Floating gradient blobs (떠다니는 그라데이션)
-├─ 파스텔 컬러 조합 (보라/초록/주황)
-├─ 넓은 여백, 깔끔한 레이아웃
-└─ Glassmorphism 요소
+**🎨 디자인 특징**
+- Floating gradient blobs (떠다니는 그라데이션)
+- 파스텔 컬러 조합 (보라/초록/주황)
+- 넓은 여백, 깔끔한 레이아웃
+- Glassmorphism 요소
+- 미니멀리스틱 디자인
 
-💼 추천 용도
-├─ SaaS 제품 소개
-├─ B2B 서비스
-├─ Tech 스타트업
-└─ 프로젝트 관리 도구
-```
+**💼 주요 기능**
+- SaaS 제품 소개
+- 통계 카운터 (사용자, 프로젝트 등)
+- 주요 기능 그리드 (6개)
+- 3단계 가격 플랜 (Starter/Pro/Enterprise)
+- 고객 후기
+- CTA 버튼
 
-**주요 섹션**: Hero + Stats + Features Grid + Pricing (3단계) + CTA + Footer
+**📂 주요 섹션**: Hero + Stats + Features Grid + Pricing (3단계) + CTA + Footer
 
 [🔗 라이브 데모](https://bbinjunhwang.github.io/FE-Template02/templates/landing-saas/) | [📁 코드 보기](./templates/landing-saas/)
 
 ---
 
-### 2️⃣ Creative Agency Landing
+### 2️⃣ Creative Agency Landing 🎨
 **경로**: `templates/landing-agency/` | **스타일**: 다크 + 네온
 
 <div align="center">
 <img src="./screenshots/landing-agency.png" alt="Agency Landing Page" width="800">
 </div>
 
-```
-🎨 디자인 특징
-├─ 다크 모드 배경 + 네온 컬러 (시안/마젠타/그린)
-├─ 커스텀 커서 효과
-├─ Matrix 그리드 배경
-├─ Glowing effects + 홀로그램 스타일
-└─ 비대칭 레이아웃
+**🎨 디자인 특징**
+- 다크 모드 배경 + 네온 컬러 (시안/마젠타/그린)
+- 커스텀 커서 효과
+- Matrix 그리드 배경
+- Glowing effects + 홀로그램 스타일
+- 비대칭 레이아웃
 
-💼 추천 용도
-├─ 디자인 에이전시
-├─ 크리에이티브 스튜디오
-├─ 개발 에이전시
-└─ 미디어 프로덕션
-```
+**💼 주요 기능**
+- 크리에이티브 서비스 소개 (6개)
+- 포트폴리오 그리드
+- 통계 카운터 (프로젝트, 클라이언트 등)
+- 작업 프로세스
+- 팀 소개
+- 연락처 폼
 
-**주요 섹션**: Hero + Services (6개) + Portfolio Grid + Stats + CTA + Footer
+**📂 주요 섹션**: Hero + Services (6개) + Portfolio Grid + Stats + CTA + Footer
 
 [🔗 라이브 데모](https://bbinjunhwang.github.io/FE-Template02/templates/landing-agency/) | [📁 코드 보기](./templates/landing-agency/)
 
 ---
 
-### 3️⃣ App Launch Landing
+### 3️⃣ App Launch Landing 📱
 **경로**: `templates/landing-app/` | **스타일**: 글래스모피즘
 
 <div align="center">
 <img src="./screenshots/landing-app.png" alt="App Landing Page" width="800">
 </div>
 
-```
-🎨 디자인 특징
-├─ Glassmorphism (Frosted glass 효과)
-├─ 애니메이션 그라데이션 배경
-├─ Backdrop blur
-├─ 플로팅 오브 (Floating orbs)
-└─ 애플 스타일 디자인
+**🎨 디자인 특징**
+- Glassmorphism (Frosted glass 효과)
+- 애니메이션 그라데이션 배경
+- Backdrop blur
+- 플로팅 오브 (Floating orbs)
+- 애플 스타일 디자인
 
-💼 추천 용도
-├─ 모바일 앱 런칭
-├─ 소셜 앱
-├─ 웰니스/라이프스타일 앱
-└─ 커뮤니티 플랫폼
-```
+**💼 주요 기능**
+- 모바일 앱 소개
+- Phone Mockup 이미지
+- 주요 기능 (6개 카드)
+- 스크린샷 슬라이더
+- 사용자 후기
+- 앱 다운로드 링크 (iOS/Android)
 
-**주요 섹션**: Hero + Phone Mockup + Features (6개) + Screenshots Slider + Testimonials + Download CTA
+**📂 주요 섹션**: Hero + Phone Mockup + Features (6개) + Screenshots Slider + Testimonials + Download CTA
 
 [🔗 라이브 데모](https://bbinjunhwang.github.io/FE-Template02/templates/landing-app/) | [📁 코드 보기](./templates/landing-app/)
 
 ---
 
-### 4️⃣ AI/Tech Product Landing
+### 4️⃣ AI/Tech Product Landing 🤖
 **경로**: `templates/landing-ai/` | **스타일**: 사이버펑크
 
 <div align="center">
 <img src="./screenshots/landing-ai.png" alt="AI Landing Page" width="800">
 </div>
 
-```
-🎨 디자인 특징
-├─ Matrix rain 애니메이션
-├─ Scanline 효과
-├─ Glitch 텍스트 애니메이션
-├─ 전기 블루/네온 그린/사이버 핑크
-├─ 터미널/CLI 스타일 요소
-└─ Cyberpunk 미학
+**🎨 디자인 특징**
+- Matrix rain 애니메이션
+- Scanline 효과
+- Glitch 텍스트 애니메이션
+- 전기 블루/네온 그린/사이버 핑크
+- 터미널/CLI 스타일 요소
+- Cyberpunk 미학
 
-💼 추천 용도
-├─ AI 플랫폼
-├─ Machine Learning 서비스
-├─ API 제품
-├─ 블록체인/Web3
-└─ Tech/Dev 도구
-```
+**💼 주요 기능**
+- AI/Tech 제품 소개
+- 터미널 시뮬레이션
+- 기술 통계 바
+- 주요 기능 (6개)
+- Tech Stack 소개
+- API 문서 링크
+- 무료 체험 CTA
 
-**주요 섹션**: Hero + Terminal + Stats Bar + Features (6개) + Tech Stack + CTA
+**📂 주요 섹션**: Hero + Terminal + Stats Bar + Features (6개) + Tech Stack + CTA
 
 [🔗 라이브 데모](https://bbinjunhwang.github.io/FE-Template02/templates/landing-ai/) | [📁 코드 보기](./templates/landing-ai/)
 
 ---
 
-### 5️⃣ Startup Landing
+### 5️⃣ Startup Landing ⚡
 **경로**: `templates/landing-startup/` | **스타일**: 볼드 타이포그래피
 
 <div align="center">
 <img src="./screenshots/landing-startup.png" alt="Startup Landing Page" width="800">
 </div>
 
-```
-🎨 디자인 특징
-├─ 초대형 볼드 타이포그래피
-├─ 강렬한 컬러 조합 (오렌지/블루/옐로/그린)
-├─ 3D 박스 섀도우
-├─ 비대칭 레이아웃 + 회전 효과
-├─ Y2K 레트로 감성
-└─ 플로팅 기하학 도형
+**🎨 디자인 특징**
+- 초대형 볼드 타이포그래피
+- 강렬한 컬러 조합 (오렌지/블루/옐로/그린)
+- 3D 박스 섀도우
+- 비대칭 레이아웃 + 회전 효과
+- Y2K 레트로 감성
+- 플로팅 기하학 도형
 
-💼 추천 용도
-├─ 스타트업 소개
-├─ 제품 런칭
-├─ 이벤트/프로모션
-├─ 혁신적인 브랜드
-└─ Z세대 타겟 서비스
-```
+**💼 주요 기능**
+- 스타트업 소개
+- 제품/서비스 핵심 가치 (4개)
+- 통계 카운터
+- 고객 후기
+- 팀 소개
+- 강렬한 CTA 버튼
 
-**주요 섹션**: Hero + Features (4개) + Stats + Testimonials + Bold CTA
+**📂 주요 섹션**: Hero + Features (4개) + Stats + Testimonials + Bold CTA
 
 [🔗 라이브 데모](https://bbinjunhwang.github.io/FE-Template02/templates/landing-startup/) | [📁 코드 보기](./templates/landing-startup/)
 
@@ -316,127 +385,137 @@ templates/
 
 ## 🛍️ 산업별 전문 템플릿 (NEW!)
 
-### 1️⃣ E-commerce Shop
+### 1️⃣ E-commerce Shop 🛒
 **경로**: `templates/ecommerce/` | **스타일**: 프리미엄 쇼핑몰
 
-```
-🎨 디자인 특징
-├─ 상품 그리드 레이아웃
-├─ 카테고리 네비게이션
-├─ 장바구니 UI
-├─ 제품 카드 + 평점 시스템
-└─ 프로모션 배너
+<div align="center">
+<img src="./screenshots/ecommerce.png" alt="E-commerce Shop" width="800">
+</div>
 
-💼 주요 기능
-├─ 상품 카탈로그 (8개 샘플)
-├─ 카테고리별 필터
-├─ 베스트셀러 섹션
-├─ 회원가입 혜택 배너
-└─ 반응형 상품 그리드
-```
+**🎨 디자인 특징**
+- 상품 그리드 레이아웃
+- 카테고리 네비게이션
+- 장바구니 UI
+- 제품 카드 + 평점 시스템
+- 프로모션 배너
 
-**주요 섹션**: Hero + Categories + Products Grid + Promo Banner + Footer
+**💼 주요 기능**
+- 상품 카탈로그 (8개 샘플)
+- 카테고리별 필터 (패션, 전자기기, 홈&리빙, 뷰티)
+- 베스트셀러 섹션
+- 회원가입 혜택 배너
+- 반응형 상품 그리드
+
+**📂 주요 섹션**: Hero + Categories + Products Grid + Promo Banner + Footer
 
 [🔗 라이브 데모](https://bbinjunhwang.github.io/FE-Template02/templates/ecommerce/) | [📁 코드 보기](./templates/ecommerce/)
 
 ---
 
-### 2️⃣ Restaurant (Fine Dining)
+### 2️⃣ Restaurant (Fine Dining) 🍽️
 **경로**: `templates/restaurant/` | **스타일**: 다크 + 골드 럭셔리
 
-```
-🎨 디자인 특징
-├─ 다크 배경 + 골드 액센트
-├─ Serif 폰트 (우아한 타이포그래피)
-├─ 메뉴판 스타일 레이아웃
-├─ 고급스러운 여백 활용
-└─ 예약 폼 통합
+<div align="center">
+<img src="./screenshots/restaurant.png" alt="Restaurant" width="800">
+</div>
 
-💼 주요 기능
-├─ 메뉴 소개 (전채/메인/디저트)
-├─ 셰프 소개 + 수상 경력
-├─ 온라인 예약 시스템
-├─ 영업 시간 & 위치 정보
-└─ 브랜드 스토리
-```
+**🎨 디자인 특징**
+- 다크 배경 + 골드 액센트 (#C9A052)
+- Serif 폰트 (우아한 타이포그래피)
+- 메뉴판 스타일 레이아웃
+- 고급스러운 여백 활용
+- 예약 폼 통합
 
-**주요 섹션**: Hero + About + Menu + Chef + Reservation Form + Info
+**💼 주요 기능**
+- 메뉴 소개 (Foie Gras, Lobster Bisque, Beef Wellington 등)
+- 셰프 소개 + 수상 경력 (미슐랭 2스타)
+- 온라인 예약 시스템 (날짜, 시간, 인원 선택)
+- 영업 시간 & 위치 정보
+- 브랜드 스토리
+
+**📂 주요 섹션**: Hero + About + Menu + Chef + Reservation Form + Info
 
 [🔗 라이브 데모](https://bbinjunhwang.github.io/FE-Template02/templates/restaurant/) | [📁 코드 보기](./templates/restaurant/)
 
 ---
 
-### 3️⃣ Fitness Center
+### 3️⃣ Fitness Center 💪
 **경로**: `templates/fitness/` | **스타일**: 역동적 + 에너지틱
 
-```
-🎨 디자인 특징
-├─ 강렬한 레드/오렌지 그라데이션
-├─ 다크 모드 베이스
-├─ 볼드 타이포그래피
-├─ Before/After 섹션
-└─ 동적인 레이아웃
+<div align="center">
+<img src="./screenshots/fitness.png" alt="Fitness Center" width="800">
+</div>
 
-💼 주요 기능
-├─ 운동 프로그램 소개 (6개)
-├─ 트레이너 프로필
-├─ 가격 플랜 비교
-├─ 회원 변화 사례
-└─ 통계 카운터 (회원수, 만족도 등)
-```
+**🎨 디자인 특징**
+- 강렬한 레드/오렌지 그라데이션 (#FF4655 → #FF8A00)
+- 다크 모드 베이스
+- 볼드 타이포그래피
+- Before/After 변신 섹션
+- 동적인 레이아웃
 
-**주요 섹션**: Hero + Stats + Programs + Trainers + Pricing + Transformations + CTA
+**💼 주요 기능**
+- 운동 프로그램 소개 (근력, 체지방감량, 크로스핏, 필라테스 등 6개)
+- 전문 트레이너 프로필
+- 3단계 가격 플랜 비교 (베이직/프로/프리미엄)
+- 회원 변화 사례 (Before/After)
+- 통계 카운터 (5000+ 회원, 50+ 트레이너, 98% 만족도)
+
+**📂 주요 섹션**: Hero + Stats + Programs + Trainers + Pricing + Transformations + CTA
 
 [🔗 라이브 데모](https://bbinjunhwang.github.io/FE-Template02/templates/fitness/) | [📁 코드 보기](./templates/fitness/)
 
 ---
 
-### 4️⃣ Real Estate
+### 4️⃣ Real Estate 🏠
 **경로**: `templates/realestate/` | **스타일**: 프리미엄 부동산
 
-```
-🎨 디자인 특징
-├─ 깔끔한 화이트 베이스
-├─ 골드 액센트 컬러
-├─ 매물 검색 UI
-├─ 카드 기반 매물 그리드
-└─ 전문적인 레이아웃
+<div align="center">
+<img src="./screenshots/realestate.png" alt="Real Estate" width="800">
+</div>
 
-💼 주요 기능
-├─ 매물 검색 필터
-├─ 추천 매물 리스트 (6개)
-├─ 중개 서비스 소개
-├─ 고객 후기
-└─ 무료 상담 신청 CTA
-```
+**🎨 디자인 특징**
+- 깔끔한 화이트 베이스
+- 골드 액센트 컬러 (#C9A052)
+- 매물 검색 UI (거래유형, 지역, 예산)
+- 카드 기반 매물 그리드
+- 전문적인 레이아웃
 
-**주요 섹션**: Hero + Search Box + Features + Properties Grid + Services + Testimonials + CTA
+**💼 주요 기능**
+- 매물 검색 필터 (매매/전세/월세)
+- 추천 매물 리스트 (6개 샘플 - 강남, 용산, 판교 등)
+- 중개 서비스 소개 (매매, 임대, 투자컨설팅, 세무자문, 법률지원 등)
+- 고객 후기 (별점 + 리뷰)
+- 무료 상담 신청 CTA
+
+**📂 주요 섹션**: Hero + Search Box + Features + Properties Grid + Services + Testimonials + CTA
 
 [🔗 라이브 데모](https://bbinjunhwang.github.io/FE-Template02/templates/realestate/) | [📁 코드 보기](./templates/realestate/)
 
 ---
 
-### 5️⃣ Fashion Brand
+### 5️⃣ Fashion Brand 👗
 **경로**: `templates/fashion/` | **스타일**: 미니멀 + 모던
 
-```
-🎨 디자인 특징
-├─ 블랙 & 화이트 모노톤
-├─ 대형 타이포그래피
-├─ 넓은 여백 활용
-├─ 에디토리얼 레이아웃
-└─ 패션 매거진 감성
+<div align="center">
+<img src="./screenshots/fashion.png" alt="Fashion Brand" width="800">
+</div>
 
-💼 주요 기능
-├─ 컬렉션 그리드
-├─ 룩북 갤러리
-├─ 카테고리별 쇼핑
-├─ 브랜드 스토리
-├─ 뉴스레터 구독
-└─ Instagram 피드 연동
-```
+**🎨 디자인 특징**
+- 블랙 & 화이트 모노톤
+- 대형 타이포그래피 (8rem 헤딩)
+- 넓은 여백 활용 (에어리한 레이아웃)
+- 에디토리얼 레이아웃
+- 패션 매거진 감성
 
-**주요 섹션**: Hero + New Arrivals + Featured + Lookbook + Brand Story + Categories + Newsletter + Instagram
+**💼 주요 기능**
+- 신상품 컬렉션 그리드 (6개 아이템 - Outerwear, Knitwear, Tailoring 등)
+- 룩북 갤러리 (2024 Winter Collection)
+- 카테고리별 쇼핑 (Outerwear, Knitwear, Tailoring, Accessories)
+- 브랜드 스토리 (OUR STORY 섹션)
+- 뉴스레터 구독 (이메일 수집)
+- Instagram 피드 연동 (@NOIR_OFFICIAL)
+
+**📂 주요 섹션**: Hero + New Arrivals + Featured + Lookbook + Brand Story + Categories + Newsletter + Instagram
 
 [🔗 라이브 데모](https://bbinjunhwang.github.io/FE-Template02/templates/fashion/) | [📁 코드 보기](./templates/fashion/)
 
