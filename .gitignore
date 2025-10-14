@@ -132,3 +132,6 @@ Thumbs.db
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+# Generated PDFs (optional - 주석 처리하면 Git에 포함됨)
+# *.pdf

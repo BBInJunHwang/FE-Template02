@@ -1,183 +1,402 @@
-# 정적 페이지 템플릿 모음
+# 🎨 Modern Web Templates Collection
 
-외부 API 없이 데이터를 하드코딩한 정적 페이지 템플릿 모음입니다.
-각 템플릿은 단일 HTML 파일로 구성되어 있으며, CSS와 JavaScript가 모두 포함되어 있어 바로 사용 가능합니다.
+> 외부 API 없이 데이터를 하드코딩한 프로덕션 레디 정적 페이지 템플릿 모음
+
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![HTML5](https://img.shields.io/badge/HTML5-E34F26?logo=html5&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/HTML)
+[![CSS3](https://img.shields.io/badge/CSS3-1572B6?logo=css3&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/CSS)
+[![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?logo=javascript&logoColor=black)](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
+
+## ✨ 특징
+
+- 🚀 **즉시 사용 가능** - 별도 빌드나 설정 불필요
+- 📱 **100% 반응형** - 모바일, 태블릿, 데스크톱 최적화
+- 🎯 **제로 디펜던시** - 순수 HTML/CSS/JavaScript만 사용
+- 🎨 **2024-2025 디자인 트렌드** - 최신 UI/UX 패턴 적용
+- ⚡ **가볍고 빠름** - 최적화된 성능
+- 🔧 **쉬운 커스터마이징** - 직관적인 코드 구조
 
 ## 📁 프로젝트 구조
 
 ```
 templates/
-├── about-us/         # 회사 소개 페이지
-│   └── index.html
-├── product/          # 제품 안내 페이지
-│   └── index.html
-├── event/            # 행사 안내/초대 페이지
-│   └── index.html
-├── portfolio/        # 개인 포트폴리오 페이지
-│   └── index.html
-└── landing/          # 홍보용 랜딩 페이지
-    └── index.html
+├── 📄 기본 페이지
+│   ├── about-us/           # 회사 소개 페이지
+│   ├── product/            # 제품 안내 페이지
+│   ├── event/              # 행사 안내/초대 페이지
+│   ├── portfolio/          # 개인 포트폴리오 페이지
+│   └── landing/            # 홍보용 랜딩 페이지
+│
+└── 🚀 프리미엄 랜딩 페이지 (NEW!)
+    ├── landing-saas/       # SaaS 제품 랜딩 (미니멀 그라데이션)
+    ├── landing-agency/     # 크리에이티브 에이전시 (다크 네온)
+    ├── landing-app/        # 앱 런칭 페이지 (글래스모피즘)
+    ├── landing-ai/         # AI/Tech 제품 (사이버펑크)
+    └── landing-startup/    # 스타트업 (볼드 타이포그래피)
 ```
 
-## 🎨 템플릿 설명
+## 📄 기본 페이지 템플릿
 
-### 1. 회사 소개 페이지 (About Us)
-**경로**: `templates/about-us/index.html`
+<table>
+<tr>
+<td width="50%">
 
-**포함 섹션**:
-- 회사 소개 및 미션/비전
-- 핵심 가치
-- 팀 소개
-- 회사 연혁 타임라인
-
-**특징**:
-- 그라데이션 배경과 모던한 디자인
+### 🏢 About Us
+회사 소개 및 팀 페이지
+- 미션/비전, 핵심 가치
+- 팀 소개, 회사 연혁
+- 그라데이션 배경
 - 스크롤 애니메이션
-- 반응형 레이아웃
 
----
+📂 `templates/about-us/`
 
-### 2. 제품 안내 페이지 (Product)
-**경로**: `templates/product/index.html`
+</td>
+<td width="50%">
 
-**포함 섹션**:
-- 제품 메인 소개
-- 주요 기능 카드
-- 제품 사양
-- 요금제 (3단계)
+### 📦 Product
+제품 소개 및 가격 페이지
+- 제품 기능 카드
+- 요금제 비교 (3단계)
 - 제품 갤러리
+- CTA 버튼
 
-**특징**:
-- 시각적인 기능 카드
-- 가격 비교 레이아웃
-- CTA(Call To Action) 버튼
-- 호버 효과
+📂 `templates/product/`
 
----
+</td>
+</tr>
+<tr>
+<td width="50%">
 
-### 3. 행사 안내/초대 페이지 (Event)
-**경로**: `templates/event/index.html`
-
-**포함 섹션**:
-- 행사 기본 정보 (일시, 장소, 참가비)
-- 행사 일정 (타임테이블)
-- 연사 소개
-- 오시는 길 (지도 영역)
+### 🎉 Event
+행사 안내 및 초대 페이지
+- 일시/장소/참가비
+- 타임테이블, 연사 소개
 - 참가 신청 폼
+- 초대장 스타일
 
-**특징**:
-- 초대장 스타일 디자인
-- 인터랙티브 폼
-- 애니메이션 효과
-- 모바일 최적화
+📂 `templates/event/`
 
----
+</td>
+<td width="50%">
 
-### 4. 개인 포트폴리오 페이지 (Portfolio)
-**경로**: `templates/portfolio/index.html`
+### 👤 Portfolio
+개인 포트폴리오 페이지
+- 히어로 섹션, 스킬
+- 프로젝트 갤러리 (6개)
+- 경력 타임라인
+- 연락처 폼
 
-**포함 섹션**:
-- 히어로 섹션 (자기소개)
-- About Me
-- 스킬 목록
-- 프로젝트 갤러리 (6개 프로젝트 예시)
-- 경력 사항 (타임라인)
-- 연락처 및 문의 폼
+📂 `templates/portfolio/`
 
-**특징**:
-- 고정 네비게이션 바
-- 풀스크린 히어로 섹션
-- 프로젝트 카드 그리드
-- 부드러운 스크롤
+</td>
+</tr>
+<tr>
+<td colspan="2">
 
----
-
-### 5. 홍보용 랜딩 페이지 (Landing)
-**경로**: `templates/landing/index.html`
-
-**포함 섹션**:
+### 🚀 Landing
+홍보용 랜딩 페이지
 - 히어로 섹션 with CTA
-- 주요 기능 소개 (6개)
-- 통계/성과 지표
-- 고객 후기
-- 요금제 비교
-- 최종 CTA
-- 푸터 (링크 모음)
+- 주요 기능 (6개), 통계, 고객 후기
+- 요금제 비교, 최종 CTA
 
-**특징**:
-- 전환율 최적화 디자인
-- 숫자 카운트업 애니메이션
-- 여러 CTA 버튼
-- 소셜 프루프 (통계, 후기)
+📂 `templates/landing/`
+
+</td>
+</tr>
+</table>
 
 ---
 
-## 🚀 사용 방법
+## 🚀 프리미엄 랜딩 페이지 (2024 최신 트렌드)
 
-1. 원하는 템플릿의 `index.html` 파일을 브라우저에서 열기:
-   ```bash
-   # 예시: 회사 소개 페이지 열기
-   open templates/about-us/index.html
-   ```
+### 1️⃣ SaaS Landing Page
+**경로**: `templates/landing-saas/` | **스타일**: 미니멀 + 그라데이션
 
-2. 또는 간단한 로컬 서버 실행:
-   ```bash
-   # Python 3
-   python -m http.server 8000
+```
+🎨 디자인 특징
+├─ Floating gradient blobs (떠다니는 그라데이션)
+├─ 파스텔 컬러 조합 (보라/초록/주황)
+├─ 넓은 여백, 깔끔한 레이아웃
+└─ Glassmorphism 요소
 
-   # 그 다음 브라우저에서 접속
-   # http://localhost:8000/templates/about-us/
-   ```
+💼 추천 용도
+├─ SaaS 제품 소개
+├─ B2B 서비스
+├─ Tech 스타트업
+└─ 프로젝트 관리 도구
+```
+
+**주요 섹션**: Hero + Stats + Features Grid + Pricing (3단계) + CTA + Footer
+
+---
+
+### 2️⃣ Creative Agency Landing
+**경로**: `templates/landing-agency/` | **스타일**: 다크 + 네온
+
+```
+🎨 디자인 특징
+├─ 다크 모드 배경 + 네온 컬러 (시안/마젠타/그린)
+├─ 커스텀 커서 효과
+├─ Matrix 그리드 배경
+├─ Glowing effects + 홀로그램 스타일
+└─ 비대칭 레이아웃
+
+💼 추천 용도
+├─ 디자인 에이전시
+├─ 크리에이티브 스튜디오
+├─ 개발 에이전시
+└─ 미디어 프로덕션
+```
+
+**주요 섹션**: Hero + Services (6개) + Portfolio Grid + Stats + CTA + Footer
+
+---
+
+### 3️⃣ App Launch Landing
+**경로**: `templates/landing-app/` | **스타일**: 글래스모피즘
+
+```
+🎨 디자인 특징
+├─ Glassmorphism (Frosted glass 효과)
+├─ 애니메이션 그라데이션 배경
+├─ Backdrop blur
+├─ 플로팅 오브 (Floating orbs)
+└─ 애플 스타일 디자인
+
+💼 추천 용도
+├─ 모바일 앱 런칭
+├─ 소셜 앱
+├─ 웰니스/라이프스타일 앱
+└─ 커뮤니티 플랫폼
+```
+
+**주요 섹션**: Hero + Phone Mockup + Features (6개) + Screenshots Slider + Testimonials + Download CTA
+
+---
+
+### 4️⃣ AI/Tech Product Landing
+**경로**: `templates/landing-ai/` | **스타일**: 사이버펑크
+
+```
+🎨 디자인 특징
+├─ Matrix rain 애니메이션
+├─ Scanline 효과
+├─ Glitch 텍스트 애니메이션
+├─ 전기 블루/네온 그린/사이버 핑크
+├─ 터미널/CLI 스타일 요소
+└─ Cyberpunk 미학
+
+💼 추천 용도
+├─ AI 플랫폼
+├─ Machine Learning 서비스
+├─ API 제품
+├─ 블록체인/Web3
+└─ Tech/Dev 도구
+```
+
+**주요 섹션**: Hero + Terminal + Stats Bar + Features (6개) + Tech Stack + CTA
+
+---
+
+### 5️⃣ Startup Landing
+**경로**: `templates/landing-startup/` | **스타일**: 볼드 타이포그래피
+
+```
+🎨 디자인 특징
+├─ 초대형 볼드 타이포그래피
+├─ 강렬한 컬러 조합 (오렌지/블루/옐로/그린)
+├─ 3D 박스 섀도우
+├─ 비대칭 레이아웃 + 회전 효과
+├─ Y2K 레트로 감성
+└─ 플로팅 기하학 도형
+
+💼 추천 용도
+├─ 스타트업 소개
+├─ 제품 런칭
+├─ 이벤트/프로모션
+├─ 혁신적인 브랜드
+└─ Z세대 타겟 서비스
+```
+
+**주요 섹션**: Hero + Features (4개) + Stats + Testimonials + Bold CTA
+
+---
+
+## 🚀 빠른 시작
+
+### 방법 1: 직접 열기 (가장 간단)
+```bash
+# 원하는 템플릿 폴더로 이동하여 index.html을 브라우저에서 열기
+open templates/landing-saas/index.html
+```
+
+### 방법 2: 로컬 서버 실행 (권장)
+```bash
+# NPM 서버 사용
+npm install
+npm start
+
+# 또는 Python 서버
+python -m http.server 8000
+# → http://localhost:8000/templates/landing-saas/
+```
+
+### 방법 3: PDF로 내보내기
+```bash
+# Puppeteer를 사용하여 PDF 생성
+node export-pdf.js
+```
 
 ## ✏️ 커스터마이징 가이드
 
-각 템플릿은 다음과 같이 수정할 수 있습니다:
-
-### 색상 변경
-각 파일의 `<style>` 태그 내에서 그라데이션 색상을 찾아 수정:
+### 🎨 색상 변경
+각 템플릿의 `<style>` 태그에서 CSS 변수 수정:
 ```css
-/* 예시: 메인 그라데이션 색상 변경 */
-background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+:root {
+    --primary: #7C3AED;      /* 메인 컬러 */
+    --secondary: #10B981;    /* 보조 컬러 */
+    --accent: #F59E0B;       /* 강조 컬러 */
+}
 ```
 
-### 텍스트 내용 변경
-HTML 본문에서 텍스트를 직접 수정하면 됩니다.
+### 📝 텍스트 수정
+HTML 본문에서 텍스트를 직접 편집:
+```html
+<h1>여기에 원하는 제목 입력</h1>
+<p>여기에 원하는 설명 입력</p>
+```
 
-### 이미지 추가
-이모지로 표시된 부분을 실제 이미지 태그로 교체:
+### 🖼️ 이미지 교체
+이모지를 실제 이미지로 변경:
 ```html
 <!-- 변경 전 -->
 <div class="icon">📱</div>
 
 <!-- 변경 후 -->
-<img src="your-image.jpg" alt="설명">
+<img src="./images/icon.svg" alt="아이콘">
 ```
 
-## 🎨 디자인 특징
+### 🔗 링크 연결
+CTA 버튼이나 네비게이션 링크 수정:
+```html
+<a href="https://your-website.com" class="btn">시작하기</a>
+```
 
-- **반응형 디자인**: 모든 템플릿은 모바일, 태블릿, 데스크톱에서 최적화
-- **모던한 스타일**: 그라데이션, 그림자, 애니메이션 효과
-- **제로 디펜던시**: 외부 라이브러리 없이 순수 HTML/CSS/JS만 사용
-- **즉시 사용 가능**: 별도 빌드나 설정 불필요
+## 📊 템플릿 비교표
 
-## 📱 브라우저 호환성
+| 템플릿 | 스타일 | 색상 | 난이도 | 용도 |
+|--------|--------|------|--------|------|
+| **SaaS** | 미니멀 | 🟣🟢🟠 | ⭐⭐ | B2B, SaaS |
+| **Agency** | 다크 네온 | 🔵🟣🟢 | ⭐⭐⭐ | 에이전시 |
+| **App** | 글래스 | 🟣💗🔵 | ⭐⭐ | 앱 런칭 |
+| **AI/Tech** | 사이버펑크 | 🔵🟢💗 | ⭐⭐⭐⭐ | AI, Tech |
+| **Startup** | 볼드 타이포 | 🟠🔵🟡 | ⭐⭐⭐ | 스타트업 |
 
-- Chrome (최신)
-- Firefox (최신)
-- Safari (최신)
-- Edge (최신)
+## 🎯 추천 사용 시나리오
+
+```
+🏢 기업 웹사이트
+└─ About Us + Product + Landing
+
+👤 개인 브랜딩
+└─ Portfolio
+
+🎉 이벤트/행사
+└─ Event
+
+💼 SaaS 제품 출시
+└─ Landing-SaaS + Landing-App
+
+🎨 크리에이티브 에이전시
+└─ Landing-Agency + Portfolio
+
+🚀 스타트업 런칭
+└─ Landing-Startup + Landing-SaaS
+
+🤖 AI/Tech 제품
+└─ Landing-AI
+```
+
+## 🛠️ 기술 스택
+
+| 카테고리 | 기술 |
+|---------|------|
+| **마크업** | HTML5 (Semantic) |
+| **스타일** | CSS3 (Flexbox, Grid, Custom Properties, Animations) |
+| **스크립트** | Vanilla JavaScript (ES6+) |
+| **폰트** | Google Fonts (Inter, Orbitron, Space Grotesk 등) |
+| **아이콘** | Unicode Emoji |
+| **의존성** | 0️⃣ Zero Dependencies |
+
+## 📱 브라우저 지원
+
+| 브라우저 | 버전 |
+|---------|------|
+| Chrome | ✅ 최신 |
+| Firefox | ✅ 최신 |
+| Safari | ✅ 14+ |
+| Edge | ✅ 최신 |
+| Opera | ✅ 최신 |
+
+## 📦 배포 방법
+
+### GitHub Pages
+```bash
+# 1. 저장소 생성
+git init
+git add .
+git commit -m "Add templates"
+git remote add origin [your-repo-url]
+git push -u origin main
+
+# 2. GitHub Pages 활성화
+# Settings → Pages → Source: main branch
+```
+
+### Vercel / Netlify
+```bash
+# 단순히 프로젝트 폴더를 드래그 앤 드롭하면 자동 배포!
+```
+
+### Custom Server
+```bash
+# 템플릿 폴더를 웹 서버 디렉토리에 복사
+cp -r templates/* /var/www/html/
+```
+
+## 🎓 학습 자료
+
+- [CSS Grid Guide](https://css-tricks.com/snippets/css/complete-guide-grid/)
+- [Flexbox Guide](https://css-tricks.com/snippets/css/a-guide-to-flexbox/)
+- [JavaScript ES6+ Features](https://github.com/lukehoban/es6features)
+- [Web Animations](https://developer.mozilla.org/en-US/docs/Web/API/Web_Animations_API)
+
+## 🤝 기여하기
+
+이 프로젝트에 기여하고 싶으시다면:
+1. Fork 하기
+2. Feature branch 생성 (`git checkout -b feature/AmazingTemplate`)
+3. Commit (`git commit -m 'Add some AmazingTemplate'`)
+4. Push (`git push origin feature/AmazingTemplate`)
+5. Pull Request 생성
 
 ## 📝 라이선스
 
-자유롭게 사용, 수정, 배포하실 수 있습니다.
+MIT License - 자유롭게 사용, 수정, 배포하실 수 있습니다.
 
-## 🔧 기술 스택
+## 💬 문의 및 지원
 
-- HTML5
-- CSS3 (Flexbox, Grid, Animations)
-- Vanilla JavaScript (ES6+)
+- Issues: 버그 리포트 및 기능 제안
+- Discussions: 일반적인 질문 및 아이디어 공유
 
 ---
 
-**제작일**: 2024년
-**버전**: 1.0
+<div align="center">
+
+**Made with ❤️ by [Your Name]**
+
+⭐ 이 프로젝트가 도움이 되셨다면 Star를 눌러주세요!
+
+[🏠 Home](#) • [📖 Docs](#) • [💬 Discussions](#) • [🐛 Issues](#)
+
+</div>

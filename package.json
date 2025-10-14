@@ -1,22 +1,47 @@
 {
-  "name": "static-templates",
-  "version": "1.0.0",
-  "description": "정적 페이지 템플릿 모음",
+  "name": "modern-web-templates",
+  "version": "2.0.0",
+  "description": "🎨 Modern Web Templates Collection - Production-ready static page templates with 2024-2025 design trends",
+  "main": "templates/index.html",
   "scripts": {
     "start": "live-server --port=3000 --open=templates/",
     "serve": "http-server -p 3000 -o templates/",
-    "dev": "live-server --port=3000"
+    "dev": "live-server --port=3000",
+    "export:pdf": "node export-pdf.js",
+    "open:saas": "open templates/landing-saas/index.html",
+    "open:agency": "open templates/landing-agency/index.html",
+    "open:app": "open templates/landing-app/index.html",
+    "open:ai": "open templates/landing-ai/index.html",
+    "open:startup": "open templates/landing-startup/index.html",
+    "open:portfolio": "open templates/portfolio/index.html"
   },
   "keywords": [
     "templates",
     "static",
     "landing-page",
-    "portfolio"
+    "portfolio",
+    "saas",
+    "glassmorphism",
+    "cyberpunk",
+    "web-design",
+    "html-templates",
+    "css-templates",
+    "modern-design",
+    "responsive"
   ],
   "author": "",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yourusername/modern-web-templates.git"
+  },
+  "bugs": {
+    "url": "https://github.com/yourusername/modern-web-templates/issues"
+  },
+  "homepage": "https://github.com/yourusername/modern-web-templates#readme",
   "devDependencies": {
     "http-server": "^14.1.1",
-    "live-server": "^1.2.2"
+    "live-server": "^1.2.2",
+    "puppeteer": "^24.24.0"
   }
 }
