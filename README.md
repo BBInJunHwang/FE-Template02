@@ -20,12 +20,14 @@
 - 🔗 [App Landing](https://bbinjunhwang.github.io/FE-Template02/templates/landing-app/)
 - 🔗 [AI/Tech Landing](https://bbinjunhwang.github.io/FE-Template02/templates/landing-ai/)
 - 🔗 [Startup Landing](https://bbinjunhwang.github.io/FE-Template02/templates/landing-startup/)
+- 🔗 [Crypto/Web3 Landing](https://bbinjunhwang.github.io/FE-Template02/templates/landing-crypto/)
 
 **기본 페이지:**
 - 🔗 [Portfolio](https://bbinjunhwang.github.io/FE-Template02/templates/portfolio/)
 - 🔗 [Event Page](https://bbinjunhwang.github.io/FE-Template02/templates/event/)
 - 🔗 [About Us](https://bbinjunhwang.github.io/FE-Template02/templates/about-us/)
 - 🔗 [Product](https://bbinjunhwang.github.io/FE-Template02/templates/product/)
+- 🔗 [Blog](https://bbinjunhwang.github.io/FE-Template02/templates/blog/)
 
 **산업별 전문 템플릿:**
 - 🔗 [E-commerce Shop](https://bbinjunhwang.github.io/FE-Template02/templates/ecommerce/)
@@ -33,6 +35,7 @@
 - 🔗 [Fitness Center](https://bbinjunhwang.github.io/FE-Template02/templates/fitness/)
 - 🔗 [Real Estate](https://bbinjunhwang.github.io/FE-Template02/templates/realestate/)
 - 🔗 [Fashion Brand](https://bbinjunhwang.github.io/FE-Template02/templates/fashion/)
+- 🔗 [Travel Agency](https://bbinjunhwang.github.io/FE-Template02/templates/travel/)
 
 <details>
 <summary><b>💡 GitHub Pages 활성화하는 방법 (1분 소요)</b></summary>
@@ -238,6 +241,34 @@ templates/
 
 ---
 
+### 6️⃣ Blog 📝
+**경로**: `templates/blog/` | **스타일**: 깔끔 & 읽기 좋은
+
+<div align="center">
+<img src="./screenshots/blog.png" alt="Blog Page" width="800">
+</div>
+
+**🎨 디자인 특징**
+- 클린한 화이트 베이스
+- 카드 기반 아티클 레이아웃
+- Featured 포스트 섹션
+- 사이드바 위젯
+- 반응형 그리드
+
+**💼 주요 기능**
+- Featured 게시물 (대형 카드)
+- 최신 게시물 그리드 (6개)
+- 카테고리 필터 (Tech, Design, Business, Tutorial 등)
+- 인기 게시물 위젯
+- 태그 클라우드
+- 뉴스레터 구독 폼
+
+**📂 주요 섹션**: Hero + Featured Article + Articles Grid + Sidebar (Popular Posts + Categories + Newsletter) + Footer
+
+[🔗 라이브 데모](https://bbinjunhwang.github.io/FE-Template02/templates/blog/) | [📁 코드 보기](./templates/blog/)
+
+---
+
 ## 🚀 프리미엄 랜딩 페이지 (2024 최신 트렌드)
 
 ### 1️⃣ SaaS Landing Page 💼
@@ -383,6 +414,34 @@ templates/
 
 ---
 
+### 6️⃣ Crypto/Web3 Landing ⬢
+**경로**: `templates/landing-crypto/` | **스타일**: 블록체인 + 다크
+
+<div align="center">
+<img src="./screenshots/landing-crypto.png" alt="Crypto Landing Page" width="800">
+</div>
+
+**🎨 디자인 특징**
+- 다크 테마 + 네온 그라데이션 (보라/청록)
+- 블록체인 그리드 애니메이션
+- 플로팅 오브 효과
+- 글로우 효과 + 백드롭 블러
+- 사이버틱한 미학
+
+**💼 주요 기능**
+- DeFi 플랫폼 소개
+- TVL, 사용자 통계 (4개 지표)
+- 주요 기능 (Bank-Grade Security, Lightning Fast, NFT Marketplace 등 6개)
+- 로드맵 타임라인 (4분기)
+- Cross-Chain Bridge 기능
+- 지갑 연결 CTA
+
+**📂 주요 섹션**: Hero + Stats (4개) + Features (6개) + Roadmap Timeline + CTA + Footer
+
+[🔗 라이브 데모](https://bbinjunhwang.github.io/FE-Template02/templates/landing-crypto/) | [📁 코드 보기](./templates/landing-crypto/)
+
+---
+
 ## 🛍️ 산업별 전문 템플릿 (NEW!)
 
 ### 1️⃣ E-commerce Shop 🛒
@@ -518,6 +577,34 @@ templates/
 **📂 주요 섹션**: Hero + New Arrivals + Featured + Lookbook + Brand Story + Categories + Newsletter + Instagram
 
 [🔗 라이브 데모](https://bbinjunhwang.github.io/FE-Template02/templates/fashion/) | [📁 코드 보기](./templates/fashion/)
+
+---
+
+### 6️⃣ Travel Agency ✈️
+**경로**: `templates/travel/` | **스타일**: 밝고 생동감 있는
+
+<div align="center">
+<img src="./screenshots/travel.png" alt="Travel Agency" width="800">
+</div>
+
+**🎨 디자인 특징**
+- 밝은 파스텔 그라데이션 (오렌지/옐로/핑크)
+- 여행지 카드 그리드
+- 검색 박스 UI
+- 호버 인터랙션
+- 밝고 친근한 분위기
+
+**💼 주요 기능**
+- 여행지 검색 (목적지, 출발일, 귀국일)
+- 인기 여행지 카드 (파리, 발리, 도쿄, 스위스, 두바이, 몰디브 등 6개)
+- 가격 정보 + 평점 시스템
+- 주요 서비스 (전 세계 200+ 도시, 최저가 보장, 24/7 고객지원 등)
+- 여행자 후기 (3개)
+- 예약하기 CTA
+
+**📂 주요 섹션**: Hero + Search Box + Features (4개) + Destinations Grid (6개) + Testimonials + CTA + Footer
+
+[🔗 라이브 데모](https://bbinjunhwang.github.io/FE-Template02/templates/travel/) | [📁 코드 보기](./templates/travel/)
 
 ---
 

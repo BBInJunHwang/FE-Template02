@@ -4,6 +4,9 @@ const fs = require('fs');
 
 // 캡처할 템플릿 목록
 const templates = [
+  { name: 'blog', title: 'Blog' },
+  { name: 'landing-crypto', title: 'Crypto/Web3 Landing' },
+  { name: 'travel', title: 'Travel Agency' },
   { name: 'ecommerce', title: 'E-commerce Shop' },
   { name: 'restaurant', title: 'Restaurant' },
   { name: 'fitness', title: 'Fitness Center' },
