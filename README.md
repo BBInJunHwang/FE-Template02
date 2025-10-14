@@ -10,16 +10,16 @@
 ## 🌐 라이브 데모
 
 ### 🎯 전체 템플릿 갤러리
-**👉 [템플릿 갤러리 보기](https://yourusername.github.io/yourrepo/)**
+**👉 [템플릿 갤러리 보기](https://bbinjunhwang.github.io/FE-Template02/)**
 
 ### 📱 개별 템플릿 데모 (클릭하여 즉시 확인!)
-- 🔗 [SaaS Landing](https://yourusername.github.io/yourrepo/templates/landing-saas/)
-- 🔗 [Agency Landing](https://yourusername.github.io/yourrepo/templates/landing-agency/)
-- 🔗 [App Landing](https://yourusername.github.io/yourrepo/templates/landing-app/)
-- 🔗 [AI/Tech Landing](https://yourusername.github.io/yourrepo/templates/landing-ai/)
-- 🔗 [Startup Landing](https://yourusername.github.io/yourrepo/templates/landing-startup/)
-- 🔗 [Portfolio](https://yourusername.github.io/yourrepo/templates/portfolio/)
-- 🔗 [Event Page](https://yourusername.github.io/yourrepo/templates/event/)
+- 🔗 [SaaS Landing](https://bbinjunhwang.github.io/FE-Template02/templates/landing-saas/)
+- 🔗 [Agency Landing](https://bbinjunhwang.github.io/FE-Template02/templates/landing-agency/)
+- 🔗 [App Landing](https://bbinjunhwang.github.io/FE-Template02/templates/landing-app/)
+- 🔗 [AI/Tech Landing](https://bbinjunhwang.github.io/FE-Template02/templates/landing-ai/)
+- 🔗 [Startup Landing](https://bbinjunhwang.github.io/FE-Template02/templates/landing-startup/)
+- 🔗 [Portfolio](https://bbinjunhwang.github.io/FE-Template02/templates/portfolio/)
+- 🔗 [Event Page](https://bbinjunhwang.github.io/FE-Template02/templates/event/)
 
 <details>
 <summary><b>💡 GitHub Pages 활성화하는 방법 (1분 소요)</b></summary>
@@ -39,7 +39,7 @@
    - `Save` 버튼 클릭
 
 3. **몇 분 후 접속**
-   - URL: `https://yourusername.github.io/yourrepo/`
+   - URL: `https://bbinjunhwang.github.io/FE-Template02/`
    - 위 "라이브 데모" 링크의 `yourusername`과 `yourrepo`를 본인 것으로 바꿔서 접속!
 
 **예시:**
@@ -174,7 +174,7 @@ templates/
 
 **주요 섹션**: Hero + Stats + Features Grid + Pricing (3단계) + CTA + Footer
 
-[🔗 라이브 데모](https://yourusername.github.io/yourrepo/templates/landing-saas/) | [📁 코드 보기](./templates/landing-saas/)
+[🔗 라이브 데모](https://bbinjunhwang.github.io/FE-Template02/templates/landing-saas/) | [📁 코드 보기](./templates/landing-saas/)
 
 ---
 
@@ -202,7 +202,7 @@ templates/
 
 **주요 섹션**: Hero + Services (6개) + Portfolio Grid + Stats + CTA + Footer
 
-[🔗 라이브 데모](https://yourusername.github.io/yourrepo/templates/landing-agency/) | [📁 코드 보기](./templates/landing-agency/)
+[🔗 라이브 데모](https://bbinjunhwang.github.io/FE-Template02/templates/landing-agency/) | [📁 코드 보기](./templates/landing-agency/)
 
 ---
 
@@ -230,7 +230,7 @@ templates/
 
 **주요 섹션**: Hero + Phone Mockup + Features (6개) + Screenshots Slider + Testimonials + Download CTA
 
-[🔗 라이브 데모](https://yourusername.github.io/yourrepo/templates/landing-app/) | [📁 코드 보기](./templates/landing-app/)
+[🔗 라이브 데모](https://bbinjunhwang.github.io/FE-Template02/templates/landing-app/) | [📁 코드 보기](./templates/landing-app/)
 
 ---
 
@@ -260,7 +260,7 @@ templates/
 
 **주요 섹션**: Hero + Terminal + Stats Bar + Features (6개) + Tech Stack + CTA
 
-[🔗 라이브 데모](https://yourusername.github.io/yourrepo/templates/landing-ai/) | [📁 코드 보기](./templates/landing-ai/)
+[🔗 라이브 데모](https://bbinjunhwang.github.io/FE-Template02/templates/landing-ai/) | [📁 코드 보기](./templates/landing-ai/)
 
 ---
 
@@ -290,7 +290,7 @@ templates/
 
 **주요 섹션**: Hero + Features (4개) + Stats + Testimonials + Bold CTA
 
-[🔗 라이브 데모](https://yourusername.github.io/yourrepo/templates/landing-startup/) | [📁 코드 보기](./templates/landing-startup/)
+[🔗 라이브 데모](https://bbinjunhwang.github.io/FE-Template02/templates/landing-startup/) | [📁 코드 보기](./templates/landing-startup/)
 
 ---
 
