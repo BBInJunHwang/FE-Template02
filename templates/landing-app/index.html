@@ -1,0 +1,879 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aura - The Future of Social Connection</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --glass-bg: rgba(255, 255, 255, 0.15);
+            --glass-border: rgba(255, 255, 255, 0.25);
+            --text-dark: #2D3748;
+            --text-light: rgba(255, 255, 255, 0.95);
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: white;
+            line-height: 1.6;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Animated Gradient Background */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg,
+                #667eea 0%,
+                #764ba2 25%,
+                #f093fb 50%,
+                #4facfe 75%,
+                #00f2fe 100%
+            );
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
+            z-index: -2;
+        }
+
+        @keyframes gradientShift {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        /* Floating Orbs */
+        .orb {
+            position: fixed;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.6;
+            animation: floatOrb 20s ease-in-out infinite;
+            z-index: -1;
+        }
+
+        .orb-1 {
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(102, 126, 234, 0.8) 0%, transparent 70%);
+            top: -300px;
+            left: -300px;
+            animation-delay: 0s;
+        }
+
+        .orb-2 {
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(247, 109, 251, 0.8) 0%, transparent 70%);
+            bottom: -200px;
+            right: -200px;
+            animation-delay: -7s;
+        }
+
+        .orb-3 {
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(79, 172, 254, 0.8) 0%, transparent 70%);
+            top: 50%;
+            left: 50%;
+            animation-delay: -14s;
+        }
+
+        @keyframes floatOrb {
+            0%, 100% {
+                transform: translate(0, 0);
+            }
+            33% {
+                transform: translate(100px, -100px);
+            }
+            66% {
+                transform: translate(-50px, 50px);
+            }
+        }
+
+        /* Glass Morphism Styles */
+        .glass {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1000;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            display: flex;
+            align-items: center;
+            gap: 3rem;
+            width: max-content;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-light);
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: opacity 0.3s;
+        }
+
+        .nav-links a:hover {
+            opacity: 0.7;
+        }
+
+        .btn {
+            padding: 0.8rem 1.8rem;
+            border-radius: 50px;
+            font-weight: 700;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+            font-size: 0.95rem;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background: white;
+            color: #667eea;
+            box-shadow: 0 10px 30px rgba(255, 255, 255, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(255, 255, 255, 0.4);
+        }
+
+        .btn-glass {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .btn-glass:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 0 5%;
+            position: relative;
+        }
+
+        .hero-content {
+            max-width: 900px;
+            animation: fadeInUp 1s ease;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.6rem 1.5rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            animation: fadeInUp 1s ease 0.2s both;
+        }
+
+        .hero h1 {
+            font-size: clamp(3rem, 7vw, 6rem);
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            letter-spacing: -2px;
+            animation: fadeInUp 1s ease 0.3s both;
+        }
+
+        .hero p {
+            font-size: 1.4rem;
+            margin-bottom: 3rem;
+            opacity: 0.95;
+            font-weight: 400;
+            animation: fadeInUp 1s ease 0.4s both;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: fadeInUp 1s ease 0.5s both;
+        }
+
+        .app-preview {
+            margin-top: 5rem;
+            animation: fadeInUp 1s ease 0.6s both;
+        }
+
+        .phone-mockup {
+            width: 350px;
+            height: 700px;
+            margin: 0 auto;
+            padding: 1.5rem;
+            border-radius: 50px;
+            position: relative;
+        }
+
+        .phone-screen {
+            width: 100%;
+            height: 100%;
+            border-radius: 40px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Features Section */
+        .features {
+            padding: 10rem 5%;
+            position: relative;
+        }
+
+        .section-header {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 5rem;
+        }
+
+        .section-label {
+            display: inline-block;
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+        }
+
+        .section-header h2 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 900;
+            margin-bottom: 1rem;
+            letter-spacing: -1px;
+        }
+
+        .section-header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .feature-card {
+            padding: 3rem;
+            border-radius: 30px;
+            transition: all 0.4s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            background: white;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 10px 30px rgba(255, 255, 255, 0.2);
+        }
+
+        .feature-card h3 {
+            font-size: 1.6rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+        }
+
+        .feature-card p {
+            opacity: 0.9;
+            line-height: 1.8;
+        }
+
+        /* Screenshots Section */
+        .screenshots {
+            padding: 10rem 5%;
+        }
+
+        .screenshots-slider {
+            display: flex;
+            gap: 2rem;
+            overflow-x: auto;
+            padding: 2rem 0;
+            max-width: 1400px;
+            margin: 0 auto;
+            scroll-snap-type: x mandatory;
+            scrollbar-width: none;
+        }
+
+        .screenshots-slider::-webkit-scrollbar {
+            display: none;
+        }
+
+        .screenshot-item {
+            flex: 0 0 300px;
+            height: 600px;
+            border-radius: 40px;
+            scroll-snap-align: center;
+            transition: transform 0.3s;
+        }
+
+        .screenshot-item:hover {
+            transform: scale(1.05);
+        }
+
+        .screenshot-content {
+            width: 100%;
+            height: 100%;
+            border-radius: 30px;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0.1) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+        }
+
+        /* Testimonials */
+        .testimonials {
+            padding: 10rem 5%;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .testimonial-card {
+            padding: 3rem;
+            border-radius: 30px;
+        }
+
+        .testimonial-avatar {
+            width: 70px;
+            height: 70px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 10px 30px rgba(255, 255, 255, 0.2);
+        }
+
+        .testimonial-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            opacity: 0.95;
+        }
+
+        .testimonial-author {
+            font-weight: 700;
+            margin-bottom: 0.3rem;
+        }
+
+        .testimonial-role {
+            opacity: 0.8;
+            font-size: 0.95rem;
+        }
+
+        /* Download Section */
+        .download {
+            padding: 10rem 5%;
+            text-align: center;
+        }
+
+        .download-card {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 5rem 3rem;
+            border-radius: 50px;
+        }
+
+        .download h2 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 900;
+            margin-bottom: 1.5rem;
+            letter-spacing: -1px;
+        }
+
+        .download p {
+            font-size: 1.3rem;
+            margin-bottom: 3rem;
+            opacity: 0.9;
+        }
+
+        .download-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .store-btn {
+            padding: 1.2rem 3rem;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            font-size: 1.1rem;
+            font-weight: 700;
+            transition: all 0.3s;
+        }
+
+        .store-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(255, 255, 255, 0.3);
+        }
+
+        /* Footer */
+        footer {
+            padding: 4rem 5%;
+            border-radius: 50px 50px 0 0;
+            margin: 0 2rem;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 3rem;
+        }
+
+        .footer-section h4 {
+            font-size: 1.2rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-section a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: opacity 0.3s;
+        }
+
+        .footer-section a:hover {
+            opacity: 0.6;
+        }
+
+        .footer-bottom {
+            max-width: 1400px;
+            margin: 3rem auto 0;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            text-align: center;
+            opacity: 0.7;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav {
+                width: 90%;
+                padding: 1rem;
+                gap: 1rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .phone-mockup {
+                width: 300px;
+                height: 600px;
+            }
+
+            .features-grid,
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+
+            footer {
+                margin: 0;
+                border-radius: 0;
+            }
+        }
+
+        /* Scroll Reveal */
+        .reveal {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s ease;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+
+    <nav class="glass">
+        <div class="logo">Aura</div>
+        <ul class="nav-links">
+            <li><a href="#features">Features</a></li>
+            <li><a href="#screenshots">Screenshots</a></li>
+            <li><a href="#download">Download</a></li>
+        </ul>
+        <a href="#" class="btn btn-primary">Get Started</a>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-content">
+            <div class="badge glass">
+                <span>✨</span> Now Available on App Store & Google Play
+            </div>
+            <h1>Connect in a<br>Whole New Way</h1>
+            <p>
+                소셜 네트워킹의 미래를 경험하세요.<br>
+                Aura는 진정한 연결을 만들어냅니다.
+            </p>
+            <div class="hero-buttons">
+                <a href="#" class="btn btn-primary">Download Now</a>
+                <a href="#" class="btn btn-glass">Watch Demo</a>
+            </div>
+            <div class="app-preview">
+                <div class="phone-mockup glass">
+                    <div class="phone-screen">
+                        📱
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="features" id="features">
+        <div class="section-header reveal">
+            <div class="section-label glass">FEATURES</div>
+            <h2>Designed for You</h2>
+            <p>당신의 소셜 경험을 완전히 새롭게 만들 기능들</p>
+        </div>
+        <div class="features-grid">
+            <div class="feature-card glass reveal">
+                <div class="feature-icon">
+                    🎭
+                </div>
+                <h3>Authentic Profiles</h3>
+                <p>
+                    진짜 당신의 모습을 보여주세요. 검증된 프로필로
+                    더 의미있는 연결을 만들어보세요.
+                </p>
+            </div>
+            <div class="feature-card glass reveal">
+                <div class="feature-icon">
+                    🌟
+                </div>
+                <h3>Smart Matching</h3>
+                <p>
+                    AI 기반 매칭 알고리즘으로 당신과 진정으로 맞는
+                    사람들을 찾아드립니다.
+                </p>
+            </div>
+            <div class="feature-card glass reveal">
+                <div class="feature-icon">
+                    💬
+                </div>
+                <h3>Real-time Chat</h3>
+                <p>
+                    텍스트, 음성, 영상 등 다양한 방식으로
+                    실시간 소통이 가능합니다.
+                </p>
+            </div>
+            <div class="feature-card glass reveal">
+                <div class="feature-icon">
+                    🎨
+                </div>
+                <h3>Creative Tools</h3>
+                <p>
+                    다양한 크리에이티브 도구로 당신만의 스토리를
+                    독특하게 표현하세요.
+                </p>
+            </div>
+            <div class="feature-card glass reveal">
+                <div class="feature-icon">
+                    🔒
+                </div>
+                <h3>Privacy First</h3>
+                <p>
+                    엔드투엔드 암호화로 당신의 대화와 데이터를
+                    안전하게 보호합니다.
+                </p>
+            </div>
+            <div class="feature-card glass reveal">
+                <div class="feature-icon">
+                    🌍
+                </div>
+                <h3>Global Community</h3>
+                <p>
+                    전 세계 150개국 이상의 사용자들과
+                    자유롭게 연결되세요.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section class="screenshots" id="screenshots">
+        <div class="section-header reveal">
+            <div class="section-label glass">INTERFACE</div>
+            <h2>Beautiful Design</h2>
+            <p>직관적이고 아름다운 인터페이스</p>
+        </div>
+        <div class="screenshots-slider">
+            <div class="screenshot-item glass">
+                <div class="screenshot-content">🏠</div>
+            </div>
+            <div class="screenshot-item glass">
+                <div class="screenshot-content">💬</div>
+            </div>
+            <div class="screenshot-item glass">
+                <div class="screenshot-content">👤</div>
+            </div>
+            <div class="screenshot-item glass">
+                <div class="screenshot-content">🔍</div>
+            </div>
+            <div class="screenshot-item glass">
+                <div class="screenshot-content">⚙️</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="testimonials">
+        <div class="section-header reveal">
+            <div class="section-label glass">REVIEWS</div>
+            <h2>Loved by Users</h2>
+            <p>전 세계 사용자들의 생생한 후기</p>
+        </div>
+        <div class="testimonials-grid">
+            <div class="testimonial-card glass reveal">
+                <div class="testimonial-avatar">👩</div>
+                <p class="testimonial-text">
+                    "Aura를 사용하면서 정말 의미있는 친구들을 많이 만났어요.
+                    인터페이스도 너무 아름답고 사용하기 편해요!"
+                </p>
+                <div class="testimonial-author">김지은</div>
+                <div class="testimonial-role">디자이너, 서울</div>
+            </div>
+            <div class="testimonial-card glass reveal">
+                <div class="testimonial-avatar">👨</div>
+                <p class="testimonial-text">
+                    "다른 소셜 앱들과는 완전히 다른 경험이에요.
+                    진짜 나를 표현할 수 있고, 비슷한 관심사를 가진 사람들을 쉽게 찾을 수 있어요."
+                </p>
+                <div class="testimonial-author">박민준</div>
+                <div class="testimonial-role">개발자, 부산</div>
+            </div>
+            <div class="testimonial-card glass reveal">
+                <div class="testimonial-avatar">👧</div>
+                <p class="testimonial-text">
+                    "프라이버시 보호 기능이 정말 마음에 들어요.
+                    안전하게 새로운 사람들을 만날 수 있어서 좋아요."
+                </p>
+                <div class="testimonial-author">이서연</div>
+                <div class="testimonial-role">학생, 대전</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="download" id="download">
+        <div class="download-card glass reveal">
+            <h2>Start Your Journey</h2>
+            <p>지금 바로 다운로드하고 새로운 연결을 시작하세요</p>
+            <div class="download-buttons">
+                <a href="#" class="btn btn-primary store-btn">
+                    <span>🍎</span> App Store
+                </a>
+                <a href="#" class="btn btn-primary store-btn">
+                    <span>🤖</span> Google Play
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="glass">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>Aura</h4>
+                <p style="opacity: 0.8; margin-top: 1rem;">
+                    진정한 연결을 만드는<br>
+                    차세대 소셜 플랫폼
+                </p>
+            </div>
+            <div class="footer-section">
+                <h4>Product</h4>
+                <ul>
+                    <li><a href="#">Features</a></li>
+                    <li><a href="#">Download</a></li>
+                    <li><a href="#">Pricing</a></li>
+                    <li><a href="#">Updates</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Company</h4>
+                <ul>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">Careers</a></li>
+                    <li><a href="#">Press</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Support</h4>
+                <ul>
+                    <li><a href="#">Help Center</a></li>
+                    <li><a href="#">Community</a></li>
+                    <li><a href="#">Contact</a></li>
+                    <li><a href="#">Privacy</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Aura. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Scroll Reveal
+        function reveal() {
+            const reveals = document.querySelectorAll('.reveal');
+            reveals.forEach(element => {
+                const windowHeight = window.innerHeight;
+                const elementTop = element.getBoundingClientRect().top;
+                const elementVisible = 150;
+
+                if (elementTop < windowHeight - elementVisible) {
+                    element.classList.add('active');
+                }
+            });
+        }
+
+        window.addEventListener('scroll', reveal);
+        reveal();
+
+        // Smooth Scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Screenshots Slider Auto Scroll
+        const slider = document.querySelector('.screenshots-slider');
+        let isScrolling = false;
+
+        slider.addEventListener('mouseenter', () => {
+            isScrolling = false;
+        });
+
+        slider.addEventListener('mouseleave', () => {
+            isScrolling = true;
+        });
+
+        function autoScroll() {
+            if (isScrolling && slider) {
+                slider.scrollLeft += 1;
+                if (slider.scrollLeft >= slider.scrollWidth - slider.clientWidth) {
+                    slider.scrollLeft = 0;
+                }
+            }
+            requestAnimationFrame(autoScroll);
+        }
+
+        setTimeout(() => {
+            isScrolling = true;
+            autoScroll();
+        }, 3000);
+    </script>
+</body>
+</html>

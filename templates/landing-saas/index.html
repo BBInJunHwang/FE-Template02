@@ -1,0 +1,893 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FlowSync - 팀 협업의 새로운 기준</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #7C3AED;
+            --primary-light: #A78BFA;
+            --secondary: #10B981;
+            --bg: #FAFBFC;
+            --text-dark: #1F2937;
+            --text-gray: #6B7280;
+            --accent-orange: #F59E0B;
+            --accent-pink: #EC4899;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: var(--bg);
+            color: var(--text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Floating Gradient Blobs */
+        .blob-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .blob {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.6;
+            animation: float 20s ease-in-out infinite;
+        }
+
+        .blob-1 {
+            width: 500px;
+            height: 500px;
+            background: linear-gradient(135deg, #7C3AED 0%, #A78BFA 100%);
+            top: -200px;
+            left: -200px;
+            animation-delay: 0s;
+        }
+
+        .blob-2 {
+            width: 400px;
+            height: 400px;
+            background: linear-gradient(135deg, #10B981 0%, #34D399 100%);
+            bottom: -150px;
+            right: -150px;
+            animation-delay: -5s;
+        }
+
+        .blob-3 {
+            width: 350px;
+            height: 350px;
+            background: linear-gradient(135deg, #F59E0B 0%, #FCD34D 100%);
+            top: 50%;
+            right: 10%;
+            animation-delay: -10s;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translate(0, 0) scale(1);
+            }
+            33% {
+                transform: translate(50px, -50px) scale(1.1);
+            }
+            66% {
+                transform: translate(-30px, 30px) scale(0.9);
+            }
+        }
+
+        /* Navigation */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 2rem 5%;
+            position: sticky;
+            top: 0;
+            background: rgba(250, 251, 252, 0.8);
+            backdrop-filter: blur(20px);
+            z-index: 100;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .btn {
+            padding: 0.9rem 2rem;
+            border-radius: 12px;
+            font-weight: 700;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+            font-size: 0.95rem;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            color: white;
+            box-shadow: 0 10px 30px rgba(124, 58, 237, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(124, 58, 237, 0.4);
+        }
+
+        .btn-outline {
+            background: white;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+
+        .btn-outline:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 8rem 5% 6rem;
+            text-align: center;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: white;
+            padding: 0.6rem 1.5rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--primary);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+            margin-bottom: 2rem;
+            animation: slideDown 0.8s ease;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero h1 {
+            font-size: clamp(3rem, 7vw, 5.5rem);
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            animation: fadeIn 1s ease;
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent-pink) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: 1.4rem;
+            color: var(--text-gray);
+            max-width: 700px;
+            margin: 0 auto 3rem;
+            font-weight: 400;
+            animation: fadeIn 1s ease 0.2s both;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: fadeIn 1s ease 0.4s both;
+        }
+
+        .hero-image {
+            margin-top: 5rem;
+            animation: fadeIn 1s ease 0.6s both;
+        }
+
+        .mockup {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 30px 100px rgba(0, 0, 0, 0.15);
+            padding: 3rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .mockup::before {
+            content: '';
+            position: absolute;
+            inset: -2px;
+            border-radius: 20px;
+            padding: 2px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary), var(--accent-orange));
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            opacity: 0.5;
+        }
+
+        .mockup-content {
+            background: linear-gradient(135deg, #f5f7fa 0%, #e8eef5 100%);
+            height: 500px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 5rem;
+        }
+
+        /* Stats Section */
+        .stats {
+            padding: 6rem 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            text-align: center;
+        }
+
+        .stat-item {
+            background: white;
+            padding: 3rem 2rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s;
+        }
+
+        .stat-item:hover {
+            transform: translateY(-10px);
+        }
+
+        .stat-number {
+            font-size: 3.5rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent-pink) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 1.1rem;
+            color: var(--text-gray);
+            font-weight: 600;
+        }
+
+        /* Features Section */
+        .features {
+            padding: 8rem 5%;
+            background: white;
+        }
+
+        .section-header {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 5rem;
+        }
+
+        .section-header .label {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .section-header h2 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 900;
+            margin-bottom: 1rem;
+        }
+
+        .section-header p {
+            font-size: 1.2rem;
+            color: var(--text-gray);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2.5rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .feature-card {
+            background: linear-gradient(135deg, #f9fafb 0%, #ffffff 100%);
+            padding: 3rem;
+            border-radius: 24px;
+            border: 2px solid transparent;
+            transition: all 0.4s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent-pink));
+            transform: scaleX(0);
+            transition: transform 0.4s;
+        }
+
+        .feature-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+            border-color: rgba(124, 58, 237, 0.2);
+        }
+
+        .feature-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 10px 30px rgba(124, 58, 237, 0.3);
+        }
+
+        .feature-card h3 {
+            font-size: 1.6rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+        }
+
+        .feature-card p {
+            color: var(--text-gray);
+            font-size: 1.05rem;
+            line-height: 1.8;
+        }
+
+        /* Pricing Section */
+        .pricing {
+            padding: 8rem 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2.5rem;
+            margin-top: 4rem;
+        }
+
+        .pricing-card {
+            background: white;
+            padding: 3rem;
+            border-radius: 24px;
+            border: 2px solid #e5e7eb;
+            transition: all 0.4s;
+            position: relative;
+        }
+
+        .pricing-card.featured {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            color: white;
+            transform: scale(1.05);
+            border-color: transparent;
+            box-shadow: 0 30px 80px rgba(124, 58, 237, 0.4);
+        }
+
+        .pricing-card.featured .price-tag {
+            color: white;
+        }
+
+        .pricing-card.featured p {
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .pricing-card.featured .btn {
+            background: white;
+            color: var(--primary);
+        }
+
+        .pricing-card:not(.featured):hover {
+            transform: translateY(-10px);
+            border-color: var(--primary);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+        }
+
+        .plan-name {
+            font-size: 1.3rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+        }
+
+        .price-tag {
+            font-size: 3.5rem;
+            font-weight: 900;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .price-tag span {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--text-gray);
+        }
+
+        .pricing-card p {
+            color: var(--text-gray);
+            margin-bottom: 2rem;
+        }
+
+        .features-list {
+            list-style: none;
+            margin: 2rem 0;
+        }
+
+        .features-list li {
+            padding: 0.8rem 0;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            font-size: 1rem;
+        }
+
+        .features-list li::before {
+            content: '✓';
+            width: 24px;
+            height: 24px;
+            background: linear-gradient(135deg, var(--secondary) 0%, #34D399 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 900;
+            flex-shrink: 0;
+        }
+
+        .pricing-card.featured .features-list li::before {
+            background: white;
+            color: var(--primary);
+        }
+
+        /* CTA Section */
+        .cta {
+            padding: 8rem 5%;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            text-align: center;
+            color: white;
+        }
+
+        .cta h2 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 900;
+            margin-bottom: 1.5rem;
+        }
+
+        .cta p {
+            font-size: 1.3rem;
+            margin-bottom: 3rem;
+            opacity: 0.95;
+        }
+
+        .cta .btn {
+            background: white;
+            color: var(--primary);
+            font-size: 1.1rem;
+            padding: 1.2rem 3rem;
+        }
+
+        .cta .btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Footer */
+        footer {
+            background: #111827;
+            color: white;
+            padding: 4rem 5% 2rem;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            max-width: 1400px;
+            margin: 0 auto 3rem;
+        }
+
+        .footer-section h4 {
+            font-size: 1.2rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-section a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-section a:hover {
+            color: var(--primary-light);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav {
+                padding: 1.5rem 5%;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .hero {
+                padding: 4rem 5%;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .mockup {
+                padding: 1.5rem;
+            }
+
+            .mockup-content {
+                height: 300px;
+            }
+
+            .features-grid,
+            .pricing-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .pricing-card.featured {
+                transform: scale(1);
+            }
+        }
+
+        /* Scroll reveal */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <div class="blob-container">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
+    </div>
+
+    <nav>
+        <div class="logo">FlowSync</div>
+        <ul class="nav-links">
+            <li><a href="#features">기능</a></li>
+            <li><a href="#pricing">가격</a></li>
+            <li><a href="#about">소개</a></li>
+            <li><a href="#" class="btn btn-primary">무료 시작</a></li>
+        </ul>
+    </nav>
+
+    <section class="hero">
+        <div class="badge">
+            <span>🚀</span> 5,000+ 팀이 사용 중
+        </div>
+        <h1>팀 협업의 새로운 <span class="gradient-text">기준</span></h1>
+        <p>
+            복잡한 프로젝트 관리를 단순하게. FlowSync로 팀의 생산성을
+            300% 향상시키세요.
+        </p>
+        <div class="hero-buttons">
+            <a href="#" class="btn btn-primary">14일 무료 체험</a>
+            <a href="#" class="btn btn-outline">데모 보기</a>
+        </div>
+        <div class="hero-image">
+            <div class="mockup">
+                <div class="mockup-content">
+                    📊
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="stats reveal">
+        <div class="stats-grid">
+            <div class="stat-item">
+                <div class="stat-number">5K+</div>
+                <div class="stat-label">활성 사용자</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">98%</div>
+                <div class="stat-label">고객 만족도</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">300%</div>
+                <div class="stat-label">생산성 향상</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">24/7</div>
+                <div class="stat-label">전문가 지원</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="features" id="features">
+        <div class="section-header reveal">
+            <div class="label">FEATURES</div>
+            <h2>모든 것을 하나로</h2>
+            <p>팀이 필요한 모든 도구를 한 곳에서 관리하세요</p>
+        </div>
+        <div class="features-grid">
+            <div class="feature-card reveal">
+                <div class="feature-icon">⚡</div>
+                <h3>실시간 협업</h3>
+                <p>팀원들과 실시간으로 소통하고 협업하세요. 변경 사항은 즉시 동기화됩니다.</p>
+            </div>
+            <div class="feature-card reveal">
+                <div class="feature-icon">🎯</div>
+                <h3>스마트 자동화</h3>
+                <p>반복적인 작업은 자동화하고 중요한 일에만 집중하세요.</p>
+            </div>
+            <div class="feature-card reveal">
+                <div class="feature-icon">📊</div>
+                <h3>인사이트 대시보드</h3>
+                <p>프로젝트 진행 상황을 한눈에 파악하고 데이터 기반 의사결정을 내리세요.</p>
+            </div>
+            <div class="feature-card reveal">
+                <div class="feature-icon">🔒</div>
+                <h3>엔터프라이즈 보안</h3>
+                <p>은행 수준의 암호화로 데이터를 안전하게 보호합니다.</p>
+            </div>
+            <div class="feature-card reveal">
+                <div class="feature-icon">🔗</div>
+                <h3>무제한 통합</h3>
+                <p>Slack, Google Drive, Zoom 등 1,000+ 서비스와 연동 가능합니다.</p>
+            </div>
+            <div class="feature-card reveal">
+                <div class="feature-icon">📱</div>
+                <h3>모바일 앱</h3>
+                <p>언제 어디서나 iOS/Android 앱으로 팀과 연결되세요.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="pricing" id="pricing">
+        <div class="section-header reveal">
+            <div class="label">PRICING</div>
+            <h2>팀에 맞는 플랜 선택</h2>
+            <p>언제든지 플랜 변경 가능합니다</p>
+        </div>
+        <div class="pricing-grid">
+            <div class="pricing-card reveal">
+                <div class="plan-name">Starter</div>
+                <div class="price-tag">₩9,900<span>/월</span></div>
+                <p>소규모 팀을 위한 기본 플랜</p>
+                <ul class="features-list">
+                    <li>팀원 최대 5명</li>
+                    <li>프로젝트 10개</li>
+                    <li>5GB 저장공간</li>
+                    <li>기본 통합</li>
+                    <li>이메일 지원</li>
+                </ul>
+                <a href="#" class="btn btn-outline">시작하기</a>
+            </div>
+
+            <div class="pricing-card featured reveal">
+                <div class="plan-name">Professional</div>
+                <div class="price-tag">₩29,900<span>/월</span></div>
+                <p>성장하는 팀을 위한 최적 플랜</p>
+                <ul class="features-list">
+                    <li>팀원 무제한</li>
+                    <li>프로젝트 무제한</li>
+                    <li>100GB 저장공간</li>
+                    <li>모든 통합</li>
+                    <li>우선 지원</li>
+                    <li>고급 분석</li>
+                    <li>자동화 기능</li>
+                </ul>
+                <a href="#" class="btn">지금 시작하기</a>
+            </div>
+
+            <div class="pricing-card reveal">
+                <div class="plan-name">Enterprise</div>
+                <div class="price-tag">맞춤형</div>
+                <p>대규모 조직을 위한 솔루션</p>
+                <ul class="features-list">
+                    <li>모든 Pro 기능</li>
+                    <li>무제한 저장공간</li>
+                    <li>전담 계정 매니저</li>
+                    <li>맞춤 통합 개발</li>
+                    <li>24/7 전화 지원</li>
+                    <li>온프레미스 옵션</li>
+                    <li>SLA 보장</li>
+                </ul>
+                <a href="#" class="btn btn-outline">문의하기</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta reveal">
+        <h2>지금 바로 시작하세요</h2>
+        <p>신용카드 없이 14일 무료 체험. 언제든 취소 가능합니다.</p>
+        <a href="#" class="btn">무료로 시작하기 →</a>
+    </section>
+
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-section">
+                <h4>FlowSync</h4>
+                <p style="color: rgba(255,255,255,0.7); margin-top: 1rem;">
+                    팀 협업의 새로운 기준을 제시하는 프로젝트 관리 도구
+                </p>
+            </div>
+            <div class="footer-section">
+                <h4>제품</h4>
+                <ul>
+                    <li><a href="#">기능</a></li>
+                    <li><a href="#">가격</a></li>
+                    <li><a href="#">통합</a></li>
+                    <li><a href="#">API</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>회사</h4>
+                <ul>
+                    <li><a href="#">소개</a></li>
+                    <li><a href="#">채용</a></li>
+                    <li><a href="#">블로그</a></li>
+                    <li><a href="#">문의</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>지원</h4>
+                <ul>
+                    <li><a href="#">헬프 센터</a></li>
+                    <li><a href="#">개발자 문서</a></li>
+                    <li><a href="#">커뮤니티</a></li>
+                    <li><a href="#">상태</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 FlowSync. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Scroll reveal animation
+        function reveal() {
+            const reveals = document.querySelectorAll('.reveal');
+            reveals.forEach(element => {
+                const windowHeight = window.innerHeight;
+                const elementTop = element.getBoundingClientRect().top;
+                const elementVisible = 150;
+
+                if (elementTop < windowHeight - elementVisible) {
+                    element.classList.add('active');
+                }
+            });
+        }
+
+        window.addEventListener('scroll', reveal);
+        reveal();
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
