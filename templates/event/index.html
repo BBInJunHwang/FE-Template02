@@ -75,9 +75,21 @@
         }
 
         .event-icon {
-            font-size: 5rem;
-            margin-bottom: 1.5rem;
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 1.5rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 16px;
+            position: relative;
             animation: bounce 2s infinite;
+        }
+
+        .event-icon::after {
+            content: '';
+            position: absolute;
+            inset: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
         }
 
         @keyframes bounce {
@@ -136,12 +148,36 @@
             width: 70px;
             height: 70px;
             background: linear-gradient(135deg, var(--accent) 0%, var(--accent-pink) 100%);
-            border-radius: 50%;
+            border-radius: 16px;
             display: flex;
             align-items: center;
             justify-content: center;
             margin: 0 auto 1.5rem;
-            font-size: 2rem;
+            position: relative;
+        }
+
+        .detail-icon::after {
+            content: '';
+            position: absolute;
+            inset: 6px;
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 12px;
+        }
+
+        .detail-card:nth-child(1) .detail-icon {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        }
+
+        .detail-card:nth-child(2) .detail-icon {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+        }
+
+        .detail-card:nth-child(3) .detail-icon {
+            background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+        }
+
+        .detail-card:nth-child(4) .detail-icon {
+            background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
         }
 
         .detail-card h3 {
@@ -166,6 +202,30 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .section-title::before {
+            content: '';
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            position: relative;
+        }
+
+        .section-title.schedule-title::before {
+            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+        }
+
+        .section-title.speakers-title::before {
+            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+        }
+
+        .section-title.map-title::before {
+            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);
         }
 
         .schedule-timeline {
@@ -236,14 +296,38 @@
         .speaker-avatar {
             width: 120px;
             height: 120px;
-            border-radius: 50%;
+            border-radius: 16px;
             background: linear-gradient(135deg, var(--accent) 0%, var(--accent-pink) 100%);
             margin: 0 auto 1.5rem;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 3rem;
             box-shadow: 0 10px 30px rgba(168, 85, 247, 0.4);
+            position: relative;
+        }
+
+        .speaker-avatar::after {
+            content: '';
+            position: absolute;
+            inset: 8px;
+            background: rgba(255, 255, 255, 0.12);
+            border-radius: 12px;
+        }
+
+        .speaker-card:nth-child(1) .speaker-avatar {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .speaker-card:nth-child(2) .speaker-avatar {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        }
+
+        .speaker-card:nth-child(3) .speaker-avatar {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+        }
+
+        .speaker-card:nth-child(4) .speaker-avatar {
+            background: linear-gradient(135deg, #30cfd0 0%, #330867 100%);
         }
 
         .speaker-card h4 {
@@ -275,8 +359,29 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 5rem;
             margin-bottom: 2rem;
+            position: relative;
+        }
+
+        .map-placeholder::before {
+            content: '';
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);
+            border-radius: 16px;
+            position: relative;
+        }
+
+        .map-placeholder::after {
+            content: '';
+            position: absolute;
+            width: 60px;
+            height: 60px;
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 12px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
         }
 
         .address {
@@ -381,19 +486,47 @@
             background: var(--glass-bg);
             backdrop-filter: blur(20px);
             border: 1px solid var(--glass-border);
-            border-radius: 50%;
+            border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.5rem;
             transition: all 0.3s;
             text-decoration: none;
+            position: relative;
+        }
+
+        .social-link::after {
+            content: '';
+            position: absolute;
+            inset: 6px;
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 8px;
+            transition: all 0.3s;
         }
 
         .social-link:hover {
-            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-pink) 100%);
             border-color: transparent;
             transform: translateY(-5px);
+        }
+
+        .social-link:nth-child(1) {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .social-link:nth-child(2) {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        }
+
+        .social-link:nth-child(3) {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+        }
+
+        .social-link:nth-child(4) {
+            background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+        }
+
+        .social-link:hover::after {
+            background: rgba(255, 255, 255, 0.2);
         }
 
         @media (max-width: 768px) {
@@ -404,6 +537,11 @@
 
             .section-title {
                 font-size: 2rem;
+            }
+
+            .section-title::before {
+                width: 40px;
+                height: 40px;
             }
 
             .card-header {
@@ -429,7 +567,7 @@
     <div class="container">
         <div class="invitation-card">
             <div class="card-header">
-                <div class="event-icon">🎉</div>
+                <div class="event-icon"></div>
                 <h1>2024 테크 컨퍼런스</h1>
                 <p class="subtitle">미래를 함께 만들어갈 당신을 초대합니다</p>
             </div>
@@ -446,31 +584,31 @@
 
                 <div class="details-grid fade-in">
                     <div class="detail-card">
-                        <div class="detail-icon">📅</div>
+                        <div class="detail-icon"></div>
                         <h3>일시</h3>
                         <p>2024년 12월 15일 (토)<br>오후 2시 - 6시</p>
                     </div>
 
                     <div class="detail-card">
-                        <div class="detail-icon">📍</div>
+                        <div class="detail-icon"></div>
                         <h3>장소</h3>
                         <p>서울 강남구<br>코엑스 컨퍼런스홀</p>
                     </div>
 
                     <div class="detail-card">
-                        <div class="detail-icon">👥</div>
+                        <div class="detail-icon"></div>
                         <h3>참가 대상</h3>
                         <p>개발자, 디자이너, PM<br>모든 테크 관심자</p>
                     </div>
 
                     <div class="detail-card">
-                        <div class="detail-icon">💰</div>
+                        <div class="detail-icon"></div>
                         <h3>참가비</h3>
                         <p>얼리버드: 50,000원<br>정규: 80,000원</p>
                     </div>
                 </div>
 
-                <h2 class="section-title">🕐 행사 일정</h2>
+                <h2 class="section-title schedule-title">행사 일정</h2>
                 <div class="schedule-timeline fade-in">
                     <div class="schedule-item">
                         <div class="schedule-time">14:00</div>
@@ -521,36 +659,36 @@
                     </div>
                 </div>
 
-                <h2 class="section-title">🎤 연사 소개</h2>
+                <h2 class="section-title speakers-title">연사 소개</h2>
                 <div class="speakers-grid fade-in">
                     <div class="speaker-card">
-                        <div class="speaker-avatar">👨‍💼</div>
+                        <div class="speaker-avatar"></div>
                         <h4>김AI</h4>
                         <p class="title">AI 연구소 소장</p>
                     </div>
 
                     <div class="speaker-card">
-                        <div class="speaker-avatar">👩‍💻</div>
+                        <div class="speaker-avatar"></div>
                         <h4>이클라우드</h4>
                         <p class="title">클라우드 아키텍트</p>
                     </div>
 
                     <div class="speaker-card">
-                        <div class="speaker-avatar">👨‍🎨</div>
+                        <div class="speaker-avatar"></div>
                         <h4>박창업</h4>
                         <p class="title">테크 스타트업 CEO</p>
                     </div>
 
                     <div class="speaker-card">
-                        <div class="speaker-avatar">👩‍🔬</div>
+                        <div class="speaker-avatar"></div>
                         <h4>최데이터</h4>
                         <p class="title">데이터 사이언티스트</p>
                     </div>
                 </div>
 
-                <h2 class="section-title">🗺️ 오시는 길</h2>
+                <h2 class="section-title map-title">오시는 길</h2>
                 <div class="map-section fade-in">
-                    <div class="map-placeholder">📍</div>
+                    <div class="map-placeholder"></div>
                     <div class="address">
                         <p><strong>서울 강남구 테헤란로 123 코엑스 컨퍼런스홀</strong></p>
                         <p>지하철 2호선 삼성역 5번 출구 도보 5분</p>
@@ -593,10 +731,10 @@
             <p>이메일: event@example.com | 전화: 02-1234-5678</p>
 
             <div class="social-links">
-                <a href="#" class="social-link">📘</a>
-                <a href="#" class="social-link">📷</a>
-                <a href="#" class="social-link">🐦</a>
-                <a href="#" class="social-link">💼</a>
+                <a href="#" class="social-link"></a>
+                <a href="#" class="social-link"></a>
+                <a href="#" class="social-link"></a>
+                <a href="#" class="social-link"></a>
             </div>
 
             <p>&copy; 2024 Tech Conference. All rights reserved.</p>

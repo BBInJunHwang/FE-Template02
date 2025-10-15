@@ -189,6 +189,27 @@
             animation: slideDown 0.8s ease;
         }
 
+        .badge-icon {
+            width: 28px;
+            height: 28px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 8px;
+            position: relative;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .badge-icon::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 14px;
+            height: 14px;
+            background: white;
+            border-radius: 4px;
+        }
+
         @keyframes slideDown {
             from {
                 opacity: 0;
@@ -279,7 +300,27 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 5rem;
+        }
+
+        .mockup-icon {
+            width: 120px;
+            height: 120px;
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            border-radius: 24px;
+            position: relative;
+            box-shadow: 0 20px 60px rgba(240, 147, 251, 0.4);
+        }
+
+        .mockup-icon::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 70px;
+            height: 70px;
+            background: white;
+            border-radius: 16px;
         }
 
         /* Stats Section */
@@ -401,14 +442,54 @@
         .feature-icon {
             width: 70px;
             height: 70px;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
             border-radius: 16px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 2rem;
             margin-bottom: 1.5rem;
-            box-shadow: 0 10px 30px rgba(124, 58, 237, 0.3);
+            position: relative;
+        }
+
+        .feature-icon::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 40px;
+            height: 40px;
+            background: white;
+            border-radius: 10px;
+        }
+
+        .feature-card:nth-child(1) .feature-icon {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            box-shadow: 0 10px 30px rgba(79, 172, 254, 0.4);
+        }
+
+        .feature-card:nth-child(2) .feature-icon {
+            background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+            box-shadow: 0 10px 30px rgba(250, 112, 154, 0.4);
+        }
+
+        .feature-card:nth-child(3) .feature-icon {
+            background: linear-gradient(135deg, #30cfd0 0%, #330867 100%);
+            box-shadow: 0 10px 30px rgba(48, 207, 208, 0.4);
+        }
+
+        .feature-card:nth-child(4) .feature-icon {
+            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+            box-shadow: 0 10px 30px rgba(168, 237, 234, 0.4);
+        }
+
+        .feature-card:nth-child(5) .feature-icon {
+            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);
+            box-shadow: 0 10px 30px rgba(255, 154, 158, 0.4);
+        }
+
+        .feature-card:nth-child(6) .feature-icon {
+            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+            box-shadow: 0 10px 30px rgba(252, 182, 159, 0.4);
         }
 
         .feature-card h3 {
@@ -675,7 +756,7 @@
 
     <section class="hero">
         <div class="badge">
-            <span>🚀</span> 5,000+ 팀이 사용 중
+            <div class="badge-icon"></div> 5,000+ 팀이 사용 중
         </div>
         <h1>팀 협업의 새로운 <span class="gradient-text">기준</span></h1>
         <p>
@@ -689,7 +770,7 @@
         <div class="hero-image">
             <div class="mockup">
                 <div class="mockup-content">
-                    📊
+                    <div class="mockup-icon"></div>
                 </div>
             </div>
         </div>
@@ -724,32 +805,32 @@
         </div>
         <div class="features-grid">
             <div class="feature-card reveal">
-                <div class="feature-icon">⚡</div>
+                <div class="feature-icon"></div>
                 <h3>실시간 협업</h3>
                 <p>팀원들과 실시간으로 소통하고 협업하세요. 변경 사항은 즉시 동기화됩니다.</p>
             </div>
             <div class="feature-card reveal">
-                <div class="feature-icon">🎯</div>
+                <div class="feature-icon"></div>
                 <h3>스마트 자동화</h3>
                 <p>반복적인 작업은 자동화하고 중요한 일에만 집중하세요.</p>
             </div>
             <div class="feature-card reveal">
-                <div class="feature-icon">📊</div>
+                <div class="feature-icon"></div>
                 <h3>인사이트 대시보드</h3>
                 <p>프로젝트 진행 상황을 한눈에 파악하고 데이터 기반 의사결정을 내리세요.</p>
             </div>
             <div class="feature-card reveal">
-                <div class="feature-icon">🔒</div>
+                <div class="feature-icon"></div>
                 <h3>엔터프라이즈 보안</h3>
                 <p>은행 수준의 암호화로 데이터를 안전하게 보호합니다.</p>
             </div>
             <div class="feature-card reveal">
-                <div class="feature-icon">🔗</div>
+                <div class="feature-icon"></div>
                 <h3>무제한 통합</h3>
                 <p>Slack, Google Drive, Zoom 등 1,000+ 서비스와 연동 가능합니다.</p>
             </div>
             <div class="feature-card reveal">
-                <div class="feature-icon">📱</div>
+                <div class="feature-icon"></div>
                 <h3>모바일 앱</h3>
                 <p>언제 어디서나 iOS/Android 앱으로 팀과 연결되세요.</p>
             </div>

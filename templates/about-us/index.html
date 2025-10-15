@@ -5,117 +5,84 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About Us - 회사 소개</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
-
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
-        :root {
-            --bg-primary: #0a0e27;
-            --bg-secondary: #1a1f3a;
-            --text-primary: #ffffff;
-            --text-secondary: #b4b4b4;
-            --accent: #3b82f6;
-            --accent-cyan: #06b6d4;
-            --glass-bg: rgba(255, 255, 255, 0.05);
-            --glass-border: rgba(255, 255, 255, 0.1);
-        }
-
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
             line-height: 1.6;
-            color: var(--text-primary);
-            background: var(--bg-primary);
+            color: #1a1f36;
+            background: #fafbfc;
             overflow-x: hidden;
-        }
-
-        .bg-animation {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 0;
-            background: radial-gradient(circle at 20% 50%, rgba(59, 130, 246, 0.15) 0%, transparent 50%),
-                        radial-gradient(circle at 80% 50%, rgba(6, 182, 212, 0.15) 0%, transparent 50%);
-            animation: bgMove 25s ease-in-out infinite;
-        }
-
-        @keyframes bgMove {
-            0%, 100% { transform: translate(0, 0); }
-            50% { transform: translate(30px, 30px); }
         }
 
         nav {
             position: fixed;
-            top: 20px;
-            left: 50%;
-            transform: translateX(-50%);
+            top: 0;
+            left: 0;
+            right: 0;
             z-index: 1000;
-            background: var(--glass-bg);
-            backdrop-filter: blur(20px);
-            border: 1px solid var(--glass-border);
-            border-radius: 50px;
-            padding: 12px 30px;
+            background: white;
+            border-bottom: 1px solid #e4e7ec;
+            padding: 1rem 2rem;
         }
 
         nav ul {
             list-style: none;
             display: flex;
-            gap: 2rem;
+            justify-content: center;
+            gap: 2.5rem;
+            max-width: 1320px;
+            margin: 0 auto;
         }
 
         nav a {
             text-decoration: none;
-            color: var(--text-primary);
+            color: #5b6b8e;
             font-weight: 500;
-            font-size: 0.95rem;
-            transition: color 0.3s;
+            font-size: 0.9375rem;
+            transition: color 0.2s;
         }
 
         nav a:hover {
-            color: var(--accent);
+            color: #4f46e5;
         }
 
         .hero {
-            min-height: 100vh;
+            min-height: 90vh;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
             padding: 8rem 2rem 4rem;
-            position: relative;
-            z-index: 1;
+            background: white;
         }
 
         .hero h1 {
-            font-size: clamp(3rem, 8vw, 5rem);
-            font-weight: 900;
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-weight: 700;
             margin-bottom: 1.5rem;
-        }
-
-        .gradient-text {
-            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-cyan) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            color: #1a1f36;
+            letter-spacing: -0.02em;
+            line-height: 1.2;
         }
 
         .hero p {
-            font-size: 1.4rem;
-            color: var(--text-secondary);
+            font-size: 1.25rem;
+            color: #5b6b8e;
             max-width: 700px;
             margin: 0 auto;
-            font-weight: 300;
         }
 
         section {
-            position: relative;
-            z-index: 1;
-            padding: 6rem 2rem;
+            padding: 5rem 2rem;
+        }
+
+        section:nth-child(even) {
+            background: white;
         }
 
         .container {
@@ -129,15 +96,16 @@
         }
 
         .section-header h2 {
-            font-size: clamp(2.5rem, 5vw, 3.5rem);
-            font-weight: 800;
+            font-size: clamp(2rem, 4vw, 2.75rem);
+            font-weight: 700;
             margin-bottom: 1rem;
+            color: #1a1f36;
+            letter-spacing: -0.01em;
         }
 
         .section-header p {
-            font-size: 1.2rem;
-            color: var(--text-secondary);
-            font-weight: 300;
+            font-size: 1.125rem;
+            color: #5b6b8e;
         }
 
         .mission-vision {
@@ -147,136 +115,168 @@
         }
 
         .card {
-            background: var(--glass-bg);
-            backdrop-filter: blur(20px);
-            border: 1px solid var(--glass-border);
-            border-radius: 30px;
-            padding: 3rem;
-            transition: all 0.4s;
+            background: white;
+            border: 1px solid #e4e7ec;
+            border-radius: 16px;
+            padding: 2.5rem;
+            transition: all 0.3s;
         }
 
         .card:hover {
-            transform: translateY(-10px);
-            border-color: var(--accent);
-            box-shadow: 0 20px 60px rgba(59, 130, 246, 0.3);
+            transform: translateY(-4px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
+            border-color: #d1d5db;
         }
 
         .card-icon {
-            font-size: 4rem;
+            width: 72px;
+            height: 72px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             margin-bottom: 1.5rem;
+            position: relative;
+        }
+
+        .card-icon::after {
+            content: '';
+            position: absolute;
+            width: 32px;
+            height: 32px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 8px;
         }
 
         .card h3 {
-            font-size: 2rem;
-            margin-bottom: 1.5rem;
-            font-weight: 700;
-            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-cyan) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            font-size: 1.75rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+            color: #1a1f36;
+            letter-spacing: -0.01em;
         }
 
         .card p {
-            font-size: 1.1rem;
-            line-height: 1.8;
-            color: var(--text-secondary);
-            font-weight: 300;
+            font-size: 1rem;
+            line-height: 1.7;
+            color: #5b6b8e;
         }
 
         .values-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
             gap: 2rem;
         }
 
         .value-card {
             text-align: center;
-            background: var(--glass-bg);
-            backdrop-filter: blur(20px);
-            border: 1px solid var(--glass-border);
-            border-radius: 24px;
+            background: white;
+            border: 1px solid #e4e7ec;
+            border-radius: 16px;
             padding: 2.5rem;
             transition: all 0.3s;
         }
 
         .value-card:hover {
-            transform: translateY(-10px);
-            border-color: var(--accent);
+            transform: translateY(-4px);
+            border-color: #4f46e5;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.06);
         }
 
         .value-icon {
-            width: 80px;
-            height: 80px;
-            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-cyan) 100%);
-            border-radius: 50%;
+            width: 72px;
+            height: 72px;
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            border-radius: 16px;
             display: flex;
             align-items: center;
             justify-content: center;
             margin: 0 auto 1.5rem;
-            font-size: 2.5rem;
+            position: relative;
+        }
+
+        .value-icon::after {
+            content: '';
+            position: absolute;
+            width: 32px;
+            height: 32px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 8px;
         }
 
         .value-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            font-weight: 700;
+            font-size: 1.375rem;
+            margin-bottom: 0.75rem;
+            font-weight: 600;
+            color: #1a1f36;
         }
 
         .value-card p {
-            color: var(--text-secondary);
-            font-weight: 300;
+            color: #5b6b8e;
+            line-height: 1.6;
         }
 
         .team-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
             gap: 2rem;
         }
 
         .team-member {
-            background: var(--glass-bg);
-            backdrop-filter: blur(20px);
-            border: 1px solid var(--glass-border);
-            border-radius: 24px;
+            background: white;
+            border: 1px solid #e4e7ec;
+            border-radius: 16px;
             padding: 2.5rem;
             text-align: center;
             transition: all 0.3s;
         }
 
         .team-member:hover {
-            transform: translateY(-10px);
-            border-color: var(--accent);
+            transform: translateY(-4px);
+            border-color: #d1d5db;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.06);
         }
 
         .team-photo {
-            width: 140px;
-            height: 140px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-cyan) 100%);
+            width: 120px;
+            height: 120px;
+            border-radius: 20px;
+            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
             display: flex;
             align-items: center;
             justify-content: center;
             margin: 0 auto 1.5rem;
-            font-size: 4rem;
-            box-shadow: 0 10px 30px rgba(59, 130, 246, 0.4);
+            position: relative;
+        }
+
+        .team-photo::after {
+            content: '';
+            position: absolute;
+            width: 60px;
+            height: 60px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 12px;
         }
 
         .team-member h4 {
-            font-size: 1.3rem;
+            font-size: 1.25rem;
             margin-bottom: 0.5rem;
-            font-weight: 700;
+            font-weight: 600;
+            color: #1a1f36;
         }
 
         .team-member .role {
-            color: var(--accent);
-            font-weight: 600;
+            color: #4f46e5;
+            font-weight: 500;
             margin-bottom: 1rem;
+            font-size: 0.9375rem;
         }
 
         .team-member p {
-            color: var(--text-secondary);
-            font-size: 0.95rem;
-            font-weight: 300;
+            color: #5b6b8e;
+            font-size: 0.9375rem;
+            line-height: 1.6;
         }
 
         .timeline {
@@ -291,8 +291,8 @@
             left: 0;
             top: 0;
             bottom: 0;
-            width: 3px;
-            background: linear-gradient(180deg, var(--accent) 0%, var(--accent-cyan) 100%);
+            width: 2px;
+            background: #4f46e5;
         }
 
         .timeline-item {
@@ -303,71 +303,77 @@
         .timeline-item::before {
             content: '';
             position: absolute;
-            left: -3.6rem;
-            top: 0;
-            width: 20px;
-            height: 20px;
+            left: -3.5rem;
+            top: 5px;
+            width: 14px;
+            height: 14px;
             border-radius: 50%;
-            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-cyan) 100%);
-            box-shadow: 0 0 0 4px var(--bg-primary), 0 0 0 6px var(--accent);
+            background: #4f46e5;
+            border: 3px solid #fafbfc;
         }
 
         .timeline-year {
             display: inline-block;
-            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-cyan) 100%);
+            background: #1a1f36;
             color: white;
-            padding: 0.5rem 1.5rem;
-            border-radius: 50px;
-            font-weight: 700;
+            padding: 0.5rem 1.25rem;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.9375rem;
             margin-bottom: 1rem;
         }
 
         .timeline-content {
-            background: var(--glass-bg);
-            backdrop-filter: blur(20px);
-            border: 1px solid var(--glass-border);
-            border-radius: 20px;
-            padding: 2rem;
+            background: white;
+            border: 1px solid #e4e7ec;
+            border-radius: 12px;
+            padding: 1.75rem;
         }
 
         .timeline-content h4 {
-            font-size: 1.4rem;
-            margin-bottom: 0.8rem;
-            font-weight: 700;
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: #1a1f36;
         }
 
         .timeline-content p {
-            color: var(--text-secondary);
-            line-height: 1.7;
-            font-weight: 300;
+            color: #5b6b8e;
+            line-height: 1.6;
         }
 
         footer {
-            background: var(--bg-secondary);
+            background: white;
             padding: 3rem 2rem;
             text-align: center;
-            border-top: 1px solid var(--glass-border);
+            border-top: 1px solid #e4e7ec;
         }
 
         .footer-text {
-            color: var(--text-secondary);
-            font-weight: 300;
+            color: #5b6b8e;
+            font-size: 0.9375rem;
+            margin: 0.5rem 0;
         }
 
         @media (max-width: 768px) {
             nav ul {
-                gap: 1rem;
+                gap: 1.5rem;
+                font-size: 0.875rem;
             }
 
             .timeline {
                 padding-left: 2rem;
             }
+
+            .timeline-item::before {
+                left: -2.5rem;
+            }
         }
 
         .fade-in {
             opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.6s ease, transform 0.6s ease;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
         }
 
         .fade-in.visible {
@@ -377,8 +383,6 @@
     </style>
 </head>
 <body>
-    <div class="bg-animation"></div>
-
     <nav>
         <ul>
             <li><a href="#about">회사 소개</a></li>
@@ -392,7 +396,7 @@
     <section class="hero">
         <div>
             <h1>
-                <span class="gradient-text">혁신</span>과 <span class="gradient-text">신뢰</span>로<br>
+                혁신과 신뢰로<br>
                 미래를 만들어갑니다
             </h1>
             <p>
@@ -410,7 +414,7 @@
             </div>
 
             <div class="card fade-in" style="text-align: center;">
-                <p style="font-size: 1.2rem; line-height: 2; max-width: 900px; margin: 0 auto;">
+                <p style="font-size: 1.125rem; line-height: 1.8; max-width: 900px; margin: 0 auto;">
                     2015년에 설립된 저희 회사는 혁신적인 기술과 창의적인 솔루션으로
                     고객의 비즈니스 성장을 돕고 있습니다. 전문성과 열정을 갖춘 팀원들과 함께
                     끊임없이 변화하는 시장에서 최고의 가치를 제공하기 위해 노력하고 있습니다.
@@ -428,7 +432,7 @@
 
             <div class="mission-vision">
                 <div class="card fade-in">
-                    <div class="card-icon">🎯</div>
+                    <div class="card-icon"></div>
                     <h3>미션</h3>
                     <p>
                         혁신적인 기술과 창의적인 아이디어로 고객의 성공을 실현하고,
@@ -436,7 +440,7 @@
                     </p>
                 </div>
                 <div class="card fade-in">
-                    <div class="card-icon">🚀</div>
+                    <div class="card-icon" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);"></div>
                     <h3>비전</h3>
                     <p>
                         업계를 선도하는 글로벌 기업으로 성장하여,
@@ -456,22 +460,22 @@
 
             <div class="values-grid">
                 <div class="value-card fade-in">
-                    <div class="value-icon">💡</div>
+                    <div class="value-icon"></div>
                     <h3>혁신</h3>
                     <p>끊임없는 도전과 창의적 사고로 새로운 가치를 창출합니다</p>
                 </div>
                 <div class="value-card fade-in">
-                    <div class="value-icon">🤝</div>
+                    <div class="value-icon" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);"></div>
                     <h3>신뢰</h3>
                     <p>투명하고 정직한 소통으로 고객과의 신뢰를 구축합니다</p>
                 </div>
                 <div class="value-card fade-in">
-                    <div class="value-icon">⭐</div>
+                    <div class="value-icon" style="background: linear-gradient(135deg, #30cfd0 0%, #330867 100%);"></div>
                     <h3>탁월함</h3>
                     <p>최고의 품질과 서비스로 고객 만족을 실현합니다</p>
                 </div>
                 <div class="value-card fade-in">
-                    <div class="value-icon">🌱</div>
+                    <div class="value-icon" style="background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);"></div>
                     <h3>성장</h3>
                     <p>지속적인 학습과 발전으로 함께 성장합니다</p>
                 </div>
@@ -488,28 +492,28 @@
 
             <div class="team-grid">
                 <div class="team-member fade-in">
-                    <div class="team-photo">👨‍💼</div>
+                    <div class="team-photo"></div>
                     <h4>김대표</h4>
                     <p class="role">대표이사 / CEO</p>
                     <p>20년 경력의 기술 전문가로 회사의 비전을 선도합니다</p>
                 </div>
 
                 <div class="team-member fade-in">
-                    <div class="team-photo">👩‍💻</div>
+                    <div class="team-photo" style="background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);"></div>
                     <h4>이부장</h4>
                     <p class="role">기술이사 / CTO</p>
                     <p>혁신적인 기술 솔루션 개발을 책임집니다</p>
                 </div>
 
                 <div class="team-member fade-in">
-                    <div class="team-photo">👨‍🎨</div>
+                    <div class="team-photo" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);"></div>
                     <h4>박팀장</h4>
                     <p class="role">디자인팀장</p>
                     <p>사용자 경험을 최우선으로 하는 디자인을 추구합니다</p>
                 </div>
 
                 <div class="team-member fade-in">
-                    <div class="team-photo">👩‍💼</div>
+                    <div class="team-photo" style="background: linear-gradient(135deg, #fbc2eb 0%, #a6c1ee 100%);"></div>
                     <h4>최이사</h4>
                     <p class="role">마케팅이사</p>
                     <p>전략적 마케팅으로 브랜드 가치를 높입니다</p>

@@ -255,11 +255,10 @@
             width: 280px;
             height: 280px;
             border-radius: 50%;
-            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-pink) 100%);
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 7rem;
             margin: 0 auto;
             box-shadow: 0 20px 60px rgba(99, 102, 241, 0.4);
             position: relative;
@@ -270,10 +269,23 @@
             position: absolute;
             inset: -3px;
             border-radius: 50%;
-            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-pink) 100%);
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             z-index: -1;
             filter: blur(20px);
             opacity: 0.7;
+        }
+
+        .profile-avatar::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 180px;
+            height: 180px;
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 50%;
+            backdrop-filter: blur(5px);
         }
 
         .about-content h3 {
@@ -315,8 +327,56 @@
         }
 
         .skill-icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 1rem;
+            border-radius: 16px;
+            position: relative;
+            transition: all 0.3s;
+        }
+
+        .skill-card:nth-child(1) .skill-icon {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .skill-card:nth-child(2) .skill-icon {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        }
+
+        .skill-card:nth-child(3) .skill-icon {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+        }
+
+        .skill-card:nth-child(4) .skill-icon {
+            background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+        }
+
+        .skill-card:nth-child(5) .skill-icon {
+            background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+        }
+
+        .skill-card:nth-child(6) .skill-icon {
+            background: linear-gradient(135deg, #30cfd0 0%, #330867 100%);
+        }
+
+        .skill-card:nth-child(7) .skill-icon {
+            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+        }
+
+        .skill-card:nth-child(8) .skill-icon {
+            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);
+        }
+
+        .skill-icon::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 60%;
+            height: 60%;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
         }
 
         .skill-name {
@@ -349,11 +409,48 @@
         .project-image {
             width: 100%;
             height: 220px;
-            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-pink) 100%);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-card:nth-child(1) .project-image {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .project-card:nth-child(2) .project-image {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        }
+
+        .project-card:nth-child(3) .project-image {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+        }
+
+        .project-card:nth-child(4) .project-image {
+            background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+        }
+
+        .project-card:nth-child(5) .project-image {
+            background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+        }
+
+        .project-card:nth-child(6) .project-image {
+            background: linear-gradient(135deg, #30cfd0 0%, #330867 100%);
+        }
+
+        .project-image::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 120px;
+            height: 120px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 24px;
+            backdrop-filter: blur(10px);
         }
 
         .project-content {
@@ -486,13 +583,37 @@
         .contact-icon {
             width: 80px;
             height: 80px;
-            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-pink) 100%);
-            border-radius: 50%;
+            border-radius: 16px;
             display: flex;
             align-items: center;
             justify-content: center;
             margin: 0 auto 1.5rem;
-            font-size: 2rem;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .contact-card:nth-child(1) .contact-icon {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .contact-card:nth-child(2) .contact-icon {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        }
+
+        .contact-card:nth-child(3) .contact-icon {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+        }
+
+        .contact-icon::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 50%;
+            height: 50%;
+            background: rgba(255, 255, 255, 0.25);
+            border-radius: 8px;
         }
 
         .contact-card h3 {
@@ -524,21 +645,46 @@
         .social-link {
             width: 60px;
             height: 60px;
-            background: var(--glass-bg);
-            backdrop-filter: blur(20px);
-            border: 1px solid var(--glass-border);
-            border-radius: 50%;
+            border-radius: 16px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.8rem;
             transition: all 0.3s;
+            position: relative;
+            border: none;
+        }
+
+        .social-links a:nth-child(1) {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .social-links a:nth-child(2) {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        }
+
+        .social-links a:nth-child(3) {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+        }
+
+        .social-links a:nth-child(4) {
+            background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+        }
+
+        .social-link::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 50%;
+            height: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 8px;
         }
 
         .social-link:hover {
-            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-pink) 100%);
-            border-color: transparent;
-            transform: translateY(-5px);
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 15px 40px rgba(99, 102, 241, 0.4);
         }
 
         .footer-text {
@@ -598,7 +744,7 @@
 
     <section class="hero">
         <div class="hero-content">
-            <p class="hero-greeting">안녕하세요 👋</p>
+            <p class="hero-greeting">안녕하세요</p>
             <h1>저는 <span class="gradient-text">홍길동</span>입니다</h1>
             <p class="subtitle">
                 풀스택 개발자 • 문제 해결사 • 기술 애호가
@@ -618,7 +764,7 @@
             </div>
 
             <div class="about-grid fade-in">
-                <div class="profile-avatar">👨‍💻</div>
+                <div class="profile-avatar"></div>
                 <div class="about-content">
                     <h3>창의적인 문제 해결자</h3>
                     <p>
@@ -647,35 +793,35 @@
 
             <div class="skills-grid">
                 <div class="skill-card fade-in">
-                    <div class="skill-icon">⚛️</div>
+                    <div class="skill-icon"></div>
                     <div class="skill-name">React</div>
                 </div>
                 <div class="skill-card fade-in">
-                    <div class="skill-icon">🟢</div>
+                    <div class="skill-icon"></div>
                     <div class="skill-name">Node.js</div>
                 </div>
                 <div class="skill-card fade-in">
-                    <div class="skill-icon">🐍</div>
+                    <div class="skill-icon"></div>
                     <div class="skill-name">Python</div>
                 </div>
                 <div class="skill-card fade-in">
-                    <div class="skill-icon">💾</div>
+                    <div class="skill-icon"></div>
                     <div class="skill-name">MongoDB</div>
                 </div>
                 <div class="skill-card fade-in">
-                    <div class="skill-icon">🐘</div>
+                    <div class="skill-icon"></div>
                     <div class="skill-name">PostgreSQL</div>
                 </div>
                 <div class="skill-card fade-in">
-                    <div class="skill-icon">☁️</div>
+                    <div class="skill-icon"></div>
                     <div class="skill-name">AWS</div>
                 </div>
                 <div class="skill-card fade-in">
-                    <div class="skill-icon">🐳</div>
+                    <div class="skill-icon"></div>
                     <div class="skill-name">Docker</div>
                 </div>
                 <div class="skill-card fade-in">
-                    <div class="skill-icon">🎨</div>
+                    <div class="skill-icon"></div>
                     <div class="skill-name">Figma</div>
                 </div>
             </div>
@@ -691,7 +837,7 @@
 
             <div class="projects-grid">
                 <div class="project-card fade-in">
-                    <div class="project-image">🛒</div>
+                    <div class="project-image"></div>
                     <div class="project-content">
                         <h3>이커머스 플랫폼</h3>
                         <p>
@@ -708,7 +854,7 @@
                 </div>
 
                 <div class="project-card fade-in">
-                    <div class="project-image">📱</div>
+                    <div class="project-image"></div>
                     <div class="project-content">
                         <h3>모바일 헬스케어 앱</h3>
                         <p>
@@ -724,7 +870,7 @@
                 </div>
 
                 <div class="project-card fade-in">
-                    <div class="project-image">📊</div>
+                    <div class="project-image"></div>
                     <div class="project-content">
                         <h3>데이터 분석 대시보드</h3>
                         <p>
@@ -740,7 +886,7 @@
                 </div>
 
                 <div class="project-card fade-in">
-                    <div class="project-image">🤖</div>
+                    <div class="project-image"></div>
                     <div class="project-content">
                         <h3>AI 챗봇 서비스</h3>
                         <p>
@@ -756,7 +902,7 @@
                 </div>
 
                 <div class="project-card fade-in">
-                    <div class="project-image">🎮</div>
+                    <div class="project-image"></div>
                     <div class="project-content">
                         <h3>온라인 게임 플랫폼</h3>
                         <p>
@@ -772,7 +918,7 @@
                 </div>
 
                 <div class="project-card fade-in">
-                    <div class="project-image">🏢</div>
+                    <div class="project-image"></div>
                     <div class="project-content">
                         <h3>기업용 협업 툴</h3>
                         <p>
@@ -857,17 +1003,17 @@
 
             <div class="contact-grid">
                 <div class="contact-card fade-in">
-                    <div class="contact-icon">📧</div>
+                    <div class="contact-icon"></div>
                     <h3>Email</h3>
                     <p>hong@example.com</p>
                 </div>
                 <div class="contact-card fade-in">
-                    <div class="contact-icon">📱</div>
+                    <div class="contact-icon"></div>
                     <h3>Phone</h3>
                     <p>010-1234-5678</p>
                 </div>
                 <div class="contact-card fade-in">
-                    <div class="contact-icon">📍</div>
+                    <div class="contact-icon"></div>
                     <h3>Location</h3>
                     <p>서울, 대한민국</p>
                 </div>
@@ -878,10 +1024,10 @@
     <footer>
         <div class="container">
             <div class="social-links">
-                <a href="#" class="social-link">💼</a>
-                <a href="#" class="social-link">🐙</a>
-                <a href="#" class="social-link">🐦</a>
-                <a href="#" class="social-link">📘</a>
+                <a href="#" class="social-link"></a>
+                <a href="#" class="social-link"></a>
+                <a href="#" class="social-link"></a>
+                <a href="#" class="social-link"></a>
             </div>
             <p class="footer-text">&copy; 2024 홍길동. All rights reserved.</p>
         </div>

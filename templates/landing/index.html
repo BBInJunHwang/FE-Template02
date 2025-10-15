@@ -277,13 +277,26 @@
         .feature-icon {
             width: 80px;
             height: 80px;
-            background: linear-gradient(135deg, var(--accent) 0%, #ec4899 100%);
-            border-radius: 20px;
+            border-radius: 16px;
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 2.5rem;
             margin-bottom: 1.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-icon::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 70%;
+            height: 70%;
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 12px;
         }
 
         .glass-card h3 {
@@ -444,11 +457,24 @@
             width: 60px;
             height: 60px;
             border-radius: 50%;
-            background: linear-gradient(135deg, var(--accent) 0%, #ec4899 100%);
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 1.8rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .author-avatar::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 65%;
+            height: 65%;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
         }
 
         .author-info h4 {
@@ -619,37 +645,37 @@
 
             <div class="features-grid">
                 <div class="glass-card fade-in">
-                    <div class="feature-icon">⚡</div>
+                    <div class="feature-icon" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);"></div>
                     <h3>초고속 처리</h3>
                     <p>최첨단 기술로 빠른 속도와 높은 성능을 보장합니다. 업무 효율을 극대화하세요.</p>
                 </div>
 
                 <div class="glass-card fade-in">
-                    <div class="feature-icon">🔒</div>
+                    <div class="feature-icon" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);"></div>
                     <h3>엔터프라이즈 보안</h3>
                     <p>은행급 보안 시스템으로 데이터를 안전하게 보호합니다. ISO 27001 인증.</p>
                 </div>
 
                 <div class="glass-card fade-in">
-                    <div class="feature-icon">📊</div>
+                    <div class="feature-icon" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);"></div>
                     <h3>실시간 인사이트</h3>
                     <p>AI 기반 분석으로 비즈니스 인사이트를 실시간으로 확인하세요.</p>
                 </div>
 
                 <div class="glass-card fade-in">
-                    <div class="feature-icon">🚀</div>
+                    <div class="feature-icon" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);"></div>
                     <h3>무한 확장</h3>
                     <p>비즈니스 성장에 맞춰 자동으로 확장되는 인프라를 제공합니다.</p>
                 </div>
 
                 <div class="glass-card fade-in">
-                    <div class="feature-icon">🔗</div>
+                    <div class="feature-icon" style="background: linear-gradient(135deg, #30cfd0 0%, #330867 100%);"></div>
                     <h3>완벽한 통합</h3>
                     <p>100개 이상의 앱과 원클릭 연동. 기존 워크플로우를 그대로 유지하세요.</p>
                 </div>
 
                 <div class="glass-card fade-in">
-                    <div class="feature-icon">💬</div>
+                    <div class="feature-icon" style="background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);"></div>
                     <h3>24/7 전문 지원</h3>
                     <p>언제든지 도움이 필요하면 연락하세요. 전문팀이 24시간 대기 중입니다.</p>
                 </div>
@@ -697,7 +723,7 @@
                         팀원들 모두 만족하고 있어요. 최고의 투자였습니다!
                     </p>
                     <div class="testimonial-author">
-                        <div class="author-avatar">👨‍💼</div>
+                        <div class="author-avatar" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);"></div>
                         <div class="author-info">
                             <h4>김대표</h4>
                             <p>테크 스타트업 CEO</p>
@@ -712,7 +738,7 @@
                         사용하기 편해요. 강력 추천합니다!
                     </p>
                     <div class="testimonial-author">
-                        <div class="author-avatar">👩‍💻</div>
+                        <div class="author-avatar" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);"></div>
                         <div class="author-info">
                             <h4>이팀장</h4>
                             <p>IT 컨설팅 팀장</p>
@@ -727,7 +753,7 @@
                         즉시 해결해주셔서 걱정이 없습니다.
                     </p>
                     <div class="testimonial-author">
-                        <div class="author-avatar">👨‍🎨</div>
+                        <div class="author-avatar" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);"></div>
                         <div class="author-info">
                             <h4>박부장</h4>
                             <p>마케팅 부장</p>

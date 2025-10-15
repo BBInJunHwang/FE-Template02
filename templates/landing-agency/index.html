@@ -626,11 +626,103 @@
             justify-content: center;
             font-size: 1.5rem;
             transition: all 0.3s;
+            background: transparent;
+            padding: 0;
         }
 
         .social-link:hover {
-            background: var(--neon-cyan);
-            box-shadow: 0 0 30px var(--neon-cyan);
+            border-color: transparent;
+            box-shadow: 0 0 30px rgba(0, 240, 255, 0.5);
+            transform: translateY(-3px);
+        }
+
+        .social-link:hover .gradient-icon {
+            transform: scale(1.05);
+        }
+
+        /* Gradient Icon Styles */
+        .gradient-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 16px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.3s ease;
+        }
+
+        .gradient-icon::after {
+            content: '';
+            position: absolute;
+            inset: 4px;
+            background: rgba(26, 26, 26, 0.95);
+            border-radius: 14px;
+            z-index: 1;
+        }
+
+        .gradient-icon::before {
+            content: '';
+            position: absolute;
+            inset: 8px;
+            background: white;
+            border-radius: 12px;
+            z-index: 2;
+            opacity: 0.1;
+        }
+
+        .portfolio-bg .gradient-icon {
+            width: 120px;
+            height: 120px;
+            font-size: 0;
+        }
+
+        .gradient-icon-1 {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .gradient-icon-2 {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        }
+
+        .gradient-icon-3 {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+        }
+
+        .gradient-icon-4 {
+            background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+        }
+
+        .social-links .gradient-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+        }
+
+        .social-links .gradient-icon::after {
+            inset: 3px;
+            border-radius: 10px;
+        }
+
+        .social-links .gradient-icon::before {
+            inset: 6px;
+            border-radius: 8px;
+        }
+
+        .gradient-icon-5 {
+            background: linear-gradient(135deg, #30cfd0 0%, #330867 100%);
+        }
+
+        .gradient-icon-6 {
+            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+        }
+
+        .gradient-icon-7 {
+            background: linear-gradient(135deg, #ff9a56 0%, #ff6a88 100%);
+        }
+
+        .gradient-icon-8 {
+            background: linear-gradient(135deg, #96fbc4 0%, #f9f586 100%);
         }
 
         /* Responsive */
@@ -778,28 +870,36 @@
         </div>
         <div class="portfolio-grid">
             <div class="portfolio-item reveal">
-                <div class="portfolio-bg">🎨</div>
+                <div class="portfolio-bg">
+                    <div class="gradient-icon gradient-icon-1"></div>
+                </div>
                 <div class="portfolio-info">
                     <h3>Nike Metaverse</h3>
                     <p>3D Design • Web3</p>
                 </div>
             </div>
             <div class="portfolio-item reveal">
-                <div class="portfolio-bg">🚀</div>
+                <div class="portfolio-bg">
+                    <div class="gradient-icon gradient-icon-2"></div>
+                </div>
                 <div class="portfolio-info">
                     <h3>SpaceX Dashboard</h3>
                     <p>UI/UX • Development</p>
                 </div>
             </div>
             <div class="portfolio-item reveal">
-                <div class="portfolio-bg">🎵</div>
+                <div class="portfolio-bg">
+                    <div class="gradient-icon gradient-icon-3"></div>
+                </div>
                 <div class="portfolio-info">
                     <h3>Spotify Reimagined</h3>
                     <p>App Design • Motion</p>
                 </div>
             </div>
             <div class="portfolio-item reveal">
-                <div class="portfolio-bg">⚡</div>
+                <div class="portfolio-bg">
+                    <div class="gradient-icon gradient-icon-4"></div>
+                </div>
                 <div class="portfolio-info">
                     <h3>Tesla Interface</h3>
                     <p>Branding • 3D</p>
@@ -852,10 +952,18 @@
                     혁신적인 크리에이티브 에이전시
                 </p>
                 <div class="social-links">
-                    <a href="#" class="social-link">💼</a>
-                    <a href="#" class="social-link">📷</a>
-                    <a href="#" class="social-link">🐦</a>
-                    <a href="#" class="social-link">📘</a>
+                    <a href="#" class="social-link">
+                        <div class="gradient-icon gradient-icon-5"></div>
+                    </a>
+                    <a href="#" class="social-link">
+                        <div class="gradient-icon gradient-icon-6"></div>
+                    </a>
+                    <a href="#" class="social-link">
+                        <div class="gradient-icon gradient-icon-7"></div>
+                    </a>
+                    <a href="#" class="social-link">
+                        <div class="gradient-icon gradient-icon-8"></div>
+                    </a>
                 </div>
             </div>
             <div class="footer-section">

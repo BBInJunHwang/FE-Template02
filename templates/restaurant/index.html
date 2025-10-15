@@ -283,10 +283,32 @@
         }
 
         .award-item {
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
             color: #C5A973;
             font-size: 1.1rem;
             letter-spacing: 2px;
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .award-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 16px;
+            position: relative;
+            flex-shrink: 0;
+        }
+
+        .award-icon::after {
+            content: '';
+            position: absolute;
+            top: 6px;
+            left: 6px;
+            right: 6px;
+            bottom: 6px;
+            background: rgba(10, 10, 10, 0.95);
+            border-radius: 10px;
         }
 
         /* Reservation Section */
@@ -416,16 +438,42 @@
         .social-icon {
             width: 50px;
             height: 50px;
-            border: 1px solid #C5A973;
             display: flex;
             align-items: center;
             justify-content: center;
             cursor: pointer;
             transition: all 0.3s;
+            border-radius: 16px;
+            position: relative;
+            overflow: hidden;
         }
 
-        .social-icon:hover {
-            background: #C5A973;
+        .social-icon::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border-radius: 16px;
+            transition: opacity 0.3s;
+        }
+
+        .social-icon::after {
+            content: '';
+            position: absolute;
+            top: 6px;
+            left: 6px;
+            right: 6px;
+            bottom: 6px;
+            background: rgba(10, 10, 10, 0.95);
+            border-radius: 10px;
+            z-index: 1;
+            transition: all 0.3s;
+        }
+
+        .social-icon:hover::after {
+            background: rgba(10, 10, 10, 0.7);
         }
 
         .footer-bottom {
@@ -608,9 +656,18 @@
                 </p>
 
                 <div class="awards">
-                    <div class="award-item">⭐⭐ Michelin Star (2019-2024)</div>
-                    <div class="award-item">🏆 Best Chef Award 2022</div>
-                    <div class="award-item">📚 Author of "Modern French Cuisine"</div>
+                    <div class="award-item">
+                        <div class="award-icon" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);"></div>
+                        <span>Michelin Star (2019-2024)</span>
+                    </div>
+                    <div class="award-item">
+                        <div class="award-icon" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);"></div>
+                        <span>Best Chef Award 2022</span>
+                    </div>
+                    <div class="award-item">
+                        <div class="award-icon" style="background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);"></div>
+                        <span>Author of "Modern French Cuisine"</span>
+                    </div>
                 </div>
             </div>
         </div>
@@ -677,9 +734,15 @@
         <div class="footer-content">
             <div class="footer-logo">LA MAISON</div>
             <div class="social-icons">
-                <div class="social-icon">📷</div>
-                <div class="social-icon">📘</div>
-                <div class="social-icon">📺</div>
+                <div class="social-icon" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);">
+                    <div style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%); width: 100%; height: 100%; border-radius: 16px;"></div>
+                </div>
+                <div class="social-icon" style="background: linear-gradient(135deg, #30cfd0 0%, #330867 100%);">
+                    <div style="background: linear-gradient(135deg, #30cfd0 0%, #330867 100%); width: 100%; height: 100%; border-radius: 16px;"></div>
+                </div>
+                <div class="social-icon" style="background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);">
+                    <div style="background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%); width: 100%; height: 100%; border-radius: 16px;"></div>
+                </div>
             </div>
             <div class="footer-bottom">
                 <p>&copy; 2024 LA MAISON. ALL RIGHTS RESERVED.</p>

@@ -277,8 +277,51 @@
         }
 
         .feature-icon {
-            font-size: 3.5rem;
-            margin-bottom: 1.5rem;
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 1.5rem;
+            border-radius: 16px;
+            position: relative;
+            transition: transform 0.3s;
+        }
+
+        .feature-card:hover .feature-icon {
+            transform: scale(1.05);
+        }
+
+        .feature-icon::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 8px;
+        }
+
+        .logo-icon {
+            display: inline-block;
+            width: 28px;
+            height: 28px;
+            background: linear-gradient(135deg, #8b5cf6, #06b6d4);
+            border-radius: 6px;
+            position: relative;
+            vertical-align: middle;
+            margin-right: 8px;
+        }
+
+        .logo-icon::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 12px;
+            height: 12px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 3px;
         }
 
         .feature-card h3 {
@@ -409,7 +452,7 @@
 
     <div class="container">
         <nav>
-            <div class="logo">⬢ CryptoVerse</div>
+            <div class="logo"><span class="logo-icon"></span>CryptoVerse</div>
             <ul class="nav-links">
                 <li><a href="#features">Features</a></li>
                 <li><a href="#roadmap">Roadmap</a></li>
@@ -454,37 +497,37 @@
             </div>
 
             <div class="feature-card">
-                <div class="feature-icon">🔒</div>
+                <div class="feature-icon" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);"></div>
                 <h3>Bank-Grade Security</h3>
                 <p>다중 서명 지갑, 콜드 스토리지, 그리고 실시간 위협 탐지로 자산을 보호합니다.</p>
             </div>
 
             <div class="feature-card">
-                <div class="feature-icon">⚡</div>
+                <div class="feature-icon" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);"></div>
                 <h3>Lightning Fast</h3>
                 <p>Layer 2 솔루션으로 초당 10만 건의 트랜잭션을 0.01초 이내에 처리합니다.</p>
             </div>
 
             <div class="feature-card">
-                <div class="feature-icon">💎</div>
+                <div class="feature-icon" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);"></div>
                 <h3>NFT Marketplace</h3>
                 <p>디지털 아트, 수집품, 메타버스 자산을 자유롭게 민팅하고 거래하세요.</p>
             </div>
 
             <div class="feature-card">
-                <div class="feature-icon">🌐</div>
+                <div class="feature-icon" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);"></div>
                 <h3>Cross-Chain Bridge</h3>
                 <p>이더리움, 바이낸스, 폴리곤 등 주요 블록체인 간 원활한 자산 이동을 지원합니다.</p>
             </div>
 
             <div class="feature-card">
-                <div class="feature-icon">📊</div>
+                <div class="feature-icon" style="background: linear-gradient(135deg, #30cfd0 0%, #330867 100%);"></div>
                 <h3>DeFi Staking</h3>
                 <p>스테이킹으로 연 15% 이상의 수익을 창출하고 거버넌스에 참여하세요.</p>
             </div>
 
             <div class="feature-card">
-                <div class="feature-icon">🤖</div>
+                <div class="feature-icon" style="background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);"></div>
                 <h3>Smart Contract</h3>
                 <p>감사받은 스마트 컨트랙트로 신뢰할 수 있는 자동화된 거래를 실행합니다.</p>
             </div>

@@ -166,8 +166,26 @@
         }
 
         .feature-icon {
-            font-size: 3rem;
-            margin-bottom: 1.5rem;
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 1.5rem;
+            border-radius: 16px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .feature-icon::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 40px;
+            height: 40px;
+            background: white;
+            border-radius: 8px;
         }
 
         .feature-item h3 {
@@ -278,6 +296,18 @@
             color: #666;
             margin-bottom: 1.5rem;
             font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .property-location::before {
+            content: '';
+            width: 20px;
+            height: 20px;
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            border-radius: 50%;
+            flex-shrink: 0;
         }
 
         .property-specs {
@@ -293,6 +323,26 @@
             align-items: center;
             gap: 0.5rem;
             font-size: 0.95rem;
+        }
+
+        .spec-item::before {
+            content: '';
+            width: 18px;
+            height: 18px;
+            border-radius: 4px;
+            flex-shrink: 0;
+        }
+
+        .spec-item:nth-child(1)::before {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+        }
+
+        .spec-item:nth-child(2)::before {
+            background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+        }
+
+        .spec-item:nth-child(3)::before {
+            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
         }
 
         /* Services Section */
@@ -529,22 +579,22 @@
     <section class="features">
         <div class="features-container">
             <div class="feature-item">
-                <div class="feature-icon">🏆</div>
+                <div class="feature-icon" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);"></div>
                 <h3>전문성</h3>
                 <p>15년 경력의 전문 컨설턴트가 최적의 매물을 제안합니다</p>
             </div>
             <div class="feature-item">
-                <div class="feature-icon">🔒</div>
+                <div class="feature-icon" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);"></div>
                 <h3>신뢰성</h3>
                 <p>철저한 검증 절차를 통해 안전한 거래를 보장합니다</p>
             </div>
             <div class="feature-item">
-                <div class="feature-icon">⚡</div>
+                <div class="feature-icon" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);"></div>
                 <h3>신속성</h3>
                 <p>빠른 매물 확인과 계약 체결로 시간을 절약합니다</p>
             </div>
             <div class="feature-item">
-                <div class="feature-icon">💎</div>
+                <div class="feature-icon" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);"></div>
                 <h3>프리미엄</h3>
                 <p>고급 주거 단지와 오피스 전문 중개 서비스</p>
             </div>
@@ -565,11 +615,11 @@
                 <div class="property-info">
                     <div class="property-price">15억 8,000만</div>
                     <h3 class="property-name">강남 센트럴파크 아파트</h3>
-                    <p class="property-location">📍 서울 강남구 역삼동</p>
+                    <p class="property-location">서울 강남구 역삼동</p>
                     <div class="property-specs">
-                        <span class="spec-item">🏠 84㎡</span>
-                        <span class="spec-item">🛏️ 3룸</span>
-                        <span class="spec-item">🚗 2대</span>
+                        <span class="spec-item">84㎡</span>
+                        <span class="spec-item">3룸</span>
+                        <span class="spec-item">2대</span>
                     </div>
                 </div>
             </div>
@@ -582,11 +632,11 @@
                 <div class="property-info">
                     <div class="property-price">12억 3,000만</div>
                     <h3 class="property-name">한강뷰 럭셔리 아파트</h3>
-                    <p class="property-location">📍 서울 용산구 이촌동</p>
+                    <p class="property-location">서울 용산구 이촌동</p>
                     <div class="property-specs">
-                        <span class="spec-item">🏠 102㎡</span>
-                        <span class="spec-item">🛏️ 4룸</span>
-                        <span class="spec-item">🚗 2대</span>
+                        <span class="spec-item">102㎡</span>
+                        <span class="spec-item">4룸</span>
+                        <span class="spec-item">2대</span>
                     </div>
                 </div>
             </div>
@@ -598,11 +648,11 @@
                 <div class="property-info">
                     <div class="property-price">9억 5,000만</div>
                     <h3 class="property-name">판교 테크노밸리 오피스텔</h3>
-                    <p class="property-location">📍 경기 성남시 분당구</p>
+                    <p class="property-location">경기 성남시 분당구</p>
                     <div class="property-specs">
-                        <span class="spec-item">🏠 59㎡</span>
-                        <span class="spec-item">🛏️ 2룸</span>
-                        <span class="spec-item">🚗 1대</span>
+                        <span class="spec-item">59㎡</span>
+                        <span class="spec-item">2룸</span>
+                        <span class="spec-item">1대</span>
                     </div>
                 </div>
             </div>
@@ -615,11 +665,11 @@
                 <div class="property-info">
                     <div class="property-price">18억 2,000만</div>
                     <h3 class="property-name">송파 헬리오시티</h3>
-                    <p class="property-location">📍 서울 송파구 거여동</p>
+                    <p class="property-location">서울 송파구 거여동</p>
                     <div class="property-specs">
-                        <span class="spec-item">🏠 114㎡</span>
-                        <span class="spec-item">🛏️ 4룸</span>
-                        <span class="spec-item">🚗 2대</span>
+                        <span class="spec-item">114㎡</span>
+                        <span class="spec-item">4룸</span>
+                        <span class="spec-item">2대</span>
                     </div>
                 </div>
             </div>
@@ -631,11 +681,11 @@
                 <div class="property-info">
                     <div class="property-price">7억 8,000만</div>
                     <h3 class="property-name">마곡 센트럴푸르지오</h3>
-                    <p class="property-location">📍 서울 강서구 마곡동</p>
+                    <p class="property-location">서울 강서구 마곡동</p>
                     <div class="property-specs">
-                        <span class="spec-item">🏠 74㎡</span>
-                        <span class="spec-item">🛏️ 3룸</span>
-                        <span class="spec-item">🚗 1대</span>
+                        <span class="spec-item">74㎡</span>
+                        <span class="spec-item">3룸</span>
+                        <span class="spec-item">1대</span>
                     </div>
                 </div>
             </div>
@@ -648,11 +698,11 @@
                 <div class="property-info">
                     <div class="property-price">22억 5,000만</div>
                     <h3 class="property-name">타워팰리스 펜트하우스</h3>
-                    <p class="property-location">📍 서울 강남구 도곡동</p>
+                    <p class="property-location">서울 강남구 도곡동</p>
                     <div class="property-specs">
-                        <span class="spec-item">🏠 165㎡</span>
-                        <span class="spec-item">🛏️ 5룸</span>
-                        <span class="spec-item">🚗 3대</span>
+                        <span class="spec-item">165㎡</span>
+                        <span class="spec-item">5룸</span>
+                        <span class="spec-item">3대</span>
                     </div>
                 </div>
             </div>
@@ -795,9 +845,12 @@
                     <li><a href="#">개인정보처리방침</a></li>
                     <li><a href="#">1:1 문의</a></li>
                 </ul>
-                <p style="color: #C9A052; margin-top: 1.5rem; font-weight: 700;">
-                    📞 1588-1234<br>
-                    평일 09:00 - 18:00
+                <p style="color: #C9A052; margin-top: 1.5rem; font-weight: 700; display: flex; flex-direction: column; gap: 0.3rem;">
+                    <span style="display: flex; align-items: center; gap: 0.5rem;">
+                        <span style="display: inline-block; width: 20px; height: 20px; background: linear-gradient(135deg, #30cfd0 0%, #330867 100%); border-radius: 50%;"></span>
+                        1588-1234
+                    </span>
+                    <span style="margin-left: 28px;">평일 09:00 - 18:00</span>
                 </p>
             </div>
         </div>

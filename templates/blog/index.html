@@ -39,6 +39,29 @@
             font-size: 1.5rem;
             font-weight: 700;
             color: #4f46e5;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .logo-icon {
+            width: 36px;
+            height: 36px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 8px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .logo-icon::after {
+            content: '';
+            position: absolute;
+            width: 60%;
+            height: 60%;
+            background: white;
+            border-radius: 4px;
         }
 
         .nav-links {
@@ -99,12 +122,34 @@
         }
 
         .featured-image {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
             height: 400px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 6rem;
+            position: relative;
+        }
+
+        .featured-image::before {
+            content: '';
+            width: 120px;
+            height: 120px;
+            background: linear-gradient(135deg, rgba(255,255,255,0.3) 0%, rgba(255,255,255,0.1) 100%);
+            border-radius: 16px;
+            position: relative;
+        }
+
+        .featured-image::after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 80px;
+            background: white;
+            border-radius: 12px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            opacity: 0.9;
         }
 
         .featured-content {
@@ -144,6 +189,28 @@
             color: #999;
             font-size: 0.9rem;
             margin-bottom: 1.5rem;
+            align-items: center;
+        }
+
+        .meta-icon {
+            width: 20px;
+            height: 20px;
+            border-radius: 4px;
+            display: inline-block;
+            margin-right: 0.3rem;
+            vertical-align: middle;
+        }
+
+        .meta-icon.date {
+            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+        }
+
+        .meta-icon.author {
+            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+        }
+
+        .meta-icon.time {
+            background: linear-gradient(135deg, #d299c2 0%, #fef9d7 100%);
         }
 
         .read-more {
@@ -192,7 +259,29 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 3rem;
+            position: relative;
+        }
+
+        .article-image::before {
+            content: '';
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, rgba(255,255,255,0.3) 0%, rgba(255,255,255,0.1) 100%);
+            border-radius: 16px;
+            position: relative;
+        }
+
+        .article-image::after {
+            content: '';
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            background: white;
+            border-radius: 12px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            opacity: 0.9;
         }
 
         .article-content {
@@ -261,14 +350,36 @@
         }
 
         .popular-post-icon {
-            font-size: 2rem;
             width: 60px;
             height: 60px;
             display: flex;
             align-items: center;
             justify-content: center;
+            border-radius: 12px;
+            position: relative;
+            flex-shrink: 0;
+        }
+
+        .popular-post-icon.fire {
+            background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+        }
+
+        .popular-post-icon.lightning {
+            background: linear-gradient(135deg, #30cfd0 0%, #330867 100%);
+        }
+
+        .popular-post-icon.target {
+            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+        }
+
+        .popular-post-icon::after {
+            content: '';
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            background: white;
             border-radius: 8px;
-            background: linear-gradient(135deg, #e0e7ff 0%, #dbeafe 100%);
+            opacity: 0.9;
         }
 
         .popular-post-content h4 {
@@ -311,6 +422,31 @@
         .newsletter h3 {
             color: white;
             margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.8rem;
+        }
+
+        .newsletter-icon {
+            width: 32px;
+            height: 32px;
+            background: linear-gradient(135deg, rgba(255,255,255,0.3) 0%, rgba(255,255,255,0.1) 100%);
+            border-radius: 8px;
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .newsletter-icon::after {
+            content: '';
+            position: absolute;
+            width: 18px;
+            height: 18px;
+            background: white;
+            border-radius: 4px;
+            opacity: 0.9;
         }
 
         .newsletter p {
@@ -396,7 +532,10 @@
 <body>
     <header>
         <nav>
-            <div class="logo">📝 Tech Blog</div>
+            <div class="logo">
+                <div class="logo-icon"></div>
+                Tech Blog
+            </div>
             <ul class="nav-links">
                 <li><a href="#home">Home</a></li>
                 <li><a href="#articles">Articles</a></li>
@@ -414,14 +553,14 @@
     <div class="container">
         <section class="featured">
             <div class="featured-article">
-                <div class="featured-image">💡</div>
+                <div class="featured-image"></div>
                 <div class="featured-content">
                     <span class="featured-badge">Featured</span>
                     <h2>2024년 웹 디자인 트렌드: 미니멀리즘의 진화</h2>
                     <div class="meta">
-                        <span>📅 2024년 1월 15일</span>
-                        <span>👤 김지수</span>
-                        <span>⏱️ 5분 읽기</span>
+                        <span><span class="meta-icon date"></span>2024년 1월 15일</span>
+                        <span><span class="meta-icon author"></span>김지수</span>
+                        <span><span class="meta-icon time"></span>5분 읽기</span>
                     </div>
                     <p>미니멀리즘이 단순한 스타일을 넘어 사용자 경험의 핵심이 되고 있습니다. 2024년 웹 디자인에서 주목해야 할 트렌드와 실전 적용 방법을 알아봅니다.</p>
                     <a href="#" class="read-more">더 읽기 →</a>
@@ -434,7 +573,7 @@
                 <h2 class="section-title">최근 게시물</h2>
                 <div class="articles-grid">
                     <article class="article-card">
-                        <div class="article-image" style="background: linear-gradient(135deg, #dbeafe 0%, #e0e7ff 100%);">⚛️</div>
+                        <div class="article-image" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);"></div>
                         <div class="article-content">
                             <span class="category-badge tech">Tech</span>
                             <h3>React 19의 새로운 기능들</h3>
@@ -448,7 +587,7 @@
                     </article>
 
                     <article class="article-card">
-                        <div class="article-image" style="background: linear-gradient(135deg, #fce7f3 0%, #ddd6fe 100%);">🎨</div>
+                        <div class="article-image" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);"></div>
                         <div class="article-content">
                             <span class="category-badge design">Design</span>
                             <h3>색상 심리학: UI 디자인에 적용하기</h3>
@@ -462,7 +601,7 @@
                     </article>
 
                     <article class="article-card">
-                        <div class="article-image" style="background: linear-gradient(135deg, #d1fae5 0%, #ccfbf1 100%);">📊</div>
+                        <div class="article-image" style="background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);"></div>
                         <div class="article-content">
                             <span class="category-badge business">Business</span>
                             <h3>스타트업의 MVP 개발 전략</h3>
@@ -476,7 +615,7 @@
                     </article>
 
                     <article class="article-card">
-                        <div class="article-image" style="background: linear-gradient(135deg, #e9d5ff 0%, #f5d0fe 100%);">📚</div>
+                        <div class="article-image" style="background: linear-gradient(135deg, #d299c2 0%, #fef9d7 100%);"></div>
                         <div class="article-content">
                             <span class="category-badge tutorial">Tutorial</span>
                             <h3>TypeScript 마스터하기: 고급 패턴</h3>
@@ -490,7 +629,7 @@
                     </article>
 
                     <article class="article-card">
-                        <div class="article-image" style="background: linear-gradient(135deg, #fef3c7 0%, #fed7aa 100%);">☕</div>
+                        <div class="article-image" style="background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);"></div>
                         <div class="article-content">
                             <span class="category-badge lifestyle">Lifestyle</span>
                             <h3>개발자의 생산성을 높이는 아침 루틴</h3>
@@ -504,7 +643,7 @@
                     </article>
 
                     <article class="article-card">
-                        <div class="article-image" style="background: linear-gradient(135deg, #fed7aa 0%, #fecaca 100%);">🚀</div>
+                        <div class="article-image" style="background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);"></div>
                         <div class="article-content">
                             <span class="category-badge news">News</span>
                             <h3>2024 개발자 트렌드 리포트</h3>
@@ -523,21 +662,21 @@
                 <div class="widget">
                     <h3>인기 게시물</h3>
                     <div class="popular-post">
-                        <div class="popular-post-icon">🔥</div>
+                        <div class="popular-post-icon fire"></div>
                         <div class="popular-post-content">
                             <h4>ChatGPT로 코드 리뷰 자동화하기</h4>
                             <span class="popular-post-date">2024.01.10 • 조회 2.5K</span>
                         </div>
                     </div>
                     <div class="popular-post">
-                        <div class="popular-post-icon">⚡</div>
+                        <div class="popular-post-icon lightning"></div>
                         <div class="popular-post-content">
                             <h4>웹 성능 최적화 완벽 가이드</h4>
                             <span class="popular-post-date">2024.01.07 • 조회 1.8K</span>
                         </div>
                     </div>
                     <div class="popular-post">
-                        <div class="popular-post-icon">🎯</div>
+                        <div class="popular-post-icon target"></div>
                         <div class="popular-post-content">
                             <h4>프론트엔드 개발자 로드맵 2024</h4>
                             <span class="popular-post-date">2024.01.04 • 조회 1.5K</span>
@@ -558,7 +697,10 @@
                 </div>
 
                 <div class="widget newsletter">
-                    <h3>📬 뉴스레터 구독</h3>
+                    <h3>
+                        <span class="newsletter-icon"></span>
+                        뉴스레터 구독
+                    </h3>
                     <p>주간 인사이트를 이메일로 받아보세요</p>
                     <form class="newsletter-form">
                         <input type="email" placeholder="이메일 주소">

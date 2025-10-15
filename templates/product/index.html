@@ -5,89 +5,59 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>제품 안내 - Product Showcase</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
-
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
-        :root {
-            --bg-primary: #0a0e27;
-            --bg-secondary: #1a1f3a;
-            --text-primary: #ffffff;
-            --text-secondary: #b4b4b4;
-            --accent: #6366f1;
-            --accent-cyan: #06b6d4;
-            --glass-bg: rgba(255, 255, 255, 0.05);
-            --glass-border: rgba(255, 255, 255, 0.1);
-        }
-
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
             line-height: 1.6;
-            color: var(--text-primary);
-            background: var(--bg-primary);
+            color: #1a1f36;
+            background: #fafbfc;
             overflow-x: hidden;
-        }
-
-        .bg-animation {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 0;
-            background: radial-gradient(circle at 20% 30%, rgba(99, 102, 241, 0.12) 0%, transparent 50%),
-                        radial-gradient(circle at 80% 70%, rgba(6, 182, 212, 0.12) 0%, transparent 50%);
-            animation: bgPulse 15s ease-in-out infinite;
-        }
-
-        @keyframes bgPulse {
-            0%, 100% { opacity: 1; transform: scale(1); }
-            50% { opacity: 0.8; transform: scale(1.1); }
         }
 
         nav {
             position: fixed;
-            top: 20px;
-            left: 50%;
-            transform: translateX(-50%);
+            top: 0;
+            left: 0;
+            right: 0;
             z-index: 1000;
-            background: var(--glass-bg);
-            backdrop-filter: blur(20px);
-            border: 1px solid var(--glass-border);
-            border-radius: 50px;
-            padding: 12px 30px;
+            background: white;
+            border-bottom: 1px solid #e4e7ec;
+            padding: 1rem 2rem;
         }
 
         nav ul {
             list-style: none;
             display: flex;
-            gap: 2rem;
+            justify-content: center;
+            gap: 2.5rem;
+            max-width: 1320px;
+            margin: 0 auto;
             align-items: center;
         }
 
         nav a {
             text-decoration: none;
-            color: var(--text-primary);
+            color: #5b6b8e;
             font-weight: 500;
-            font-size: 0.95rem;
-            transition: all 0.3s;
+            font-size: 0.9375rem;
+            transition: color 0.2s;
         }
 
         nav a:hover {
-            color: var(--accent);
+            color: #4f46e5;
         }
 
         .hero {
-            min-height: 100vh;
+            min-height: 90vh;
             display: flex;
             align-items: center;
             padding: 8rem 2rem 4rem;
-            position: relative;
-            z-index: 1;
+            background: white;
         }
 
         .container {
@@ -104,109 +74,110 @@
         }
 
         .hero-content h1 {
-            font-size: clamp(3rem, 6vw, 4.5rem);
-            font-weight: 900;
-            margin-bottom: 1.5rem;
-            line-height: 1.1;
-        }
-
-        .gradient-text {
-            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-cyan) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            font-weight: 700;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+            color: #1a1f36;
+            letter-spacing: -0.02em;
         }
 
         .price-tag {
-            font-size: 2.5rem;
-            font-weight: 800;
-            color: var(--accent-cyan);
+            font-size: 2.25rem;
+            font-weight: 700;
+            color: #4f46e5;
             margin: 1.5rem 0;
         }
 
         .price-tag span {
-            font-size: 1.2rem;
-            color: var(--text-secondary);
+            font-size: 1.125rem;
+            color: #5b6b8e;
             font-weight: 400;
         }
 
         .hero-content p {
-            font-size: 1.2rem;
-            color: var(--text-secondary);
+            font-size: 1.125rem;
+            color: #5b6b8e;
             margin-bottom: 2rem;
-            line-height: 1.8;
-            font-weight: 300;
+            line-height: 1.7;
         }
 
         .cta-buttons {
             display: flex;
-            gap: 1.5rem;
+            gap: 1rem;
             flex-wrap: wrap;
         }
 
         .btn {
-            padding: 1.2rem 3rem;
-            font-size: 1.1rem;
-            font-weight: 600;
+            padding: 0.875rem 2rem;
+            font-size: 1rem;
+            font-weight: 500;
             border: none;
-            border-radius: 50px;
+            border-radius: 8px;
             cursor: pointer;
-            transition: all 0.3s;
+            transition: all 0.2s;
             text-decoration: none;
             display: inline-block;
         }
 
         .btn-primary {
-            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-cyan) 100%);
+            background: #1a1f36;
             color: white;
-            box-shadow: 0 10px 40px rgba(99, 102, 241, 0.4);
         }
 
         .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 50px rgba(99, 102, 241, 0.6);
+            background: #4f46e5;
         }
 
         .btn-secondary {
-            background: var(--glass-bg);
-            backdrop-filter: blur(20px);
-            border: 1px solid var(--glass-border);
-            color: white;
+            background: white;
+            border: 1px solid #e4e7ec;
+            color: #1a1f36;
         }
 
         .btn-secondary:hover {
-            background: rgba(255, 255, 255, 0.1);
-            transform: translateY(-3px);
+            background: #f8f9fa;
+            border-color: #d1d5db;
         }
 
         .product-visual {
             width: 100%;
-            height: 500px;
-            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-cyan) 100%);
-            border-radius: 30px;
+            height: 450px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 16px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 8rem;
-            box-shadow: 0 30px 80px rgba(99, 102, 241, 0.5);
+            border: 1px solid #e4e7ec;
             position: relative;
+            overflow: hidden;
         }
 
         .product-visual::before {
             content: '';
             position: absolute;
-            inset: -3px;
-            border-radius: 30px;
-            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-cyan) 100%);
-            z-index: -1;
-            filter: blur(30px);
-            opacity: 0.7;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, rgba(255,255,255,0.1) 25%, transparent 25%, transparent 50%, rgba(255,255,255,0.1) 50%, rgba(255,255,255,0.1) 75%, transparent 75%, transparent);
+            background-size: 40px 40px;
+            opacity: 0.3;
+        }
+
+        .product-visual::after {
+            content: '';
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 32px;
         }
 
         section {
-            position: relative;
-            z-index: 1;
-            padding: 6rem 2rem;
+            padding: 5rem 2rem;
+        }
+
+        section:nth-child(odd) {
+            background: white;
         }
 
         .section-header {
@@ -215,15 +186,16 @@
         }
 
         .section-header h2 {
-            font-size: clamp(2.5rem, 5vw, 3.5rem);
-            font-weight: 800;
+            font-size: clamp(2rem, 4vw, 2.75rem);
+            font-weight: 700;
             margin-bottom: 1rem;
+            color: #1a1f36;
+            letter-spacing: -0.01em;
         }
 
         .section-header p {
-            font-size: 1.2rem;
-            color: var(--text-secondary);
-            font-weight: 300;
+            font-size: 1.125rem;
+            color: #5b6b8e;
         }
 
         .features-grid {
@@ -233,56 +205,63 @@
         }
 
         .feature-card {
-            background: var(--glass-bg);
-            backdrop-filter: blur(20px);
-            border: 1px solid var(--glass-border);
-            border-radius: 24px;
+            background: white;
+            border: 1px solid #e4e7ec;
+            border-radius: 16px;
             padding: 2.5rem;
-            transition: all 0.4s;
+            transition: all 0.3s;
         }
 
         .feature-card:hover {
-            transform: translateY(-10px);
-            border-color: var(--accent);
-            box-shadow: 0 20px 60px rgba(99, 102, 241, 0.3);
+            transform: translateY(-4px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
+            border-color: #d1d5db;
         }
 
         .feature-icon {
-            width: 70px;
-            height: 70px;
-            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-cyan) 100%);
-            border-radius: 18px;
+            width: 64px;
+            height: 64px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 16px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 2rem;
             margin-bottom: 1.5rem;
+            position: relative;
+        }
+
+        .feature-icon::after {
+            content: '';
+            position: absolute;
+            width: 28px;
+            height: 28px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 6px;
         }
 
         .feature-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            font-weight: 700;
+            font-size: 1.375rem;
+            margin-bottom: 0.75rem;
+            font-weight: 600;
+            color: #1a1f36;
         }
 
         .feature-card p {
-            color: var(--text-secondary);
-            line-height: 1.8;
-            font-weight: 300;
+            color: #5b6b8e;
+            line-height: 1.7;
         }
 
         .specs-section {
-            background: var(--glass-bg);
-            backdrop-filter: blur(20px);
-            border: 1px solid var(--glass-border);
-            border-radius: 30px;
+            background: white;
+            border: 1px solid #e4e7ec;
+            border-radius: 16px;
             padding: 3rem;
-            margin: 4rem 0;
+            margin: 0 auto;
         }
 
         .specs-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 2rem;
         }
 
@@ -290,73 +269,88 @@
             display: flex;
             align-items: flex-start;
             gap: 1rem;
+            padding: 1rem 0;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .spec-item:last-child {
+            border-bottom: none;
         }
 
         .spec-item strong {
-            color: var(--accent);
+            color: #4f46e5;
             min-width: 140px;
             font-weight: 600;
+            font-size: 0.9375rem;
         }
 
         .spec-item span {
-            color: var(--text-secondary);
-            font-weight: 300;
+            color: #5b6b8e;
         }
 
         .pricing-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
         }
 
         .pricing-card {
-            background: var(--glass-bg);
-            backdrop-filter: blur(20px);
-            border: 1px solid var(--glass-border);
-            border-radius: 30px;
-            padding: 3rem 2.5rem;
+            background: white;
+            border: 1px solid #e4e7ec;
+            border-radius: 16px;
+            padding: 2.5rem;
             text-align: center;
-            transition: all 0.4s;
+            transition: all 0.3s;
             position: relative;
         }
 
         .pricing-card:hover {
-            transform: translateY(-10px);
-            border-color: var(--accent);
+            transform: translateY(-4px);
+            border-color: #4f46e5;
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
         }
 
         .pricing-card.featured {
-            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-cyan) 100%);
+            background: #1a1f36;
+            color: white;
             border: none;
             transform: scale(1.05);
         }
 
         .pricing-card.featured:hover {
-            transform: scale(1.08) translateY(-10px);
+            transform: scale(1.05) translateY(-4px);
+        }
+
+        .pricing-card.featured h3,
+        .pricing-card.featured .price,
+        .pricing-card.featured .pricing-features li {
+            color: white;
         }
 
         .pricing-badge {
             position: absolute;
-            top: -15px;
-            right: 30px;
-            background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
-            color: var(--bg-primary);
-            padding: 0.5rem 1.5rem;
-            border-radius: 50px;
-            font-weight: 700;
-            font-size: 0.9rem;
+            top: -12px;
+            right: 20px;
+            background: #4f46e5;
+            color: white;
+            padding: 0.375rem 1rem;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 0.875rem;
         }
 
         .pricing-card h3 {
-            font-size: 1.8rem;
+            font-size: 1.5rem;
             margin-bottom: 1rem;
-            font-weight: 700;
+            font-weight: 600;
+            color: #1a1f36;
         }
 
         .price {
-            font-size: 3.5rem;
-            font-weight: 900;
+            font-size: 3rem;
+            font-weight: 700;
             margin: 1.5rem 0;
+            color: #1a1f36;
         }
 
         .pricing-features {
@@ -366,88 +360,117 @@
         }
 
         .pricing-features li {
-            padding: 1rem 0;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            font-weight: 300;
+            padding: 0.875rem 0;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            color: #5b6b8e;
+        }
+
+        .pricing-card.featured .pricing-features li {
+            border-bottom-color: rgba(255, 255, 255, 0.1);
         }
 
         .gallery-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 1.5rem;
         }
 
         .gallery-item {
-            height: 250px;
-            background: linear-gradient(135deg, rgba(99, 102, 241, 0.2) 0%, rgba(6, 182, 212, 0.2) 100%);
-            border-radius: 20px;
+            height: 240px;
+            background: linear-gradient(135deg, #a1c4fd 0%, #c2e9fb 100%);
+            border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 4rem;
             cursor: pointer;
             transition: all 0.3s;
-            border: 1px solid var(--glass-border);
+            border: 1px solid #e4e7ec;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .gallery-item::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, rgba(255,255,255,0.1) 25%, transparent 25%, transparent 50%, rgba(255,255,255,0.1) 50%, rgba(255,255,255,0.1) 75%, transparent 75%, transparent);
+            background-size: 30px 30px;
+            opacity: 0.4;
+        }
+
+        .gallery-item::after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 80px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 16px;
         }
 
         .gallery-item:hover {
-            transform: scale(1.05);
-            box-shadow: 0 20px 40px rgba(99, 102, 241, 0.3);
+            transform: translateY(-4px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.06);
         }
 
         .cta-section {
-            background: var(--glass-bg);
-            backdrop-filter: blur(20px);
-            border: 1px solid var(--glass-border);
-            border-radius: 40px;
-            padding: 5rem 2rem;
+            background: white;
+            border: 1px solid #e4e7ec;
+            border-radius: 16px;
+            padding: 4rem 2rem;
             text-align: center;
-            margin: 4rem 0;
+            margin: 0 auto;
         }
 
         .cta-section h2 {
-            font-size: clamp(2.5rem, 5vw, 3.5rem);
-            font-weight: 900;
-            margin-bottom: 1.5rem;
+            font-size: clamp(2rem, 4vw, 2.75rem);
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: #1a1f36;
         }
 
         .cta-section p {
-            font-size: 1.3rem;
-            color: var(--text-secondary);
-            margin-bottom: 2.5rem;
-            font-weight: 300;
+            font-size: 1.125rem;
+            color: #5b6b8e;
+            margin-bottom: 2rem;
         }
 
         footer {
-            background: var(--bg-secondary);
+            background: white;
             padding: 3rem 2rem;
             text-align: center;
-            border-top: 1px solid var(--glass-border);
+            border-top: 1px solid #e4e7ec;
         }
 
         .footer-text {
-            color: var(--text-secondary);
-            font-weight: 300;
+            color: #5b6b8e;
+            font-size: 0.9375rem;
+            margin: 0.5rem 0;
         }
 
         @media (max-width: 768px) {
             .hero-grid {
                 grid-template-columns: 1fr;
+                gap: 2rem;
             }
 
             nav ul {
-                gap: 1rem;
+                gap: 1.5rem;
             }
 
             .pricing-card.featured {
                 transform: scale(1);
             }
+
+            .pricing-card.featured:hover {
+                transform: scale(1) translateY(-4px);
+            }
         }
 
         .fade-in {
             opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.6s ease, transform 0.6s ease;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
         }
 
         .fade-in.visible {
@@ -457,8 +480,6 @@
     </style>
 </head>
 <body>
-    <div class="bg-animation"></div>
-
     <nav>
         <ul>
             <li><a href="#features">기능</a></li>
@@ -473,7 +494,7 @@
             <div class="hero-grid">
                 <div class="hero-content">
                     <h1>
-                        <span class="gradient-text">프리미엄</span><br>
+                        프리미엄<br>
                         비즈니스 솔루션
                     </h1>
                     <div class="price-tag">₩99,000 <span>/월</span></div>
@@ -487,7 +508,7 @@
                         <button class="btn btn-secondary">데모 보기</button>
                     </div>
                 </div>
-                <div class="product-visual">📱</div>
+                <div class="product-visual"></div>
             </div>
         </div>
     </section>
@@ -501,37 +522,37 @@
 
             <div class="features-grid">
                 <div class="feature-card fade-in">
-                    <div class="feature-icon">⚡</div>
+                    <div class="feature-icon"></div>
                     <h3>초고속 처리</h3>
                     <p>최신 기술을 활용한 빠른 데이터 처리 속도로 업무 효율성을 극대화합니다.</p>
                 </div>
 
                 <div class="feature-card fade-in">
-                    <div class="feature-icon">🔒</div>
+                    <div class="feature-icon" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);"></div>
                     <h3>강력한 보안</h3>
                     <p>은행급 보안 시스템으로 고객 데이터를 안전하게 보호합니다.</p>
                 </div>
 
                 <div class="feature-card fade-in">
-                    <div class="feature-icon">☁️</div>
+                    <div class="feature-icon" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);"></div>
                     <h3>클라우드 기반</h3>
                     <p>언제 어디서나 접근 가능한 클라우드 인프라를 제공합니다.</p>
                 </div>
 
                 <div class="feature-card fade-in">
-                    <div class="feature-icon">📊</div>
+                    <div class="feature-icon" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);"></div>
                     <h3>실시간 분석</h3>
                     <p>직관적인 대시보드로 비즈니스 데이터를 실시간으로 분석합니다.</p>
                 </div>
 
                 <div class="feature-card fade-in">
-                    <div class="feature-icon">🤝</div>
+                    <div class="feature-icon" style="background: linear-gradient(135deg, #30cfd0 0%, #330867 100%);"></div>
                     <h3>팀 협업</h3>
                     <p>팀원들과 실시간으로 소통하고 협업할 수 있는 도구를 제공합니다.</p>
                 </div>
 
                 <div class="feature-card fade-in">
-                    <div class="feature-icon">🔄</div>
+                    <div class="feature-icon" style="background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);"></div>
                     <h3>자동화</h3>
                     <p>반복적인 작업을 자동화하여 시간을 절약할 수 있습니다.</p>
                 </div>
@@ -610,7 +631,7 @@
                         <li>✓ API 접근</li>
                         <li>✓ 고급 분석</li>
                     </ul>
-                    <button class="btn btn-primary" style="width: 100%; background: white; color: var(--accent);">추천 플랜</button>
+                    <button class="btn btn-primary" style="width: 100%; background: white; color: #1a1f36;">추천 플랜</button>
                 </div>
 
                 <div class="pricing-card fade-in">
@@ -638,12 +659,12 @@
             </div>
 
             <div class="gallery-grid">
-                <div class="gallery-item fade-in">🖥️</div>
-                <div class="gallery-item fade-in">📱</div>
-                <div class="gallery-item fade-in">⌨️</div>
-                <div class="gallery-item fade-in">🎨</div>
-                <div class="gallery-item fade-in">📊</div>
-                <div class="gallery-item fade-in">🔧</div>
+                <div class="gallery-item fade-in"></div>
+                <div class="gallery-item fade-in" style="background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);"></div>
+                <div class="gallery-item fade-in" style="background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);"></div>
+                <div class="gallery-item fade-in" style="background: linear-gradient(135deg, #ff6e7f 0%, #bfe9ff 100%);"></div>
+                <div class="gallery-item fade-in" style="background: linear-gradient(135deg, #e0c3fc 0%, #8ec5fc 100%);"></div>
+                <div class="gallery-item fade-in" style="background: linear-gradient(135deg, #fbc2eb 0%, #a6c1ee 100%);"></div>
             </div>
         </div>
     </section>
@@ -653,7 +674,7 @@
             <div class="cta-section fade-in">
                 <h2>지금 바로 시작하세요!</h2>
                 <p>14일 무료 체험, 신용카드 불필요</p>
-                <button class="btn btn-primary" style="font-size: 1.2rem; padding: 1.3rem 3.5rem;">
+                <button class="btn btn-primary" style="font-size: 1.125rem; padding: 1rem 2.5rem;">
                     무료로 시작하기
                 </button>
             </div>

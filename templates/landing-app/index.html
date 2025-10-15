@@ -230,6 +230,33 @@
             animation: fadeInUp 1s ease 0.2s both;
         }
 
+        .badge-icon {
+            width: 24px;
+            height: 24px;
+            border-radius: 6px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .badge-icon::after {
+            content: '';
+            position: absolute;
+            width: 50%;
+            height: 50%;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 4px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 1;
+        }
+
+        .gradient-badge {
+            width: 100%;
+            height: 100%;
+            border-radius: 6px;
+        }
+
         .hero h1 {
             font-size: clamp(3rem, 7vw, 6rem);
             font-weight: 900;
@@ -277,8 +304,36 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 4rem;
             box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .phone-icon {
+            width: 120px;
+            height: 120px;
+            border-radius: 24px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .phone-icon::after {
+            content: '';
+            position: absolute;
+            width: 60%;
+            height: 60%;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 16px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 1;
+        }
+
+        .gradient-phone {
+            width: 100%;
+            height: 100%;
+            border-radius: 24px;
         }
 
         /* Features Section */
@@ -335,14 +390,29 @@
         .feature-icon {
             width: 80px;
             height: 80px;
-            background: white;
             border-radius: 20px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 2.5rem;
             margin-bottom: 1.5rem;
-            box-shadow: 0 10px 30px rgba(255, 255, 255, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-icon::after {
+            content: '';
+            position: absolute;
+            width: 60%;
+            height: 60%;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 12px;
+            z-index: 1;
+        }
+
+        .gradient-icon {
+            width: 100%;
+            height: 100%;
+            border-radius: 20px;
         }
 
         .feature-card h3 {
@@ -396,7 +466,35 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .screenshot-icon {
+            width: 100px;
+            height: 100px;
+            border-radius: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .screenshot-icon::after {
+            content: '';
+            position: absolute;
+            width: 55%;
+            height: 55%;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 14px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 1;
+        }
+
+        .gradient-screenshot {
+            width: 100%;
+            height: 100%;
+            border-radius: 20px;
         }
 
         /* Testimonials */
@@ -420,14 +518,29 @@
         .testimonial-avatar {
             width: 70px;
             height: 70px;
-            background: white;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 2rem;
             margin-bottom: 1.5rem;
-            box-shadow: 0 10px 30px rgba(255, 255, 255, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .testimonial-avatar::after {
+            content: '';
+            position: absolute;
+            width: 50%;
+            height: 50%;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 50%;
+            z-index: 1;
+        }
+
+        .gradient-avatar {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
         }
 
         .testimonial-text {
@@ -489,6 +602,33 @@
             font-size: 1.1rem;
             font-weight: 700;
             transition: all 0.3s;
+        }
+
+        .store-icon {
+            width: 36px;
+            height: 36px;
+            border-radius: 10px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .store-icon::after {
+            content: '';
+            position: absolute;
+            width: 50%;
+            height: 50%;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 6px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 1;
+        }
+
+        .gradient-store {
+            width: 100%;
+            height: 100%;
+            border-radius: 10px;
         }
 
         .store-btn:hover {
@@ -607,7 +747,10 @@
     <section class="hero">
         <div class="hero-content">
             <div class="badge glass">
-                <span>✨</span> Now Available on App Store & Google Play
+                <div class="badge-icon">
+                    <div class="gradient-badge" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);"></div>
+                </div>
+                Now Available on App Store & Google Play
             </div>
             <h1>Connect in a<br>Whole New Way</h1>
             <p>
@@ -621,7 +764,9 @@
             <div class="app-preview">
                 <div class="phone-mockup glass">
                     <div class="phone-screen">
-                        📱
+                        <div class="phone-icon">
+                            <div class="gradient-phone" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);"></div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -637,7 +782,7 @@
         <div class="features-grid">
             <div class="feature-card glass reveal">
                 <div class="feature-icon">
-                    🎭
+                    <div class="gradient-icon" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);"></div>
                 </div>
                 <h3>Authentic Profiles</h3>
                 <p>
@@ -647,7 +792,7 @@
             </div>
             <div class="feature-card glass reveal">
                 <div class="feature-icon">
-                    🌟
+                    <div class="gradient-icon" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);"></div>
                 </div>
                 <h3>Smart Matching</h3>
                 <p>
@@ -657,7 +802,7 @@
             </div>
             <div class="feature-card glass reveal">
                 <div class="feature-icon">
-                    💬
+                    <div class="gradient-icon" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);"></div>
                 </div>
                 <h3>Real-time Chat</h3>
                 <p>
@@ -667,7 +812,7 @@
             </div>
             <div class="feature-card glass reveal">
                 <div class="feature-icon">
-                    🎨
+                    <div class="gradient-icon" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);"></div>
                 </div>
                 <h3>Creative Tools</h3>
                 <p>
@@ -677,7 +822,7 @@
             </div>
             <div class="feature-card glass reveal">
                 <div class="feature-icon">
-                    🔒
+                    <div class="gradient-icon" style="background: linear-gradient(135deg, #30cfd0 0%, #330867 100%);"></div>
                 </div>
                 <h3>Privacy First</h3>
                 <p>
@@ -687,7 +832,7 @@
             </div>
             <div class="feature-card glass reveal">
                 <div class="feature-icon">
-                    🌍
+                    <div class="gradient-icon" style="background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);"></div>
                 </div>
                 <h3>Global Community</h3>
                 <p>
@@ -706,19 +851,39 @@
         </div>
         <div class="screenshots-slider">
             <div class="screenshot-item glass">
-                <div class="screenshot-content">🏠</div>
+                <div class="screenshot-content">
+                    <div class="screenshot-icon">
+                        <div class="gradient-screenshot" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);"></div>
+                    </div>
+                </div>
             </div>
             <div class="screenshot-item glass">
-                <div class="screenshot-content">💬</div>
+                <div class="screenshot-content">
+                    <div class="screenshot-icon">
+                        <div class="gradient-screenshot" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);"></div>
+                    </div>
+                </div>
             </div>
             <div class="screenshot-item glass">
-                <div class="screenshot-content">👤</div>
+                <div class="screenshot-content">
+                    <div class="screenshot-icon">
+                        <div class="gradient-screenshot" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);"></div>
+                    </div>
+                </div>
             </div>
             <div class="screenshot-item glass">
-                <div class="screenshot-content">🔍</div>
+                <div class="screenshot-content">
+                    <div class="screenshot-icon">
+                        <div class="gradient-screenshot" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);"></div>
+                    </div>
+                </div>
             </div>
             <div class="screenshot-item glass">
-                <div class="screenshot-content">⚙️</div>
+                <div class="screenshot-content">
+                    <div class="screenshot-icon">
+                        <div class="gradient-screenshot" style="background: linear-gradient(135deg, #30cfd0 0%, #330867 100%);"></div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -731,7 +896,9 @@
         </div>
         <div class="testimonials-grid">
             <div class="testimonial-card glass reveal">
-                <div class="testimonial-avatar">👩</div>
+                <div class="testimonial-avatar">
+                    <div class="gradient-avatar" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);"></div>
+                </div>
                 <p class="testimonial-text">
                     "Aura를 사용하면서 정말 의미있는 친구들을 많이 만났어요.
                     인터페이스도 너무 아름답고 사용하기 편해요!"
@@ -740,7 +907,9 @@
                 <div class="testimonial-role">디자이너, 서울</div>
             </div>
             <div class="testimonial-card glass reveal">
-                <div class="testimonial-avatar">👨</div>
+                <div class="testimonial-avatar">
+                    <div class="gradient-avatar" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);"></div>
+                </div>
                 <p class="testimonial-text">
                     "다른 소셜 앱들과는 완전히 다른 경험이에요.
                     진짜 나를 표현할 수 있고, 비슷한 관심사를 가진 사람들을 쉽게 찾을 수 있어요."
@@ -749,7 +918,9 @@
                 <div class="testimonial-role">개발자, 부산</div>
             </div>
             <div class="testimonial-card glass reveal">
-                <div class="testimonial-avatar">👧</div>
+                <div class="testimonial-avatar">
+                    <div class="gradient-avatar" style="background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);"></div>
+                </div>
                 <p class="testimonial-text">
                     "프라이버시 보호 기능이 정말 마음에 들어요.
                     안전하게 새로운 사람들을 만날 수 있어서 좋아요."
@@ -766,10 +937,16 @@
             <p>지금 바로 다운로드하고 새로운 연결을 시작하세요</p>
             <div class="download-buttons">
                 <a href="#" class="btn btn-primary store-btn">
-                    <span>🍎</span> App Store
+                    <div class="store-icon">
+                        <div class="gradient-store" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);"></div>
+                    </div>
+                    App Store
                 </a>
                 <a href="#" class="btn btn-primary store-btn">
-                    <span>🤖</span> Google Play
+                    <div class="store-icon">
+                        <div class="gradient-store" style="background: linear-gradient(135deg, #30cfd0 0%, #330867 100%);"></div>
+                    </div>
+                    Google Play
                 </a>
             </div>
         </div>

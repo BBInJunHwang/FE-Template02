@@ -77,11 +77,41 @@
             cursor: pointer;
             position: relative;
             transition: transform 0.3s;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .icon-btn:hover {
             transform: scale(1.1);
         }
+
+        .icon-btn .icon-gradient {
+            width: 32px;
+            height: 32px;
+            border-radius: 10px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .icon-btn .icon-gradient::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 20px;
+            height: 20px;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 4px;
+        }
+
+        .search-icon { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+        .heart-icon { background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); }
+        .cart-icon { background: linear-gradient(135deg, #fa709a 0%, #fee140 100%); }
+        .user-icon { background: linear-gradient(135deg, #30cfd0 0%, #330867 100%); }
 
         .cart-badge {
             position: absolute;
@@ -353,6 +383,31 @@
             font-size: 3rem;
             margin-bottom: 1rem;
             font-weight: 900;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .banner-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+            border-radius: 16px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .banner-icon::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 35px;
+            height: 35px;
+            background: rgba(255, 255, 255, 0.4);
+            border-radius: 8px;
         }
 
         .banner-content p {
@@ -410,18 +465,37 @@
         .social-icon {
             width: 40px;
             height: 40px;
-            background: #333;
-            border-radius: 50%;
+            border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
             cursor: pointer;
-            transition: background 0.3s;
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .social-icon::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 20px;
+            height: 20px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 4px;
         }
 
         .social-icon:hover {
-            background: #667eea;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
         }
+
+        .social-facebook { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+        .social-instagram { background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); }
+        .social-twitter { background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); }
+        .social-youtube { background: linear-gradient(135deg, #fa709a 0%, #fee140 100%); }
 
         .footer-bottom {
             text-align: center;
@@ -450,13 +524,19 @@
                 <li><a href="#brand">브랜드</a></li>
             </ul>
             <div class="nav-icons">
-                <button class="icon-btn">🔍</button>
-                <button class="icon-btn">❤️</button>
                 <button class="icon-btn">
-                    🛒
+                    <div class="icon-gradient search-icon"></div>
+                </button>
+                <button class="icon-btn">
+                    <div class="icon-gradient heart-icon"></div>
+                </button>
+                <button class="icon-btn">
+                    <div class="icon-gradient cart-icon"></div>
                     <span class="cart-badge">3</span>
                 </button>
-                <button class="icon-btn">👤</button>
+                <button class="icon-btn">
+                    <div class="icon-gradient user-icon"></div>
+                </button>
             </div>
         </div>
     </nav>
@@ -650,7 +730,10 @@
     <!-- Promo Banner -->
     <section class="promo-banner">
         <div class="banner-content">
-            <h2>🎉 신규회원 특별 혜택</h2>
+            <h2>
+                <div class="banner-icon"></div>
+                신규회원 특별 혜택
+            </h2>
             <p>지금 가입하고 15% 할인 쿠폰 받아가세요!</p>
             <a href="#signup" class="hero-btn">회원가입하기</a>
         </div>
@@ -694,10 +777,10 @@
                     평일 09:00 - 18:00
                 </p>
                 <div class="social-icons">
-                    <div class="social-icon">📘</div>
-                    <div class="social-icon">📷</div>
-                    <div class="social-icon">🐦</div>
-                    <div class="social-icon">📺</div>
+                    <div class="social-icon social-facebook"></div>
+                    <div class="social-icon social-instagram"></div>
+                    <div class="social-icon social-twitter"></div>
+                    <div class="social-icon social-youtube"></div>
                 </div>
             </div>
         </div>

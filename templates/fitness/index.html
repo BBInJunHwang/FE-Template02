@@ -245,8 +245,23 @@
         }
 
         .program-icon {
-            font-size: 3rem;
+            width: 80px;
+            height: 80px;
+            border-radius: 16px;
             margin-bottom: 1.5rem;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .program-icon::after {
+            content: '';
+            position: absolute;
+            inset: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
         }
 
         .program-card h3 {
@@ -267,16 +282,23 @@
         }
 
         .program-features li {
-            padding: 0.5rem 0;
+            padding: 0.5rem 0 0.5rem 1.5rem;
             color: #ccc;
             font-size: 0.95rem;
+            position: relative;
         }
 
         .program-features li:before {
-            content: '✓ ';
-            color: #FF4655;
-            font-weight: 900;
-            margin-right: 0.5rem;
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 6px;
+            height: 6px;
+            background: linear-gradient(135deg, #FF4655 0%, #FF8A00 100%);
+            border-radius: 50%;
+            box-shadow: 0 0 10px rgba(255, 70, 85, 0.5);
         }
 
         /* Trainers Section */
@@ -596,7 +618,7 @@
 
         <div class="programs-grid">
             <div class="program-card">
-                <div class="program-icon">💪</div>
+                <div class="program-icon" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);"></div>
                 <h3>근력 트레이닝</h3>
                 <p>체계적인 웨이트 트레이닝으로 근육량을 증가시키고 강한 몸을 만듭니다.</p>
                 <ul class="program-features">
@@ -608,7 +630,7 @@
             </div>
 
             <div class="program-card">
-                <div class="program-icon">🔥</div>
+                <div class="program-icon" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);"></div>
                 <h3>체지방 감량</h3>
                 <p>과학적인 방법으로 건강하게 체중을 감량하고 탄탄한 몸매를 만듭니다.</p>
                 <ul class="program-features">
@@ -620,7 +642,7 @@
             </div>
 
             <div class="program-card">
-                <div class="program-icon">🏃</div>
+                <div class="program-icon" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);"></div>
                 <h3>기능성 트레이닝</h3>
                 <p>일상생활에 필요한 기능적 움직임을 향상시키는 운동 프로그램입니다.</p>
                 <ul class="program-features">
@@ -632,7 +654,7 @@
             </div>
 
             <div class="program-card">
-                <div class="program-icon">🥊</div>
+                <div class="program-icon" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);"></div>
                 <h3>크로스핏</h3>
                 <p>고강도 순환 운동으로 전신의 힘과 지구력을 동시에 향상시킵니다.</p>
                 <ul class="program-features">
@@ -644,7 +666,7 @@
             </div>
 
             <div class="program-card">
-                <div class="program-icon">🧘</div>
+                <div class="program-icon" style="background: linear-gradient(135deg, #30cfd0 0%, #330867 100%);"></div>
                 <h3>필라테스 & 요가</h3>
                 <p>코어 강화와 유연성 향상을 통해 균형 잡힌 몸을 만듭니다.</p>
                 <ul class="program-features">
@@ -656,7 +678,7 @@
             </div>
 
             <div class="program-card">
-                <div class="program-icon">⚡</div>
+                <div class="program-icon" style="background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);"></div>
                 <h3>선수 육성</h3>
                 <p>경쟁 선수를 위한 전문적이고 체계적인 훈련 프로그램입니다.</p>
                 <ul class="program-features">

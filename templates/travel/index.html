@@ -42,6 +42,30 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 12px;
+            position: relative;
+            flex-shrink: 0;
+        }
+
+        .logo-icon::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 20px;
+            height: 20px;
+            background: white;
+            border-radius: 6px;
         }
 
         .nav-links {
@@ -198,8 +222,26 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 5rem;
             position: relative;
+        }
+
+        .destination-icon {
+            width: 120px;
+            height: 120px;
+            border-radius: 24px;
+            position: relative;
+        }
+
+        .destination-icon::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 60px;
+            height: 60px;
+            background: white;
+            border-radius: 12px;
         }
 
         .destination-badge {
@@ -237,6 +279,14 @@
             font-size: 0.9rem;
             color: #f59e0b;
             font-weight: 600;
+        }
+
+        .star-icon {
+            width: 18px;
+            height: 18px;
+            background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+            border-radius: 4px;
+            display: inline-block;
         }
 
         .destination-content p {
@@ -295,8 +345,23 @@
         }
 
         .feature-icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 1rem;
+            border-radius: 16px;
+            position: relative;
+        }
+
+        .feature-icon::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 40px;
+            height: 40px;
+            background: white;
+            border-radius: 8px;
         }
 
         .feature h4 {
@@ -339,7 +404,15 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.5rem;
+            position: relative;
+        }
+
+        .testimonial-avatar::after {
+            content: '';
+            width: 30px;
+            height: 30px;
+            background: white;
+            border-radius: 50%;
         }
 
         .testimonial-info h4 {
@@ -353,8 +426,16 @@
         }
 
         .testimonial-stars {
-            color: #f59e0b;
             margin-bottom: 1rem;
+            display: flex;
+            gap: 0.3rem;
+        }
+
+        .testimonial-star {
+            width: 20px;
+            height: 20px;
+            background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+            border-radius: 4px;
         }
 
         .testimonial-card p {
@@ -495,7 +576,7 @@
 <body>
     <nav>
         <div class="nav-container">
-            <div class="logo">✈️ Wanderlust</div>
+            <div class="logo"><div class="logo-icon"></div>Wanderlust</div>
             <ul class="nav-links">
                 <li><a href="#destinations">여행지</a></li>
                 <li><a href="#packages">패키지</a></li>
@@ -530,22 +611,22 @@
     <div class="container">
         <div class="features">
             <div class="feature">
-                <div class="feature-icon">🌍</div>
+                <div class="feature-icon" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);"></div>
                 <h4>전 세계 200+ 도시</h4>
                 <p>엄선된 여행지</p>
             </div>
             <div class="feature">
-                <div class="feature-icon">💰</div>
+                <div class="feature-icon" style="background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);"></div>
                 <h4>최저가 보장</h4>
                 <p>합리적인 가격</p>
             </div>
             <div class="feature">
-                <div class="feature-icon">🛡️</div>
+                <div class="feature-icon" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);"></div>
                 <h4>안전한 여행</h4>
                 <p>24시간 여행자 보험</p>
             </div>
             <div class="feature">
-                <div class="feature-icon">📞</div>
+                <div class="feature-icon" style="background: linear-gradient(135deg, #30cfd0 0%, #330867 100%);"></div>
                 <h4>24/7 고객지원</h4>
                 <p>언제든 도와드립니다</p>
             </div>
@@ -556,13 +637,15 @@
 
         <div class="destinations">
             <div class="destination-card">
-                <div class="destination-image" style="background: linear-gradient(135deg, #fef3c7 0%, #fed7aa 100%);">🗼</div>
+                <div class="destination-image" style="background: linear-gradient(135deg, #fef3c7 0%, #fed7aa 100%);">
+                    <div class="destination-icon" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);"></div>
+                </div>
                 <span class="destination-badge">베스트셀러</span>
                 <div class="destination-content">
                     <div class="destination-header">
                         <h3>파리, 프랑스</h3>
                         <div class="destination-rating">
-                            ⭐ 4.9
+                            <span class="star-icon"></span> 4.9
                         </div>
                     </div>
                     <p>낭만의 도시 파리에서 에펠탑, 루브르 박물관, 샹젤리제 거리를 경험하세요.</p>
@@ -577,12 +660,14 @@
             </div>
 
             <div class="destination-card">
-                <div class="destination-image" style="background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);">🏝️</div>
+                <div class="destination-image" style="background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);">
+                    <div class="destination-icon" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);"></div>
+                </div>
                 <div class="destination-content">
                     <div class="destination-header">
                         <h3>발리, 인도네시아</h3>
                         <div class="destination-rating">
-                            ⭐ 4.8
+                            <span class="star-icon"></span> 4.8
                         </div>
                     </div>
                     <p>열대 낙원 발리의 아름다운 해변과 사원, 전통 문화를 만끽하세요.</p>
@@ -597,13 +682,15 @@
             </div>
 
             <div class="destination-card">
-                <div class="destination-image" style="background: linear-gradient(135deg, #fce7f3 0%, #fbcfe8 100%);">🌸</div>
+                <div class="destination-image" style="background: linear-gradient(135deg, #fce7f3 0%, #fbcfe8 100%);">
+                    <div class="destination-icon" style="background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);"></div>
+                </div>
                 <span class="destination-badge">특가</span>
                 <div class="destination-content">
                     <div class="destination-header">
                         <h3>도쿄, 일본</h3>
                         <div class="destination-rating">
-                            ⭐ 4.9
+                            <span class="star-icon"></span> 4.9
                         </div>
                     </div>
                     <p>전통과 현대가 공존하는 도쿄에서 독특한 문화 체험을 즐기세요.</p>
@@ -618,12 +705,14 @@
             </div>
 
             <div class="destination-card">
-                <div class="destination-image" style="background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);">🏔️</div>
+                <div class="destination-image" style="background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);">
+                    <div class="destination-icon" style="background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);"></div>
+                </div>
                 <div class="destination-content">
                     <div class="destination-header">
                         <h3>스위스 알프스</h3>
                         <div class="destination-rating">
-                            ⭐ 5.0
+                            <span class="star-icon"></span> 5.0
                         </div>
                     </div>
                     <p>융프라우, 마터호른의 장엄한 알프스 산맥과 청정 자연을 경험하세요.</p>
@@ -638,12 +727,14 @@
             </div>
 
             <div class="destination-card">
-                <div class="destination-image" style="background: linear-gradient(135deg, #e9d5ff 0%, #ddd6fe 100%);">🕌</div>
+                <div class="destination-image" style="background: linear-gradient(135deg, #e9d5ff 0%, #ddd6fe 100%);">
+                    <div class="destination-icon" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);"></div>
+                </div>
                 <div class="destination-content">
                     <div class="destination-header">
                         <h3>두바이, UAE</h3>
                         <div class="destination-rating">
-                            ⭐ 4.7
+                            <span class="star-icon"></span> 4.7
                         </div>
                     </div>
                     <p>세계 최고층 빌딩과 럭셔리한 쇼핑, 사막 사파리를 즐기세요.</p>
@@ -658,12 +749,14 @@
             </div>
 
             <div class="destination-card">
-                <div class="destination-image" style="background: linear-gradient(135deg, #fed7aa 0%, #fdba74 100%);">🏖️</div>
+                <div class="destination-image" style="background: linear-gradient(135deg, #fed7aa 0%, #fdba74 100%);">
+                    <div class="destination-icon" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);"></div>
+                </div>
                 <div class="destination-content">
                     <div class="destination-header">
                         <h3>몰디브</h3>
                         <div class="destination-rating">
-                            ⭐ 5.0
+                            <span class="star-icon"></span> 5.0
                         </div>
                     </div>
                     <p>크리스탈처럼 맑은 바다와 럭셔리 리조트에서 완벽한 휴식을 취하세요.</p>
@@ -684,37 +777,55 @@
         <div class="testimonials">
             <div class="testimonial-card">
                 <div class="testimonial-header">
-                    <div class="testimonial-avatar">👩</div>
+                    <div class="testimonial-avatar"></div>
                     <div class="testimonial-info">
                         <h4>김민지</h4>
                         <div class="testimonial-location">파리 여행</div>
                     </div>
                 </div>
-                <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
+                <div class="testimonial-stars">
+                    <span class="testimonial-star"></span>
+                    <span class="testimonial-star"></span>
+                    <span class="testimonial-star"></span>
+                    <span class="testimonial-star"></span>
+                    <span class="testimonial-star"></span>
+                </div>
                 <p>"완벽한 일정과 친절한 가이드 덕분에 꿈같은 파리 여행을 했습니다. 특히 루브르 박물관 투어가 최고였어요!"</p>
             </div>
 
             <div class="testimonial-card">
                 <div class="testimonial-header">
-                    <div class="testimonial-avatar">👨</div>
+                    <div class="testimonial-avatar" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);"></div>
                     <div class="testimonial-info">
                         <h4>박준호</h4>
                         <div class="testimonial-location">발리 여행</div>
                     </div>
                 </div>
-                <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
+                <div class="testimonial-stars">
+                    <span class="testimonial-star"></span>
+                    <span class="testimonial-star"></span>
+                    <span class="testimonial-star"></span>
+                    <span class="testimonial-star"></span>
+                    <span class="testimonial-star"></span>
+                </div>
                 <p>"가족과 함께한 발리 여행, 모든 것이 완벽했습니다. 숙소도 좋고 현지 투어도 알차서 정말 만족스러웠어요."</p>
             </div>
 
             <div class="testimonial-card">
                 <div class="testimonial-header">
-                    <div class="testimonial-avatar">👩</div>
+                    <div class="testimonial-avatar" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);"></div>
                     <div class="testimonial-info">
                         <h4>이서연</h4>
                         <div class="testimonial-location">몰디브 여행</div>
                     </div>
                 </div>
-                <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
+                <div class="testimonial-stars">
+                    <span class="testimonial-star"></span>
+                    <span class="testimonial-star"></span>
+                    <span class="testimonial-star"></span>
+                    <span class="testimonial-star"></span>
+                    <span class="testimonial-star"></span>
+                </div>
                 <p>"신혼여행으로 다녀왔는데 평생 잊지 못할 추억이 되었습니다. 리조트도 환상적이고 서비스도 최고였어요!"</p>
             </div>
         </div>
