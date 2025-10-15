@@ -122,6 +122,8 @@
             transition: all 0.3s ease;
             color: #1a1f36;
             font-family: inherit;
+            position: relative;
+            z-index: 2;
         }
 
         .search-input:focus {
@@ -209,9 +211,13 @@
         /* Template Grid */
         .templates-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
             gap: 2.5rem;
             margin-bottom: 6rem;
+        }
+
+        .templates-grid.hidden {
+            display: none !important;
         }
 
         .template-card {
@@ -223,6 +229,7 @@
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
             opacity: 0;
             animation: fadeInUp 0.6s ease-out forwards;
+            max-width: 550px;
         }
 
         .template-card:nth-child(1) { animation-delay: 0.1s; }
@@ -374,18 +381,18 @@
         }
 
         .template-link {
-            flex: 1;
+            width: 100%;
             display: inline-flex;
             align-items: center;
             justify-content: center;
             gap: 0.5rem;
-            padding: 0.875rem 1.25rem;
+            padding: 1rem 1.5rem;
             background: linear-gradient(135deg, #1a1f36 0%, #2d3348 100%);
             color: white;
             text-decoration: none;
-            border-radius: 10px;
+            border-radius: 12px;
             font-weight: 600;
-            font-size: 0.9375rem;
+            font-size: 1rem;
             transition: all 0.3s ease;
             border: none;
             cursor: pointer;
@@ -395,19 +402,6 @@
             background: linear-gradient(135deg, #4f46e5 0%, #6366f1 100%);
             transform: translateY(-2px);
             box-shadow: 0 8px 16px rgba(79, 70, 229, 0.3);
-        }
-
-        .template-link.secondary {
-            background: white;
-            color: #1a1f36;
-            border: 2px solid #e4e7ec;
-        }
-
-        .template-link.secondary:hover {
-            background: #f9fafb;
-            border-color: #4f46e5;
-            color: #4f46e5;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
         }
 
         /* Section Headers */
@@ -677,7 +671,7 @@
             </div>
         </div>
 
-        <div class="section-wrapper">
+        <div class="section-wrapper" data-section="premium">
             <h2 class="section-title">프리미엄 랜딩 페이지</h2>
             <p class="section-description">현대적이고 트렌디한 디자인의 프리미엄 랜딩 페이지 템플릿</p>
         </div>
@@ -703,7 +697,6 @@
                     </p>
                     <div class="template-actions">
                         <a href="./templates/landing-saas/" class="template-link">미리보기</a>
-                        <a href="./templates/landing-saas/" class="template-link secondary">코드 보기</a>
                     </div>
                 </div>
             </div>
@@ -729,7 +722,6 @@
                     </p>
                     <div class="template-actions">
                         <a href="./templates/landing-agency/" class="template-link">미리보기</a>
-                        <a href="./templates/landing-agency/" class="template-link secondary">코드 보기</a>
                     </div>
                 </div>
             </div>
@@ -755,7 +747,6 @@
                     </p>
                     <div class="template-actions">
                         <a href="./templates/landing-app/" class="template-link">미리보기</a>
-                        <a href="./templates/landing-app/" class="template-link secondary">코드 보기</a>
                     </div>
                 </div>
             </div>
@@ -781,7 +772,6 @@
                     </p>
                     <div class="template-actions">
                         <a href="./templates/landing-ai/" class="template-link">미리보기</a>
-                        <a href="./templates/landing-ai/" class="template-link secondary">코드 보기</a>
                     </div>
                 </div>
             </div>
@@ -807,7 +797,6 @@
                     </p>
                     <div class="template-actions">
                         <a href="./templates/landing-startup/" class="template-link">미리보기</a>
-                        <a href="./templates/landing-startup/" class="template-link secondary">코드 보기</a>
                     </div>
                 </div>
             </div>
@@ -833,13 +822,12 @@
                     </p>
                     <div class="template-actions">
                         <a href="./templates/landing-crypto/" class="template-link">미리보기</a>
-                        <a href="./templates/landing-crypto/" class="template-link secondary">코드 보기</a>
                     </div>
                 </div>
             </div>
         </div>
 
-        <div class="section-wrapper">
+        <div class="section-wrapper" data-section="industry">
             <h2 class="section-title">산업별 전문 템플릿</h2>
             <p class="section-description">각 산업에 특화된 맞춤형 웹사이트 템플릿</p>
         </div>
@@ -865,7 +853,6 @@
                     </p>
                     <div class="template-actions">
                         <a href="./templates/ecommerce/" class="template-link">미리보기</a>
-                        <a href="./templates/ecommerce/" class="template-link secondary">코드 보기</a>
                     </div>
                 </div>
             </div>
@@ -891,7 +878,6 @@
                     </p>
                     <div class="template-actions">
                         <a href="./templates/restaurant/" class="template-link">미리보기</a>
-                        <a href="./templates/restaurant/" class="template-link secondary">코드 보기</a>
                     </div>
                 </div>
             </div>
@@ -917,7 +903,6 @@
                     </p>
                     <div class="template-actions">
                         <a href="./templates/fitness/" class="template-link">미리보기</a>
-                        <a href="./templates/fitness/" class="template-link secondary">코드 보기</a>
                     </div>
                 </div>
             </div>
@@ -943,7 +928,6 @@
                     </p>
                     <div class="template-actions">
                         <a href="./templates/realestate/" class="template-link">미리보기</a>
-                        <a href="./templates/realestate/" class="template-link secondary">코드 보기</a>
                     </div>
                 </div>
             </div>
@@ -969,7 +953,6 @@
                     </p>
                     <div class="template-actions">
                         <a href="./templates/fashion/" class="template-link">미리보기</a>
-                        <a href="./templates/fashion/" class="template-link secondary">코드 보기</a>
                     </div>
                 </div>
             </div>
@@ -995,13 +978,12 @@
                     </p>
                     <div class="template-actions">
                         <a href="./templates/travel/" class="template-link">미리보기</a>
-                        <a href="./templates/travel/" class="template-link secondary">코드 보기</a>
                     </div>
                 </div>
             </div>
         </div>
 
-        <div class="section-wrapper">
+        <div class="section-wrapper" data-section="basic">
             <h2 class="section-title">기본 페이지 템플릿</h2>
             <p class="section-description">다양한 용도로 활용 가능한 범용 웹사이트 템플릿</p>
         </div>
@@ -1027,7 +1009,6 @@
                     </p>
                     <div class="template-actions">
                         <a href="./templates/about-us/" class="template-link">미리보기</a>
-                        <a href="./templates/about-us/" class="template-link secondary">코드 보기</a>
                     </div>
                 </div>
             </div>
@@ -1053,7 +1034,6 @@
                     </p>
                     <div class="template-actions">
                         <a href="./templates/product/" class="template-link">미리보기</a>
-                        <a href="./templates/product/" class="template-link secondary">코드 보기</a>
                     </div>
                 </div>
             </div>
@@ -1079,7 +1059,6 @@
                     </p>
                     <div class="template-actions">
                         <a href="./templates/event/" class="template-link">미리보기</a>
-                        <a href="./templates/event/" class="template-link secondary">코드 보기</a>
                     </div>
                 </div>
             </div>
@@ -1105,7 +1084,6 @@
                     </p>
                     <div class="template-actions">
                         <a href="./templates/portfolio/" class="template-link">미리보기</a>
-                        <a href="./templates/portfolio/" class="template-link secondary">코드 보기</a>
                     </div>
                 </div>
             </div>
@@ -1131,7 +1109,6 @@
                     </p>
                     <div class="template-actions">
                         <a href="./templates/landing/" class="template-link">미리보기</a>
-                        <a href="./templates/landing/" class="template-link secondary">코드 보기</a>
                     </div>
                 </div>
             </div>
@@ -1157,7 +1134,6 @@
                     </p>
                     <div class="template-actions">
                         <a href="./templates/blog/" class="template-link">미리보기</a>
-                        <a href="./templates/blog/" class="template-link secondary">코드 보기</a>
                     </div>
                 </div>
             </div>
@@ -1231,14 +1207,9 @@
 
         function filterTemplates(searchTerm, category) {
             const sectionWrappers = document.querySelectorAll('.section-wrapper');
+            const templatesGrids = document.querySelectorAll('.templates-grid');
 
-            // 전체가 아닐 때는 섹션 헤더 숨기기
-            if (category !== 'all') {
-                sectionWrappers.forEach(wrapper => wrapper.classList.add('hidden'));
-            } else {
-                sectionWrappers.forEach(wrapper => wrapper.classList.remove('hidden'));
-            }
-
+            // 카드 필터링
             templateCards.forEach(card => {
                 const title = card.querySelector('.template-title').textContent.toLowerCase();
                 const description = card.querySelector('.template-description').textContent.toLowerCase();
@@ -1251,6 +1222,25 @@
                     card.classList.remove('filtered-hidden');
                 } else {
                     card.classList.add('filtered-hidden');
+                }
+            });
+
+            // 각 카테고리별로 섹션 헤더와 그리드 표시/숨김 처리
+            sectionWrappers.forEach(wrapper => {
+                const sectionCategory = wrapper.dataset.section;
+                const correspondingGrid = document.querySelector(`.templates-grid[data-category="${sectionCategory}"]`);
+
+                // 해당 카테고리의 보이는 카드가 있는지 확인
+                const visibleCards = correspondingGrid.querySelectorAll('.template-card:not(.filtered-hidden)');
+                const hasVisibleCards = visibleCards.length > 0;
+
+                // 카테고리가 일치하고 보이는 카드가 있으면 표시
+                if ((category === 'all' || category === sectionCategory) && hasVisibleCards) {
+                    wrapper.classList.remove('hidden');
+                    correspondingGrid.classList.remove('hidden');
+                } else {
+                    wrapper.classList.add('hidden');
+                    correspondingGrid.classList.add('hidden');
                 }
             });
         }
