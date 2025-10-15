@@ -12,140 +12,197 @@
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            background: #ffffff;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: #fafbfc;
             min-height: 100vh;
-            padding: 2rem;
+            padding: 3rem 2rem;
+            color: #1a1f36;
+            line-height: 1.6;
         }
 
         .container {
-            max-width: 1400px;
+            max-width: 1320px;
             margin: 0 auto;
         }
 
         header {
             text-align: center;
-            color: #2d3748;
-            margin-bottom: 4rem;
+            margin-bottom: 5rem;
         }
 
         h1 {
-            font-size: 3rem;
+            font-size: 3.5rem;
             margin-bottom: 1rem;
-            text-shadow: none;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            color: #1a1f36;
         }
 
         .subtitle {
-            font-size: 1.3rem;
-            color: #718096;
+            font-size: 1.25rem;
+            color: #5b6b8e;
+            font-weight: 400;
+            letter-spacing: -0.01em;
         }
 
         .templates-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
             gap: 2rem;
-            margin-bottom: 3rem;
+            margin-bottom: 4rem;
         }
 
         .template-card {
             background: white;
-            border-radius: 20px;
+            border-radius: 16px;
             overflow: hidden;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
-            transition: transform 0.3s, box-shadow 0.3s;
+            border: 1px solid #e4e7ec;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .template-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.12);
+            transform: translateY(-4px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
+            border-color: #d1d5db;
         }
 
         .template-image {
             width: 100%;
-            height: 250px;
+            height: 220px;
             object-fit: cover;
-            border-bottom: 3px solid #a8b8d8;
         }
 
         .template-placeholder {
             width: 100%;
-            height: 250px;
-            background: linear-gradient(135deg, #e0e7ff 0%, #dbeafe 100%);
+            height: 220px;
+            background: #f8f9fa;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 3rem;
-            border-bottom: 3px solid #a8b8d8;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .template-placeholder::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, transparent 0%, rgba(79, 70, 229, 0.03) 100%);
+        }
+
+        .icon-wrapper {
+            width: 64px;
+            height: 64px;
+            background: white;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            position: relative;
+            z-index: 1;
         }
 
         .template-content {
-            padding: 2rem;
+            padding: 1.75rem;
         }
 
         .template-badge {
             display: inline-block;
-            padding: 0.3rem 1rem;
-            background: #a8b8d8;
-            color: #2d3748;
-            border-radius: 50px;
-            font-size: 0.85rem;
+            padding: 0.375rem 0.875rem;
+            background: #f1f3f5;
+            color: #5b6b8e;
+            border-radius: 6px;
+            font-size: 0.75rem;
             font-weight: 600;
+            letter-spacing: 0.03em;
+            text-transform: uppercase;
             margin-bottom: 1rem;
         }
 
+        .template-badge.premium {
+            background: #eef2ff;
+            color: #4f46e5;
+        }
+
+        .template-badge.industry {
+            background: #f0fdf4;
+            color: #16a34a;
+        }
+
         .template-title {
-            font-size: 1.6rem;
-            margin-bottom: 0.5rem;
-            color: #2d3748;
+            font-size: 1.375rem;
+            margin-bottom: 0.625rem;
+            color: #1a1f36;
+            font-weight: 600;
+            letter-spacing: -0.01em;
         }
 
         .template-description {
-            color: #718096;
+            color: #5b6b8e;
             margin-bottom: 1.5rem;
             line-height: 1.6;
+            font-size: 0.9375rem;
         }
 
         .template-link {
-            display: inline-block;
-            padding: 0.8rem 2rem;
-            background: linear-gradient(135deg, #818cf8 0%, #a78bfa 100%);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            background: #1a1f36;
             color: white;
             text-decoration: none;
-            border-radius: 10px;
-            font-weight: 600;
-            transition: transform 0.3s;
+            border-radius: 8px;
+            font-weight: 500;
+            font-size: 0.9375rem;
+            transition: all 0.2s;
         }
 
         .template-link:hover {
-            transform: scale(1.05);
+            background: #4f46e5;
+        }
+
+        .template-link::after {
+            content: '→';
+            font-size: 1.125rem;
         }
 
         .section-title {
-            color: #2d3748;
-            font-size: 2rem;
-            margin: 3rem 0 2rem;
-            text-align: center;
-            text-shadow: none;
+            color: #1a1f36;
+            font-size: 1.75rem;
+            font-weight: 600;
+            margin: 4rem 0 2.5rem;
+            letter-spacing: -0.01em;
+            padding-left: 1rem;
+            border-left: 4px solid #4f46e5;
         }
 
         footer {
             text-align: center;
-            color: #2d3748;
-            margin-top: 4rem;
-            padding: 2rem;
-            background: rgba(255, 255, 255, 0.6);
-            backdrop-filter: blur(10px);
-            border-radius: 20px;
+            color: #5b6b8e;
+            margin-top: 5rem;
+            padding: 2.5rem;
+            background: white;
+            border: 1px solid #e4e7ec;
+            border-radius: 16px;
+        }
+
+        footer strong {
+            color: #1a1f36;
         }
 
         footer a {
-            color: #818cf8;
+            color: #4f46e5;
             text-decoration: none;
-            font-weight: 600;
+            font-weight: 500;
+            transition: color 0.2s;
         }
 
         footer a:hover {
-            text-decoration: underline;
+            color: #3730a3;
         }
     </style>
 </head>
@@ -156,227 +213,263 @@
             <p class="subtitle">정적 페이지 템플릿 모음</p>
         </header>
 
-        <h2 class="section-title">📄 기본 페이지 템플릿</h2>
+        <h2 class="section-title">기본 페이지 템플릿</h2>
         <div class="templates-grid">
             <div class="template-card">
-                <div class="template-placeholder" style="background: linear-gradient(135deg, #e0e7ff 0%, #dbeafe 100%);">🏢</div>
+                <div class="template-placeholder">
+                    <div class="icon-wrapper">🏢</div>
+                </div>
                 <div class="template-content">
-                    <span class="template-badge">기본</span>
+                    <span class="template-badge">Basic</span>
                     <h3 class="template-title">회사 소개</h3>
                     <p class="template-description">
                         회사 소개, 미션/비전, 팀 소개 및 회사 연혁을 담은 페이지
                     </p>
-                    <a href="./templates/about-us/" class="template-link">미리보기 →</a>
+                    <a href="./templates/about-us/" class="template-link">미리보기</a>
                 </div>
             </div>
 
             <div class="template-card">
-                <div class="template-placeholder" style="background: linear-gradient(135deg, #fce7f3 0%, #ddd6fe 100%);">📦</div>
+                <div class="template-placeholder">
+                    <div class="icon-wrapper">📦</div>
+                </div>
                 <div class="template-content">
-                    <span class="template-badge">기본</span>
+                    <span class="template-badge">Basic</span>
                     <h3 class="template-title">제품 소개</h3>
                     <p class="template-description">
                         제품 기능, 사양, 요금제를 소개하는 페이지
                     </p>
-                    <a href="./templates/product/" class="template-link">미리보기 →</a>
+                    <a href="./templates/product/" class="template-link">미리보기</a>
                 </div>
             </div>
 
             <div class="template-card">
-                <div class="template-placeholder" style="background: linear-gradient(135deg, #dbeafe 0%, #ccfbf1 100%);">🎉</div>
+                <div class="template-placeholder">
+                    <div class="icon-wrapper">🎉</div>
+                </div>
                 <div class="template-content">
-                    <span class="template-badge">기본</span>
+                    <span class="template-badge">Basic</span>
                     <h3 class="template-title">행사 안내</h3>
                     <p class="template-description">
                         행사 일정, 연사 소개, 참가 신청 폼을 담은 초대 페이지
                     </p>
-                    <a href="./templates/event/" class="template-link">미리보기 →</a>
+                    <a href="./templates/event/" class="template-link">미리보기</a>
                 </div>
             </div>
 
             <div class="template-card">
-                <div class="template-placeholder" style="background: linear-gradient(135deg, #fce7f3 0%, #fbcfe8 100%);">👤</div>
+                <div class="template-placeholder">
+                    <div class="icon-wrapper">👤</div>
+                </div>
                 <div class="template-content">
-                    <span class="template-badge">기본</span>
+                    <span class="template-badge">Basic</span>
                     <h3 class="template-title">포트폴리오</h3>
                     <p class="template-description">
                         개인 브랜딩을 위한 프로젝트 갤러리 및 경력 소개 페이지
                     </p>
-                    <a href="./templates/portfolio/" class="template-link">미리보기 →</a>
+                    <a href="./templates/portfolio/" class="template-link">미리보기</a>
                 </div>
             </div>
 
             <div class="template-card">
-                <div class="template-placeholder" style="background: linear-gradient(135deg, #fed7aa 0%, #bfdbfe 100%);">🚀</div>
+                <div class="template-placeholder">
+                    <div class="icon-wrapper">🚀</div>
+                </div>
                 <div class="template-content">
-                    <span class="template-badge">기본</span>
+                    <span class="template-badge">Basic</span>
                     <h3 class="template-title">랜딩 페이지</h3>
                     <p class="template-description">
                         전환율 최적화된 홍보용 랜딩 페이지
                     </p>
-                    <a href="./templates/landing/" class="template-link">미리보기 →</a>
+                    <a href="./templates/landing/" class="template-link">미리보기</a>
                 </div>
             </div>
 
             <div class="template-card">
-                <div class="template-placeholder" style="background: linear-gradient(135deg, #dbeafe 0%, #e0e7ff 100%);">📝</div>
+                <div class="template-placeholder">
+                    <div class="icon-wrapper">📝</div>
+                </div>
                 <div class="template-content">
-                    <span class="template-badge">기본</span>
+                    <span class="template-badge">Basic</span>
                     <h3 class="template-title">블로그</h3>
                     <p class="template-description">
                         기술 인사이트와 스토리를 공유하는 블로그 페이지
                     </p>
-                    <a href="./templates/blog/" class="template-link">미리보기 →</a>
+                    <a href="./templates/blog/" class="template-link">미리보기</a>
                 </div>
             </div>
         </div>
 
-        <h2 class="section-title">🚀 프리미엄 랜딩 페이지 (2024 트렌드)</h2>
+        <h2 class="section-title">프리미엄 랜딩 페이지</h2>
         <div class="templates-grid">
             <div class="template-card">
-                <div class="template-placeholder" style="background: linear-gradient(135deg, #ddd6fe 0%, #e9d5ff 100%);">💼</div>
+                <div class="template-placeholder">
+                    <div class="icon-wrapper">💼</div>
+                </div>
                 <div class="template-content">
-                    <span class="template-badge" style="background: #c4b5fd; color: #2d3748;">프리미엄</span>
+                    <span class="template-badge premium">Premium</span>
                     <h3 class="template-title">SaaS 랜딩</h3>
                     <p class="template-description">
                         미니멀 + 그라데이션 스타일의 SaaS 제품 소개 페이지
                     </p>
-                    <a href="./templates/landing-saas/" class="template-link">미리보기 →</a>
+                    <a href="./templates/landing-saas/" class="template-link">미리보기</a>
                 </div>
             </div>
 
             <div class="template-card">
-                <div class="template-placeholder" style="background: linear-gradient(135deg, #ccfbf1 0%, #cffafe 100%);">🎨</div>
+                <div class="template-placeholder">
+                    <div class="icon-wrapper">🎨</div>
+                </div>
                 <div class="template-content">
-                    <span class="template-badge" style="background: #a5f3fc; color: #2d3748;">프리미엄</span>
+                    <span class="template-badge premium">Premium</span>
                     <h3 class="template-title">에이전시 랜딩</h3>
                     <p class="template-description">
                         다크 + 네온 스타일의 크리에이티브 에이전시 페이지
                     </p>
-                    <a href="./templates/landing-agency/" class="template-link">미리보기 →</a>
+                    <a href="./templates/landing-agency/" class="template-link">미리보기</a>
                 </div>
             </div>
 
             <div class="template-card">
-                <div class="template-placeholder" style="background: linear-gradient(135deg, #e9d5ff 0%, #f5d0fe 100%);">📱</div>
+                <div class="template-placeholder">
+                    <div class="icon-wrapper">📱</div>
+                </div>
                 <div class="template-content">
-                    <span class="template-badge" style="background: #e9d5ff; color: #2d3748;">프리미엄</span>
+                    <span class="template-badge premium">Premium</span>
                     <h3 class="template-title">앱 런칭</h3>
                     <p class="template-description">
                         글래스모피즘 스타일의 모바일 앱 런칭 페이지
                     </p>
-                    <a href="./templates/landing-app/" class="template-link">미리보기 →</a>
+                    <a href="./templates/landing-app/" class="template-link">미리보기</a>
                 </div>
             </div>
 
             <div class="template-card">
-                <div class="template-placeholder" style="background: linear-gradient(135deg, #ccfbf1 0%, #fce7f3 100%);">🤖</div>
+                <div class="template-placeholder">
+                    <div class="icon-wrapper">🤖</div>
+                </div>
                 <div class="template-content">
-                    <span class="template-badge" style="background: #bae6fd; color: #2d3748;">프리미엄</span>
+                    <span class="template-badge premium">Premium</span>
                     <h3 class="template-title">AI/Tech 제품</h3>
                     <p class="template-description">
                         사이버펑크 스타일의 AI 플랫폼 소개 페이지
                     </p>
-                    <a href="./templates/landing-ai/" class="template-link">미리보기 →</a>
+                    <a href="./templates/landing-ai/" class="template-link">미리보기</a>
                 </div>
             </div>
 
             <div class="template-card">
-                <div class="template-placeholder" style="background: linear-gradient(135deg, #fed7aa 0%, #fef3c7 100%);">⚡</div>
+                <div class="template-placeholder">
+                    <div class="icon-wrapper">⚡</div>
+                </div>
                 <div class="template-content">
-                    <span class="template-badge" style="background: #fde68a; color: #2d3748;">프리미엄</span>
+                    <span class="template-badge premium">Premium</span>
                     <h3 class="template-title">스타트업 랜딩</h3>
                     <p class="template-description">
                         볼드 타이포그래피 스타일의 스타트업 소개 페이지
                     </p>
-                    <a href="./templates/landing-startup/" class="template-link">미리보기 →</a>
+                    <a href="./templates/landing-startup/" class="template-link">미리보기</a>
                 </div>
             </div>
 
             <div class="template-card">
-                <div class="template-placeholder" style="background: linear-gradient(135deg, #ddd6fe 0%, #ccfbf1 100%);">⬢</div>
+                <div class="template-placeholder">
+                    <div class="icon-wrapper">⬢</div>
+                </div>
                 <div class="template-content">
-                    <span class="template-badge" style="background: #c4b5fd; color: #2d3748;">프리미엄</span>
+                    <span class="template-badge premium">Premium</span>
                     <h3 class="template-title">크립토/Web3</h3>
                     <p class="template-description">
                         블록체인 스타일의 암호화폐 플랫폼 랜딩 페이지
                     </p>
-                    <a href="./templates/landing-crypto/" class="template-link">미리보기 →</a>
+                    <a href="./templates/landing-crypto/" class="template-link">미리보기</a>
                 </div>
             </div>
         </div>
 
-        <h2 class="section-title">🛍️ 산업별 전문 템플릿</h2>
+        <h2 class="section-title">산업별 전문 템플릿</h2>
         <div class="templates-grid">
             <div class="template-card">
-                <div class="template-placeholder" style="background: linear-gradient(135deg, #e0e7ff 0%, #ddd6fe 100%);">🛒</div>
+                <div class="template-placeholder">
+                    <div class="icon-wrapper">🛒</div>
+                </div>
                 <div class="template-content">
-                    <span class="template-badge" style="background: #c4b5fd; color: #2d3748;">산업특화</span>
+                    <span class="template-badge industry">Industry</span>
                     <h3 class="template-title">이커머스 쇼핑몰</h3>
                     <p class="template-description">
                         상품 카탈로그, 장바구니 기능을 갖춘 프리미엄 쇼핑몰
                     </p>
-                    <a href="./templates/ecommerce/" class="template-link">미리보기 →</a>
+                    <a href="./templates/ecommerce/" class="template-link">미리보기</a>
                 </div>
             </div>
 
             <div class="template-card">
-                <div class="template-placeholder" style="background: linear-gradient(135deg, #fef3c7 0%, #fed7aa 100%);">🍽️</div>
+                <div class="template-placeholder">
+                    <div class="icon-wrapper">🍽️</div>
+                </div>
                 <div class="template-content">
-                    <span class="template-badge" style="background: #fde68a; color: #2d3748;">산업특화</span>
+                    <span class="template-badge industry">Industry</span>
                     <h3 class="template-title">레스토랑</h3>
                     <p class="template-description">
                         파인 다이닝 스타일의 고급 레스토랑 소개 페이지
                     </p>
-                    <a href="./templates/restaurant/" class="template-link">미리보기 →</a>
+                    <a href="./templates/restaurant/" class="template-link">미리보기</a>
                 </div>
             </div>
 
             <div class="template-card">
-                <div class="template-placeholder" style="background: linear-gradient(135deg, #fecaca 0%, #fed7aa 100%);">💪</div>
+                <div class="template-placeholder">
+                    <div class="icon-wrapper">💪</div>
+                </div>
                 <div class="template-content">
-                    <span class="template-badge" style="background: #fca5a5; color: #2d3748;">산업특화</span>
+                    <span class="template-badge industry">Industry</span>
                     <h3 class="template-title">피트니스 센터</h3>
                     <p class="template-description">
                         역동적인 디자인의 헬스장/피트니스 랜딩 페이지
                     </p>
-                    <a href="./templates/fitness/" class="template-link">미리보기 →</a>
+                    <a href="./templates/fitness/" class="template-link">미리보기</a>
                 </div>
             </div>
 
             <div class="template-card">
-                <div class="template-placeholder" style="background: linear-gradient(135deg, #bfdbfe 0%, #dbeafe 100%);">🏠</div>
+                <div class="template-placeholder">
+                    <div class="icon-wrapper">🏠</div>
+                </div>
                 <div class="template-content">
-                    <span class="template-badge" style="background: #93c5fd; color: #2d3748;">산업특화</span>
+                    <span class="template-badge industry">Industry</span>
                     <h3 class="template-title">부동산</h3>
                     <p class="template-description">
                         프리미엄 부동산 중개를 위한 고급스러운 페이지
                     </p>
-                    <a href="./templates/realestate/" class="template-link">미리보기 →</a>
+                    <a href="./templates/realestate/" class="template-link">미리보기</a>
                 </div>
             </div>
 
             <div class="template-card">
-                <div class="template-placeholder" style="background: linear-gradient(135deg, #e5e7eb 0%, #f3f4f6 100%);">👗</div>
+                <div class="template-placeholder">
+                    <div class="icon-wrapper">👗</div>
+                </div>
                 <div class="template-content">
-                    <span class="template-badge" style="background: #d1d5db; color: #2d3748;">산업특화</span>
+                    <span class="template-badge industry">Industry</span>
                     <h3 class="template-title">패션 브랜드</h3>
                     <p class="template-description">
                         미니멀하고 세련된 패션 브랜드 소개 페이지
                     </p>
-                    <a href="./templates/fashion/" class="template-link">미리보기 →</a>
+                    <a href="./templates/fashion/" class="template-link">미리보기</a>
                 </div>
             </div>
 
             <div class="template-card">
-                <div class="template-placeholder" style="background: linear-gradient(135deg, #fef3c7 0%, #fecaca 100%);">✈️</div>
+                <div class="template-placeholder">
+                    <div class="icon-wrapper">✈️</div>
+                </div>
                 <div class="template-content">
-                    <span class="template-badge" style="background: #fed7aa; color: #2d3748;">산업특화</span>
+                    <span class="template-badge industry">Industry</span>
                     <h3 class="template-title">여행/투어</h3>
                     <p class="template-description">
                         여행 상품 예약과 여행지 소개를 위한 페이지
                     </p>
-                    <a href="./templates/travel/" class="template-link">미리보기 →</a>
+                    <a href="./templates/travel/" class="template-link">미리보기</a>
                 </div>
             </div>
         </div>
