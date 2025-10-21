@@ -1,0 +1,15 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(mkdir:*)",
+      "WebFetch(domain:readdy.link)",
+      "Bash(start templates/food-premium/index.html)",
+      "Bash(start:*)",
+      "Bash(npm start)",
+      "Bash(move:*)",
+      "Bash(ren black-label .black-label)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}

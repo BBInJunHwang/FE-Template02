@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Black Label - CHOICE</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="index.html" class="logo">Black Label</a>
+            <ul class="nav-links">
+                <li><a href="index.html">HOME</a></li>
+                <li><a href="brand.html">BRAND</a></li>
+                <li><a href="rockchef.html">ROCKCHEF</a></li>
+                <li><a href="farmers.html">FARMERS</a></li>
+                <li><a href="choice.html">CHOICE</a></li>
+                <li><a href="contact.html">CONTACT</a></li>
+            </ul>
+            <div class="auth-links">
+                <a href="#">LOGIN</a>
+                <a href="#">SIGN UP</a>
+            </div>
+        </nav>
+    </header>
+
+    <section class="content">
+        <div class="content-header fade-in">
+            <h1>Black Label Choice</h1>
+            <p>엄선된 프리미엄 식자재들을 만나보세요</p>
+        </div>
+
+        <div class="product-grid">
+            <div class="product-card">
+                <img src="https://images.pexels.com/photos/323682/pexels-photo-323682.jpeg?auto=compress&cs=tinysrgb&w=600" alt="홍천 한우" class="product-image">
+                <div class="product-info">
+                    <h3>홍천 한우</h3>
+                    <p class="product-location">📍 강원도 홍천</p>
+                    <p class="product-description">김철수 목장</p>
+                    <div class="product-tags">
+                        <span class="tag">자연목</span>
+                        <span class="tag">3등급 이상</span>
+                    </div>
+                    <p class="product-price">89,000원 <span style="font-size: 14px; font-weight: 400; color: #999;">/kg</span></p>
+                    <button class="product-button">장바구니 담기</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="https://images.pexels.com/photos/323682/pexels-photo-323682.jpeg?auto=compress&cs=tinysrgb&w=600" alt="제주 흑돼지" class="product-image">
+                <div class="product-info">
+                    <h3>제주 흑돼지</h3>
+                    <p class="product-location">📍 제주도</p>
+                    <p class="product-description">오름목장</p>
+                    <div class="product-tags">
+                        <span class="tag">토종 흑돼지</span>
+                        <span class="tag">감귤 사료</span>
+                    </div>
+                    <p class="product-price">45,000원 <span style="font-size: 14px; font-weight: 400; color: #999;">/kg</span></p>
+                    <button class="product-button">장바구니 담기</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="https://images.pexels.com/photos/323682/pexels-photo-323682.jpeg?auto=compress&cs=tinysrgb&w=600" alt="정읍 소다옴/다음농장" class="product-image">
+                <div class="product-info">
+                    <h3>정읍 소다옴/다음농장</h3>
+                    <p class="product-location">📍 전라북도 정읍</p>
+                    <p class="product-description">소다옴/다음농장</p>
+                    <div class="product-tags">
+                        <span class="tag">동물복지 인증</span>
+                        <span class="tag">자연목</span>
+                    </div>
+                    <p class="product-price">95,000원 <span style="font-size: 14px; font-weight: 400; color: #999;">/kg</span></p>
+                    <button class="product-button">장바구니 담기</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="https://images.pexels.com/photos/323682/pexels-photo-323682.jpeg?auto=compress&cs=tinysrgb&w=600" alt="남도음식 명인 1호 천수봉" class="product-image">
+                <div class="product-info">
+                    <h3>남도음식 명인 1호 천수봉</h3>
+                    <p class="product-location">📍 전라남도 나주</p>
+                    <p class="product-description">천수봉 명인</p>
+                    <div class="product-tags">
+                        <span class="tag">50년 전통</span>
+                        <span class="tag">발가공식 계통</span>
+                    </div>
+                    <p class="product-price">180,000원 <span style="font-size: 14px; font-weight: 400; color: #999;">/kg</span></p>
+                    <button class="product-button">장바구니 담기</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Scroll animation observer
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all animated elements
+        document.querySelectorAll('.fade-in, .product-card').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Stagger product cards animation
+        const productCards = document.querySelectorAll('.product-card');
+        const productObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const cards = Array.from(productCards);
+                    cards.forEach((card, index) => {
+                        setTimeout(() => {
+                            card.classList.add('visible');
+                        }, index * 150);
+                    });
+                    productObserver.disconnect();
+                }
+            });
+        }, observerOptions);
+
+        if (productCards.length > 0) {
+            productObserver.observe(productCards[0]);
+        }
+    </script>
+</body>
+</html>

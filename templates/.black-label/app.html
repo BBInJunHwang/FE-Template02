@@ -1,0 +1,1383 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Black Label</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans KR', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Page sections */
+        .page-section {
+            display: none;
+        }
+        .page-section.active {
+            display: block;
+        }
+
+        /* Header */
+        header {
+            background-color: #000;
+            padding: 20px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 40px;
+        }
+
+        .logo {
+            font-family: 'Brush Script MT', cursive;
+            font-size: 32px;
+            color: #fff;
+            font-style: italic;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 50px;
+        }
+
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 500;
+            letter-spacing: 1px;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #ddd;
+        }
+
+        .auth-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .auth-links a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .auth-links a:hover {
+            color: #ddd;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: #fff;
+            position: relative;
+            margin-top: 70px;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.4);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 1200px;
+            padding: 0 20px;
+        }
+
+        .hero h1 {
+            font-family: 'Brush Script MT', cursive;
+            font-size: 120px;
+            font-style: italic;
+            margin-bottom: 30px;
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .hero p {
+            font-size: 24px;
+            font-weight: 300;
+            letter-spacing: 2px;
+        }
+
+        /* Content Section */
+        .content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 100px 40px;
+        }
+
+        .content-header {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        .content-header h1 {
+            font-size: 64px;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+        }
+
+        .content-header p {
+            font-size: 20px;
+            color: #666;
+            font-weight: 300;
+        }
+
+        /* Two Column Layout */
+        .two-column {
+            display: flex;
+            gap: 60px;
+            align-items: center;
+            margin-bottom: 80px;
+        }
+
+        .column {
+            flex: 1;
+        }
+
+        .column img {
+            width: 100%;
+            border-radius: 10px;
+        }
+
+        .column h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .column h3 {
+            font-size: 28px;
+            margin-bottom: 15px;
+            margin-top: 40px;
+            color: #333;
+        }
+
+        .column p {
+            font-size: 18px;
+            line-height: 1.8;
+            color: #666;
+            margin-bottom: 15px;
+        }
+
+        .column ul {
+            list-style: none;
+            margin-top: 30px;
+        }
+
+        .column ul li {
+            font-size: 18px;
+            color: #333;
+            margin-bottom: 15px;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .column ul li::before {
+            content: '•';
+            color: #e74c3c;
+            font-size: 24px;
+            position: absolute;
+            left: 0;
+        }
+
+        /* Tabs */
+        .tabs {
+            display: flex;
+            gap: 30px;
+            justify-content: center;
+            margin-bottom: 60px;
+            border-bottom: 2px solid #e0e0e0;
+        }
+
+        .tab {
+            padding: 15px 30px;
+            font-size: 18px;
+            color: #666;
+            cursor: pointer;
+            border: none;
+            background: none;
+            transition: all 0.3s;
+            border-bottom: 3px solid transparent;
+        }
+
+        .tab.active {
+            color: #333;
+            border-bottom: 3px solid #333;
+            font-weight: 600;
+        }
+
+        /* Product Grid */
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            margin-top: 60px;
+        }
+
+        .product-card {
+            background: #fff;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+
+        .product-info {
+            padding: 25px;
+        }
+
+        .product-info h3 {
+            font-size: 22px;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .product-location {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            color: #666;
+            margin-bottom: 10px;
+            font-size: 14px;
+        }
+
+        .product-description {
+            color: #888;
+            margin-bottom: 15px;
+            font-size: 14px;
+        }
+
+        .product-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .tag {
+            background: #f5f5f5;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            color: #666;
+        }
+
+        .product-price {
+            font-size: 24px;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 15px;
+        }
+
+        .product-button {
+            width: 100%;
+            padding: 12px;
+            background: #000;
+            color: #fff;
+            border: none;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .product-button:hover {
+            background: #333;
+        }
+
+        /* Contact Section */
+        .contact-container {
+            display: flex;
+            gap: 50px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 40px 100px;
+            align-items: flex-start;
+        }
+
+        .contact-form-section {
+            flex: 0 0 48%;
+            background: #fff;
+            padding: 45px;
+            border-radius: 15px;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        .contact-form-section h2 {
+            font-size: 28px;
+            margin-bottom: 30px;
+            color: #333;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 600;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #333;
+            font-size: 13px;
+            font-weight: 500;
+        }
+
+        .form-row {
+            display: flex;
+            gap: 15px;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 14px 16px;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 15px;
+            font-family: inherit;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #333;
+        }
+
+        .form-group textarea {
+            min-height: 140px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 16px;
+            background: #000;
+            color: #fff;
+            border: none;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            border-radius: 8px;
+            transition: background 0.3s;
+            margin-top: 10px;
+        }
+
+        .submit-btn:hover {
+            background: #333;
+        }
+
+        .newsletter-section {
+            flex: 0 0 48%;
+            background: #1a1a1a;
+            color: #fff;
+            padding: 45px;
+            border-radius: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 35px;
+        }
+
+        .newsletter-section h2 {
+            font-size: 28px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .newsletter-section p {
+            font-size: 15px;
+            color: #ddd;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .newsletter-input {
+            padding: 16px;
+            border: none;
+            border-radius: 8px;
+            font-size: 15px;
+            margin-bottom: 15px;
+        }
+
+        .subscribe-btn {
+            width: 100%;
+            padding: 16px;
+            background: #ffd700;
+            color: #000;
+            border: none;
+            font-size: 15px;
+            font-weight: 700;
+            cursor: pointer;
+            border-radius: 8px;
+            transition: background 0.3s;
+        }
+
+        .subscribe-btn:hover {
+            background: #ffed4e;
+        }
+
+        .contact-info {
+            margin-top: 20px;
+            padding-top: 35px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .contact-info h3 {
+            font-size: 22px;
+            margin-bottom: 25px;
+            font-weight: 600;
+        }
+
+        .contact-item {
+            margin-bottom: 25px;
+        }
+
+        .contact-item-title {
+            font-size: 15px;
+            font-weight: 600;
+            margin-bottom: 6px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .contact-item-detail {
+            color: #bbb;
+            font-size: 14px;
+            padding-left: 26px;
+        }
+
+        /* Scroll Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .slide-in-left {
+            opacity: 0;
+            transform: translateX(-100px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .slide-in-left.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .slide-in-right {
+            opacity: 0;
+            transform: translateX(100px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .slide-in-right.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .scale-in {
+            opacity: 0;
+            transform: scale(0.8);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .scale-in.visible {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        /* Staggered animations for list items */
+        .column ul li {
+            opacity: 0;
+            transform: translateX(-30px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+
+        .column ul li.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        /* Product cards staggered animation */
+        .product-card {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .product-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Region Content Section (test4 style) */
+        .region-content-section {
+            margin: 60px 0 80px;
+        }
+
+        .region-content-wrapper {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .region-content {
+            display: none;
+        }
+
+        .region-content.active {
+            display: block;
+        }
+
+        .region-content-layout {
+            display: flex;
+            gap: 60px;
+            align-items: flex-start;
+        }
+
+        .region-image-container {
+            flex: 0 0 45%;
+        }
+
+        .region-image-container img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            display: block;
+        }
+
+        .region-text-container {
+            flex: 1;
+        }
+
+        .region-text-container h2 {
+            font-size: 36px;
+            margin-bottom: 10px;
+            color: #333;
+            font-weight: 700;
+        }
+
+        .region-location {
+            color: #999;
+            font-size: 16px;
+            margin-bottom: 30px;
+        }
+
+        .region-text-container h3 {
+            font-size: 22px;
+            margin: 30px 0 15px;
+            color: #333;
+            font-weight: 600;
+        }
+
+        .region-text-container p {
+            font-size: 16px;
+            line-height: 1.8;
+            color: #666;
+            margin-bottom: 15px;
+        }
+
+        /* Gallery Banner Section (test7 style) - Carousel */
+        .gallery-banner-section {
+            margin: 80px 0;
+            padding: 0 40px;
+        }
+
+        .auto-slider {
+            position: relative;
+            max-width: 900px;
+            margin: 0 auto;
+            overflow: hidden;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .slider-track {
+            position: relative;
+            width: 100%;
+            height: 400px;
+        }
+
+        .gallery-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 0.8s ease;
+        }
+
+        .gallery-slide.active {
+            opacity: 1;
+        }
+
+        .gallery-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .gallery-caption {
+            position: absolute;
+            bottom: 30px;
+            left: 30px;
+            color: #fff;
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.7);
+        }
+
+        .gallery-caption h3 {
+            font-size: 26px;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .gallery-caption p {
+            font-size: 16px;
+        }
+
+        .slider-dots {
+            position: absolute;
+            bottom: 25px;
+            right: 30px;
+            display: flex;
+            gap: 8px;
+            z-index: 10;
+        }
+
+        .dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .dot.active {
+            background: #fff;
+            width: 25px;
+            border-radius: 5px;
+        }
+
+        .dot:hover {
+            background: rgba(255, 255, 255, 0.8);
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .product-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .two-column,
+            .contact-container {
+                flex-direction: column;
+            }
+
+            .region-content-layout {
+                flex-direction: column;
+            }
+
+            .region-image-container {
+                flex: 1;
+                width: 100%;
+            }
+
+            .slider-track {
+                height: 400px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                gap: 20px;
+            }
+
+            .hero h1 {
+                font-size: 60px;
+            }
+
+            .product-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .region-text-container h2 {
+                font-size: 28px;
+            }
+
+            .region-text-container h3 {
+                font-size: 20px;
+            }
+
+            .slider-track {
+                height: 280px;
+            }
+
+            .gallery-caption h3 {
+                font-size: 20px;
+            }
+
+            .gallery-caption p {
+                font-size: 14px;
+            }
+
+            .gallery-caption {
+                left: 20px;
+                bottom: 20px;
+            }
+
+            .slider-dots {
+                right: 20px;
+                bottom: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="#home" class="logo" data-page="home">Black Label</a>
+            <ul class="nav-links">
+                <li><a href="#home" data-page="home">HOME</a></li>
+                <li><a href="#brand" data-page="brand">BRAND</a></li>
+                <li><a href="#rockchef" data-page="rockchef">ROCKCHEF</a></li>
+                <li><a href="#farmers" data-page="farmers">FARMERS</a></li>
+                <li><a href="#choice" data-page="choice">CHOICE</a></li>
+                <li><a href="#contact" data-page="contact">CONTACT</a></li>
+            </ul>
+            <div class="auth-links">
+                <a href="#">LOGIN</a>
+                <a href="#">SIGN UP</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- HOME Page -->
+    <section id="home" class="page-section active">
+        <div class="hero" style="background-image: url('https://images.pexels.com/photos/1251198/pexels-photo-1251198.jpeg?auto=compress&cs=tinysrgb&w=1920');">
+            <div class="hero-content">
+                <h1>Black Label</h1>
+                <p>우리가 전하는 건 생산자의 철학과 삶이 담긴 진정성입니다.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- BRAND Page -->
+    <section id="brand" class="page-section">
+        <div class="hero" style="background-image: url('https://images.pexels.com/photos/6646935/pexels-photo-6646935.jpeg?auto=compress&cs=tinysrgb&w=1920');">
+            <div class="hero-content">
+                <h1 class="fade-in">Black Label</h1>
+                <p class="fade-in" style="font-size: 28px; font-weight: 400; margin-bottom: 15px; transition-delay: 0.2s;">Premium Ingredients</p>
+                <p class="fade-in" style="font-size: 20px; transition-delay: 0.3s;">with Authenticity</p>
+                <p class="fade-in" style="font-size: 18px; margin-top: 30px; transition-delay: 0.4s;">단순한 식자재만을 전달하지 않습니다.</p>
+                <p class="fade-in" style="font-size: 18px; transition-delay: 0.5s;">생산자의 삶과 철학, 그리고 진정성을 전달합니다.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ROCKCHEF Page -->
+    <section id="rockchef" class="page-section">
+        <div class="content">
+            <div class="content-header fade-in">
+                <h1>ROCKCHEF</h1>
+                <p>Black Label과 함께하는 대한민국 대표셰프</p>
+                <p>Authenticity (본질적인 진정성)을 추구합니다.</p>
+            </div>
+
+            <div class="two-column">
+                <div class="column slide-in-left">
+                    <img src="https://images.pexels.com/photos/769289/pexels-photo-769289.jpeg?auto=compress&cs=tinysrgb&w=800" alt="ROCKCHEF">
+                </div>
+                <div class="column slide-in-right">
+                    <h2>ROCKCHEF</h2>
+                    <ul>
+                        <li>대한민국한식 글로벌홍보대사</li>
+                        <li>포항시 | 여주시 | 보령시 | 공식홍보대사</li>
+                        <li>세계1호 김밥셰프(그랜드마스터)</li>
+                        <li>대한민국김밥포럼 상임의장</li>
+                        <li>EMMY AWARD AFTER PARTY 초청셰프</li>
+                        <li>전 정와대사랑채 한식홍보관 대표</li>
+                        <li>전 농협홍보대사</li>
+                        <li>전 고흥군 글로벌홍보대사</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FARMERS Page -->
+    <section id="farmers" class="page-section">
+        <div class="content">
+            <div class="content-header fade-in">
+                <h1>FARMERS STORY</h1>
+                <p>각 식자재에 담긴 생산자의 정성과 스토리를 만나보세요</p>
+            </div>
+
+            <div class="tabs fade-in">
+                <button class="tab active" data-region="강원도">강원도</button>
+                <button class="tab" data-region="경기도">경기도</button>
+                <button class="tab" data-region="경상도">경상도</button>
+                <button class="tab" data-region="전라도">전라도</button>
+                <button class="tab" data-region="충청도">충청도</button>
+                <button class="tab" data-region="제주도">제주도</button>
+                <button class="tab" data-region="글로벌">글로벌</button>
+            </div>
+
+            <div class="region-content-section">
+                <div class="region-content-wrapper">
+                    <div class="region-content active" data-region="강원도">
+                        <div class="region-content-layout">
+                            <div class="region-image-container">
+                                <img src="https://images.pexels.com/photos/1539684/pexels-photo-1539684.jpeg?auto=compress&cs=tinysrgb&w=800&h=600" alt="홍천 한우">
+                            </div>
+                            <div class="region-text-container">
+                                <h2>홍천 한우</h2>
+                                <p class="region-location">강원도 홍천 · 김철수 목장</p>
+                                <h3>생산자(연구가)의 철학</h3>
+                                <p>김철수 목장주는 "소는 스트레스를 받으면 고기 맛이 떨어진다"는 철학으로 넓은 목장에서 자유롭게 방목하며 키웁니다. 3대째 이어온 전통 사육법과 현대적 관리 기법을 조합하여 최상급 한우를 생산하고 있습니다.</p>
+                                <h3>프리미엄 품질의 비밀</h3>
+                                <p>홍천의 청정 자연환경에서 자란 한우는 일반 한우와 차별화된 육질을 자랑합니다.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="region-content" data-region="경기도">
+                        <div class="region-content-layout">
+                            <div class="region-image-container">
+                                <img src="https://images.pexels.com/photos/769289/pexels-photo-769289.jpeg?auto=compress&cs=tinysrgb&w=800&h=600" alt="이천 한우">
+                            </div>
+                            <div class="region-text-container">
+                                <h2>이천 한우</h2>
+                                <p class="region-location">경기도 이천 · 박영호 목장</p>
+                                <h3>생산자(연구가)의 철학</h3>
+                                <p>박영호 목장주는 친환경 사육과 동물 복지를 최우선으로 생각합니다. 넓은 목장에서 스트레스 없이 자란 한우는 육질이 부드럽고 맛이 뛰어납니다.</p>
+                                <h3>프리미엄 품질의 비밀</h3>
+                                <p>경기도의 청정 지역에서 동물 복지를 최우선으로 사육한 한우입니다.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="region-content" data-region="경상도">
+                        <div class="region-content-layout">
+                            <div class="region-image-container">
+                                <img src="https://images.pexels.com/photos/323682/pexels-photo-323682.jpeg?auto=compress&cs=tinysrgb&w=800&h=600" alt="영주 한우">
+                            </div>
+                            <div class="region-text-container">
+                                <h2>영주 한우</h2>
+                                <p class="region-location">경상북도 영주 · 최강석 목장</p>
+                                <h3>생산자(연구가)의 철학</h3>
+                                <p>최강석 목장주는 전통 방식을 고수하며 한우 본연의 맛을 살립니다. 소백산 자락의 청정 지역에서 자란 한우는 육질이 뛰어납니다.</p>
+                                <h3>프리미엄 품질의 비밀</h3>
+                                <p>소백산 청정 지역의 맑은 공기와 깨끗한 물로 키운 전통 한우입니다.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="region-content" data-region="전라도">
+                        <div class="region-content-layout">
+                            <div class="region-image-container">
+                                <img src="https://images.pexels.com/photos/3688/food-dinner-lunch-unhealthy.jpg?auto=compress&cs=tinysrgb&w=800&h=600" alt="정읍 소다옴">
+                            </div>
+                            <div class="region-text-container">
+                                <h2>정읍 소다옴</h2>
+                                <p class="region-location">전라북도 정읍 · 소다옴농장</p>
+                                <h3>생산자(연구가)의 철학</h3>
+                                <p>소다옴농장은 동물복지 인증을 받은 목장으로 건강한 사육 환경에서 스트레스 없이 자란 소를 생산합니다.</p>
+                                <h3>프리미엄 품질의 비밀</h3>
+                                <p>동물복지 인증을 받은 윤리적이고 건강한 한우입니다.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="region-content" data-region="충청도">
+                        <div class="region-content-layout">
+                            <div class="region-image-container">
+                                <img src="https://images.pexels.com/photos/1539684/pexels-photo-1539684.jpeg?auto=compress&cs=tinysrgb&w=800&h=600" alt="충주 한우">
+                            </div>
+                            <div class="region-text-container">
+                                <h2>충주 한우</h2>
+                                <p class="region-location">충청북도 충주 · 이재민 목장</p>
+                                <h3>생산자(연구가)의 철학</h3>
+                                <p>이재민 목장주는 과학적 사육 관리로 최상의 품질을 유지합니다. 개별 맞춤 사료와 체계적인 건강 관리가 특징입니다.</p>
+                                <h3>프리미엄 품질의 비밀</h3>
+                                <p>과학적 관리 시스템과 맞춤형 사육으로 최상의 육질을 완성합니다.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="region-content" data-region="제주도">
+                        <div class="region-content-layout">
+                            <div class="region-image-container">
+                                <img src="https://images.pexels.com/photos/1775043/pexels-photo-1775043.jpeg?auto=compress&cs=tinysrgb&w=800&h=600" alt="제주 흑돼지">
+                            </div>
+                            <div class="region-text-container">
+                                <h2>제주 흑돼지</h2>
+                                <p class="region-location">제주도 · 오름목장</p>
+                                <h3>생산자(연구가)의 철학</h3>
+                                <p>제주 토종 흑돼지를 감귤 사료로 키워 육질이 부드럽고 고소한 맛이 특징입니다. 청정 제주의 자연에서 자란 프리미엄 흑돼지입니다.</p>
+                                <h3>프리미엄 품질의 비밀</h3>
+                                <p>제주 청정 자연과 감귤 사료로 키운 토종 흑돼지입니다.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="region-content" data-region="글로벌">
+                        <div class="region-content-layout">
+                            <div class="region-image-container">
+                                <img src="https://images.pexels.com/photos/769289/pexels-photo-769289.jpeg?auto=compress&cs=tinysrgb&w=800&h=600" alt="글로벌 프리미엄">
+                            </div>
+                            <div class="region-text-container">
+                                <h2>글로벌 프리미엄</h2>
+                                <p class="region-location">해외 · 인증 농장</p>
+                                <h3>생산자(연구가)의 철학</h3>
+                                <p>세계적인 품질 기준을 충족하는 프리미엄 육류를 엄선하여 제공합니다. 국제 인증을 받은 농장에서만 공급받습니다.</p>
+                                <h3>프리미엄 품질의 비밀</h3>
+                                <p>국제 인증과 엄격한 품질 관리로 보증된 세계 최고급 육류입니다.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gallery-banner-section fade-in">
+                <h2 style="text-align: center; font-size: 32px; margin-bottom: 50px; margin-top: 80px;">FARMERS STORY Gallery</h2>
+                <div class="auto-slider">
+                    <div class="slider-track">
+                        <div class="gallery-slide active">
+                            <img src="https://images.pexels.com/photos/1539684/pexels-photo-1539684.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500" alt="홍천 한우">
+                            <div class="gallery-caption">
+                                <h3>홍천 한우</h3>
+                                <p>김철수 목장</p>
+                            </div>
+                        </div>
+                        <div class="gallery-slide">
+                            <img src="https://images.pexels.com/photos/769289/pexels-photo-769289.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500" alt="프리미엄 한우">
+                            <div class="gallery-caption">
+                                <h3>프리미엄 한우</h3>
+                                <p>특급 목장</p>
+                            </div>
+                        </div>
+                        <div class="gallery-slide">
+                            <img src="https://images.pexels.com/photos/1775043/pexels-photo-1775043.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500" alt="제주 흑돼지">
+                            <div class="gallery-caption">
+                                <h3>제주 흑돼지</h3>
+                                <p>오름 목장</p>
+                            </div>
+                        </div>
+                        <div class="gallery-slide">
+                            <img src="https://images.pexels.com/photos/323682/pexels-photo-323682.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500" alt="숙성 고기">
+                            <div class="gallery-caption">
+                                <h3>숙성 고기</h3>
+                                <p>28개월 숙성</p>
+                            </div>
+                        </div>
+                        <div class="gallery-slide">
+                            <img src="https://images.pexels.com/photos/1251198/pexels-photo-1251198.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500" alt="프리미엄 육류">
+                            <div class="gallery-caption">
+                                <h3>프리미엄 육류</h3>
+                                <p>최상급 품질</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slider-dots"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CHOICE Page -->
+    <section id="choice" class="page-section">
+        <div class="content">
+            <div class="content-header fade-in">
+                <h1>Black Label Choice</h1>
+                <p>엄선된 프리미엄 식자재들을 만나보세요</p>
+            </div>
+
+            <div class="product-grid">
+                <div class="product-card">
+                    <img src="https://images.pexels.com/photos/323682/pexels-photo-323682.jpeg?auto=compress&cs=tinysrgb&w=600" alt="홍천 한우" class="product-image">
+                    <div class="product-info">
+                        <h3>홍천 한우</h3>
+                        <p class="product-location">📍 강원도 홍천</p>
+                        <p class="product-description">김철수 목장</p>
+                        <div class="product-tags">
+                            <span class="tag">자연목</span>
+                            <span class="tag">3등급 이상</span>
+                        </div>
+                        <p class="product-price">89,000원 <span style="font-size: 14px; font-weight: 400; color: #999;">/kg</span></p>
+                        <button class="product-button">장바구니 담기</button>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <img src="https://images.pexels.com/photos/323682/pexels-photo-323682.jpeg?auto=compress&cs=tinysrgb&w=600" alt="제주 흑돼지" class="product-image">
+                    <div class="product-info">
+                        <h3>제주 흑돼지</h3>
+                        <p class="product-location">📍 제주도</p>
+                        <p class="product-description">오름목장</p>
+                        <div class="product-tags">
+                            <span class="tag">토종 흑돼지</span>
+                            <span class="tag">감귤 사료</span>
+                        </div>
+                        <p class="product-price">45,000원 <span style="font-size: 14px; font-weight: 400; color: #999;">/kg</span></p>
+                        <button class="product-button">장바구니 담기</button>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <img src="https://images.pexels.com/photos/323682/pexels-photo-323682.jpeg?auto=compress&cs=tinysrgb&w=600" alt="정읍 소다옴" class="product-image">
+                    <div class="product-info">
+                        <h3>정읍 소다옴</h3>
+                        <p class="product-location">📍 전라북도 정읍</p>
+                        <p class="product-description">소다옴/다음농장</p>
+                        <div class="product-tags">
+                            <span class="tag">동물복지 인증</span>
+                            <span class="tag">자연목</span>
+                        </div>
+                        <p class="product-price">95,000원 <span style="font-size: 14px; font-weight: 400; color: #999;">/kg</span></p>
+                        <button class="product-button">장바구니 담기</button>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <img src="https://images.pexels.com/photos/323682/pexels-photo-323682.jpeg?auto=compress&cs=tinysrgb&w=600" alt="남도음식 명인" class="product-image">
+                    <div class="product-info">
+                        <h3>남도음식 명인 1호 천수봉</h3>
+                        <p class="product-location">📍 전라남도 나주</p>
+                        <p class="product-description">천수봉 명인</p>
+                        <div class="product-tags">
+                            <span class="tag">50년 전통</span>
+                            <span class="tag">발가공식 계통</span>
+                        </div>
+                        <p class="product-price">180,000원 <span style="font-size: 14px; font-weight: 400; color: #999;">/kg</span></p>
+                        <button class="product-button">장바구니 담기</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT Page -->
+    <section id="contact" class="page-section">
+        <div class="content">
+            <div class="content-header fade-in">
+                <h1>문의 & 구독</h1>
+                <p>블랙라벨에 대한 문의사항이나 새로운 소식을 받아보세요</p>
+            </div>
+
+            <div class="contact-container">
+                <div class="contact-form-section slide-in-left">
+                    <h2>✉️ 문의하기</h2>
+                    <form>
+                        <div class="form-row">
+                            <div class="form-group" style="flex: 1;">
+                                <label>이름 *</label>
+                                <input type="text" placeholder="">
+                            </div>
+                            <div class="form-group" style="flex: 1;">
+                                <label>연락처</label>
+                                <input type="text" placeholder="">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>이메일 *</label>
+                            <input type="email" placeholder="">
+                        </div>
+                        <div class="form-group">
+                            <label>문의 제목 *</label>
+                            <input type="text" placeholder="">
+                        </div>
+                        <div class="form-group">
+                            <label>문의 내용 *</label>
+                            <textarea placeholder="문의하실 내용을 상세히 입력해주세요..."></textarea>
+                        </div>
+                        <button type="submit" class="submit-btn">문의하기</button>
+                    </form>
+                </div>
+
+                <div class="newsletter-section slide-in-right">
+                    <div>
+                        <h2>🔔 뉴스레터 구독</h2>
+                        <p>새로운 스토리 푸드 소식과 특별 할인 정보를 가장 먼저 받아보세요.</p>
+                        <input type="email" class="newsletter-input" placeholder="이메일을 입력하세요">
+                        <button class="subscribe-btn">구독하기</button>
+                    </div>
+
+                    <div class="contact-info">
+                        <h3>연락처 정보</h3>
+                        <div class="contact-item">
+                            <p class="contact-item-title">📞 전화 문의</p>
+                            <p class="contact-item-detail">평일 09:00 - 18:00</p>
+                        </div>
+                        <div class="contact-item">
+                            <p class="contact-item-title">📧 이메일 문의</p>
+                            <p class="contact-item-detail">24시간 접수 가능</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Page Navigation
+        function showPage(pageId) {
+            // Hide all pages
+            document.querySelectorAll('.page-section').forEach(section => {
+                section.classList.remove('active');
+            });
+
+            // Show selected page
+            const targetPage = document.getElementById(pageId);
+            if (targetPage) {
+                targetPage.classList.add('active');
+                window.scrollTo(0, 0);
+
+                // Reinitialize animations for the new page
+                initializeAnimations();
+
+                // Initialize farmers page features if needed
+                if (pageId === 'farmers') {
+                    initializeFarmersPage();
+                }
+
+                // Initialize choice page features if needed
+                if (pageId === 'choice') {
+                    initializeChoicePage();
+                }
+            }
+        }
+
+        // Navigation click handlers
+        document.querySelectorAll('[data-page]').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const pageId = link.getAttribute('data-page');
+                showPage(pageId);
+
+                // Update URL hash
+                window.location.hash = pageId;
+            });
+        });
+
+        // Handle browser back/forward buttons
+        window.addEventListener('hashchange', () => {
+            const pageId = window.location.hash.slice(1) || 'home';
+            showPage(pageId);
+        });
+
+        // Initialize on page load
+        window.addEventListener('DOMContentLoaded', () => {
+            const pageId = window.location.hash.slice(1) || 'home';
+            showPage(pageId);
+        });
+
+        // Scroll Animation Observer
+        function initializeAnimations() {
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+
+                        // Stagger list items animation
+                        if (entry.target.querySelector('ul')) {
+                            const listItems = entry.target.querySelectorAll('li');
+                            listItems.forEach((item, index) => {
+                                setTimeout(() => {
+                                    item.classList.add('visible');
+                                }, index * 100);
+                            });
+                        }
+                    }
+                });
+            }, observerOptions);
+
+            // Observe all animated elements in active page
+            const activePage = document.querySelector('.page-section.active');
+            if (activePage) {
+                activePage.querySelectorAll('.fade-in, .slide-in-left, .slide-in-right, .scale-in').forEach(el => {
+                    el.classList.remove('visible');
+                    observer.observe(el);
+                });
+
+                // Trigger hero animations immediately
+                setTimeout(() => {
+                    activePage.querySelectorAll('.hero .fade-in').forEach(el => {
+                        el.classList.add('visible');
+                    });
+                }, 100);
+            }
+        }
+
+        // Farmers Page Initialization
+        function initializeFarmersPage() {
+            // Region tab switching
+            const tabs = document.querySelectorAll('.tab');
+            const regionContents = document.querySelectorAll('.region-content');
+
+            tabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    const region = tab.dataset.region;
+
+                    tabs.forEach(t => t.classList.remove('active'));
+                    tab.classList.add('active');
+
+                    regionContents.forEach(content => {
+                        if (content.dataset.region === region) {
+                            content.classList.add('active');
+                        } else {
+                            content.classList.remove('active');
+                        }
+                    });
+                });
+            });
+
+            // Auto slider for gallery
+            const slides = document.querySelectorAll('.gallery-slide');
+            const dotsContainer = document.querySelector('.slider-dots');
+
+            if (slides.length > 0 && dotsContainer && dotsContainer.children.length === 0) {
+                let currentSlide = 0;
+                let autoSlideInterval;
+
+                // Create dots
+                slides.forEach((_, index) => {
+                    const dot = document.createElement('span');
+                    dot.classList.add('dot');
+                    if (index === 0) dot.classList.add('active');
+                    dot.addEventListener('click', () => goToSlide(index));
+                    dotsContainer.appendChild(dot);
+                });
+
+                const dots = document.querySelectorAll('.dot');
+
+                function goToSlide(index) {
+                    slides[currentSlide].classList.remove('active');
+                    dots[currentSlide].classList.remove('active');
+
+                    currentSlide = index;
+
+                    slides[currentSlide].classList.add('active');
+                    dots[currentSlide].classList.add('active');
+                }
+
+                function nextSlide() {
+                    const next = (currentSlide + 1) % slides.length;
+                    goToSlide(next);
+                }
+
+                function startAutoSlide() {
+                    autoSlideInterval = setInterval(nextSlide, 3000);
+                }
+
+                function stopAutoSlide() {
+                    clearInterval(autoSlideInterval);
+                }
+
+                // Start auto slide
+                startAutoSlide();
+
+                // Pause on hover
+                const autoSlider = document.querySelector('.auto-slider');
+                if (autoSlider) {
+                    autoSlider.addEventListener('mouseenter', stopAutoSlide);
+                    autoSlider.addEventListener('mouseleave', startAutoSlide);
+                }
+            }
+        }
+
+        // Choice Page Initialization
+        function initializeChoicePage() {
+            const productCards = document.querySelectorAll('.product-card');
+
+            const productObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const cards = Array.from(productCards);
+                        cards.forEach((card, index) => {
+                            setTimeout(() => {
+                                card.classList.add('visible');
+                            }, index * 150);
+                        });
+                        productObserver.disconnect();
+                    }
+                });
+            }, {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            });
+
+            if (productCards.length > 0) {
+                productObserver.observe(productCards[0]);
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Black Label - CONTACT</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="index.html" class="logo">Black Label</a>
+            <ul class="nav-links">
+                <li><a href="index.html">HOME</a></li>
+                <li><a href="brand.html">BRAND</a></li>
+                <li><a href="rockchef.html">ROCKCHEF</a></li>
+                <li><a href="farmers.html">FARMERS</a></li>
+                <li><a href="choice.html">CHOICE</a></li>
+                <li><a href="contact.html">CONTACT</a></li>
+            </ul>
+            <div class="auth-links">
+                <a href="#">LOGIN</a>
+                <a href="#">SIGN UP</a>
+            </div>
+        </nav>
+    </header>
+
+    <section class="content">
+        <div class="content-header fade-in">
+            <h1>문의 & 구독</h1>
+            <p>블랙라벨에 대한 문의사항이나 새로운 소식을 받아보세요</p>
+        </div>
+
+        <div class="contact-container">
+            <div class="contact-form-section slide-in-left">
+                <h2>✉️ 문의하기</h2>
+                <form>
+                    <div class="form-row">
+                        <div class="form-group" style="flex: 1;">
+                            <label>이름 *</label>
+                            <input type="text" placeholder="">
+                        </div>
+                        <div class="form-group" style="flex: 1;">
+                            <label>연락처</label>
+                            <input type="text" placeholder="">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>이메일 *</label>
+                        <input type="email" placeholder="">
+                    </div>
+                    <div class="form-group">
+                        <label>문의 제목 *</label>
+                        <input type="text" placeholder="">
+                    </div>
+                    <div class="form-group">
+                        <label>문의 내용 *</label>
+                        <textarea placeholder="문의하실 내용을 상세히 입력해주세요..."></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">문의하기</button>
+                </form>
+            </div>
+
+            <div class="newsletter-section slide-in-right">
+                <div>
+                    <h2>🔔 뉴스레터 구독</h2>
+                    <p>새로운 스토리 푸드 소식과 특별 할인 정보를 가장 먼저 받아보세요.</p>
+                    <input type="email" class="newsletter-input" placeholder="이메일을 입력하세요">
+                    <button class="subscribe-btn">구독하기</button>
+                </div>
+
+                <div class="contact-info">
+                    <h3>연락처 정보</h3>
+                    <div class="contact-item">
+                        <p class="contact-item-title">📞 전화 문의</p>
+                        <p class="contact-item-detail">평일 09:00 - 18:00</p>
+                    </div>
+                    <div class="contact-item">
+                        <p class="contact-item-title">📧 이메일 문의</p>
+                        <p class="contact-item-detail">24시간 접수 가능</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Scroll animation observer
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all animated elements
+        document.querySelectorAll('.fade-in, .slide-in-left, .slide-in-right, .scale-in').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
