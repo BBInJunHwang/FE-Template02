@@ -28,6 +28,7 @@
             color: var(--dark);
             line-height: 1.4;
             overflow-x: hidden;
+            scroll-behavior: smooth;
         }
 
         /* Navigation */
@@ -145,21 +146,8 @@
             transform: translateY(-50%);
             width: 2.5rem;
             height: 2.5rem;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.7) 0%, rgba(118, 75, 162, 0.7) 100%), url('https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?w=100&q=80') center/cover;
             border-radius: 8px;
-        }
-
-        .badge::after {
-            content: '';
-            position: absolute;
-            left: 1rem;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 2rem;
-            height: 2rem;
-            background: white;
-            border-radius: 6px;
-            opacity: 0.3;
         }
 
         .hero h1 {
@@ -222,12 +210,14 @@
             position: absolute;
             z-index: 0;
             animation: float 6s ease-in-out infinite;
+            background-size: cover;
+            background-position: center;
         }
 
         .shape-1 {
             width: 200px;
             height: 200px;
-            background: var(--accent-yellow);
+            background: linear-gradient(135deg, rgba(255, 214, 0, 0.6) 0%, rgba(255, 214, 0, 0.6) 100%), url('https://images.unsplash.com/photo-1552664730-d307ca884978?w=400&q=80') center/cover;
             border-radius: 50%;
             top: 20%;
             right: 10%;
@@ -237,7 +227,7 @@
         .shape-2 {
             width: 150px;
             height: 150px;
-            background: var(--secondary);
+            background: linear-gradient(135deg, rgba(41, 98, 255, 0.6) 0%, rgba(41, 98, 255, 0.6) 100%), url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=400&q=80') center/cover;
             bottom: 20%;
             left: 15%;
             animation-delay: -2s;
@@ -246,7 +236,7 @@
         .shape-3 {
             width: 100px;
             height: 100px;
-            background: var(--accent-green);
+            background: linear-gradient(135deg, rgba(0, 230, 118, 0.6) 0%, rgba(0, 230, 118, 0.6) 100%), url('https://images.unsplash.com/photo-1557804506-669a67965ba0?w=400&q=80') center/cover;
             top: 60%;
             right: 25%;
             border-radius: 50%;
@@ -765,28 +755,28 @@
             <div class="footer-section">
                 <h4>Product</h4>
                 <ul>
-                    <li><a href="#">Features</a></li>
-                    <li><a href="#">Pricing</a></li>
-                    <li><a href="#">Updates</a></li>
-                    <li><a href="#">Roadmap</a></li>
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#features">Pricing</a></li>
+                    <li><a href="#features">Updates</a></li>
+                    <li><a href="#features">Roadmap</a></li>
                 </ul>
             </div>
             <div class="footer-section">
                 <h4>Company</h4>
                 <ul>
-                    <li><a href="#">About</a></li>
-                    <li><a href="#">Blog</a></li>
-                    <li><a href="#">Careers</a></li>
-                    <li><a href="#">Contact</a></li>
+                    <li><a href="#features">About</a></li>
+                    <li><a href="#features">Blog</a></li>
+                    <li><a href="#features">Careers</a></li>
+                    <li><a href="#features">Contact</a></li>
                 </ul>
             </div>
             <div class="footer-section">
                 <h4>Legal</h4>
                 <ul>
-                    <li><a href="#">Privacy</a></li>
-                    <li><a href="#">Terms</a></li>
-                    <li><a href="#">Security</a></li>
-                    <li><a href="#">Cookies</a></li>
+                    <li><a href="#features">Privacy</a></li>
+                    <li><a href="#features">Terms</a></li>
+                    <li><a href="#features">Security</a></li>
+                    <li><a href="#features">Cookies</a></li>
                 </ul>
             </div>
         </div>

@@ -16,6 +16,7 @@
             background: #0a0e1a;
             color: #fff;
             overflow-x: hidden;
+            scroll-behavior: smooth;
         }
 
         /* Animated Background */
@@ -283,22 +284,12 @@
             border-radius: 16px;
             position: relative;
             transition: transform 0.3s;
+            background-size: cover;
+            background-position: center;
         }
 
         .feature-card:hover .feature-icon {
             transform: scale(1.05);
-        }
-
-        .feature-icon::after {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 40px;
-            height: 40px;
-            background: rgba(255, 255, 255, 0.9);
-            border-radius: 8px;
         }
 
         .logo-icon {
@@ -497,37 +488,37 @@
             </div>
 
             <div class="feature-card">
-                <div class="feature-icon" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);"></div>
+                <div class="feature-icon" style="background: linear-gradient(135deg, rgba(102, 126, 234, 0.8) 0%, rgba(118, 75, 162, 0.8) 100%), url('https://images.unsplash.com/photo-1639762681485-074b7f938ba0?w=200&q=80') center/cover;"></div>
                 <h3>Bank-Grade Security</h3>
                 <p>다중 서명 지갑, 콜드 스토리지, 그리고 실시간 위협 탐지로 자산을 보호합니다.</p>
             </div>
 
             <div class="feature-card">
-                <div class="feature-icon" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);"></div>
+                <div class="feature-icon" style="background: linear-gradient(135deg, rgba(240, 147, 251, 0.8) 0%, rgba(245, 87, 108, 0.8) 100%), url('https://images.unsplash.com/photo-1621761191319-c6fb62004040?w=200&q=80') center/cover;"></div>
                 <h3>Lightning Fast</h3>
                 <p>Layer 2 솔루션으로 초당 10만 건의 트랜잭션을 0.01초 이내에 처리합니다.</p>
             </div>
 
             <div class="feature-card">
-                <div class="feature-icon" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);"></div>
+                <div class="feature-icon" style="background: linear-gradient(135deg, rgba(79, 172, 254, 0.8) 0%, rgba(0, 242, 254, 0.8) 100%), url('https://images.unsplash.com/photo-1620321023374-d1a68fbc720d?w=200&q=80') center/cover;"></div>
                 <h3>NFT Marketplace</h3>
                 <p>디지털 아트, 수집품, 메타버스 자산을 자유롭게 민팅하고 거래하세요.</p>
             </div>
 
             <div class="feature-card">
-                <div class="feature-icon" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);"></div>
+                <div class="feature-icon" style="background: linear-gradient(135deg, rgba(250, 112, 154, 0.8) 0%, rgba(254, 225, 64, 0.8) 100%), url('https://images.unsplash.com/photo-1622630998477-20aa696ecb05?w=200&q=80') center/cover;"></div>
                 <h3>Cross-Chain Bridge</h3>
                 <p>이더리움, 바이낸스, 폴리곤 등 주요 블록체인 간 원활한 자산 이동을 지원합니다.</p>
             </div>
 
             <div class="feature-card">
-                <div class="feature-icon" style="background: linear-gradient(135deg, #30cfd0 0%, #330867 100%);"></div>
+                <div class="feature-icon" style="background: linear-gradient(135deg, rgba(48, 207, 208, 0.8) 0%, rgba(51, 8, 103, 0.8) 100%), url('https://images.unsplash.com/photo-1642104704074-907c0698cbd9?w=200&q=80') center/cover;"></div>
                 <h3>DeFi Staking</h3>
                 <p>스테이킹으로 연 15% 이상의 수익을 창출하고 거버넌스에 참여하세요.</p>
             </div>
 
             <div class="feature-card">
-                <div class="feature-icon" style="background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);"></div>
+                <div class="feature-icon" style="background: linear-gradient(135deg, rgba(168, 237, 234, 0.8) 0%, rgba(254, 214, 227, 0.8) 100%), url('https://images.unsplash.com/photo-1639322537228-f710d846310a?w=200&q=80') center/cover;"></div>
                 <h3>Smart Contract</h3>
                 <p>감사받은 스마트 컨트랙트로 신뢰할 수 있는 자동화된 거래를 실행합니다.</p>
             </div>

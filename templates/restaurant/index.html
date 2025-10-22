@@ -16,6 +16,7 @@
             background: #0a0a0a;
             color: #fff;
             line-height: 1.6;
+            scroll-behavior: smooth;
         }
 
         /* Navigation */
@@ -92,8 +93,8 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-                        url('data:image/svg+xml,<svg width="1920" height="1080" xmlns="http://www.w3.org/2000/svg"><rect width="1920" height="1080" fill="%231a1a1a"/></svg>');
+            background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+                        url('https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1920&q=80');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
@@ -143,7 +144,7 @@
         .about-image {
             width: 100%;
             height: 500px;
-            background: linear-gradient(135deg, #C5A973 0%, #8B7355 100%);
+            background: url('https://images.unsplash.com/photo-1600565193348-f74bd3c7ccdf?w=800&q=80') center/cover;
             border-radius: 2px;
         }
 
@@ -504,7 +505,7 @@
                 <li><a href="#chef">CHEF</a></li>
                 <li><a href="#contact">CONTACT</a></li>
             </ul>
-            <button class="reserve-btn">RESERVE</button>
+            <button class="reserve-btn" onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'});">RESERVE</button>
         </div>
     </nav>
 
@@ -517,7 +518,7 @@
                 프랑스 전통 요리법과 현대적 감각이 어우러진<br>
                 특별한 미식 경험을 선사합니다
             </p>
-            <button class="reserve-btn" style="padding: 1rem 3rem; font-size: 1rem;">예약하기</button>
+            <button class="reserve-btn" style="padding: 1rem 3rem; font-size: 1rem;" onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'});">예약하기</button>
         </div>
     </section>
 
@@ -678,7 +679,7 @@
         <h2>RESERVATION</h2>
         <p>특별한 경험을 위한 예약</p>
 
-        <form class="reservation-form">
+        <form class="reservation-form" onsubmit="alert('예약 신청이 접수되었습니다. 담당자가 곧 연락드리겠습니다.'); return false;">
             <div class="form-group">
                 <input type="text" placeholder="성함" required>
                 <input type="tel" placeholder="연락처" required>

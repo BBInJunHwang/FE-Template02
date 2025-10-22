@@ -27,6 +27,7 @@
             color: var(--electric-blue);
             line-height: 1.6;
             overflow-x: hidden;
+            scroll-behavior: smooth;
         }
 
         /* Matrix Rain Effect */
@@ -510,57 +511,47 @@
             border-radius: 16px;
             position: relative;
             overflow: hidden;
-        }
-
-        .tech-icon::after {
-            content: '';
-            position: absolute;
-            top: 10px;
-            left: 10px;
-            right: 10px;
-            bottom: 10px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 12px;
-            backdrop-filter: blur(10px);
+            background-size: cover;
+            background-position: center;
         }
 
         .tech-icon-1 {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.7) 0%, rgba(118, 75, 162, 0.7) 100%), url('https://images.unsplash.com/photo-1677442136019-21780ecad995?w=200&q=80') center/cover;
             box-shadow: 0 8px 32px rgba(102, 126, 234, 0.3);
         }
 
         .tech-icon-2 {
-            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            background: linear-gradient(135deg, rgba(240, 147, 251, 0.7) 0%, rgba(245, 87, 108, 0.7) 100%), url('https://images.unsplash.com/photo-1555255707-c07966088b7b?w=200&q=80') center/cover;
             box-shadow: 0 8px 32px rgba(240, 147, 251, 0.3);
         }
 
         .tech-icon-3 {
-            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            background: linear-gradient(135deg, rgba(79, 172, 254, 0.7) 0%, rgba(0, 242, 254, 0.7) 100%), url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=200&q=80') center/cover;
             box-shadow: 0 8px 32px rgba(79, 172, 254, 0.3);
         }
 
         .tech-icon-4 {
-            background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+            background: linear-gradient(135deg, rgba(67, 233, 123, 0.7) 0%, rgba(56, 249, 215, 0.7) 100%), url('https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=200&q=80') center/cover;
             box-shadow: 0 8px 32px rgba(67, 233, 123, 0.3);
         }
 
         .tech-icon-5 {
-            background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+            background: linear-gradient(135deg, rgba(250, 112, 154, 0.7) 0%, rgba(254, 225, 64, 0.7) 100%), url('https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=200&q=80') center/cover;
             box-shadow: 0 8px 32px rgba(250, 112, 154, 0.3);
         }
 
         .tech-icon-6 {
-            background: linear-gradient(135deg, #30cfd0 0%, #330867 100%);
+            background: linear-gradient(135deg, rgba(48, 207, 208, 0.7) 0%, rgba(51, 8, 103, 0.7) 100%), url('https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=200&q=80') center/cover;
             box-shadow: 0 8px 32px rgba(48, 207, 208, 0.3);
         }
 
         .tech-icon-7 {
-            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+            background: linear-gradient(135deg, rgba(168, 237, 234, 0.7) 0%, rgba(254, 214, 227, 0.7) 100%), url('https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=200&q=80') center/cover;
             box-shadow: 0 8px 32px rgba(168, 237, 234, 0.3);
         }
 
         .tech-icon-8 {
-            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);
+            background: linear-gradient(135deg, rgba(255, 154, 158, 0.7) 0%, rgba(254, 207, 239, 0.7) 100%), url('https://images.unsplash.com/photo-1633356122544-f134324a6cee?w=200&q=80') center/cover;
             box-shadow: 0 8px 32px rgba(255, 154, 158, 0.3);
         }
 
@@ -869,28 +860,28 @@
             <div class="footer-section">
                 <h4>Platform</h4>
                 <ul>
-                    <li><a href="#">API Reference</a></li>
-                    <li><a href="#">Documentation</a></li>
-                    <li><a href="#">SDK Download</a></li>
-                    <li><a href="#">Pricing</a></li>
+                    <li><a href="#api">API Reference</a></li>
+                    <li><a href="#tech">Documentation</a></li>
+                    <li><a href="#features">SDK Download</a></li>
+                    <li><a href="#stats">Pricing</a></li>
                 </ul>
             </div>
             <div class="footer-section">
                 <h4>Resources</h4>
                 <ul>
-                    <li><a href="#">Blog</a></li>
-                    <li><a href="#">Tutorials</a></li>
-                    <li><a href="#">Case Studies</a></li>
-                    <li><a href="#">Whitepaper</a></li>
+                    <li><a href="#footer">Blog</a></li>
+                    <li><a href="#features">Tutorials</a></li>
+                    <li><a href="#tech">Case Studies</a></li>
+                    <li><a href="#footer">Whitepaper</a></li>
                 </ul>
             </div>
             <div class="footer-section">
                 <h4>Connect</h4>
                 <ul>
-                    <li><a href="#">GitHub</a></li>
-                    <li><a href="#">Discord</a></li>
-                    <li><a href="#">Twitter</a></li>
-                    <li><a href="#">Contact</a></li>
+                    <li><a href="#footer" onclick="alert('GitHub Repository')">GitHub</a></li>
+                    <li><a href="#footer" onclick="alert('Join Discord Community')">Discord</a></li>
+                    <li><a href="#footer" onclick="alert('Follow on Twitter')">Twitter</a></li>
+                    <li><a href="#footer">Contact</a></li>
                 </ul>
             </div>
         </div>

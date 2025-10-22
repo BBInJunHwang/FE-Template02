@@ -28,6 +28,7 @@
             color: white;
             line-height: 1.6;
             overflow-x: hidden;
+            scroll-behavior: smooth;
         }
 
         /* Cursor Effect */
@@ -432,6 +433,8 @@
             justify-content: center;
             font-size: 5rem;
             transition: transform 0.4s;
+            background-size: cover;
+            background-position: center;
         }
 
         .portfolio-item:hover .portfolio-bg {
@@ -780,8 +783,8 @@
         <ul class="nav-menu">
             <li><a href="#services">Services</a></li>
             <li><a href="#portfolio">Portfolio</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#contact" class="btn">Get Started</a></li>
+            <li><a href="#stats">About</a></li>
+            <li><a href="#cta" class="btn">Get Started</a></li>
         </ul>
     </nav>
 
@@ -797,11 +800,12 @@
             </h1>
             <p>
                 혁신적인 디자인과 최첨단 기술로 당신의 브랜드를<br>
-                차별화된 디지털 경험으로 승화시킵니다.
+                차별화된 디지털 경험으로 승화시킵니다.<br>
+                글로벌 톱 브랜드가 신뢰하는 크리에이티브 파트너.
             </p>
             <div class="hero-buttons">
-                <a href="#" class="btn">Start Project</a>
-                <a href="#" class="btn btn-secondary">View Work</a>
+                <a href="#cta" class="btn">Start Project</a>
+                <a href="#portfolio" class="btn btn-secondary">View Work</a>
             </div>
         </div>
     </section>
@@ -818,6 +822,7 @@
                 <p>
                     독창적이고 강력한 브랜드 아이덴티티를 구축하여
                     시장에서 차별화된 존재감을 만들어드립니다.
+                    로고, 컬러 시스템, 타이포그래피 등 통합 브랜드 경험을 디자인합니다.
                 </p>
             </div>
             <div class="service-card reveal">
@@ -826,14 +831,16 @@
                 <p>
                     사용자 중심의 인터랙티브한 웹 디자인으로
                     방문자를 고객으로 전환시킵니다.
+                    반응형, 접근성, 성능 최적화까지 고려한 완벽한 웹 경험을 제공합니다.
                 </p>
             </div>
             <div class="service-card reveal">
                 <div class="service-number">03</div>
                 <h3>App Development</h3>
                 <p>
-                    iOS와 Android를 아우르는 모바일 앱 개발로
+                    iOS와 Android를 아우르는 네이티브 모바일 앱 개발로
                     사용자에게 완벽한 경험을 제공합니다.
+                    React Native, Flutter 등 최신 기술 스택으로 빠른 개발과 높은 퀄리티를 보장합니다.
                 </p>
             </div>
             <div class="service-card reveal">
@@ -870,98 +877,96 @@
         </div>
         <div class="portfolio-grid">
             <div class="portfolio-item reveal">
-                <div class="portfolio-bg">
-                    <div class="gradient-icon gradient-icon-1"></div>
+                <div class="portfolio-bg" style="background-image: url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=800&q=80');">
                 </div>
                 <div class="portfolio-info">
-                    <h3>Nike Metaverse</h3>
-                    <p>3D Design • Web3</p>
+                    <h3>E-Commerce Platform Redesign</h3>
+                    <p>UI/UX Design • Web Development</p>
                 </div>
             </div>
             <div class="portfolio-item reveal">
-                <div class="portfolio-bg">
-                    <div class="gradient-icon gradient-icon-2"></div>
+                <div class="portfolio-bg" style="background-image: url('https://images.unsplash.com/photo-1551650975-87deedd944c3?w=800&q=80');">
                 </div>
                 <div class="portfolio-info">
-                    <h3>SpaceX Dashboard</h3>
-                    <p>UI/UX • Development</p>
+                    <h3>Mobile Banking App</h3>
+                    <p>App Design • Financial Tech</p>
                 </div>
             </div>
             <div class="portfolio-item reveal">
-                <div class="portfolio-bg">
-                    <div class="gradient-icon gradient-icon-3"></div>
+                <div class="portfolio-bg" style="background-image: url('https://images.unsplash.com/photo-1559028012-481c04fa702d?w=800&q=80');">
                 </div>
                 <div class="portfolio-info">
-                    <h3>Spotify Reimagined</h3>
-                    <p>App Design • Motion</p>
+                    <h3>SaaS Dashboard Interface</h3>
+                    <p>Dashboard Design • Data Visualization</p>
                 </div>
             </div>
             <div class="portfolio-item reveal">
-                <div class="portfolio-bg">
-                    <div class="gradient-icon gradient-icon-4"></div>
+                <div class="portfolio-bg" style="background-image: url('https://images.unsplash.com/photo-1558655146-d09347e92766?w=800&q=80');">
                 </div>
                 <div class="portfolio-info">
-                    <h3>Tesla Interface</h3>
-                    <p>Branding • 3D</p>
+                    <h3>Brand Identity System</h3>
+                    <p>Branding • Visual Identity</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="stats">
+    <section class="stats" id="stats">
         <div class="stats-grid">
             <div class="stat-item reveal">
                 <div class="stat-content">
-                    <div class="stat-number">200+</div>
-                    <div class="stat-label">Projects Completed</div>
+                    <div class="stat-number">300+</div>
+                    <div class="stat-label">글로벌 프로젝트</div>
                 </div>
             </div>
             <div class="stat-item reveal">
                 <div class="stat-content">
-                    <div class="stat-number">150+</div>
-                    <div class="stat-label">Happy Clients</div>
+                    <div class="stat-number">98%</div>
+                    <div class="stat-label">고객 만족도</div>
                 </div>
             </div>
             <div class="stat-item reveal">
                 <div class="stat-content">
-                    <div class="stat-number">50+</div>
-                    <div class="stat-label">Awards Won</div>
+                    <div class="stat-number">65+</div>
+                    <div class="stat-label">수상 경력</div>
                 </div>
             </div>
             <div class="stat-item reveal">
                 <div class="stat-content">
-                    <div class="stat-number">10+</div>
-                    <div class="stat-label">Years Experience</div>
+                    <div class="stat-number">12년</div>
+                    <div class="stat-label">업계 경험</div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="cta reveal">
+    <section class="cta reveal" id="cta">
         <h2>Ready to Start Your Project?</h2>
-        <p>지금 바로 당신의 비전을 현실로 만들어보세요</p>
-        <a href="#" class="btn">Let's Talk</a>
+        <p>세계적 수준의 디지털 경험을 만들어드립니다.<br>
+        지금 바로 당신의 비전을 현실로 만들어보세요.</p>
+        <a href="#footer" class="btn">Let's Talk</a>
     </section>
 
-    <footer>
+    <footer id="footer">
         <div class="footer-content">
             <div class="footer-section">
                 <h4>NEONIX</h4>
                 <p style="color: rgba(255,255,255,0.6); margin-top: 1rem;">
                     창의적인 디지털 경험을 만드는<br>
-                    혁신적인 크리에이티브 에이전시
+                    혁신적인 크리에이티브 에이전시<br><br>
+                    <strong style="color: var(--neon-cyan);">Awwwards Site of the Year 2024</strong>
                 </p>
                 <div class="social-links">
-                    <a href="#" class="social-link">
+                    <a href="#footer" class="social-link" onclick="alert('Behance')">
                         <div class="gradient-icon gradient-icon-5"></div>
                     </a>
-                    <a href="#" class="social-link">
+                    <a href="#footer" class="social-link" onclick="alert('Dribbble')">
                         <div class="gradient-icon gradient-icon-6"></div>
                     </a>
-                    <a href="#" class="social-link">
+                    <a href="#footer" class="social-link" onclick="alert('Instagram')">
                         <div class="gradient-icon gradient-icon-7"></div>
                     </a>
-                    <a href="#" class="social-link">
+                    <a href="#footer" class="social-link" onclick="alert('LinkedIn')">
                         <div class="gradient-icon gradient-icon-8"></div>
                     </a>
                 </div>
@@ -969,32 +974,35 @@
             <div class="footer-section">
                 <h4>Services</h4>
                 <ul>
-                    <li><a href="#">Branding</a></li>
-                    <li><a href="#">Web Design</a></li>
-                    <li><a href="#">App Dev</a></li>
-                    <li><a href="#">3D Design</a></li>
+                    <li><a href="#services">Brand Identity</a></li>
+                    <li><a href="#services">Web Design</a></li>
+                    <li><a href="#services">App Development</a></li>
+                    <li><a href="#services">3D Design</a></li>
+                    <li><a href="#services">Digital Marketing</a></li>
                 </ul>
             </div>
             <div class="footer-section">
                 <h4>Company</h4>
                 <ul>
-                    <li><a href="#">About</a></li>
-                    <li><a href="#">Team</a></li>
-                    <li><a href="#">Careers</a></li>
-                    <li><a href="#">Blog</a></li>
+                    <li><a href="#stats">About</a></li>
+                    <li><a href="#footer">Team</a></li>
+                    <li><a href="#footer">Careers</a></li>
+                    <li><a href="#portfolio">Portfolio</a></li>
+                    <li><a href="#footer">Blog</a></li>
                 </ul>
             </div>
             <div class="footer-section">
                 <h4>Contact</h4>
                 <ul>
-                    <li><a href="#">hello@neonix.com</a></li>
-                    <li><a href="#">+82 10 1234 5678</a></li>
-                    <li><a href="#">Seoul, Korea</a></li>
+                    <li><a href="mailto:hello@neonix.com">hello@neonix.com</a></li>
+                    <li><a href="tel:+821012345678">+82 10-1234-5678</a></li>
+                    <li style="color: rgba(255,255,255,0.6);">서울시 강남구 테헤란로 123</li>
+                    <li style="color: rgba(255,255,255,0.6);">평일 09:00 - 18:00</li>
                 </ul>
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2024 NEONIX. All rights reserved.</p>
+            <p>&copy; 2024 NEONIX Creative Agency. All rights reserved.</p>
         </div>
     </footer>
 

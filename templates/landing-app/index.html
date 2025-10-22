@@ -26,6 +26,7 @@
             line-height: 1.6;
             overflow-x: hidden;
             position: relative;
+            scroll-behavior: smooth;
         }
 
         /* Animated Gradient Background */
@@ -236,19 +237,8 @@
             border-radius: 6px;
             position: relative;
             overflow: hidden;
-        }
-
-        .badge-icon::after {
-            content: '';
-            position: absolute;
-            width: 50%;
-            height: 50%;
-            background: rgba(255, 255, 255, 0.95);
-            border-radius: 4px;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            z-index: 1;
+            background-size: cover;
+            background-position: center;
         }
 
         .gradient-badge {
@@ -300,7 +290,8 @@
             width: 100%;
             height: 100%;
             border-radius: 40px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.9) 0%, rgba(118, 75, 162, 0.9) 100%),
+                        url('https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=400&q=80') center/cover;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -397,16 +388,8 @@
             margin-bottom: 1.5rem;
             position: relative;
             overflow: hidden;
-        }
-
-        .feature-icon::after {
-            content: '';
-            position: absolute;
-            width: 60%;
-            height: 60%;
-            background: rgba(255, 255, 255, 0.9);
-            border-radius: 12px;
-            z-index: 1;
+            background-size: cover;
+            background-position: center;
         }
 
         .gradient-icon {
@@ -476,19 +459,8 @@
             border-radius: 20px;
             position: relative;
             overflow: hidden;
-        }
-
-        .screenshot-icon::after {
-            content: '';
-            position: absolute;
-            width: 55%;
-            height: 55%;
-            background: rgba(255, 255, 255, 0.95);
-            border-radius: 14px;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            z-index: 1;
+            background-size: cover;
+            background-position: center;
         }
 
         .gradient-screenshot {
@@ -525,16 +497,8 @@
             margin-bottom: 1.5rem;
             position: relative;
             overflow: hidden;
-        }
-
-        .testimonial-avatar::after {
-            content: '';
-            position: absolute;
-            width: 50%;
-            height: 50%;
-            background: rgba(255, 255, 255, 0.95);
-            border-radius: 50%;
-            z-index: 1;
+            background-size: cover;
+            background-position: center;
         }
 
         .gradient-avatar {
@@ -610,19 +574,8 @@
             border-radius: 10px;
             position: relative;
             overflow: hidden;
-        }
-
-        .store-icon::after {
-            content: '';
-            position: absolute;
-            width: 50%;
-            height: 50%;
-            background: rgba(255, 255, 255, 0.9);
-            border-radius: 6px;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            z-index: 1;
+            background-size: cover;
+            background-position: center;
         }
 
         .gradient-store {
@@ -741,14 +694,13 @@
             <li><a href="#screenshots">Screenshots</a></li>
             <li><a href="#download">Download</a></li>
         </ul>
-        <a href="#" class="btn btn-primary">Get Started</a>
+        <a href="#download" class="btn btn-primary">Get Started</a>
     </nav>
 
     <section class="hero">
         <div class="hero-content">
             <div class="badge glass">
-                <div class="badge-icon">
-                    <div class="gradient-badge" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);"></div>
+                <div class="badge-icon" style="background: linear-gradient(135deg, rgba(240, 147, 251, 0.7) 0%, rgba(245, 87, 108, 0.7) 100%), url('https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=100&q=80') center/cover;">
                 </div>
                 Now Available on App Store & Google Play
             </div>
@@ -758,14 +710,13 @@
                 Aura는 진정한 연결을 만들어냅니다.
             </p>
             <div class="hero-buttons">
-                <a href="#" class="btn btn-primary">Download Now</a>
-                <a href="#" class="btn btn-glass">Watch Demo</a>
+                <a href="#download" class="btn btn-primary">Download Now</a>
+                <a href="#screenshots" class="btn btn-glass">Watch Demo</a>
             </div>
             <div class="app-preview">
                 <div class="phone-mockup glass">
                     <div class="phone-screen">
-                        <div class="phone-icon">
-                            <div class="gradient-phone" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);"></div>
+                        <div class="phone-icon" style="background: linear-gradient(135deg, rgba(79, 172, 254, 0.3) 0%, rgba(0, 242, 254, 0.3) 100%), url('https://images.unsplash.com/photo-1611162616305-c69b3fa7fbe0?w=400&q=80') center/cover;">
                         </div>
                     </div>
                 </div>
@@ -781,8 +732,7 @@
         </div>
         <div class="features-grid">
             <div class="feature-card glass reveal">
-                <div class="feature-icon">
-                    <div class="gradient-icon" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);"></div>
+                <div class="feature-icon" style="background: linear-gradient(135deg, rgba(102, 126, 234, 0.7) 0%, rgba(118, 75, 162, 0.7) 100%), url('https://images.unsplash.com/photo-1618761714954-0b8cd0026356?w=200&q=80') center/cover;">
                 </div>
                 <h3>Authentic Profiles</h3>
                 <p>
@@ -791,8 +741,7 @@
                 </p>
             </div>
             <div class="feature-card glass reveal">
-                <div class="feature-icon">
-                    <div class="gradient-icon" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);"></div>
+                <div class="feature-icon" style="background: linear-gradient(135deg, rgba(240, 147, 251, 0.7) 0%, rgba(245, 87, 108, 0.7) 100%), url('https://images.unsplash.com/photo-1611162618071-b39a2ec055fb?w=200&q=80') center/cover;">
                 </div>
                 <h3>Smart Matching</h3>
                 <p>
@@ -801,8 +750,7 @@
                 </p>
             </div>
             <div class="feature-card glass reveal">
-                <div class="feature-icon">
-                    <div class="gradient-icon" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);"></div>
+                <div class="feature-icon" style="background: linear-gradient(135deg, rgba(79, 172, 254, 0.7) 0%, rgba(0, 242, 254, 0.7) 100%), url('https://images.unsplash.com/photo-1611162616475-46b635cb6868?w=200&q=80') center/cover;">
                 </div>
                 <h3>Real-time Chat</h3>
                 <p>
@@ -811,8 +759,7 @@
                 </p>
             </div>
             <div class="feature-card glass reveal">
-                <div class="feature-icon">
-                    <div class="gradient-icon" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);"></div>
+                <div class="feature-icon" style="background: linear-gradient(135deg, rgba(250, 112, 154, 0.7) 0%, rgba(254, 225, 64, 0.7) 100%), url('https://images.unsplash.com/photo-1611162616305-c69b3fa7fbe0?w=200&q=80') center/cover;">
                 </div>
                 <h3>Creative Tools</h3>
                 <p>
@@ -821,8 +768,7 @@
                 </p>
             </div>
             <div class="feature-card glass reveal">
-                <div class="feature-icon">
-                    <div class="gradient-icon" style="background: linear-gradient(135deg, #30cfd0 0%, #330867 100%);"></div>
+                <div class="feature-icon" style="background: linear-gradient(135deg, rgba(48, 207, 208, 0.7) 0%, rgba(51, 8, 103, 0.7) 100%), url('https://images.unsplash.com/photo-1614680376573-df3480f0c6ff?w=200&q=80') center/cover;">
                 </div>
                 <h3>Privacy First</h3>
                 <p>
@@ -831,8 +777,7 @@
                 </p>
             </div>
             <div class="feature-card glass reveal">
-                <div class="feature-icon">
-                    <div class="gradient-icon" style="background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);"></div>
+                <div class="feature-icon" style="background: linear-gradient(135deg, rgba(168, 237, 234, 0.7) 0%, rgba(254, 214, 227, 0.7) 100%), url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=200&q=80') center/cover;">
                 </div>
                 <h3>Global Community</h3>
                 <p>
@@ -852,36 +797,31 @@
         <div class="screenshots-slider">
             <div class="screenshot-item glass">
                 <div class="screenshot-content">
-                    <div class="screenshot-icon">
-                        <div class="gradient-screenshot" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);"></div>
+                    <div class="screenshot-icon" style="background: linear-gradient(135deg, rgba(102, 126, 234, 0.5) 0%, rgba(118, 75, 162, 0.5) 100%), url('https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=300&q=80') center/cover;">
                     </div>
                 </div>
             </div>
             <div class="screenshot-item glass">
                 <div class="screenshot-content">
-                    <div class="screenshot-icon">
-                        <div class="gradient-screenshot" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);"></div>
+                    <div class="screenshot-icon" style="background: linear-gradient(135deg, rgba(79, 172, 254, 0.5) 0%, rgba(0, 242, 254, 0.5) 100%), url('https://images.unsplash.com/photo-1611162616305-c69b3fa7fbe0?w=300&q=80') center/cover;">
                     </div>
                 </div>
             </div>
             <div class="screenshot-item glass">
                 <div class="screenshot-content">
-                    <div class="screenshot-icon">
-                        <div class="gradient-screenshot" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);"></div>
+                    <div class="screenshot-icon" style="background: linear-gradient(135deg, rgba(240, 147, 251, 0.5) 0%, rgba(245, 87, 108, 0.5) 100%), url('https://images.unsplash.com/photo-1611162618071-b39a2ec055fb?w=300&q=80') center/cover;">
                     </div>
                 </div>
             </div>
             <div class="screenshot-item glass">
                 <div class="screenshot-content">
-                    <div class="screenshot-icon">
-                        <div class="gradient-screenshot" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);"></div>
+                    <div class="screenshot-icon" style="background: linear-gradient(135deg, rgba(250, 112, 154, 0.5) 0%, rgba(254, 225, 64, 0.5) 100%), url('https://images.unsplash.com/photo-1614680376573-df3480f0c6ff?w=300&q=80') center/cover;">
                     </div>
                 </div>
             </div>
             <div class="screenshot-item glass">
                 <div class="screenshot-content">
-                    <div class="screenshot-icon">
-                        <div class="gradient-screenshot" style="background: linear-gradient(135deg, #30cfd0 0%, #330867 100%);"></div>
+                    <div class="screenshot-icon" style="background: linear-gradient(135deg, rgba(48, 207, 208, 0.5) 0%, rgba(51, 8, 103, 0.5) 100%), url('https://images.unsplash.com/photo-1611162616475-46b635cb6868?w=300&q=80') center/cover;">
                     </div>
                 </div>
             </div>
@@ -896,8 +836,7 @@
         </div>
         <div class="testimonials-grid">
             <div class="testimonial-card glass reveal">
-                <div class="testimonial-avatar">
-                    <div class="gradient-avatar" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);"></div>
+                <div class="testimonial-avatar" style="background: linear-gradient(135deg, rgba(240, 147, 251, 0.7) 0%, rgba(245, 87, 108, 0.7) 100%), url('https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150&q=80') center/cover;">
                 </div>
                 <p class="testimonial-text">
                     "Aura를 사용하면서 정말 의미있는 친구들을 많이 만났어요.
@@ -907,8 +846,7 @@
                 <div class="testimonial-role">디자이너, 서울</div>
             </div>
             <div class="testimonial-card glass reveal">
-                <div class="testimonial-avatar">
-                    <div class="gradient-avatar" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);"></div>
+                <div class="testimonial-avatar" style="background: linear-gradient(135deg, rgba(79, 172, 254, 0.7) 0%, rgba(0, 242, 254, 0.7) 100%), url('https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&q=80') center/cover;">
                 </div>
                 <p class="testimonial-text">
                     "다른 소셜 앱들과는 완전히 다른 경험이에요.
@@ -918,8 +856,7 @@
                 <div class="testimonial-role">개발자, 부산</div>
             </div>
             <div class="testimonial-card glass reveal">
-                <div class="testimonial-avatar">
-                    <div class="gradient-avatar" style="background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);"></div>
+                <div class="testimonial-avatar" style="background: linear-gradient(135deg, rgba(168, 237, 234, 0.7) 0%, rgba(254, 214, 227, 0.7) 100%), url('https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&q=80') center/cover;">
                 </div>
                 <p class="testimonial-text">
                     "프라이버시 보호 기능이 정말 마음에 들어요.
@@ -937,14 +874,12 @@
             <p>지금 바로 다운로드하고 새로운 연결을 시작하세요</p>
             <div class="download-buttons">
                 <a href="#" class="btn btn-primary store-btn">
-                    <div class="store-icon">
-                        <div class="gradient-store" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);"></div>
+                    <div class="store-icon" style="background: linear-gradient(135deg, rgba(102, 126, 234, 0.7) 0%, rgba(118, 75, 162, 0.7) 100%), url('https://images.unsplash.com/photo-1621768216002-5ac171876625?w=100&q=80') center/cover;">
                     </div>
                     App Store
                 </a>
                 <a href="#" class="btn btn-primary store-btn">
-                    <div class="store-icon">
-                        <div class="gradient-store" style="background: linear-gradient(135deg, #30cfd0 0%, #330867 100%);"></div>
+                    <div class="store-icon" style="background: linear-gradient(135deg, rgba(48, 207, 208, 0.7) 0%, rgba(51, 8, 103, 0.7) 100%), url('https://images.unsplash.com/photo-1607252650355-f7fd0460ccdb?w=100&q=80') center/cover;">
                     </div>
                     Google Play
                 </a>

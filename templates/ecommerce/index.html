@@ -16,6 +16,7 @@
             background: #fff;
             color: #333;
             line-height: 1.6;
+            scroll-behavior: smooth;
         }
 
         /* Navigation */
@@ -46,6 +47,7 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
+            letter-spacing: 2px;
         }
 
         .nav-menu {
@@ -133,8 +135,9 @@
         .hero {
             margin-top: 80px;
             position: relative;
-            height: 600px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            height: 650px;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.95) 0%, rgba(118, 75, 162, 0.95) 100%),
+                        url('https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=1600&q=80') center/cover;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -166,16 +169,19 @@
         }
 
         .hero h1 {
-            font-size: 4rem;
-            margin-bottom: 1rem;
+            font-size: 5rem;
+            margin-bottom: 1.5rem;
             font-weight: 900;
-            letter-spacing: -2px;
+            letter-spacing: -3px;
+            text-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);
         }
 
         .hero p {
-            font-size: 1.5rem;
-            margin-bottom: 2rem;
-            opacity: 0.9;
+            font-size: 1.6rem;
+            margin-bottom: 2.5rem;
+            opacity: 0.95;
+            font-weight: 300;
+            letter-spacing: 0.5px;
         }
 
         .hero-btn {
@@ -205,9 +211,10 @@
 
         .section-title {
             text-align: center;
-            font-size: 2.5rem;
-            margin-bottom: 3rem;
-            font-weight: 800;
+            font-size: 2.8rem;
+            margin-bottom: 3.5rem;
+            font-weight: 900;
+            letter-spacing: -1px;
         }
 
         .category-grid {
@@ -222,11 +229,14 @@
             border-radius: 20px;
             overflow: hidden;
             cursor: pointer;
-            transition: transform 0.3s;
+            transition: transform 0.3s, box-shadow 0.3s;
+            text-decoration: none;
+            display: block;
         }
 
         .category-card:hover {
             transform: scale(1.05);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
         }
 
         .category-card::before {
@@ -250,10 +260,22 @@
             z-index: 2;
         }
 
-        .cat-fashion { background: linear-gradient(135deg, #FA8BFF 0%, #2BD2FF 100%); }
-        .cat-electronics { background: linear-gradient(135deg, #FDBB2D 0%, #22C1C3 100%); }
-        .cat-home { background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); }
-        .cat-beauty { background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); }
+        .cat-fashion {
+            background: linear-gradient(135deg, rgba(250, 139, 255, 0.8) 0%, rgba(43, 210, 255, 0.8) 100%),
+                        url('https://images.unsplash.com/photo-1445205170230-053b83016050?w=600&q=80') center/cover;
+        }
+        .cat-electronics {
+            background: linear-gradient(135deg, rgba(253, 187, 45, 0.8) 0%, rgba(34, 193, 195, 0.8) 100%),
+                        url('https://images.unsplash.com/photo-1498049794561-7780e7231661?w=600&q=80') center/cover;
+        }
+        .cat-home {
+            background: linear-gradient(135deg, rgba(79, 172, 254, 0.8) 0%, rgba(0, 242, 254, 0.8) 100%),
+                        url('https://images.unsplash.com/photo-1556228578-0d85b1a4d571?w=600&q=80') center/cover;
+        }
+        .cat-beauty {
+            background: linear-gradient(135deg, rgba(240, 147, 251, 0.8) 0%, rgba(245, 87, 108, 0.8) 100%),
+                        url('https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=600&q=80') center/cover;
+        }
 
         /* Products */
         .products {
@@ -284,7 +306,7 @@
 
         .product-image {
             width: 100%;
-            height: 280px;
+            height: 320px;
             object-fit: cover;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
         }
@@ -357,11 +379,18 @@
             border-radius: 10px;
             font-weight: 700;
             cursor: pointer;
-            transition: transform 0.3s;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
         }
 
         .add-to-cart:hover {
-            transform: scale(1.05);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.5);
+            background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+        }
+
+        .add-to-cart:active {
+            transform: translateY(0);
         }
 
         /* Banner */
@@ -380,13 +409,14 @@
         }
 
         .banner-content h2 {
-            font-size: 3rem;
-            margin-bottom: 1rem;
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
             font-weight: 900;
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 1rem;
+            letter-spacing: -1px;
         }
 
         .banner-icon {
@@ -411,9 +441,10 @@
         }
 
         .banner-content p {
-            font-size: 1.3rem;
-            margin-bottom: 2rem;
-            opacity: 0.9;
+            font-size: 1.4rem;
+            margin-bottom: 2.5rem;
+            opacity: 0.95;
+            font-weight: 300;
         }
 
         /* Footer */
@@ -518,23 +549,23 @@
         <div class="nav-container">
             <div class="logo">LUXE</div>
             <ul class="nav-menu">
-                <li><a href="#new">신상품</a></li>
-                <li><a href="#best">베스트</a></li>
-                <li><a href="#sale">세일</a></li>
-                <li><a href="#brand">브랜드</a></li>
+                <li><a href="#products">신상품</a></li>
+                <li><a href="#products">베스트</a></li>
+                <li><a href="#promo">세일</a></li>
+                <li><a href="#categories">카테고리</a></li>
             </ul>
             <div class="nav-icons">
-                <button class="icon-btn">
+                <button class="icon-btn" onclick="alert('검색 기능')">
                     <div class="icon-gradient search-icon"></div>
                 </button>
-                <button class="icon-btn">
+                <button class="icon-btn" onclick="alert('위시리스트')">
                     <div class="icon-gradient heart-icon"></div>
                 </button>
-                <button class="icon-btn">
+                <button class="icon-btn" onclick="alert('장바구니 (상품 3개)')">
                     <div class="icon-gradient cart-icon"></div>
                     <span class="cart-badge">3</span>
                 </button>
-                <button class="icon-btn">
+                <button class="icon-btn" onclick="alert('로그인 / 회원가입')">
                     <div class="icon-gradient user-icon"></div>
                 </button>
             </div>
@@ -544,28 +575,28 @@
     <!-- Hero Section -->
     <section class="hero">
         <div class="hero-content">
-            <h1>NEW SEASON</h1>
-            <p>2024 가을/겨울 컬렉션 최대 50% 할인</p>
-            <a href="#products" class="hero-btn">지금 쇼핑하기</a>
+            <h1>AUTUMN COLLECTION 2024</h1>
+            <p>새로운 시즌, 새로운 스타일 • 프리미엄 신상품 최대 50% 할인</p>
+            <a href="#products" class="hero-btn">컬렉션 둘러보기</a>
         </div>
     </section>
 
     <!-- Categories -->
-    <section class="categories">
+    <section class="categories" id="categories">
         <h2 class="section-title">카테고리</h2>
         <div class="category-grid">
-            <div class="category-card cat-fashion">
+            <a href="#products" class="category-card cat-fashion">
                 <h3>패션</h3>
-            </div>
-            <div class="category-card cat-electronics">
+            </a>
+            <a href="#products" class="category-card cat-electronics">
                 <h3>전자기기</h3>
-            </div>
-            <div class="category-card cat-home">
+            </a>
+            <a href="#products" class="category-card cat-home">
                 <h3>홈 & 리빙</h3>
-            </div>
-            <div class="category-card cat-beauty">
+            </a>
+            <a href="#products" class="category-card cat-beauty">
                 <h3>뷰티</h3>
-            </div>
+            </a>
         </div>
     </section>
 
@@ -575,7 +606,7 @@
         <div class="product-grid">
             <div class="product-card">
                 <div style="position: relative;">
-                    <div class="product-image"></div>
+                    <div class="product-image" style="background: url('https://images.unsplash.com/photo-1434389677669-e08b4cac3105?w=600&q=80') center/cover;"></div>
                     <span class="product-badge">SALE</span>
                 </div>
                 <div class="product-info">
@@ -589,36 +620,36 @@
                         <span class="price-current">89,000원</span>
                         <span class="price-original">178,000원</span>
                     </div>
-                    <button class="add-to-cart">장바구니 담기</button>
+                    <button class="add-to-cart" onclick="alert('장바구니에 상품이 추가되었습니다!')">장바구니 담기</button>
                 </div>
             </div>
 
             <div class="product-card">
                 <div style="position: relative;">
-                    <div class="product-image" style="background: linear-gradient(135deg, #FA8BFF 0%, #2BD2FF 100%);"></div>
+                    <div class="product-image" style="background: url('https://images.unsplash.com/photo-1590658268037-6bf12165a8df?w=600&q=80') center/cover;"></div>
                     <span class="product-badge">NEW</span>
                 </div>
                 <div class="product-info">
                     <div class="product-category">Electronics</div>
-                    <h3 class="product-name">무선 블루투스 이어폰</h3>
+                    <h3 class="product-name">무선 블루투스 이어폰 프로</h3>
                     <div class="product-rating">
                         <span class="stars">★★★★★</span>
-                        <span style="color: #999; font-size: 0.9rem;"> (89)</span>
+                        <span style="color: #999; font-size: 0.9rem;"> (189)</span>
                     </div>
                     <div class="product-price">
                         <span class="price-current">149,000원</span>
                     </div>
-                    <button class="add-to-cart">장바구니 담기</button>
+                    <button class="add-to-cart" onclick="alert('장바구니에 상품이 추가되었습니다!')">장바구니 담기</button>
                 </div>
             </div>
 
             <div class="product-card">
                 <div style="position: relative;">
-                    <div class="product-image" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);"></div>
+                    <div class="product-image" style="background: url('https://images.unsplash.com/photo-1524484485831-a92ffc0de03f?w=600&q=80') center/cover;"></div>
                 </div>
                 <div class="product-info">
                     <div class="product-category">Home & Living</div>
-                    <h3 class="product-name">북유럽 감성 조명</h3>
+                    <h3 class="product-name">미니멀 북유럽 펜던트 조명</h3>
                     <div class="product-rating">
                         <span class="stars">★★★★☆</span>
                         <span style="color: #999; font-size: 0.9rem;"> (54)</span>
@@ -626,18 +657,18 @@
                     <div class="product-price">
                         <span class="price-current">79,000원</span>
                     </div>
-                    <button class="add-to-cart">장바구니 담기</button>
+                    <button class="add-to-cart" onclick="alert('장바구니에 상품이 추가되었습니다!')">장바구니 담기</button>
                 </div>
             </div>
 
             <div class="product-card">
                 <div style="position: relative;">
-                    <div class="product-image" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);"></div>
+                    <div class="product-image" style="background: url('https://images.unsplash.com/photo-1596755389378-c31d21fd1273?w=600&q=80') center/cover;"></div>
                     <span class="product-badge">HOT</span>
                 </div>
                 <div class="product-info">
                     <div class="product-category">Beauty</div>
-                    <h3 class="product-name">비건 스킨케어 세트</h3>
+                    <h3 class="product-name">럭셔리 스킨케어 컬렉션</h3>
                     <div class="product-rating">
                         <span class="stars">★★★★★</span>
                         <span style="color: #999; font-size: 0.9rem;"> (213)</span>
@@ -646,55 +677,55 @@
                         <span class="price-current">59,000원</span>
                         <span class="price-original">89,000원</span>
                     </div>
-                    <button class="add-to-cart">장바구니 담기</button>
+                    <button class="add-to-cart" onclick="alert('장바구니에 상품이 추가되었습니다!')">장바구니 담기</button>
                 </div>
             </div>
 
             <div class="product-card">
                 <div style="position: relative;">
-                    <div class="product-image" style="background: linear-gradient(135deg, #FDBB2D 0%, #22C1C3 100%);"></div>
+                    <div class="product-image" style="background: url('https://images.unsplash.com/photo-1590874103328-eac38a683ce7?w=600&q=80') center/cover;"></div>
                 </div>
                 <div class="product-info">
                     <div class="product-category">Fashion</div>
-                    <h3 class="product-name">에코 레더 크로스백</h3>
+                    <h3 class="product-name">프리미엄 레더 크로스백</h3>
                     <div class="product-rating">
                         <span class="stars">★★★★★</span>
-                        <span style="color: #999; font-size: 0.9rem;"> (98)</span>
+                        <span style="color: #999; font-size: 0.9rem;"> (198)</span>
                     </div>
                     <div class="product-price">
                         <span class="price-current">129,000원</span>
                     </div>
-                    <button class="add-to-cart">장바구니 담기</button>
+                    <button class="add-to-cart" onclick="alert('장바구니에 상품이 추가되었습니다!')">장바구니 담기</button>
                 </div>
             </div>
 
             <div class="product-card">
                 <div style="position: relative;">
-                    <div class="product-image" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);"></div>
+                    <div class="product-image" style="background: url('https://images.unsplash.com/photo-1579586337278-3befd40fd17a?w=600&q=80') center/cover;"></div>
                     <span class="product-badge">SALE</span>
                 </div>
                 <div class="product-info">
                     <div class="product-category">Electronics</div>
-                    <h3 class="product-name">스마트 워치 프로</h3>
+                    <h3 class="product-name">프리미엄 스마트 워치</h3>
                     <div class="product-rating">
-                        <span class="stars">★★★★☆</span>
-                        <span style="color: #999; font-size: 0.9rem;"> (67)</span>
+                        <span class="stars">★★★★★</span>
+                        <span style="color: #999; font-size: 0.9rem;"> (167)</span>
                     </div>
                     <div class="product-price">
                         <span class="price-current">299,000원</span>
                         <span class="price-original">399,000원</span>
                     </div>
-                    <button class="add-to-cart">장바구니 담기</button>
+                    <button class="add-to-cart" onclick="alert('장바구니에 상품이 추가되었습니다!')">장바구니 담기</button>
                 </div>
             </div>
 
             <div class="product-card">
                 <div style="position: relative;">
-                    <div class="product-image" style="background: linear-gradient(135deg, #FA8BFF 0%, #2BD2FF 100%);"></div>
+                    <div class="product-image" style="background: url('https://images.unsplash.com/photo-1602874801007-62dc5c6e46f9?w=600&q=80') center/cover;"></div>
                 </div>
                 <div class="product-info">
                     <div class="product-category">Home & Living</div>
-                    <h3 class="product-name">프리미엄 디퓨저 세트</h3>
+                    <h3 class="product-name">아로마 디퓨저 & 캔들 세트</h3>
                     <div class="product-rating">
                         <span class="stars">★★★★★</span>
                         <span style="color: #999; font-size: 0.9rem;"> (145)</span>
@@ -702,90 +733,95 @@
                     <div class="product-price">
                         <span class="price-current">45,000원</span>
                     </div>
-                    <button class="add-to-cart">장바구니 담기</button>
+                    <button class="add-to-cart" onclick="alert('장바구니에 상품이 추가되었습니다!')">장바구니 담기</button>
                 </div>
             </div>
 
             <div class="product-card">
                 <div style="position: relative;">
-                    <div class="product-image" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);"></div>
+                    <div class="product-image" style="background: url('https://images.unsplash.com/photo-1539533018447-63fcce2678e3?w=600&q=80') center/cover;"></div>
                     <span class="product-badge">NEW</span>
                 </div>
                 <div class="product-info">
                     <div class="product-category">Fashion</div>
-                    <h3 class="product-name">클래식 트렌치 코트</h3>
+                    <h3 class="product-name">시그니처 트렌치 코트</h3>
                     <div class="product-rating">
                         <span class="stars">★★★★★</span>
-                        <span style="color: #999; font-size: 0.9rem;"> (76)</span>
+                        <span style="color: #999; font-size: 0.9rem;"> (176)</span>
                     </div>
                     <div class="product-price">
                         <span class="price-current">189,000원</span>
                     </div>
-                    <button class="add-to-cart">장바구니 담기</button>
+                    <button class="add-to-cart" onclick="alert('장바구니에 상품이 추가되었습니다!')">장바구니 담기</button>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Promo Banner -->
-    <section class="promo-banner">
+    <section class="promo-banner" id="promo">
         <div class="banner-content">
             <h2>
                 <div class="banner-icon"></div>
-                신규회원 특별 혜택
+                첫 구매 15% 할인 쿠폰
             </h2>
-            <p>지금 가입하고 15% 할인 쿠폰 받아가세요!</p>
-            <a href="#signup" class="hero-btn">회원가입하기</a>
+            <p>신규 회원 가입 즉시 사용 가능한 웰컴 쿠폰을 드립니다.<br>
+            최소 주문금액 없음 • 전 상품 적용 가능 • 유효기간 30일</p>
+            <a href="#footer" class="hero-btn">지금 회원가입하고 쿠폰 받기</a>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer>
+    <footer id="footer">
         <div class="footer-container">
             <div class="footer-section">
                 <h3>고객센터</h3>
                 <ul>
-                    <li><a href="#">자주 묻는 질문</a></li>
-                    <li><a href="#">배송/반품 안내</a></li>
-                    <li><a href="#">교환/환불 정책</a></li>
-                    <li><a href="#">1:1 문의</a></li>
+                    <li><a href="#footer">자주 묻는 질문</a></li>
+                    <li><a href="#footer">배송/반품 안내</a></li>
+                    <li><a href="#footer">교환/환불 정책</a></li>
+                    <li><a href="#footer">1:1 문의</a></li>
                 </ul>
             </div>
             <div class="footer-section">
                 <h3>쇼핑 정보</h3>
                 <ul>
-                    <li><a href="#">회원가입 혜택</a></li>
-                    <li><a href="#">멤버십 안내</a></li>
-                    <li><a href="#">적립금 정책</a></li>
-                    <li><a href="#">쿠폰 안내</a></li>
+                    <li><a href="#promo">회원가입 혜택</a></li>
+                    <li><a href="#footer">멤버십 안내</a></li>
+                    <li><a href="#footer">적립금 정책</a></li>
+                    <li><a href="#promo">쿠폰 안내</a></li>
                 </ul>
             </div>
             <div class="footer-section">
                 <h3>회사 정보</h3>
                 <ul>
-                    <li><a href="#">회사 소개</a></li>
-                    <li><a href="#">채용 정보</a></li>
-                    <li><a href="#">이용약관</a></li>
-                    <li><a href="#">개인정보처리방침</a></li>
+                    <li><a href="#footer">회사 소개</a></li>
+                    <li><a href="#footer">채용 정보</a></li>
+                    <li><a href="#footer">이용약관</a></li>
+                    <li><a href="#footer">개인정보처리방침</a></li>
                 </ul>
             </div>
             <div class="footer-section">
                 <h3>LUXE SHOP</h3>
                 <p style="color: #999; margin-bottom: 1rem;">
-                    프리미엄 라이프스타일 쇼핑의 시작<br>
-                    <strong style="color: white;">1588-0000</strong><br>
-                    평일 09:00 - 18:00
+                    프리미엄 라이프스타일 브랜드<br>
+                    큐레이팅된 감각으로 채워가는 일상<br><br>
+                    <strong style="color: white;">고객센터 1588-0000</strong><br>
+                    평일 09:00 - 18:00 (점심 12:00 - 13:00)<br>
+                    주말/공휴일 휴무
                 </p>
                 <div class="social-icons">
-                    <div class="social-icon social-facebook"></div>
-                    <div class="social-icon social-instagram"></div>
-                    <div class="social-icon social-twitter"></div>
-                    <div class="social-icon social-youtube"></div>
+                    <div class="social-icon social-facebook" onclick="alert('Facebook')"></div>
+                    <div class="social-icon social-instagram" onclick="alert('Instagram')"></div>
+                    <div class="social-icon social-twitter" onclick="alert('Twitter')"></div>
+                    <div class="social-icon social-youtube" onclick="alert('YouTube')"></div>
                 </div>
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2024 LUXE SHOP. All rights reserved. | 사업자등록번호: 000-00-00000</p>
+            <p>&copy; 2024 LUXE SHOP. All rights reserved.<br>
+            사업자등록번호: 123-45-67890 | 통신판매업신고: 2024-서울강남-12345 | 대표: 홍길동<br>
+            서울특별시 강남구 테헤란로 000, 00층 | 이메일: contact@luxeshop.kr</p>
         </div>
     </footer>
 </body>

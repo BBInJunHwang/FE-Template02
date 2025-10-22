@@ -17,6 +17,7 @@
             color: #1a1f36;
             background: #fafbfc;
             overflow-x: hidden;
+            scroll-behavior: smooth;
         }
 
         nav {
@@ -131,22 +132,15 @@
         .card-icon {
             width: 72px;
             height: 72px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.7) 0%, rgba(118, 75, 162, 0.7) 100%), url('https://images.unsplash.com/photo-1553877522-43269d4ea984?w=200&q=80') center/cover;
             border-radius: 16px;
             display: flex;
             align-items: center;
             justify-content: center;
             margin-bottom: 1.5rem;
             position: relative;
-        }
-
-        .card-icon::after {
-            content: '';
-            position: absolute;
-            width: 32px;
-            height: 32px;
-            background: rgba(255, 255, 255, 0.9);
-            border-radius: 8px;
+            background-size: cover;
+            background-position: center;
         }
 
         .card h3 {
@@ -187,22 +181,15 @@
         .value-icon {
             width: 72px;
             height: 72px;
-            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            background: linear-gradient(135deg, rgba(240, 147, 251, 0.7) 0%, rgba(245, 87, 108, 0.7) 100%), url('https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=200&q=80') center/cover;
             border-radius: 16px;
             display: flex;
             align-items: center;
             justify-content: center;
             margin: 0 auto 1.5rem;
             position: relative;
-        }
-
-        .value-icon::after {
-            content: '';
-            position: absolute;
-            width: 32px;
-            height: 32px;
-            background: rgba(255, 255, 255, 0.9);
-            border-radius: 8px;
+            background-size: cover;
+            background-position: center;
         }
 
         .value-card h3 {
@@ -242,21 +229,14 @@
             width: 120px;
             height: 120px;
             border-radius: 20px;
-            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+            background: linear-gradient(135deg, rgba(168, 237, 234, 0.7) 0%, rgba(254, 214, 227, 0.7) 100%), url('https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&q=80') center/cover;
             display: flex;
             align-items: center;
             justify-content: center;
             margin: 0 auto 1.5rem;
             position: relative;
-        }
-
-        .team-photo::after {
-            content: '';
-            position: absolute;
-            width: 60px;
-            height: 60px;
-            background: rgba(255, 255, 255, 0.9);
-            border-radius: 12px;
+            background-size: cover;
+            background-position: center;
         }
 
         .team-member h4 {
@@ -440,7 +420,7 @@
                     </p>
                 </div>
                 <div class="card fade-in">
-                    <div class="card-icon" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);"></div>
+                    <div class="card-icon" style="background: linear-gradient(135deg, rgba(79, 172, 254, 0.7) 0%, rgba(0, 242, 254, 0.7) 100%), url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=200&q=80') center/cover;"></div>
                     <h3>비전</h3>
                     <p>
                         업계를 선도하는 글로벌 기업으로 성장하여,
@@ -465,17 +445,17 @@
                     <p>끊임없는 도전과 창의적 사고로 새로운 가치를 창출합니다</p>
                 </div>
                 <div class="value-card fade-in">
-                    <div class="value-icon" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);"></div>
+                    <div class="value-icon" style="background: linear-gradient(135deg, rgba(79, 172, 254, 0.7) 0%, rgba(0, 242, 254, 0.7) 100%), url('https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=200&q=80') center/cover;"></div>
                     <h3>신뢰</h3>
                     <p>투명하고 정직한 소통으로 고객과의 신뢰를 구축합니다</p>
                 </div>
                 <div class="value-card fade-in">
-                    <div class="value-icon" style="background: linear-gradient(135deg, #30cfd0 0%, #330867 100%);"></div>
+                    <div class="value-icon" style="background: linear-gradient(135deg, rgba(67, 233, 123, 0.7) 0%, rgba(56, 249, 215, 0.7) 100%), url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=200&q=80') center/cover;"></div>
                     <h3>탁월함</h3>
                     <p>최고의 품질과 서비스로 고객 만족을 실현합니다</p>
                 </div>
                 <div class="value-card fade-in">
-                    <div class="value-icon" style="background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);"></div>
+                    <div class="value-icon" style="background: linear-gradient(135deg, rgba(250, 112, 154, 0.7) 0%, rgba(254, 225, 64, 0.7) 100%), url('https://images.unsplash.com/photo-1552664730-d307ca884978?w=200&q=80') center/cover;"></div>
                     <h3>성장</h3>
                     <p>지속적인 학습과 발전으로 함께 성장합니다</p>
                 </div>
@@ -499,21 +479,21 @@
                 </div>
 
                 <div class="team-member fade-in">
-                    <div class="team-photo" style="background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);"></div>
+                    <div class="team-photo" style="background: linear-gradient(135deg, rgba(102, 126, 234, 0.7) 0%, rgba(118, 75, 162, 0.7) 100%), url('https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=300&q=80') center/cover;"></div>
                     <h4>이부장</h4>
                     <p class="role">기술이사 / CTO</p>
                     <p>혁신적인 기술 솔루션 개발을 책임집니다</p>
                 </div>
 
                 <div class="team-member fade-in">
-                    <div class="team-photo" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);"></div>
+                    <div class="team-photo" style="background: linear-gradient(135deg, rgba(240, 147, 251, 0.7) 0%, rgba(245, 87, 108, 0.7) 100%), url('https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=300&q=80') center/cover;"></div>
                     <h4>박팀장</h4>
                     <p class="role">디자인팀장</p>
                     <p>사용자 경험을 최우선으로 하는 디자인을 추구합니다</p>
                 </div>
 
                 <div class="team-member fade-in">
-                    <div class="team-photo" style="background: linear-gradient(135deg, #fbc2eb 0%, #a6c1ee 100%);"></div>
+                    <div class="team-photo" style="background: linear-gradient(135deg, rgba(79, 172, 254, 0.7) 0%, rgba(0, 242, 254, 0.7) 100%), url('https://images.unsplash.com/photo-1560250097-0b93528c311a?w=300&q=80') center/cover;"></div>
                     <h4>최이사</h4>
                     <p class="role">마케팅이사</p>
                     <p>전략적 마케팅으로 브랜드 가치를 높입니다</p>

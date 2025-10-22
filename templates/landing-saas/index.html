@@ -14,14 +14,17 @@
         }
 
         :root {
-            --primary: #7C3AED;
-            --primary-light: #A78BFA;
+            --primary: #6366F1;
+            --primary-light: #818CF8;
+            --primary-dark: #4F46E5;
             --secondary: #10B981;
+            --secondary-light: #34D399;
             --bg: #FAFBFC;
-            --text-dark: #1F2937;
-            --text-gray: #6B7280;
+            --text-dark: #0F172A;
+            --text-gray: #64748B;
             --accent-orange: #F59E0B;
             --accent-pink: #EC4899;
+            --accent-cyan: #06B6D4;
         }
 
         body {
@@ -30,6 +33,7 @@
             color: var(--text-dark);
             line-height: 1.6;
             overflow-x: hidden;
+            scroll-behavior: smooth;
         }
 
         /* Floating Gradient Blobs */
@@ -54,7 +58,7 @@
         .blob-1 {
             width: 500px;
             height: 500px;
-            background: linear-gradient(135deg, #7C3AED 0%, #A78BFA 100%);
+            background: linear-gradient(135deg, #6366F1 0%, #818CF8 100%);
             top: -200px;
             left: -200px;
             animation-delay: 0s;
@@ -72,7 +76,7 @@
         .blob-3 {
             width: 350px;
             height: 350px;
-            background: linear-gradient(135deg, #F59E0B 0%, #FCD34D 100%);
+            background: linear-gradient(135deg, #06B6D4 0%, #22D3EE 100%);
             top: 50%;
             right: 10%;
             animation-delay: -10s;
@@ -145,14 +149,15 @@
         }
 
         .btn-primary {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
             color: white;
-            box-shadow: 0 10px 30px rgba(124, 58, 237, 0.3);
+            box-shadow: 0 10px 30px rgba(99, 102, 241, 0.35);
         }
 
         .btn-primary:hover {
             transform: translateY(-3px);
-            box-shadow: 0 15px 40px rgba(124, 58, 237, 0.4);
+            box-shadow: 0 15px 40px rgba(99, 102, 241, 0.5);
+            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
         }
 
         .btn-outline {
@@ -168,7 +173,7 @@
 
         /* Hero Section */
         .hero {
-            padding: 8rem 5% 6rem;
+            padding: 10rem 5% 8rem;
             text-align: center;
             max-width: 1400px;
             margin: 0 auto;
@@ -222,11 +227,12 @@
         }
 
         .hero h1 {
-            font-size: clamp(3rem, 7vw, 5.5rem);
+            font-size: clamp(3rem, 7vw, 6rem);
             font-weight: 900;
             line-height: 1.1;
-            margin-bottom: 1.5rem;
+            margin-bottom: 2rem;
             animation: fadeIn 1s ease;
+            letter-spacing: -2px;
         }
 
         .gradient-text {
@@ -237,12 +243,13 @@
         }
 
         .hero p {
-            font-size: 1.4rem;
+            font-size: 1.5rem;
             color: var(--text-gray);
-            max-width: 700px;
-            margin: 0 auto 3rem;
+            max-width: 800px;
+            margin: 0 auto 3.5rem;
             font-weight: 400;
             animation: fadeIn 1s ease 0.2s both;
+            line-height: 1.7;
         }
 
         @keyframes fadeIn {
@@ -294,12 +301,22 @@
         }
 
         .mockup-content {
-            background: linear-gradient(135deg, #f5f7fa 0%, #e8eef5 100%);
-            height: 500px;
+            background: url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1400&q=80') center/cover;
+            height: 600px;
             border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
+            position: relative;
+            box-shadow: inset 0 0 100px rgba(0, 0, 0, 0.1);
+        }
+
+        .mockup-content::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.08) 0%, rgba(16, 185, 129, 0.08) 100%);
+            border-radius: 12px;
         }
 
         .mockup-icon {
@@ -309,6 +326,7 @@
             border-radius: 24px;
             position: relative;
             box-shadow: 0 20px 60px rgba(240, 147, 251, 0.4);
+            display: none;
         }
 
         .mockup-icon::after {
@@ -391,12 +409,14 @@
         .section-header h2 {
             font-size: clamp(2.5rem, 5vw, 4rem);
             font-weight: 900;
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
+            letter-spacing: -1px;
         }
 
         .section-header p {
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             color: var(--text-gray);
+            line-height: 1.7;
         }
 
         .features-grid {
@@ -502,6 +522,7 @@
             color: var(--text-gray);
             font-size: 1.05rem;
             line-height: 1.8;
+            font-weight: 400;
         }
 
         /* Pricing Section */
@@ -749,23 +770,23 @@
         <ul class="nav-links">
             <li><a href="#features">기능</a></li>
             <li><a href="#pricing">가격</a></li>
-            <li><a href="#about">소개</a></li>
-            <li><a href="#" class="btn btn-primary">무료 시작</a></li>
+            <li><a href="#footer">회사소개</a></li>
+            <li><a href="#cta" class="btn btn-primary">무료 시작</a></li>
         </ul>
     </nav>
 
     <section class="hero">
         <div class="badge">
-            <div class="badge-icon"></div> 5,000+ 팀이 사용 중
+            <div class="badge-icon"></div> 🚀 Series B 투자 유치 완료 • 10,000+ 기업이 신뢰
         </div>
-        <h1>팀 협업의 새로운 <span class="gradient-text">기준</span></h1>
+        <h1>팀 협업의 <span class="gradient-text">새로운 기준</span></h1>
         <p>
-            복잡한 프로젝트 관리를 단순하게. FlowSync로 팀의 생산성을
-            300% 향상시키세요.
+            전 세계 10,000+ 팀이 선택한 올인원 프로젝트 관리 솔루션.<br>
+            복잡한 워크플로우를 단순하게, 팀의 생산성을 극대화하세요.
         </p>
         <div class="hero-buttons">
-            <a href="#" class="btn btn-primary">14일 무료 체험</a>
-            <a href="#" class="btn btn-outline">데모 보기</a>
+            <a href="#pricing" class="btn btn-primary">14일 무료 체험 시작하기</a>
+            <a href="#features" class="btn btn-outline">자세히 알아보기</a>
         </div>
         <div class="hero-image">
             <div class="mockup">
@@ -779,20 +800,20 @@
     <section class="stats reveal">
         <div class="stats-grid">
             <div class="stat-item">
-                <div class="stat-number">5K+</div>
-                <div class="stat-label">활성 사용자</div>
+                <div class="stat-number">10K+</div>
+                <div class="stat-label">글로벌 기업 고객</div>
             </div>
             <div class="stat-item">
-                <div class="stat-number">98%</div>
-                <div class="stat-label">고객 만족도</div>
+                <div class="stat-number">4.9/5</div>
+                <div class="stat-label">고객 만족도 (G2 리뷰)</div>
             </div>
             <div class="stat-item">
-                <div class="stat-number">300%</div>
-                <div class="stat-label">생산성 향상</div>
+                <div class="stat-number">250M+</div>
+                <div class="stat-label">월간 처리 태스크</div>
             </div>
             <div class="stat-item">
-                <div class="stat-number">24/7</div>
-                <div class="stat-label">전문가 지원</div>
+                <div class="stat-number">99.9%</div>
+                <div class="stat-label">서비스 가동률</div>
             </div>
         </div>
     </section>
@@ -800,39 +821,39 @@
     <section class="features" id="features">
         <div class="section-header reveal">
             <div class="label">FEATURES</div>
-            <h2>모든 것을 하나로</h2>
-            <p>팀이 필요한 모든 도구를 한 곳에서 관리하세요</p>
+            <h2>프로젝트 관리의 모든 것을 하나로</h2>
+            <p>팀이 필요한 모든 기능을 하나의 플랫폼에서 제공합니다.<br>더 이상 여러 도구를 오가며 시간을 낭비하지 마세요.</p>
         </div>
         <div class="features-grid">
             <div class="feature-card reveal">
                 <div class="feature-icon"></div>
                 <h3>실시간 협업</h3>
-                <p>팀원들과 실시간으로 소통하고 협업하세요. 변경 사항은 즉시 동기화됩니다.</p>
+                <p>팀원들과 실시간으로 소통하고 협업하세요. Google Docs처럼 모든 변경 사항이 즉시 동기화되며, 누가 무엇을 작업 중인지 실시간으로 확인할 수 있습니다.</p>
             </div>
             <div class="feature-card reveal">
                 <div class="feature-icon"></div>
-                <h3>스마트 자동화</h3>
-                <p>반복적인 작업은 자동화하고 중요한 일에만 집중하세요.</p>
+                <h3>AI 기반 자동화</h3>
+                <p>반복적인 작업은 AI가 자동으로 처리합니다. 스마트 워크플로우로 팀의 업무 시간을 50% 단축하고, 중요한 의사결정에만 집중하세요.</p>
             </div>
             <div class="feature-card reveal">
                 <div class="feature-icon"></div>
-                <h3>인사이트 대시보드</h3>
-                <p>프로젝트 진행 상황을 한눈에 파악하고 데이터 기반 의사결정을 내리세요.</p>
+                <h3>실시간 인사이트 대시보드</h3>
+                <p>프로젝트 진행률, 팀 생산성, 리소스 배분을 한눈에 파악하세요. 커스터마이징 가능한 차트와 리포트로 데이터 기반 의사결정을 지원합니다.</p>
             </div>
             <div class="feature-card reveal">
                 <div class="feature-icon"></div>
-                <h3>엔터프라이즈 보안</h3>
-                <p>은행 수준의 암호화로 데이터를 안전하게 보호합니다.</p>
+                <h3>엔터프라이즈급 보안</h3>
+                <p>SOC 2 Type II, ISO 27001 인증 완료. 은행 수준의 256-bit 암호화와 2FA 인증으로 기업 데이터를 안전하게 보호합니다.</p>
             </div>
             <div class="feature-card reveal">
                 <div class="feature-icon"></div>
                 <h3>무제한 통합</h3>
-                <p>Slack, Google Drive, Zoom 등 1,000+ 서비스와 연동 가능합니다.</p>
+                <p>Slack, Microsoft Teams, Google Workspace, Zoom, GitHub, Jira 등 1,000+ 생산성 도구와 원클릭 연동. API와 Webhook으로 커스텀 통합도 가능합니다.</p>
             </div>
             <div class="feature-card reveal">
                 <div class="feature-icon"></div>
-                <h3>모바일 앱</h3>
-                <p>언제 어디서나 iOS/Android 앱으로 팀과 연결되세요.</p>
+                <h3>크로스 플랫폼 지원</h3>
+                <p>Web, iOS, Android, Mac, Windows 앱으로 언제 어디서나 접속 가능. 오프라인 모드 지원으로 인터넷 없이도 작업을 계속할 수 있습니다.</p>
             </div>
         </div>
     </section>
@@ -840,102 +861,113 @@
     <section class="pricing" id="pricing">
         <div class="section-header reveal">
             <div class="label">PRICING</div>
-            <h2>팀에 맞는 플랜 선택</h2>
-            <p>언제든지 플랜 변경 가능합니다</p>
+            <h2>팀 규모에 맞는 유연한 가격 정책</h2>
+            <p>14일 무료 체험으로 시작하세요. 신용카드 등록 없이 모든 기능을 사용해보실 수 있습니다.<br>언제든지 플랜 업그레이드 및 다운그레이드가 가능합니다.</p>
         </div>
         <div class="pricing-grid">
             <div class="pricing-card reveal">
                 <div class="plan-name">Starter</div>
-                <div class="price-tag">₩9,900<span>/월</span></div>
-                <p>소규모 팀을 위한 기본 플랜</p>
+                <div class="price-tag">₩12,000<span>/월</span></div>
+                <p>스타트업과 소규모 팀을 위한 시작 플랜</p>
                 <ul class="features-list">
-                    <li>팀원 최대 5명</li>
-                    <li>프로젝트 10개</li>
-                    <li>5GB 저장공간</li>
-                    <li>기본 통합</li>
-                    <li>이메일 지원</li>
+                    <li>팀원 최대 10명</li>
+                    <li>프로젝트 무제한</li>
+                    <li>10GB 저장공간</li>
+                    <li>기본 통합 (Slack, Google Drive)</li>
+                    <li>이메일 지원 (24시간 내 응답)</li>
+                    <li>모바일 앱 접근</li>
+                    <li>기본 대시보드</li>
                 </ul>
-                <a href="#" class="btn btn-outline">시작하기</a>
+                <a href="#cta" class="btn btn-outline">14일 무료 체험</a>
             </div>
 
             <div class="pricing-card featured reveal">
                 <div class="plan-name">Professional</div>
-                <div class="price-tag">₩29,900<span>/월</span></div>
-                <p>성장하는 팀을 위한 최적 플랜</p>
+                <div class="price-tag">₩29,000<span>/월</span></div>
+                <p>성장하는 팀을 위한 가장 인기있는 플랜</p>
                 <ul class="features-list">
                     <li>팀원 무제한</li>
                     <li>프로젝트 무제한</li>
                     <li>100GB 저장공간</li>
-                    <li>모든 통합</li>
-                    <li>우선 지원</li>
-                    <li>고급 분석</li>
-                    <li>자동화 기능</li>
+                    <li>1,000+ 통합 서비스</li>
+                    <li>우선 지원 (2시간 내 응답)</li>
+                    <li>고급 분석 및 리포트</li>
+                    <li>AI 자동화 기능</li>
+                    <li>커스텀 워크플로우</li>
+                    <li>게스트 초대 무제한</li>
                 </ul>
-                <a href="#" class="btn">지금 시작하기</a>
+                <a href="#cta" class="btn">지금 시작하기</a>
             </div>
 
             <div class="pricing-card reveal">
                 <div class="plan-name">Enterprise</div>
-                <div class="price-tag">맞춤형</div>
-                <p>대규모 조직을 위한 솔루션</p>
+                <div class="price-tag">문의</div>
+                <p>대규모 조직을 위한 맞춤형 엔터프라이즈 솔루션</p>
                 <ul class="features-list">
-                    <li>모든 Pro 기능</li>
+                    <li>모든 Professional 기능</li>
                     <li>무제한 저장공간</li>
-                    <li>전담 계정 매니저</li>
-                    <li>맞춤 통합 개발</li>
-                    <li>24/7 전화 지원</li>
-                    <li>온프레미스 옵션</li>
-                    <li>SLA 보장</li>
+                    <li>전담 CSM(고객 성공 매니저)</li>
+                    <li>맞춤 통합 개발 지원</li>
+                    <li>24/7 전화/채팅 지원</li>
+                    <li>온프레미스 배포 옵션</li>
+                    <li>99.99% SLA 보장</li>
+                    <li>고급 보안 및 컴플라이언스</li>
+                    <li>맞춤 교육 및 온보딩</li>
                 </ul>
-                <a href="#" class="btn btn-outline">문의하기</a>
+                <a href="#cta" class="btn btn-outline">영업팀 문의</a>
             </div>
         </div>
     </section>
 
-    <section class="cta reveal">
-        <h2>지금 바로 시작하세요</h2>
-        <p>신용카드 없이 14일 무료 체험. 언제든 취소 가능합니다.</p>
-        <a href="#" class="btn">무료로 시작하기 →</a>
+    <section class="cta reveal" id="cta">
+        <h2>전 세계 10,000+ 기업이 선택한 이유를 경험하세요</h2>
+        <p>신용카드 등록 없이 14일 동안 모든 Professional 기능을 무료로 체험하세요.<br>언제든지 취소 가능하며, 체험 종료 후 자동 결제되지 않습니다.</p>
+        <a href="#pricing" class="btn">지금 무료로 시작하기 →</a>
     </section>
 
-    <footer>
+    <footer id="footer">
         <div class="footer-grid">
             <div class="footer-section">
                 <h4>FlowSync</h4>
                 <p style="color: rgba(255,255,255,0.7); margin-top: 1rem;">
-                    팀 협업의 새로운 기준을 제시하는 프로젝트 관리 도구
+                    전 세계 10,000+ 기업이 신뢰하는<br>
+                    AI 기반 프로젝트 관리 플랫폼
+                </p>
+                <p style="color: rgba(255,255,255,0.5); margin-top: 1rem; font-size: 0.9rem;">
+                    SOC 2 Type II • ISO 27001 인증<br>
+                    © 2024 FlowSync Inc. All rights reserved.
                 </p>
             </div>
             <div class="footer-section">
                 <h4>제품</h4>
                 <ul>
-                    <li><a href="#">기능</a></li>
-                    <li><a href="#">가격</a></li>
-                    <li><a href="#">통합</a></li>
-                    <li><a href="#">API</a></li>
+                    <li><a href="#features">기능</a></li>
+                    <li><a href="#pricing">가격</a></li>
+                    <li><a href="#features">통합</a></li>
+                    <li><a href="#footer">API</a></li>
                 </ul>
             </div>
             <div class="footer-section">
                 <h4>회사</h4>
                 <ul>
-                    <li><a href="#">소개</a></li>
-                    <li><a href="#">채용</a></li>
-                    <li><a href="#">블로그</a></li>
-                    <li><a href="#">문의</a></li>
+                    <li><a href="#footer">소개</a></li>
+                    <li><a href="#footer">채용</a></li>
+                    <li><a href="#footer">블로그</a></li>
+                    <li><a href="#cta">문의</a></li>
                 </ul>
             </div>
             <div class="footer-section">
                 <h4>지원</h4>
                 <ul>
-                    <li><a href="#">헬프 센터</a></li>
-                    <li><a href="#">개발자 문서</a></li>
-                    <li><a href="#">커뮤니티</a></li>
-                    <li><a href="#">상태</a></li>
+                    <li><a href="#footer">헬프 센터</a></li>
+                    <li><a href="#footer">개발자 문서</a></li>
+                    <li><a href="#footer">커뮤니티</a></li>
+                    <li><a href="#footer">상태</a></li>
                 </ul>
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2024 FlowSync. All rights reserved.</p>
+            <p>&copy; 2024 FlowSync Inc. All rights reserved.</p>
         </div>
     </footer>
 

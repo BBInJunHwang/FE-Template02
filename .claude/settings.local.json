@@ -7,7 +7,9 @@
       "Bash(start:*)",
       "Bash(npm start)",
       "Bash(move:*)",
-      "Bash(ren black-label .black-label)"
+      "Bash(ren black-label .black-label)",
+      "Bash(tree:*)",
+      "Bash(find:*)"
     ],
     "deny": [],
     "ask": []
