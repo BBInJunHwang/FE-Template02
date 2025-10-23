@@ -3,698 +3,677 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>행사 초대장 - 당신을 초대합니다</title>
+    <title>EVENTIFY - Premium Event Planning</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
-
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
-        :root {
-            --bg-primary: #0a0e27;
-            --bg-secondary: #1a1f3a;
-            --text-primary: #ffffff;
-            --text-secondary: #b4b4b4;
-            --accent: #a855f7;
-            --accent-pink: #ec4899;
-            --glass-bg: rgba(255, 255, 255, 0.05);
-            --glass-border: rgba(255, 255, 255, 0.1);
-        }
-
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            font-family: 'Inter', sans-serif;
+            color: #1a1a1a;
             line-height: 1.6;
-            color: var(--text-primary);
-            background: var(--bg-primary);
             overflow-x: hidden;
-            scroll-behavior: smooth;
         }
 
-        .bg-animation {
+        .page-section {
+            display: none;
+            min-height: 100vh;
+        }
+
+        .page-section.active {
+            display: block;
+        }
+
+        nav {
             position: fixed;
             top: 0;
-            left: 0;
             width: 100%;
-            height: 100%;
-            z-index: 0;
-            background: radial-gradient(circle at 30% 20%, rgba(168, 85, 247, 0.15) 0%, transparent 50%),
-                        radial-gradient(circle at 70% 80%, rgba(236, 72, 153, 0.15) 0%, transparent 50%);
-            animation: bgFloat 20s ease-in-out infinite;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(20px);
+            z-index: 1000;
+            padding: 1.5rem 0;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
         }
 
-        @keyframes bgFloat {
-            0%, 100% { transform: translate(0, 0); }
-            50% { transform: translate(20px, -20px); }
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 900;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 3rem;
+            list-style: none;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: #1a1a1a;
+            font-weight: 500;
+            transition: color 0.3s;
+            cursor: pointer;
+        }
+
+        .nav-menu a:hover {
+            color: #a855f7;
+        }
+
+        .btn-contact {
+            padding: 0.9rem 2rem;
+            background: linear-gradient(135deg, #a855f7, #ec4899);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn-contact:hover {
+            transform: translateY(-2px);
+        }
+
+        .hero {
+            margin-top: 90px;
+            height: 85vh;
+            position: relative;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .hero-bg {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.6));
+        }
+
+        .hero-content {
+            position: relative;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            color: white;
+            z-index: 2;
+            text-align: center;
+            width: 100%;
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 5rem;
+            font-weight: 900;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero p {
+            font-size: 1.4rem;
+            margin-bottom: 3rem;
         }
 
         .container {
-            max-width: 900px;
+            max-width: 1400px;
             margin: 0 auto;
-            padding: 2rem;
-            position: relative;
-            z-index: 1;
+            padding: 120px 2rem;
         }
 
-        .invitation-card {
-            background: var(--glass-bg);
-            backdrop-filter: blur(20px);
-            border: 1px solid var(--glass-border);
-            border-radius: 40px;
-            overflow: hidden;
-            margin: 4rem auto;
-            box-shadow: 0 30px 80px rgba(168, 85, 247, 0.3);
-        }
-
-        .card-header {
-            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-pink) 100%);
-            padding: 5rem 2rem;
+        .section-header {
             text-align: center;
-            position: relative;
+            max-width: 700px;
+            margin: 0 auto 5rem;
         }
 
-        .event-icon {
-            width: 120px;
-            height: 120px;
-            margin: 0 auto 1.5rem;
-            background: linear-gradient(135deg, rgba(102, 126, 234, 0.7) 0%, rgba(118, 75, 162, 0.7) 100%), url('https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=300&q=80') center/cover;
-            border-radius: 16px;
-            position: relative;
-            animation: bounce 2s infinite;
+        .section-tag {
+            display: inline-block;
+            padding: 0.5rem 1.5rem;
+            background: linear-gradient(135deg, #a855f7, #ec4899);
+            color: white;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
         }
 
-        @keyframes bounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
-        }
-
-        .card-header h1 {
-            font-size: clamp(2.5rem, 6vw, 4rem);
+        .section-header h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
             font-weight: 900;
             margin-bottom: 1rem;
         }
 
-        .card-header .subtitle {
-            font-size: 1.4rem;
-            opacity: 0.95;
-            font-weight: 300;
-        }
-
-        .card-body {
-            padding: 4rem 2rem;
-        }
-
-        .intro-text {
-            text-align: center;
+        .section-header p {
             font-size: 1.2rem;
-            line-height: 2;
-            margin-bottom: 4rem;
-            color: var(--text-secondary);
-            font-weight: 300;
+            color: #666;
         }
 
-        .details-grid {
+        .services-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin: 3rem 0;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2.5rem;
         }
 
-        .detail-card {
-            background: var(--glass-bg);
-            backdrop-filter: blur(20px);
-            border: 1px solid var(--glass-border);
-            border-radius: 24px;
-            padding: 2.5rem;
-            text-align: center;
-            transition: all 0.3s;
-        }
-
-        .detail-card:hover {
-            transform: translateY(-10px);
-            border-color: var(--accent);
-        }
-
-        .detail-icon {
-            width: 70px;
-            height: 70px;
-            background: linear-gradient(135deg, rgba(168, 85, 247, 0.7) 0%, rgba(236, 72, 153, 0.7) 100%), url('https://images.unsplash.com/photo-1478147427282-58a87a120781?w=200&q=80') center/cover;
-            border-radius: 16px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 1.5rem;
-            position: relative;
-            background-size: cover;
-            background-position: center;
-        }
-
-        .detail-card:nth-child(1) .detail-icon {
-            background: linear-gradient(135deg, rgba(240, 147, 251, 0.7) 0%, rgba(245, 87, 108, 0.7) 100%), url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=200&q=80') center/cover;
-        }
-
-        .detail-card:nth-child(2) .detail-icon {
-            background: linear-gradient(135deg, rgba(79, 172, 254, 0.7) 0%, rgba(0, 242, 254, 0.7) 100%), url('https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=200&q=80') center/cover;
-        }
-
-        .detail-card:nth-child(3) .detail-icon {
-            background: linear-gradient(135deg, rgba(67, 233, 123, 0.7) 0%, rgba(56, 249, 215, 0.7) 100%), url('https://images.unsplash.com/photo-1505373877841-8d25f7d46678?w=200&q=80') center/cover;
-        }
-
-        .detail-card:nth-child(4) .detail-icon {
-            background: linear-gradient(135deg, rgba(250, 112, 154, 0.7) 0%, rgba(254, 225, 64, 0.7) 100%), url('https://images.unsplash.com/photo-1607863680198-23d4b2565df0?w=200&q=80') center/cover;
-        }
-
-        .detail-card h3 {
-            color: var(--accent);
-            margin-bottom: 1rem;
-            font-size: 1.3rem;
-            font-weight: 700;
-        }
-
-        .detail-card p {
-            color: var(--text-secondary);
-            font-weight: 300;
-            line-height: 1.7;
-        }
-
-        .section-title {
-            text-align: center;
-            font-size: 2.5rem;
-            font-weight: 800;
-            margin: 4rem 0 2rem;
-            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-pink) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 1rem;
-        }
-
-        .section-title::before {
-            content: '';
-            width: 50px;
-            height: 50px;
-            border-radius: 12px;
-            position: relative;
-        }
-
-        .section-title.schedule-title::before {
-            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
-        }
-
-        .section-title.speakers-title::before {
-            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
-        }
-
-        .section-title.map-title::before {
-            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);
-        }
-
-        .schedule-timeline {
-            margin: 3rem 0;
-        }
-
-        .schedule-item {
-            display: flex;
-            gap: 2rem;
-            margin-bottom: 2rem;
-            background: var(--glass-bg);
-            backdrop-filter: blur(20px);
-            border: 1px solid var(--glass-border);
-            border-radius: 20px;
-            padding: 2rem;
-            border-left: 4px solid var(--accent);
-            transition: all 0.3s;
-        }
-
-        .schedule-item:hover {
-            transform: translateX(10px);
-            border-left-color: var(--accent-pink);
-        }
-
-        .schedule-time {
-            font-weight: 800;
-            font-size: 1.5rem;
-            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-pink) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            min-width: 100px;
-        }
-
-        .schedule-content h4 {
-            font-size: 1.3rem;
-            margin-bottom: 0.5rem;
-            font-weight: 700;
-        }
-
-        .schedule-content p {
-            color: var(--text-secondary);
-            font-weight: 300;
-        }
-
-        .speakers-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 2rem;
-            margin: 3rem 0;
-        }
-
-        .speaker-card {
-            background: var(--glass-bg);
-            backdrop-filter: blur(20px);
-            border: 1px solid var(--glass-border);
-            border-radius: 24px;
-            padding: 2rem;
-            text-align: center;
-            transition: all 0.3s;
-        }
-
-        .speaker-card:hover {
-            transform: translateY(-10px);
-            border-color: var(--accent);
-        }
-
-        .speaker-avatar {
-            width: 120px;
-            height: 120px;
-            border-radius: 16px;
-            background: linear-gradient(135deg, rgba(168, 85, 247, 0.7) 0%, rgba(236, 72, 153, 0.7) 100%), url('https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=300&q=80') center/cover;
-            margin: 0 auto 1.5rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 10px 30px rgba(168, 85, 247, 0.4);
-            position: relative;
-            background-size: cover;
-            background-position: center;
-        }
-
-        .speaker-card:nth-child(1) .speaker-avatar {
-            background: linear-gradient(135deg, rgba(102, 126, 234, 0.7) 0%, rgba(118, 75, 162, 0.7) 100%), url('https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&q=80') center/cover;
-        }
-
-        .speaker-card:nth-child(2) .speaker-avatar {
-            background: linear-gradient(135deg, rgba(240, 147, 251, 0.7) 0%, rgba(245, 87, 108, 0.7) 100%), url('https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=300&q=80') center/cover;
-        }
-
-        .speaker-card:nth-child(3) .speaker-avatar {
-            background: linear-gradient(135deg, rgba(79, 172, 254, 0.7) 0%, rgba(0, 242, 254, 0.7) 100%), url('https://images.unsplash.com/photo-1560250097-0b93528c311a?w=300&q=80') center/cover;
-        }
-
-        .speaker-card:nth-child(4) .speaker-avatar {
-            background: linear-gradient(135deg, rgba(48, 207, 208, 0.7) 0%, rgba(51, 8, 103, 0.7) 100%), url('https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=300&q=80') center/cover;
-        }
-
-        .speaker-card h4 {
-            font-size: 1.2rem;
-            margin-bottom: 0.5rem;
-            font-weight: 700;
-        }
-
-        .speaker-card .title {
-            color: var(--accent);
-            font-size: 0.9rem;
-            font-weight: 500;
-        }
-
-        .map-section {
-            background: var(--glass-bg);
-            backdrop-filter: blur(20px);
-            border: 1px solid var(--glass-border);
-            border-radius: 30px;
-            padding: 3rem;
-            margin: 3rem 0;
-        }
-
-        .map-placeholder {
-            width: 100%;
-            height: 300px;
-            background: linear-gradient(135deg, rgba(168, 85, 247, 0.6) 0%, rgba(236, 72, 153, 0.6) 100%), url('https://images.unsplash.com/photo-1524661135-423995f22d0b?w=800&q=80') center/cover;
-            border-radius: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 2rem;
-            position: relative;
-        }
-
-        .address {
-            text-align: center;
-            font-size: 1.1rem;
-            line-height: 1.8;
-            color: var(--text-secondary);
-            font-weight: 300;
-        }
-
-        .rsvp-section {
-            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-pink) 100%);
-            border-radius: 30px;
-            padding: 4rem 3rem;
-            margin: 4rem 0;
-        }
-
-        .rsvp-section h2 {
-            text-align: center;
-            font-size: 2.5rem;
-            font-weight: 900;
-            margin-bottom: 1.5rem;
-        }
-
-        .rsvp-section > p {
-            text-align: center;
-            font-size: 1.2rem;
-            margin-bottom: 3rem;
-            opacity: 0.95;
-            font-weight: 300;
-        }
-
-        .rsvp-form {
-            max-width: 500px;
-            margin: 0 auto;
-        }
-
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 0.8rem;
-            font-weight: 600;
-        }
-
-        .form-group input,
-        .form-group select {
-            width: 100%;
-            padding: 1.2rem;
-            border: none;
-            border-radius: 15px;
-            font-size: 1rem;
-            background: rgba(255, 255, 255, 0.95);
-            color: var(--bg-primary);
-            font-family: inherit;
-        }
-
-        .form-group input:focus,
-        .form-group select:focus {
-            outline: none;
-            box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.5);
-        }
-
-        .btn {
-            width: 100%;
-            padding: 1.3rem;
+        .service-card {
             background: white;
-            color: var(--accent);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+            transition: all 0.4s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+        }
+
+        .service-image {
+            width: 100%;
+            height: 250px;
+        }
+
+        .service-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .service-content {
+            padding: 2rem;
+        }
+
+        .service-content h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.6rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .service-content p {
+            color: #666;
+            line-height: 1.8;
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .portfolio-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 20px;
+            cursor: pointer;
+            height: 350px;
+        }
+
+        .portfolio-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s;
+        }
+
+        .portfolio-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .portfolio-overlay {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.9));
+            color: white;
+            padding: 2rem;
+            transform: translateY(100%);
+            transition: transform 0.4s;
+        }
+
+        .portfolio-item:hover .portfolio-overlay {
+            transform: translateY(0);
+        }
+
+        .portfolio-overlay h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .cta {
+            padding: 120px 2rem;
+            background: linear-gradient(135deg, #a855f7, #ec4899);
+            text-align: center;
+            color: white;
+        }
+
+        .cta h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 4rem;
+            font-weight: 900;
+            margin-bottom: 2rem;
+        }
+
+        .cta p {
+            font-size: 1.4rem;
+            margin-bottom: 3rem;
+        }
+
+        .cta-btn {
+            padding: 1.2rem 3rem;
+            background: white;
+            color: #a855f7;
             border: none;
             border-radius: 50px;
-            font-size: 1.2rem;
             font-weight: 700;
+            font-size: 1.1rem;
             cursor: pointer;
             transition: all 0.3s;
-            margin-top: 1rem;
         }
 
-        .btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        .cta-btn:hover {
+            transform: scale(1.05);
         }
 
         footer {
-            text-align: center;
-            padding: 3rem 2rem;
-            color: var(--text-secondary);
-            font-weight: 300;
+            background: #1a1a1a;
+            color: white;
+            padding: 4rem 2rem 2rem;
         }
 
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 1.5rem;
-            margin: 2rem 0;
+        .footer-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 4rem;
+            margin-bottom: 3rem;
         }
 
-        .social-link {
-            width: 50px;
-            height: 50px;
-            background: var(--glass-bg);
-            backdrop-filter: blur(20px);
-            border: 1px solid var(--glass-border);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s;
+        .footer-section h4 {
+            margin-bottom: 1.5rem;
+            color: #a855f7;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-section a {
+            color: #999;
             text-decoration: none;
-            position: relative;
-            background-size: cover;
-            background-position: center;
+            transition: color 0.3s;
         }
 
-        .social-link:hover {
-            border-color: transparent;
-            transform: translateY(-5px);
+        .footer-section a:hover {
+            color: #a855f7;
         }
 
-        .social-link:nth-child(1) {
-            background: linear-gradient(135deg, rgba(102, 126, 234, 0.7) 0%, rgba(118, 75, 162, 0.7) 100%), url('https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=100&q=80') center/cover;
-        }
-
-        .social-link:nth-child(2) {
-            background: linear-gradient(135deg, rgba(240, 147, 251, 0.7) 0%, rgba(245, 87, 108, 0.7) 100%), url('https://images.unsplash.com/photo-1611162618071-b39a2ec055fb?w=100&q=80') center/cover;
-        }
-
-        .social-link:nth-child(3) {
-            background: linear-gradient(135deg, rgba(79, 172, 254, 0.7) 0%, rgba(0, 242, 254, 0.7) 100%), url('https://images.unsplash.com/photo-1611162616305-c69b3fa7fbe0?w=100&q=80') center/cover;
-        }
-
-        .social-link:nth-child(4) {
-            background: linear-gradient(135deg, rgba(250, 112, 154, 0.7) 0%, rgba(254, 225, 64, 0.7) 100%), url('https://images.unsplash.com/photo-1614680376573-df3480f0c6ff?w=100&q=80') center/cover;
-        }
-
-        @media (max-width: 768px) {
-            .schedule-item {
-                flex-direction: column;
-                gap: 1rem;
-            }
-
-            .section-title {
-                font-size: 2rem;
-            }
-
-            .section-title::before {
-                width: 40px;
-                height: 40px;
-            }
-
-            .card-header {
-                padding: 3rem 1rem;
-            }
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid #333;
+            color: #666;
         }
 
         .fade-in {
             opacity: 0;
             transform: translateY(30px);
-            transition: opacity 0.6s ease, transform 0.6s ease;
+            transition: all 0.8s ease;
         }
 
         .fade-in.visible {
             opacity: 1;
             transform: translateY(0);
         }
+
+        @media (max-width: 1024px) {
+            .services-grid,
+            .portfolio-grid { grid-template-columns: 1fr; }
+        }
+
+        @media (max-width: 768px) {
+            .nav-menu { display: none; }
+            .hero h1 { font-size: 2.5rem; }
+        }
     </style>
 </head>
 <body>
-    <div class="bg-animation"></div>
+
+<!-- Home Page -->
+<div id="home-page" class="page-section active">
+    <nav>
+        <div class="nav-container">
+            <div class="logo">EVENTIFY</div>
+            <ul class="nav-menu">
+                <li><a data-page="home-page">Home</a></li>
+                <li><a data-page="services-page">Services</a></li>
+                <li><a data-page="portfolio-page">Portfolio</a></li>
+                <li><a data-page="contact-page">Contact</a></li>
+            </ul>
+            <button class="btn-contact" data-page="contact-page">Get Started</button>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <img src="https://images.pexels.com/photos/2774556/pexels-photo-2774556.jpeg?auto=compress&cs=tinysrgb&w=1920" alt="Events" class="hero-bg">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1>Create Unforgettable Events</h1>
+            <p>Premium event planning and management for extraordinary experiences</p>
+        </div>
+    </section>
 
     <div class="container">
-        <div class="invitation-card">
-            <div class="card-header">
-                <div class="event-icon"></div>
-                <h1>2024 테크 컨퍼런스</h1>
-                <p class="subtitle">미래를 함께 만들어갈 당신을 초대합니다</p>
+        <div class="section-header">
+            <span class="section-tag">WHY CHOOSE US</span>
+            <h2>Premium Event Services</h2>
+            <p>From concept to execution, we bring your vision to life</p>
+        </div>
+        <div class="services-grid">
+            <div class="service-card fade-in">
+                <div class="service-image">
+                    <img src="https://images.pexels.com/photos/1674666/pexels-photo-1674666.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Corporate">
+                </div>
+                <div class="service-content">
+                    <h3>Corporate Events</h3>
+                    <p>Professional conferences, seminars, and company celebrations designed to inspire and engage.</p>
+                </div>
             </div>
-
-            <div class="card-body">
-                <div class="intro-text">
-                    <p>
-                        안녕하세요,<br>
-                        귀하를 2024 테크 컨퍼런스에 초대합니다.<br>
-                        업계 최고의 전문가들과 함께<br>
-                        미래 기술의 비전을 나누는 특별한 시간을 가져보세요.
-                    </p>
+            <div class="service-card fade-in">
+                <div class="service-image">
+                    <img src="https://images.pexels.com/photos/1024993/pexels-photo-1024993.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Weddings">
                 </div>
-
-                <div class="details-grid fade-in">
-                    <div class="detail-card">
-                        <div class="detail-icon"></div>
-                        <h3>일시</h3>
-                        <p>2024년 12월 15일 (토)<br>오후 2시 - 6시</p>
-                    </div>
-
-                    <div class="detail-card">
-                        <div class="detail-icon"></div>
-                        <h3>장소</h3>
-                        <p>서울 강남구<br>코엑스 컨퍼런스홀</p>
-                    </div>
-
-                    <div class="detail-card">
-                        <div class="detail-icon"></div>
-                        <h3>참가 대상</h3>
-                        <p>개발자, 디자이너, PM<br>모든 테크 관심자</p>
-                    </div>
-
-                    <div class="detail-card">
-                        <div class="detail-icon"></div>
-                        <h3>참가비</h3>
-                        <p>얼리버드: 50,000원<br>정규: 80,000원</p>
-                    </div>
+                <div class="service-content">
+                    <h3>Luxury Weddings</h3>
+                    <p>Bespoke wedding planning that transforms your special day into a magical celebration.</p>
                 </div>
-
-                <h2 class="section-title schedule-title">행사 일정</h2>
-                <div class="schedule-timeline fade-in">
-                    <div class="schedule-item">
-                        <div class="schedule-time">14:00</div>
-                        <div class="schedule-content">
-                            <h4>오프닝 및 환영사</h4>
-                            <p>행사 소개 및 참가자 네트워킹</p>
-                        </div>
-                    </div>
-
-                    <div class="schedule-item">
-                        <div class="schedule-time">14:30</div>
-                        <div class="schedule-content">
-                            <h4>기조연설: AI의 미래</h4>
-                            <p>김AI 박사 - 인공지능이 바꿀 세상</p>
-                        </div>
-                    </div>
-
-                    <div class="schedule-item">
-                        <div class="schedule-time">15:30</div>
-                        <div class="schedule-content">
-                            <h4>세션 1: 클라우드 아키텍처</h4>
-                            <p>이클라우드 - 확장 가능한 시스템 설계</p>
-                        </div>
-                    </div>
-
-                    <div class="schedule-item">
-                        <div class="schedule-time">16:00</div>
-                        <div class="schedule-content">
-                            <h4>휴식 및 네트워킹</h4>
-                            <p>다과 및 자유로운 교류 시간</p>
-                        </div>
-                    </div>
-
-                    <div class="schedule-item">
-                        <div class="schedule-time">16:30</div>
-                        <div class="schedule-content">
-                            <h4>세션 2: 스타트업 성공 스토리</h4>
-                            <p>박창업 대표 - 0에서 100억까지</p>
-                        </div>
-                    </div>
-
-                    <div class="schedule-item">
-                        <div class="schedule-time">17:30</div>
-                        <div class="schedule-content">
-                            <h4>패널 토론 및 Q&A</h4>
-                            <p>전체 연사 참여 토론 세션</p>
-                        </div>
-                    </div>
+            </div>
+            <div class="service-card fade-in">
+                <div class="service-image">
+                    <img src="https://images.pexels.com/photos/2747449/pexels-photo-2747449.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Social">
                 </div>
-
-                <h2 class="section-title speakers-title">연사 소개</h2>
-                <div class="speakers-grid fade-in">
-                    <div class="speaker-card">
-                        <div class="speaker-avatar"></div>
-                        <h4>김AI</h4>
-                        <p class="title">AI 연구소 소장</p>
-                    </div>
-
-                    <div class="speaker-card">
-                        <div class="speaker-avatar"></div>
-                        <h4>이클라우드</h4>
-                        <p class="title">클라우드 아키텍트</p>
-                    </div>
-
-                    <div class="speaker-card">
-                        <div class="speaker-avatar"></div>
-                        <h4>박창업</h4>
-                        <p class="title">테크 스타트업 CEO</p>
-                    </div>
-
-                    <div class="speaker-card">
-                        <div class="speaker-avatar"></div>
-                        <h4>최데이터</h4>
-                        <p class="title">데이터 사이언티스트</p>
-                    </div>
-                </div>
-
-                <h2 class="section-title map-title">오시는 길</h2>
-                <div class="map-section fade-in">
-                    <div class="map-placeholder"></div>
-                    <div class="address">
-                        <p><strong>서울 강남구 테헤란로 123 코엑스 컨퍼런스홀</strong></p>
-                        <p>지하철 2호선 삼성역 5번 출구 도보 5분</p>
-                        <p>주차: 코엑스 주차장 이용 가능 (4시간 무료)</p>
-                    </div>
-                </div>
-
-                <div class="rsvp-section">
-                    <h2>참가 신청하기</h2>
-                    <p>지금 신청하고 얼리버드 할인을 받으세요!</p>
-                    <div class="rsvp-form">
-                        <div class="form-group">
-                            <label>이름 *</label>
-                            <input type="text" placeholder="홍길동" required>
-                        </div>
-                        <div class="form-group">
-                            <label>이메일 *</label>
-                            <input type="email" placeholder="example@email.com" required>
-                        </div>
-                        <div class="form-group">
-                            <label>소속</label>
-                            <input type="text" placeholder="회사명 또는 소속">
-                        </div>
-                        <div class="form-group">
-                            <label>참가 유형 *</label>
-                            <select required>
-                                <option value="">선택하세요</option>
-                                <option value="earlybird">얼리버드 (50,000원)</option>
-                                <option value="regular">정규 등록 (80,000원)</option>
-                            </select>
-                        </div>
-                        <button class="btn">참가 신청하기</button>
-                    </div>
+                <div class="service-content">
+                    <h3>Social Gatherings</h3>
+                    <p>Memorable parties, galas, and celebrations tailored to your unique style and preferences.</p>
                 </div>
             </div>
         </div>
-
-        <footer>
-            <p><strong>문의사항이 있으신가요?</strong></p>
-            <p>이메일: event@example.com | 전화: 02-1234-5678</p>
-
-            <div class="social-links">
-                <a href="#" class="social-link"></a>
-                <a href="#" class="social-link"></a>
-                <a href="#" class="social-link"></a>
-                <a href="#" class="social-link"></a>
-            </div>
-
-            <p>&copy; 2024 Tech Conference. All rights reserved.</p>
-        </footer>
     </div>
+</div>
 
-    <script>
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -100px 0px'
-        };
+<!-- Services Page -->
+<div id="services-page" class="page-section">
+    <nav>
+        <div class="nav-container">
+            <div class="logo">EVENTIFY</div>
+            <ul class="nav-menu">
+                <li><a data-page="home-page">Home</a></li>
+                <li><a data-page="services-page">Services</a></li>
+                <li><a data-page="portfolio-page">Portfolio</a></li>
+                <li><a data-page="contact-page">Contact</a></li>
+            </ul>
+            <button class="btn-contact" data-page="contact-page">Get Started</button>
+        </div>
+    </nav>
+
+    <div class="container" style="padding-top: 180px;">
+        <div class="section-header">
+            <span class="section-tag">OUR SERVICES</span>
+            <h2>Full-Service Event Planning</h2>
+            <p>Comprehensive solutions for events of any scale</p>
+        </div>
+        <div class="services-grid">
+            <div class="service-card fade-in">
+                <div class="service-image">
+                    <img src="https://images.pexels.com/photos/3184360/pexels-photo-3184360.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Planning">
+                </div>
+                <div class="service-content">
+                    <h3>Event Strategy & Planning</h3>
+                    <p>Comprehensive planning from concept development to detailed logistics coordination.</p>
+                </div>
+            </div>
+            <div class="service-card fade-in">
+                <div class="service-image">
+                    <img src="https://images.pexels.com/photos/2788792/pexels-photo-2788792.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Venue">
+                </div>
+                <div class="service-content">
+                    <h3>Venue Selection</h3>
+                    <p>Curated venue sourcing and management for the perfect event setting.</p>
+                </div>
+            </div>
+            <div class="service-card fade-in">
+                <div class="service-image">
+                    <img src="https://images.pexels.com/photos/2306281/pexels-photo-2306281.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Catering">
+                </div>
+                <div class="service-content">
+                    <h3>Catering & Bar</h3>
+                    <p>Gourmet catering and beverage services tailored to your taste and theme.</p>
+                </div>
+            </div>
+            <div class="service-card fade-in">
+                <div class="service-image">
+                    <img src="https://images.pexels.com/photos/2306274/pexels-photo-2306274.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Design">
+                </div>
+                <div class="service-content">
+                    <h3>Event Design & Decor</h3>
+                    <p>Custom design and styling to create stunning visual experiences.</p>
+                </div>
+            </div>
+            <div class="service-card fade-in">
+                <div class="service-image">
+                    <img src="https://images.pexels.com/photos/167478/pexels-photo-167478.jpeg?auto=compress&cs=tinysrgb&w=600" alt="AV">
+                </div>
+                <div class="service-content">
+                    <h3>AV & Entertainment</h3>
+                    <p>Professional audio-visual production and entertainment coordination.</p>
+                </div>
+            </div>
+            <div class="service-card fade-in">
+                <div class="service-image">
+                    <img src="https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Management">
+                </div>
+                <div class="service-content">
+                    <h3>On-Site Management</h3>
+                    <p>Seamless event execution with experienced coordinators on location.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Portfolio Page -->
+<div id="portfolio-page" class="page-section">
+    <nav>
+        <div class="nav-container">
+            <div class="logo">EVENTIFY</div>
+            <ul class="nav-menu">
+                <li><a data-page="home-page">Home</a></li>
+                <li><a data-page="services-page">Services</a></li>
+                <li><a data-page="portfolio-page">Portfolio</a></li>
+                <li><a data-page="contact-page">Contact</a></li>
+            </ul>
+            <button class="btn-contact" data-page="contact-page">Get Started</button>
+        </div>
+    </nav>
+
+    <div class="container" style="padding-top: 180px;">
+        <div class="section-header">
+            <span class="section-tag">PORTFOLIO</span>
+            <h2>Our Success Stories</h2>
+            <p>A glimpse of the unforgettable events we've created</p>
+        </div>
+        <div class="portfolio-grid">
+            <div class="portfolio-item fade-in">
+                <img src="https://images.pexels.com/photos/1024993/pexels-photo-1024993.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Wedding">
+                <div class="portfolio-overlay">
+                    <h3>Royal Garden Wedding</h3>
+                    <p>Luxury outdoor celebration for 200 guests</p>
+                </div>
+            </div>
+            <div class="portfolio-item fade-in">
+                <img src="https://images.pexels.com/photos/1587927/pexels-photo-1587927.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Conference">
+                <div class="portfolio-overlay">
+                    <h3>Tech Summit 2024</h3>
+                    <p>3-day international conference</p>
+                </div>
+            </div>
+            <div class="portfolio-item fade-in">
+                <img src="https://images.pexels.com/photos/2747449/pexels-photo-2747449.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Gala">
+                <div class="portfolio-overlay">
+                    <h3>Charity Gala Night</h3>
+                    <p>Elegant fundraising event</p>
+                </div>
+            </div>
+            <div class="portfolio-item fade-in">
+                <img src="https://images.pexels.com/photos/3184338/pexels-photo-3184338.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Product">
+                <div class="portfolio-overlay">
+                    <h3>Product Launch</h3>
+                    <p>High-profile brand reveal</p>
+                </div>
+            </div>
+            <div class="portfolio-item fade-in">
+                <img src="https://images.pexels.com/photos/2608517/pexels-photo-2608517.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Party">
+                <div class="portfolio-overlay">
+                    <h3>Anniversary Celebration</h3>
+                    <p>Intimate milestone party</p>
+                </div>
+            </div>
+            <div class="portfolio-item fade-in">
+                <img src="https://images.pexels.com/photos/2306281/pexels-photo-2306281.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Corporate">
+                <div class="portfolio-overlay">
+                    <h3>Corporate Retreat</h3>
+                    <p>Team building experience</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Contact Page -->
+<div id="contact-page" class="page-section">
+    <nav>
+        <div class="nav-container">
+            <div class="logo">EVENTIFY</div>
+            <ul class="nav-menu">
+                <li><a data-page="home-page">Home</a></li>
+                <li><a data-page="services-page">Services</a></li>
+                <li><a data-page="portfolio-page">Portfolio</a></li>
+                <li><a data-page="contact-page">Contact</a></li>
+            </ul>
+            <button class="btn-contact" data-page="contact-page">Get Started</button>
+        </div>
+    </nav>
+
+    <section class="cta" style="padding-top: 180px; min-height: 80vh; display: flex; align-items: center; justify-content: center;">
+        <div style="max-width: 800px; margin: 0 auto;">
+            <h2>Let's Create Magic Together</h2>
+            <p>Ready to plan an unforgettable event? Contact us for a consultation</p>
+            <button class="cta-btn">Schedule Consultation</button>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-section">
+                <h4>About EVENTIFY</h4>
+                <p style="color: #999; line-height: 1.8;">
+                    Premium event planning agency creating extraordinary experiences worldwide. Trusted by leading brands and individuals since 2015.
+                </p>
+            </div>
+            <div class="footer-section">
+                <h4>Services</h4>
+                <ul>
+                    <li><a href="#">Corporate Events</a></li>
+                    <li><a href="#">Weddings</a></li>
+                    <li><a href="#">Social Events</a></li>
+                    <li><a href="#">Conferences</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Company</h4>
+                <ul>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Portfolio</a></li>
+                    <li><a href="#">Testimonials</a></li>
+                    <li><a href="#">Careers</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Contact</h4>
+                <ul>
+                    <li><a href="#">1-800-EVENTIFY</a></li>
+                    <li><a href="#">hello@eventify.com</a></li>
+                    <li><a href="#">Live Chat</a></li>
+                    <li><a href="#">FAQ</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 EVENTIFY. All rights reserved.</p>
+        </div>
+    </footer>
+</div>
+
+<script>
+    function showPage(pageId) {
+        document.querySelectorAll('.page-section').forEach(section => {
+            section.classList.remove('active');
+        });
+        const targetPage = document.getElementById(pageId);
+        if (targetPage) {
+            targetPage.classList.add('active');
+            window.scrollTo(0, 0);
+            initializeAnimations();
+        }
+    }
+
+    document.querySelectorAll('[data-page]').forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            const pageId = link.getAttribute('data-page');
+            showPage(pageId);
+            window.location.hash = pageId;
+        });
+    });
+
+    window.addEventListener('hashchange', () => {
+        const pageId = window.location.hash.slice(1) || 'home-page';
+        showPage(pageId);
+    });
+
+    if (window.location.hash) {
+        const pageId = window.location.hash.slice(1);
+        showPage(pageId);
+    }
+
+    function initializeAnimations() {
+        const fadeElements = document.querySelectorAll('.fade-in');
 
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
@@ -702,33 +681,17 @@
                     entry.target.classList.add('visible');
                 }
             });
-        }, observerOptions);
+        }, {
+            threshold: 0.1
+        });
 
-        document.querySelectorAll('.fade-in').forEach(el => {
+        fadeElements.forEach(el => {
             observer.observe(el);
         });
+    }
 
-        document.querySelector('.btn').addEventListener('click', function(e) {
-            e.preventDefault();
-            const inputs = document.querySelectorAll('input[required], select[required]');
-            let allFilled = true;
+    initializeAnimations();
+</script>
 
-            inputs.forEach(input => {
-                if (!input.value) {
-                    allFilled = false;
-                    input.style.border = '2px solid red';
-                } else {
-                    input.style.border = 'none';
-                }
-            });
-
-            if (allFilled) {
-                alert('참가 신청이 완료되었습니다! 확인 이메일을 발송해드렸습니다.');
-                document.querySelectorAll('input, select').forEach(input => input.value = '');
-            } else {
-                alert('필수 항목을 모두 입력해주세요.');
-            }
-        });
-    </script>
 </body>
 </html>

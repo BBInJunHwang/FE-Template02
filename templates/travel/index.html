@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wanderlust - 세계로 떠나는 여행</title>
+    <title>VOYAGER - Luxury Travel Experiences</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -12,334 +13,312 @@
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
-            color: #2d3748;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: #1a1a1a;
             line-height: 1.6;
-            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+
+        .page-section {
+            display: none;
+            min-height: 100vh;
+        }
+
+        .page-section.active {
+            display: block;
         }
 
         /* Navigation */
         nav {
-            background: white;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            position: sticky;
+            position: fixed;
             top: 0;
-            z-index: 100;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(20px);
+            z-index: 1000;
+            padding: 1.5rem 0;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
         }
 
         .nav-container {
             max-width: 1400px;
             margin: 0 auto;
-            padding: 1rem 2rem;
+            padding: 0 2rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
 
         .logo {
+            font-family: 'Playfair Display', serif;
             font-size: 1.8rem;
-            font-weight: 700;
-            background: linear-gradient(135deg, #f59e0b, #ef4444);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            font-weight: 900;
+            color: #1a1a1a;
+        }
+
+        .nav-menu {
             display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .logo-icon {
-            width: 40px;
-            height: 40px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            border-radius: 12px;
-            position: relative;
-            flex-shrink: 0;
-        }
-
-        .logo-icon::after {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 20px;
-            height: 20px;
-            background: white;
-            border-radius: 6px;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 2rem;
+            gap: 3rem;
             list-style: none;
         }
 
-        .nav-links a {
+        .nav-menu a {
             text-decoration: none;
-            color: #4a5568;
+            color: #1a1a1a;
             font-weight: 500;
             transition: color 0.3s;
+            cursor: pointer;
         }
 
-        .nav-links a:hover {
+        .nav-menu a:hover {
             color: #f59e0b;
         }
 
         .btn-book {
-            padding: 0.7rem 1.5rem;
+            padding: 0.9rem 2rem;
             background: linear-gradient(135deg, #f59e0b, #ef4444);
             color: white;
             border: none;
-            border-radius: 8px;
+            border-radius: 50px;
             font-weight: 600;
             cursor: pointer;
-            transition: transform 0.3s;
+            transition: all 0.3s;
         }
 
         .btn-book:hover {
             transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(245, 158, 11, 0.3);
         }
 
         /* Hero */
         .hero {
-            background: linear-gradient(rgba(255,255,255,0.8), rgba(255,255,255,0.8)),
-                        url('https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=1920&q=80') center/cover;
-            padding: 6rem 2rem;
+            margin-top: 90px;
+            height: 85vh;
+            position: relative;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.5));
+        }
+
+        .hero-content {
+            position: relative;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            color: white;
+            z-index: 2;
             text-align: center;
+            width: 100%;
         }
 
         .hero h1 {
-            font-size: 4rem;
+            font-family: 'Playfair Display', serif;
+            font-size: 5rem;
             margin-bottom: 1.5rem;
-            color: #1a202c;
+            font-weight: 900;
         }
 
         .hero p {
-            font-size: 1.3rem;
-            color: #4a5568;
-            max-width: 700px;
-            margin: 0 auto 2rem;
+            font-size: 1.4rem;
+            margin-bottom: 3rem;
+            opacity: 0.95;
         }
 
         .search-box {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            display: flex;
+            gap: 1rem;
             max-width: 900px;
             margin: 0 auto;
-            background: white;
-            border-radius: 16px;
-            padding: 2rem;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 1rem;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
         }
 
-        .search-field {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .search-field label {
-            font-size: 0.85rem;
-            color: #718096;
-            margin-bottom: 0.5rem;
-            font-weight: 600;
-        }
-
-        .search-field input,
-        .search-field select {
-            padding: 0.8rem;
-            border: 2px solid #e2e8f0;
-            border-radius: 8px;
+        .search-box select, .search-box input {
+            flex: 1;
+            padding: 1rem 1.5rem;
+            border: 1px solid #e0e0e0;
+            border-radius: 10px;
             font-size: 1rem;
-            transition: border-color 0.3s;
-        }
-
-        .search-field input:focus,
-        .search-field select:focus {
-            outline: none;
-            border-color: #f59e0b;
+            color: #1a1a1a;
         }
 
         .btn-search {
-            padding: 0.8rem 2rem;
+            padding: 1rem 3rem;
             background: linear-gradient(135deg, #f59e0b, #ef4444);
             color: white;
             border: none;
-            border-radius: 8px;
-            font-weight: 600;
+            border-radius: 10px;
+            font-weight: 700;
             cursor: pointer;
-            align-self: end;
-            transition: transform 0.3s;
-        }
-
-        .btn-search:hover {
-            transform: translateY(-2px);
-        }
-
-        /* Container */
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 4rem 2rem;
-        }
-
-        .section-title {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-            text-align: center;
-        }
-
-        .section-subtitle {
-            text-align: center;
-            color: #718096;
-            font-size: 1.1rem;
-            margin-bottom: 3rem;
         }
 
         /* Destinations */
         .destinations {
+            padding: 120px 2rem;
+            background: white;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 5rem;
+        }
+
+        .section-tag {
+            display: inline-block;
+            padding: 0.5rem 1.5rem;
+            background: linear-gradient(135deg, #f59e0b, #ef4444);
+            color: white;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+        }
+
+        .section-header h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            font-weight: 900;
+            margin-bottom: 1rem;
+        }
+
+        .section-header p {
+            font-size: 1.2rem;
+            color: #666;
+        }
+
+        .destinations-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
-            margin-bottom: 4rem;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2.5rem;
         }
 
         .destination-card {
+            background: white;
             border-radius: 20px;
             overflow: hidden;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+            transition: all 0.4s;
             cursor: pointer;
-            background: white;
         }
 
         .destination-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 12px 40px rgba(0,0,0,0.15);
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
         }
 
         .destination-image {
-            height: 250px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            width: 100%;
+            height: 300px;
             position: relative;
+            overflow: hidden;
         }
 
-        .destination-icon {
-            width: 120px;
-            height: 120px;
-            border-radius: 24px;
-            position: relative;
+        .destination-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s;
         }
 
-        .destination-icon::after {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 60px;
-            height: 60px;
-            background: white;
-            border-radius: 12px;
+        .destination-card:hover .destination-image img {
+            transform: scale(1.1);
         }
 
         .destination-badge {
             position: absolute;
-            top: 1rem;
-            right: 1rem;
-            background: rgba(255,255,255,0.95);
-            padding: 0.5rem 1rem;
+            top: 1.5rem;
+            right: 1.5rem;
+            background: #f59e0b;
+            color: white;
+            padding: 0.6rem 1.2rem;
             border-radius: 50px;
+            font-weight: 700;
             font-size: 0.85rem;
-            font-weight: 600;
-            color: #f59e0b;
         }
 
         .destination-content {
-            padding: 1.5rem;
+            padding: 2rem;
         }
 
         .destination-header {
             display: flex;
             justify-content: space-between;
-            align-items: start;
-            margin-bottom: 0.8rem;
+            align-items: center;
+            margin-bottom: 1rem;
         }
 
         .destination-content h3 {
-            font-size: 1.5rem;
-            color: #1a202c;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.6rem;
+            font-weight: 700;
         }
 
         .destination-rating {
-            display: flex;
-            align-items: center;
-            gap: 0.3rem;
-            font-size: 0.9rem;
             color: #f59e0b;
-            font-weight: 600;
-        }
-
-        .star-icon {
-            width: 18px;
-            height: 18px;
-            background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
-            border-radius: 4px;
-            display: inline-block;
+            font-weight: 700;
         }
 
         .destination-content p {
-            color: #718096;
-            margin-bottom: 1rem;
-            line-height: 1.7;
+            color: #666;
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
         }
 
         .destination-footer {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding-top: 1rem;
-            border-top: 1px solid #e2e8f0;
+            padding-top: 1.5rem;
+            border-top: 1px solid #e0e0e0;
         }
 
         .price {
-            font-size: 1.5rem;
-            font-weight: 700;
+            font-size: 2rem;
+            font-weight: 900;
             color: #f59e0b;
         }
 
         .price-label {
             font-size: 0.85rem;
-            color: #718096;
-        }
-
-        .btn-view {
-            padding: 0.6rem 1.5rem;
-            background: #fef3c7;
-            color: #92400e;
-            border: none;
-            border-radius: 8px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: background 0.3s;
-        }
-
-        .btn-view:hover {
-            background: #fde68a;
+            color: #666;
         }
 
         /* Features */
         .features {
+            padding: 120px 2rem;
+            background: linear-gradient(135deg, #fef3c7 0%, #fed7aa 100%);
+        }
+
+        .features-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 2rem;
-            margin-bottom: 4rem;
-            padding: 3rem;
-            background: linear-gradient(135deg, #fef3c7 0%, #fed7aa 100%);
-            border-radius: 24px;
+            gap: 3rem;
         }
 
         .feature {
@@ -347,160 +326,129 @@
         }
 
         .feature-icon {
-            width: 80px;
-            height: 80px;
-            margin: 0 auto 1rem;
-            border-radius: 16px;
-            position: relative;
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
         }
 
-        .feature-icon::after {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 40px;
-            height: 40px;
-            background: white;
-            border-radius: 8px;
-        }
-
-        .feature h4 {
-            font-size: 1.2rem;
-            margin-bottom: 0.5rem;
+        .feature h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
         }
 
         .feature p {
             color: #78350f;
-            font-size: 0.95rem;
         }
 
         /* Testimonials */
         .testimonials {
+            padding: 120px 2rem;
+            background: white;
+        }
+
+        .testimonials-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
-            margin-bottom: 4rem;
+            gap: 2.5rem;
         }
 
         .testimonial-card {
-            background: white;
-            padding: 2rem;
-            border-radius: 16px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-        }
-
-        .testimonial-header {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            margin-bottom: 1rem;
-        }
-
-        .testimonial-avatar {
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, #f59e0b, #ef4444);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-        }
-
-        .testimonial-avatar::after {
-            content: '';
-            width: 30px;
-            height: 30px;
-            background: white;
-            border-radius: 50%;
-        }
-
-        .testimonial-info h4 {
-            font-size: 1.1rem;
-            margin-bottom: 0.2rem;
-        }
-
-        .testimonial-location {
-            font-size: 0.9rem;
-            color: #718096;
+            background: #fafafa;
+            padding: 3rem;
+            border-radius: 20px;
         }
 
         .testimonial-stars {
-            margin-bottom: 1rem;
-            display: flex;
-            gap: 0.3rem;
+            color: #f59e0b;
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
         }
 
-        .testimonial-star {
-            width: 20px;
-            height: 20px;
-            background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
-            border-radius: 4px;
-        }
-
-        .testimonial-card p {
-            color: #4a5568;
-            line-height: 1.7;
+        .testimonial-text {
+            color: #666;
+            line-height: 1.8;
+            margin-bottom: 2rem;
             font-style: italic;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .author-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .author-info h4 {
+            font-weight: 700;
+        }
+
+        .author-info p {
+            color: #999;
+            font-size: 0.9rem;
         }
 
         /* CTA */
         .cta {
+            padding: 120px 2rem;
             background: linear-gradient(135deg, #f59e0b, #ef4444);
-            color: white;
-            padding: 4rem;
-            border-radius: 24px;
             text-align: center;
+            color: white;
         }
 
         .cta h2 {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
+            font-family: 'Playfair Display', serif;
+            font-size: 4rem;
+            margin-bottom: 2rem;
+            font-weight: 900;
         }
 
         .cta p {
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
-            opacity: 0.95;
+            font-size: 1.4rem;
+            margin-bottom: 3rem;
         }
 
-        .cta button {
-            padding: 1rem 2.5rem;
+        .cta-btn {
+            padding: 1.2rem 3rem;
             background: white;
             color: #f59e0b;
             border: none;
-            border-radius: 12px;
+            border-radius: 50px;
+            font-weight: 700;
             font-size: 1.1rem;
-            font-weight: 600;
             cursor: pointer;
-            transition: transform 0.3s;
+            transition: all 0.3s;
         }
 
-        .cta button:hover {
+        .cta-btn:hover {
             transform: scale(1.05);
         }
 
         /* Footer */
         footer {
-            background: #1a202c;
+            background: #1a1a1a;
             color: white;
-            padding: 3rem 2rem;
-            margin-top: 4rem;
+            padding: 4rem 2rem 2rem;
         }
 
-        .footer-content {
+        .footer-container {
             max-width: 1400px;
             margin: 0 auto;
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 2rem;
+            gap: 4rem;
+            margin-bottom: 3rem;
         }
 
         .footer-section h4 {
-            margin-bottom: 1rem;
-            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            color: #f59e0b;
         }
 
         .footer-section ul {
@@ -508,11 +456,11 @@
         }
 
         .footer-section ul li {
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.8rem;
         }
 
         .footer-section a {
-            color: rgba(255,255,255,0.7);
+            color: #999;
             text-decoration: none;
             transition: color 0.3s;
         }
@@ -522,365 +470,436 @@
         }
 
         .footer-bottom {
-            max-width: 1400px;
-            margin: 2rem auto 0;
-            padding-top: 2rem;
-            border-top: 1px solid rgba(255,255,255,0.1);
             text-align: center;
-            color: rgba(255,255,255,0.6);
+            padding-top: 2rem;
+            border-top: 1px solid #333;
+            color: #666;
+        }
+
+        /* Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         @media (max-width: 1024px) {
-            .search-box {
-                grid-template-columns: 1fr 1fr;
-            }
-
-            .features {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .testimonials {
-                grid-template-columns: 1fr;
-            }
-
-            .footer-content {
-                grid-template-columns: repeat(2, 1fr);
-            }
+            .destinations-grid,
+            .testimonials-grid { grid-template-columns: 1fr; }
+            .features-grid { grid-template-columns: repeat(2, 1fr); }
         }
 
         @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-
-            .search-box {
-                grid-template-columns: 1fr;
-            }
-
-            .features {
-                grid-template-columns: 1fr;
-            }
-
-            .destinations {
-                grid-template-columns: 1fr;
-            }
-
-            .nav-links {
-                display: none;
-            }
-
-            .footer-content {
-                grid-template-columns: 1fr;
-            }
+            .nav-menu { display: none; }
+            .hero h1 { font-size: 2.5rem; }
+            .search-box { flex-direction: column; }
+            .features-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 <body>
+
+<!-- Home Page -->
+<div id="home-page" class="page-section active">
     <nav>
         <div class="nav-container">
-            <div class="logo"><div class="logo-icon"></div>Wanderlust</div>
-            <ul class="nav-links">
-                <li><a href="#destinations">여행지</a></li>
-                <li><a href="#packages">패키지</a></li>
-                <li><a href="#about">소개</a></li>
-                <li><a href="#contact">문의</a></li>
+            <div class="logo">VOYAGER</div>
+            <ul class="nav-menu">
+                <li><a data-page="home-page">Home</a></li>
+                <li><a data-page="destinations-page">Destinations</a></li>
+                <li><a data-page="about-page">About</a></li>
+                <li><a data-page="contact-page">Contact</a></li>
             </ul>
-            <button class="btn-book">예약하기</button>
+            <button class="btn-book" data-page="contact-page">Book Now</button>
         </div>
     </nav>
 
     <section class="hero">
-        <h1>세계를 여행하세요</h1>
-        <p>꿈꾸던 여행지로 떠나는 특별한 경험, 완벽한 휴가를 계획해드립니다</p>
-
-        <div class="search-box">
-            <div class="search-field">
-                <label>목적지</label>
-                <input type="text" placeholder="어디로 떠나시나요?">
+        <img src="https://images.pexels.com/photos/1659438/pexels-photo-1659438.jpeg?auto=compress&cs=tinysrgb&w=1920" alt="Travel" class="hero-bg">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1>Explore The World</h1>
+            <p>Discover extraordinary destinations and create unforgettable memories</p>
+            <div class="search-box">
+                <select>
+                    <option>Destination</option>
+                    <option>Paris, France</option>
+                    <option>Bali, Indonesia</option>
+                    <option>Tokyo, Japan</option>
+                    <option>Maldives</option>
+                </select>
+                <input type="date" placeholder="Departure">
+                <input type="date" placeholder="Return">
+                <button class="btn-search">Search</button>
             </div>
-            <div class="search-field">
-                <label>출발일</label>
-                <input type="date">
-            </div>
-            <div class="search-field">
-                <label>귀국일</label>
-                <input type="date">
-            </div>
-            <button class="btn-search">검색</button>
         </div>
     </section>
 
-    <div class="container">
-        <div class="features">
-            <div class="feature">
-                <div class="feature-icon" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);"></div>
-                <h4>전 세계 200+ 도시</h4>
-                <p>엄선된 여행지</p>
-            </div>
-            <div class="feature">
-                <div class="feature-icon" style="background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);"></div>
-                <h4>최저가 보장</h4>
-                <p>합리적인 가격</p>
-            </div>
-            <div class="feature">
-                <div class="feature-icon" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);"></div>
-                <h4>안전한 여행</h4>
-                <p>24시간 여행자 보험</p>
-            </div>
-            <div class="feature">
-                <div class="feature-icon" style="background: linear-gradient(135deg, #30cfd0 0%, #330867 100%);"></div>
-                <h4>24/7 고객지원</h4>
-                <p>언제든 도와드립니다</p>
-            </div>
-        </div>
-
-        <h2 class="section-title">인기 여행지</h2>
-        <p class="section-subtitle">여행자들이 가장 사랑하는 목적지를 만나보세요</p>
-
-        <div class="destinations">
-            <div class="destination-card">
-                <div class="destination-image" style="background: linear-gradient(135deg, #fef3c7 0%, #fed7aa 100%);">
-                    <div class="destination-icon" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);"></div>
+    <section class="features">
+        <div class="container">
+            <div class="features-grid">
+                <div class="feature fade-in">
+                    <div class="feature-icon">🌍</div>
+                    <h3>200+ Destinations</h3>
+                    <p>Explore the world's most beautiful places</p>
                 </div>
-                <span class="destination-badge">베스트셀러</span>
-                <div class="destination-content">
-                    <div class="destination-header">
-                        <h3>파리, 프랑스</h3>
-                        <div class="destination-rating">
-                            <span class="star-icon"></span> 4.9
-                        </div>
-                    </div>
-                    <p>낭만의 도시 파리에서 에펠탑, 루브르 박물관, 샹젤리제 거리를 경험하세요.</p>
-                    <div class="destination-footer">
-                        <div>
-                            <div class="price">₩2,890,000</div>
-                            <div class="price-label">1인 / 5일 4박</div>
-                        </div>
-                        <button class="btn-view">자세히 보기</button>
-                    </div>
+                <div class="feature fade-in">
+                    <div class="feature-icon">💰</div>
+                    <h3>Best Price Guarantee</h3>
+                    <p>Competitive pricing with no hidden fees</p>
                 </div>
-            </div>
-
-            <div class="destination-card">
-                <div class="destination-image" style="background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);">
-                    <div class="destination-icon" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);"></div>
+                <div class="feature fade-in">
+                    <div class="feature-icon">🛡️</div>
+                    <h3>Travel Insurance</h3>
+                    <p>Comprehensive coverage for peace of mind</p>
                 </div>
-                <div class="destination-content">
-                    <div class="destination-header">
-                        <h3>발리, 인도네시아</h3>
-                        <div class="destination-rating">
-                            <span class="star-icon"></span> 4.8
-                        </div>
-                    </div>
-                    <p>열대 낙원 발리의 아름다운 해변과 사원, 전통 문화를 만끽하세요.</p>
-                    <div class="destination-footer">
-                        <div>
-                            <div class="price">₩1,590,000</div>
-                            <div class="price-label">1인 / 4일 3박</div>
-                        </div>
-                        <button class="btn-view">자세히 보기</button>
-                    </div>
-                </div>
-            </div>
-
-            <div class="destination-card">
-                <div class="destination-image" style="background: linear-gradient(135deg, #fce7f3 0%, #fbcfe8 100%);">
-                    <div class="destination-icon" style="background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);"></div>
-                </div>
-                <span class="destination-badge">특가</span>
-                <div class="destination-content">
-                    <div class="destination-header">
-                        <h3>도쿄, 일본</h3>
-                        <div class="destination-rating">
-                            <span class="star-icon"></span> 4.9
-                        </div>
-                    </div>
-                    <p>전통과 현대가 공존하는 도쿄에서 독특한 문화 체험을 즐기세요.</p>
-                    <div class="destination-footer">
-                        <div>
-                            <div class="price">₩980,000</div>
-                            <div class="price-label">1인 / 3일 2박</div>
-                        </div>
-                        <button class="btn-view">자세히 보기</button>
-                    </div>
-                </div>
-            </div>
-
-            <div class="destination-card">
-                <div class="destination-image" style="background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);">
-                    <div class="destination-icon" style="background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);"></div>
-                </div>
-                <div class="destination-content">
-                    <div class="destination-header">
-                        <h3>스위스 알프스</h3>
-                        <div class="destination-rating">
-                            <span class="star-icon"></span> 5.0
-                        </div>
-                    </div>
-                    <p>융프라우, 마터호른의 장엄한 알프스 산맥과 청정 자연을 경험하세요.</p>
-                    <div class="destination-footer">
-                        <div>
-                            <div class="price">₩3,490,000</div>
-                            <div class="price-label">1인 / 6일 5박</div>
-                        </div>
-                        <button class="btn-view">자세히 보기</button>
-                    </div>
-                </div>
-            </div>
-
-            <div class="destination-card">
-                <div class="destination-image" style="background: linear-gradient(135deg, #e9d5ff 0%, #ddd6fe 100%);">
-                    <div class="destination-icon" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);"></div>
-                </div>
-                <div class="destination-content">
-                    <div class="destination-header">
-                        <h3>두바이, UAE</h3>
-                        <div class="destination-rating">
-                            <span class="star-icon"></span> 4.7
-                        </div>
-                    </div>
-                    <p>세계 최고층 빌딩과 럭셔리한 쇼핑, 사막 사파리를 즐기세요.</p>
-                    <div class="destination-footer">
-                        <div>
-                            <div class="price">₩2,190,000</div>
-                            <div class="price-label">1인 / 4일 3박</div>
-                        </div>
-                        <button class="btn-view">자세히 보기</button>
-                    </div>
-                </div>
-            </div>
-
-            <div class="destination-card">
-                <div class="destination-image" style="background: linear-gradient(135deg, #fed7aa 0%, #fdba74 100%);">
-                    <div class="destination-icon" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);"></div>
-                </div>
-                <div class="destination-content">
-                    <div class="destination-header">
-                        <h3>몰디브</h3>
-                        <div class="destination-rating">
-                            <span class="star-icon"></span> 5.0
-                        </div>
-                    </div>
-                    <p>크리스탈처럼 맑은 바다와 럭셔리 리조트에서 완벽한 휴식을 취하세요.</p>
-                    <div class="destination-footer">
-                        <div>
-                            <div class="price">₩4,290,000</div>
-                            <div class="price-label">1인 / 5일 4박</div>
-                        </div>
-                        <button class="btn-view">자세히 보기</button>
-                    </div>
+                <div class="feature fade-in">
+                    <div class="feature-icon">💬</div>
+                    <h3>24/7 Support</h3>
+                    <p>Expert assistance whenever you need it</p>
                 </div>
             </div>
         </div>
+    </section>
+</div>
 
-        <h2 class="section-title">여행자 후기</h2>
-        <p class="section-subtitle">실제 고객들의 생생한 여행 경험담</p>
+<!-- Destinations Page -->
+<div id="destinations-page" class="page-section">
+    <nav>
+        <div class="nav-container">
+            <div class="logo">VOYAGER</div>
+            <ul class="nav-menu">
+                <li><a data-page="home-page">Home</a></li>
+                <li><a data-page="destinations-page">Destinations</a></li>
+                <li><a data-page="about-page">About</a></li>
+                <li><a data-page="contact-page">Contact</a></li>
+            </ul>
+            <button class="btn-book" data-page="contact-page">Book Now</button>
+        </div>
+    </nav>
 
-        <div class="testimonials">
-            <div class="testimonial-card">
-                <div class="testimonial-header">
-                    <div class="testimonial-avatar"></div>
-                    <div class="testimonial-info">
-                        <h4>김민지</h4>
-                        <div class="testimonial-location">파리 여행</div>
-                    </div>
-                </div>
-                <div class="testimonial-stars">
-                    <span class="testimonial-star"></span>
-                    <span class="testimonial-star"></span>
-                    <span class="testimonial-star"></span>
-                    <span class="testimonial-star"></span>
-                    <span class="testimonial-star"></span>
-                </div>
-                <p>"완벽한 일정과 친절한 가이드 덕분에 꿈같은 파리 여행을 했습니다. 특히 루브르 박물관 투어가 최고였어요!"</p>
+    <section class="destinations" style="padding-top: 180px;">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">FEATURED</span>
+                <h2>Popular Destinations</h2>
+                <p>Handpicked destinations for unforgettable experiences</p>
             </div>
-
-            <div class="testimonial-card">
-                <div class="testimonial-header">
-                    <div class="testimonial-avatar" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);"></div>
-                    <div class="testimonial-info">
-                        <h4>박준호</h4>
-                        <div class="testimonial-location">발리 여행</div>
+            <div class="destinations-grid">
+                <div class="destination-card fade-in">
+                    <div class="destination-image">
+                        <img src="https://images.pexels.com/photos/338515/pexels-photo-338515.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Paris">
+                        <span class="destination-badge">BESTSELLER</span>
+                    </div>
+                    <div class="destination-content">
+                        <div class="destination-header">
+                            <h3>Paris, France</h3>
+                            <div class="destination-rating">★ 4.9</div>
+                        </div>
+                        <p>Experience the city of lights with iconic landmarks, world-class museums, and romantic Seine river cruises.</p>
+                        <div class="destination-footer">
+                            <div>
+                                <div class="price">$2,890</div>
+                                <div class="price-label">per person / 5 days</div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="testimonial-stars">
-                    <span class="testimonial-star"></span>
-                    <span class="testimonial-star"></span>
-                    <span class="testimonial-star"></span>
-                    <span class="testimonial-star"></span>
-                    <span class="testimonial-star"></span>
-                </div>
-                <p>"가족과 함께한 발리 여행, 모든 것이 완벽했습니다. 숙소도 좋고 현지 투어도 알차서 정말 만족스러웠어요."</p>
-            </div>
 
-            <div class="testimonial-card">
-                <div class="testimonial-header">
-                    <div class="testimonial-avatar" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);"></div>
-                    <div class="testimonial-info">
-                        <h4>이서연</h4>
-                        <div class="testimonial-location">몰디브 여행</div>
+                <div class="destination-card fade-in">
+                    <div class="destination-image">
+                        <img src="https://images.pexels.com/photos/2474689/pexels-photo-2474689.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Bali">
+                    </div>
+                    <div class="destination-content">
+                        <div class="destination-header">
+                            <h3>Bali, Indonesia</h3>
+                            <div class="destination-rating">★ 4.8</div>
+                        </div>
+                        <p>Tropical paradise with stunning beaches, ancient temples, and vibrant cultural experiences.</p>
+                        <div class="destination-footer">
+                            <div>
+                                <div class="price">$1,590</div>
+                                <div class="price-label">per person / 4 days</div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="testimonial-stars">
-                    <span class="testimonial-star"></span>
-                    <span class="testimonial-star"></span>
-                    <span class="testimonial-star"></span>
-                    <span class="testimonial-star"></span>
-                    <span class="testimonial-star"></span>
+
+                <div class="destination-card fade-in">
+                    <div class="destination-image">
+                        <img src="https://images.pexels.com/photos/402028/pexels-photo-402028.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Tokyo">
+                        <span class="destination-badge">HOT DEAL</span>
+                    </div>
+                    <div class="destination-content">
+                        <div class="destination-header">
+                            <h3>Tokyo, Japan</h3>
+                            <div class="destination-rating">★ 4.9</div>
+                        </div>
+                        <p>Modern metropolis where ancient traditions meet cutting-edge technology and innovation.</p>
+                        <div class="destination-footer">
+                            <div>
+                                <div class="price">$1,890</div>
+                                <div class="price-label">per person / 4 days</div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <p>"신혼여행으로 다녀왔는데 평생 잊지 못할 추억이 되었습니다. 리조트도 환상적이고 서비스도 최고였어요!"</p>
+
+                <div class="destination-card fade-in">
+                    <div class="destination-image">
+                        <img src="https://images.pexels.com/photos/3225531/pexels-photo-3225531.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Maldives">
+                    </div>
+                    <div class="destination-content">
+                        <div class="destination-header">
+                            <h3>Maldives</h3>
+                            <div class="destination-rating">★ 5.0</div>
+                        </div>
+                        <p>Crystal-clear waters and luxury overwater villas for the ultimate tropical escape.</p>
+                        <div class="destination-footer">
+                            <div>
+                                <div class="price">$4,290</div>
+                                <div class="price-label">per person / 5 days</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="destination-card fade-in">
+                    <div class="destination-image">
+                        <img src="https://images.pexels.com/photos/1252500/pexels-photo-1252500.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Santorini">
+                    </div>
+                    <div class="destination-content">
+                        <div class="destination-header">
+                            <h3>Santorini, Greece</h3>
+                            <div class="destination-rating">★ 4.9</div>
+                        </div>
+                        <p>Whitewashed buildings, stunning sunsets, and breathtaking views of the Aegean Sea.</p>
+                        <div class="destination-footer">
+                            <div>
+                                <div class="price">$3,190</div>
+                                <div class="price-label">per person / 5 days</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="destination-card fade-in">
+                    <div class="destination-image">
+                        <img src="https://images.pexels.com/photos/1470502/pexels-photo-1470502.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Dubai">
+                        <span class="destination-badge">LUXURY</span>
+                    </div>
+                    <div class="destination-content">
+                        <div class="destination-header">
+                            <h3>Dubai, UAE</h3>
+                            <div class="destination-rating">★ 4.7</div>
+                        </div>
+                        <p>Futuristic skyline, luxury shopping, and world-class entertainment in the desert.</p>
+                        <div class="destination-footer">
+                            <div>
+                                <div class="price">$2,790</div>
+                                <div class="price-label">per person / 4 days</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
+    </section>
+</div>
 
-        <div class="cta">
-            <h2>지금 바로 여행을 시작하세요</h2>
-            <p>특별한 혜택과 함께 꿈의 여행지로 떠나보세요</p>
-            <button>여행 상담 받기</button>
+<!-- About Page -->
+<div id="about-page" class="page-section">
+    <nav>
+        <div class="nav-container">
+            <div class="logo">VOYAGER</div>
+            <ul class="nav-menu">
+                <li><a data-page="home-page">Home</a></li>
+                <li><a data-page="destinations-page">Destinations</a></li>
+                <li><a data-page="about-page">About</a></li>
+                <li><a data-page="contact-page">Contact</a></li>
+            </ul>
+            <button class="btn-book" data-page="contact-page">Book Now</button>
         </div>
-    </div>
+    </nav>
+
+    <section class="testimonials" style="padding-top: 180px;">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">TESTIMONIALS</span>
+                <h2>What Travelers Say</h2>
+                <p>Real experiences from our satisfied customers</p>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card fade-in">
+                    <div class="testimonial-stars">★★★★★</div>
+                    <p class="testimonial-text">
+                        "Our Paris trip was absolutely perfect! Every detail was taken care of, and the guide was incredibly knowledgeable. Highly recommend!"
+                    </p>
+                    <div class="testimonial-author">
+                        <img src="https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=150" alt="Client" class="author-avatar">
+                        <div class="author-info">
+                            <h4>Emily Johnson</h4>
+                            <p>Paris Tour</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card fade-in">
+                    <div class="testimonial-stars">★★★★★</div>
+                    <p class="testimonial-text">
+                        "The Bali experience exceeded all expectations. Beautiful resorts, amazing food, and the team was so helpful throughout."
+                    </p>
+                    <div class="testimonial-author">
+                        <img src="https://images.pexels.com/photos/1222271/pexels-photo-1222271.jpeg?auto=compress&cs=tinysrgb&w=150" alt="Client" class="author-avatar">
+                        <div class="author-info">
+                            <h4>David Chen</h4>
+                            <p>Bali Package</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card fade-in">
+                    <div class="testimonial-stars">★★★★★</div>
+                    <p class="testimonial-text">
+                        "Maldives honeymoon was a dream come true! The resort was stunning and the service was exceptional. Worth every penny!"
+                    </p>
+                    <div class="testimonial-author">
+                        <img src="https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=150" alt="Client" class="author-avatar">
+                        <div class="author-info">
+                            <h4>Sarah Williams</h4>
+                            <p>Maldives Honeymoon</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+<!-- Contact Page -->
+<div id="contact-page" class="page-section">
+    <nav>
+        <div class="nav-container">
+            <div class="logo">VOYAGER</div>
+            <ul class="nav-menu">
+                <li><a data-page="home-page">Home</a></li>
+                <li><a data-page="destinations-page">Destinations</a></li>
+                <li><a data-page="about-page">About</a></li>
+                <li><a data-page="contact-page">Contact</a></li>
+            </ul>
+            <button class="btn-book" data-page="contact-page">Book Now</button>
+        </div>
+    </nav>
+
+    <section class="cta" style="padding-top: 180px; min-height: 80vh; display: flex; align-items: center; justify-content: center;">
+        <div class="container">
+            <h2>Start Your Adventure Today</h2>
+            <p>Let us help you plan your perfect getaway</p>
+            <button class="cta-btn">Get Free Consultation</button>
+        </div>
+    </section>
 
     <footer>
-        <div class="footer-content">
+        <div class="footer-container">
             <div class="footer-section">
-                <h4>회사소개</h4>
+                <h4>About VOYAGER</h4>
+                <p style="color: #999; line-height: 1.8;">
+                    Premium travel agency specializing in luxury experiences worldwide. Creating unforgettable journeys since 2010.
+                </p>
+            </div>
+            <div class="footer-section">
+                <h4>Destinations</h4>
                 <ul>
-                    <li><a href="#">회사소개</a></li>
-                    <li><a href="#">채용정보</a></li>
-                    <li><a href="#">제휴문의</a></li>
-                    <li><a href="#">공지사항</a></li>
+                    <li><a href="#">Europe</a></li>
+                    <li><a href="#">Asia</a></li>
+                    <li><a href="#">Americas</a></li>
+                    <li><a href="#">Middle East</a></li>
                 </ul>
             </div>
             <div class="footer-section">
-                <h4>여행정보</h4>
+                <h4>Services</h4>
                 <ul>
-                    <li><a href="#">여행 가이드</a></li>
-                    <li><a href="#">비자 정보</a></li>
-                    <li><a href="#">여행 보험</a></li>
+                    <li><a href="#">Tour Packages</a></li>
+                    <li><a href="#">Hotel Booking</a></li>
+                    <li><a href="#">Flight Tickets</a></li>
+                    <li><a href="#">Travel Insurance</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Contact</h4>
+                <ul>
+                    <li><a href="#">1-800-VOYAGER</a></li>
+                    <li><a href="#">info@voyager.com</a></li>
+                    <li><a href="#">Live Chat</a></li>
                     <li><a href="#">FAQ</a></li>
-                </ul>
-            </div>
-            <div class="footer-section">
-                <h4>고객지원</h4>
-                <ul>
-                    <li><a href="#">고객센터</a></li>
-                    <li><a href="#">예약 조회</a></li>
-                    <li><a href="#">취소/환불</a></li>
-                    <li><a href="#">1:1 문의</a></li>
-                </ul>
-            </div>
-            <div class="footer-section">
-                <h4>소셜미디어</h4>
-                <ul>
-                    <li><a href="#">Instagram</a></li>
-                    <li><a href="#">Facebook</a></li>
-                    <li><a href="#">YouTube</a></li>
-                    <li><a href="#">Blog</a></li>
                 </ul>
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2024 Wanderlust Travel Agency. All rights reserved.</p>
+            <p>&copy; 2024 VOYAGER Travel Agency. All rights reserved.</p>
         </div>
     </footer>
+</div>
+
+<script>
+    // Page Navigation
+    function showPage(pageId) {
+        document.querySelectorAll('.page-section').forEach(section => {
+            section.classList.remove('active');
+        });
+        const targetPage = document.getElementById(pageId);
+        if (targetPage) {
+            targetPage.classList.add('active');
+            window.scrollTo(0, 0);
+            initializeAnimations();
+        }
+    }
+
+    document.querySelectorAll('[data-page]').forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            const pageId = link.getAttribute('data-page');
+            showPage(pageId);
+            window.location.hash = pageId;
+        });
+    });
+
+    window.addEventListener('hashchange', () => {
+        const pageId = window.location.hash.slice(1) || 'home-page';
+        showPage(pageId);
+    });
+
+    if (window.location.hash) {
+        const pageId = window.location.hash.slice(1);
+        showPage(pageId);
+    }
+
+    // Scroll animations
+    function initializeAnimations() {
+        const fadeElements = document.querySelectorAll('.fade-in');
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, {
+            threshold: 0.1
+        });
+
+        fadeElements.forEach(el => {
+            observer.observe(el);
+        });
+    }
+
+    initializeAnimations();
+</script>
+
 </body>
 </html>

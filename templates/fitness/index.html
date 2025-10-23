@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IRONFIT - 프리미엄 피트니스 센터</title>
+    <title>APEX FITNESS - Transform Your Body & Mind</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -12,875 +13,862 @@
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            line-height: 1.6;
+            overflow-x: hidden;
             background: #000;
             color: #fff;
-            line-height: 1.6;
-            scroll-behavior: smooth;
         }
 
-        /* Navigation */
-        nav {
-            position: fixed;
-            top: 0;
-            width: 100%;
+        /* Page sections */
+        .page-section {
+            display: none;
+        }
+        .page-section.active {
+            display: block;
+        }
+
+        /* Header */
+        header {
             background: rgba(0, 0, 0, 0.95);
-            backdrop-filter: blur(10px);
+            backdrop-filter: blur(20px);
+            padding: 20px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
             z-index: 1000;
-            padding: 1rem 0;
-            border-bottom: 2px solid #FF4655;
+            border-bottom: 2px solid #ff3b30;
         }
 
-        .nav-container {
+        nav {
             max-width: 1400px;
             margin: 0 auto;
-            padding: 0 2rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            padding: 0 50px;
         }
 
         .logo {
-            font-size: 2rem;
-            font-weight: 900;
-            background: linear-gradient(135deg, #FF4655 0%, #FF8A00 100%);
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 36px;
+            letter-spacing: 3px;
+            background: linear-gradient(135deg, #ff3b30 0%, #ff9500 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            background-clip: text;
-            letter-spacing: 2px;
+            cursor: pointer;
         }
 
-        .nav-menu {
+        .nav-links {
             display: flex;
-            gap: 2.5rem;
             list-style: none;
+            gap: 45px;
         }
 
-        .nav-menu a {
-            text-decoration: none;
+        .nav-links a {
             color: #fff;
+            text-decoration: none;
+            font-size: 14px;
             font-weight: 600;
             transition: color 0.3s;
+            text-transform: uppercase;
             letter-spacing: 1px;
         }
 
-        .nav-menu a:hover {
-            color: #FF4655;
+        .nav-links a:hover {
+            color: #ff3b30;
         }
 
         .join-btn {
-            padding: 0.8rem 2rem;
-            background: linear-gradient(135deg, #FF4655 0%, #FF8A00 100%);
+            padding: 12px 30px;
+            background: linear-gradient(135deg, #ff3b30 0%, #ff9500 100%);
             color: white;
             border: none;
-            border-radius: 50px;
-            cursor: pointer;
+            border-radius: 25px;
+            font-size: 14px;
             font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-transform: uppercase;
             letter-spacing: 1px;
-            transition: transform 0.3s;
         }
 
         .join-btn:hover {
-            transform: scale(1.05);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(255, 59, 48, 0.5);
         }
 
         /* Hero Section */
         .hero {
-            margin-top: 80px;
             height: 100vh;
-            position: relative;
+            background-size: cover;
+            background-position: center;
             display: flex;
             align-items: center;
-            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)),
-                        url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=1920&q=80') center/cover;
-            overflow: hidden;
+            position: relative;
+            margin-top: 80px;
         }
 
         .hero::before {
             content: '';
             position: absolute;
             top: 0;
+            left: 0;
             right: 0;
-            width: 50%;
-            height: 100%;
-            background: linear-gradient(135deg, #FF4655 0%, #FF8A00 100%);
-            opacity: 0.1;
-            clip-path: polygon(30% 0, 100% 0, 100% 100%, 0% 100%);
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(255, 59, 48, 0.6) 0%, rgba(0, 0, 0, 0.8) 100%);
         }
 
         .hero-content {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 2rem;
             position: relative;
             z-index: 1;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 50px;
         }
 
         .hero h1 {
-            font-size: 6rem;
-            margin-bottom: 1rem;
-            font-weight: 900;
-            line-height: 1.1;
-            letter-spacing: -2px;
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 120px;
+            margin-bottom: 25px;
+            letter-spacing: 5px;
+            line-height: 1;
         }
 
-        .hero-highlight {
-            background: linear-gradient(135deg, #FF4655 0%, #FF8A00 100%);
+        .gradient-text {
+            background: linear-gradient(135deg, #ff3b30 0%, #ff9500 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            background-clip: text;
         }
 
         .hero p {
-            font-size: 1.5rem;
-            margin-bottom: 3rem;
-            color: #ccc;
-            max-width: 600px;
+            font-size: 24px;
+            font-weight: 500;
+            margin-bottom: 40px;
+            max-width: 700px;
+            line-height: 1.6;
         }
 
-        .hero-buttons {
-            display: flex;
-            gap: 1.5rem;
-        }
-
-        .primary-btn {
-            padding: 1.2rem 3rem;
-            background: linear-gradient(135deg, #FF4655 0%, #FF8A00 100%);
+        .hero-btn {
+            padding: 18px 50px;
+            background: linear-gradient(135deg, #ff3b30 0%, #ff9500 100%);
             color: white;
             border: none;
-            border-radius: 50px;
+            border-radius: 30px;
+            font-size: 16px;
             font-weight: 700;
-            font-size: 1.1rem;
-            cursor: pointer;
-            transition: transform 0.3s;
-        }
-
-        .primary-btn:hover {
-            transform: scale(1.05);
-        }
-
-        .secondary-btn {
-            padding: 1.2rem 3rem;
-            background: transparent;
-            color: white;
-            border: 2px solid #FF4655;
-            border-radius: 50px;
-            font-weight: 700;
-            font-size: 1.1rem;
             cursor: pointer;
             transition: all 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 2px;
         }
 
-        .secondary-btn:hover {
-            background: #FF4655;
+        .hero-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(255, 59, 48, 0.6);
+        }
+
+        /* Content Section */
+        .content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 120px 50px;
+        }
+
+        .content-header {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        .content-header h2 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 72px;
+            margin-bottom: 20px;
+            letter-spacing: 3px;
+            background: linear-gradient(135deg, #ff3b30 0%, #ff9500 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .content-header p {
+            font-size: 20px;
+            color: #999;
         }
 
         /* Stats Section */
-        .stats {
-            padding: 6rem 2rem;
-            background: linear-gradient(135deg, #FF4655 0%, #FF8A00 100%);
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 40px;
+            margin-bottom: 100px;
+            padding: 80px 0;
+            background: linear-gradient(135deg, #ff3b30 0%, #ff9500 100%);
+            border-radius: 20px;
         }
 
-        .stats-container {
-            max-width: 1400px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 3rem;
+        .stat-item {
             text-align: center;
         }
 
         .stat-item h3 {
-            font-size: 4rem;
-            font-weight: 900;
-            margin-bottom: 0.5rem;
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 72px;
+            margin-bottom: 10px;
+            letter-spacing: 2px;
         }
 
         .stat-item p {
-            font-size: 1.2rem;
+            font-size: 18px;
             font-weight: 600;
-            letter-spacing: 2px;
             text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
-        /* Programs Section */
-        .programs {
-            padding: 8rem 2rem;
-            background: #0a0a0a;
-        }
-
-        .section-title {
-            text-align: center;
-            font-size: 3.5rem;
-            margin-bottom: 1rem;
-            font-weight: 900;
-            letter-spacing: -1px;
-        }
-
-        .section-subtitle {
-            text-align: center;
-            font-size: 1.2rem;
-            margin-bottom: 5rem;
-            color: #999;
-        }
-
+        /* Programs Grid */
         .programs-grid {
-            max-width: 1400px;
-            margin: 0 auto;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
         }
 
         .program-card {
             background: #111;
-            padding: 3rem;
-            border-radius: 20px;
-            border: 2px solid transparent;
-            transition: all 0.3s;
-            cursor: pointer;
+            border-radius: 16px;
+            overflow: hidden;
+            transition: transform 0.3s;
+            border: 2px solid #222;
         }
 
         .program-card:hover {
-            border-color: #FF4655;
             transform: translateY(-10px);
+            border-color: #ff3b30;
         }
 
-        .program-icon {
-            width: 80px;
-            height: 80px;
-            border-radius: 16px;
-            margin-bottom: 1.5rem;
-            position: relative;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+        .program-image {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
         }
 
-        .program-icon::after {
-            content: '';
-            position: absolute;
-            inset: 8px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 10px;
-            backdrop-filter: blur(10px);
+        .program-content {
+            padding: 30px;
         }
 
-        .program-card h3 {
-            font-size: 1.8rem;
-            margin-bottom: 1rem;
-            font-weight: 700;
+        .program-content h3 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 32px;
+            margin-bottom: 15px;
+            letter-spacing: 2px;
+            color: #ff3b30;
         }
 
-        .program-card p {
+        .program-content p {
+            font-size: 16px;
             color: #999;
             line-height: 1.8;
-            margin-bottom: 1.5rem;
+            margin-bottom: 20px;
         }
 
-        .program-features {
-            list-style: none;
-            margin-bottom: 2rem;
+        .program-btn {
+            width: 100%;
+            padding: 14px;
+            background: linear-gradient(135deg, #ff3b30 0%, #ff9500 100%);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 14px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
-        .program-features li {
-            padding: 0.5rem 0 0.5rem 1.5rem;
-            color: #ccc;
-            font-size: 0.95rem;
-            position: relative;
-        }
-
-        .program-features li:before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 6px;
-            height: 6px;
-            background: linear-gradient(135deg, #FF4655 0%, #FF8A00 100%);
-            border-radius: 50%;
-            box-shadow: 0 0 10px rgba(255, 70, 85, 0.5);
+        .program-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(255, 59, 48, 0.5);
         }
 
         /* Trainers Section */
-        .trainers {
-            padding: 8rem 2rem;
-            background: #000;
-        }
-
         .trainers-grid {
-            max-width: 1400px;
-            margin: 0 auto;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
         }
 
         .trainer-card {
-            position: relative;
-            height: 400px;
-            border-radius: 20px;
+            background: #111;
+            border-radius: 16px;
             overflow: hidden;
-            cursor: pointer;
+            border: 2px solid #222;
+            transition: all 0.3s;
+        }
+
+        .trainer-card:hover {
+            border-color: #ff3b30;
+            transform: translateY(-5px);
         }
 
         .trainer-image {
             width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, rgba(255, 70, 85, 0.8) 0%, rgba(255, 138, 0, 0.8) 100%),
-                        url('https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=600&q=80') center/cover;
+            height: 320px;
+            object-fit: cover;
         }
 
-        .trainer-overlay {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            padding: 2rem;
-            background: linear-gradient(transparent, rgba(0, 0, 0, 0.95));
+        .trainer-info {
+            padding: 25px;
+            text-align: center;
         }
 
-        .trainer-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 0.5rem;
-            font-weight: 700;
+        .trainer-info h3 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 28px;
+            margin-bottom: 8px;
+            letter-spacing: 2px;
         }
 
-        .trainer-card p {
-            color: #FF4655;
+        .trainer-info p {
+            font-size: 14px;
+            color: #ff3b30;
             font-weight: 600;
-            margin-bottom: 0.5rem;
-        }
-
-        .trainer-cert {
-            font-size: 0.9rem;
-            color: #999;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
         /* Pricing Section */
-        .pricing {
-            padding: 8rem 2rem;
-            background: #0a0a0a;
-        }
-
         .pricing-grid {
-            max-width: 1200px;
-            margin: 0 auto;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
         }
 
         .pricing-card {
             background: #111;
-            padding: 3rem;
-            border-radius: 20px;
             border: 2px solid #222;
+            border-radius: 16px;
+            padding: 50px 40px;
             text-align: center;
             transition: all 0.3s;
         }
 
         .pricing-card.featured {
-            border-color: #FF4655;
+            border-color: #ff3b30;
+            background: linear-gradient(180deg, rgba(255, 59, 48, 0.1) 0%, #111 100%);
             transform: scale(1.05);
-            background: linear-gradient(135deg, rgba(255, 70, 85, 0.1) 0%, rgba(255, 138, 0, 0.1) 100%);
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-5px);
+            border-color: #ff3b30;
+        }
+
+        .pricing-card.featured:hover {
+            transform: scale(1.05) translateY(-5px);
         }
 
         .pricing-badge {
-            display: inline-block;
-            padding: 0.5rem 1.5rem;
-            background: linear-gradient(135deg, #FF4655 0%, #FF8A00 100%);
-            border-radius: 50px;
+            background: linear-gradient(135deg, #ff3b30 0%, #ff9500 100%);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 12px;
             font-weight: 700;
-            font-size: 0.9rem;
-            margin-bottom: 2rem;
+            display: inline-block;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
         .pricing-card h3 {
-            font-size: 2rem;
-            margin-bottom: 1rem;
-            font-weight: 700;
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 36px;
+            margin-bottom: 15px;
+            letter-spacing: 2px;
         }
 
-        .pricing-price {
-            font-size: 3rem;
-            font-weight: 900;
-            margin-bottom: 0.5rem;
+        .pricing-card .price {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 64px;
+            margin: 25px 0;
+            background: linear-gradient(135deg, #ff3b30 0%, #ff9500 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
-        .pricing-price span {
-            font-size: 1.2rem;
+        .pricing-card .price span {
+            font-size: 24px;
             color: #999;
         }
 
         .pricing-features {
             list-style: none;
-            margin: 2rem 0;
+            margin: 30px 0;
             text-align: left;
         }
 
         .pricing-features li {
-            padding: 1rem 0;
-            border-bottom: 1px solid #222;
+            padding: 12px 0;
+            font-size: 15px;
             color: #ccc;
-        }
-
-        /* Transformation Section */
-        .transformation {
-            padding: 8rem 2rem;
-            background: #000;
-        }
-
-        .transformation-grid {
-            max-width: 1400px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-            gap: 2rem;
-        }
-
-        .transformation-card {
-            background: #111;
-            border-radius: 20px;
-            overflow: hidden;
-        }
-
-        .transformation-images {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            height: 300px;
-        }
-
-        .before-image, .after-image {
-            background: linear-gradient(135deg, #333 0%, #555 100%);
             display: flex;
             align-items: center;
-            justify-content: center;
-            font-weight: 900;
-            font-size: 1.5rem;
-            color: #666;
+            gap: 10px;
         }
 
-        .after-image {
-            background: linear-gradient(135deg, #FF4655 0%, #FF8A00 100%);
-            color: white;
-        }
-
-        .transformation-info {
-            padding: 2rem;
-        }
-
-        .transformation-info h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
+        .pricing-features li::before {
+            content: '✓';
+            color: #ff3b30;
             font-weight: 700;
+            font-size: 18px;
         }
 
-        .transformation-info p {
-            color: #999;
-            line-height: 1.8;
-        }
-
-        /* CTA Section */
-        .cta {
-            padding: 8rem 2rem;
-            background: linear-gradient(135deg, #FF4655 0%, #FF8A00 100%);
-            text-align: center;
-        }
-
-        .cta h2 {
-            font-size: 4rem;
-            margin-bottom: 2rem;
-            font-weight: 900;
-            line-height: 1.2;
-        }
-
-        .cta p {
-            font-size: 1.5rem;
-            margin-bottom: 3rem;
-            max-width: 700px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        /* Footer */
-        footer {
-            background: #0a0a0a;
-            padding: 4rem 2rem 2rem;
-        }
-
-        .footer-container {
-            max-width: 1400px;
+        /* Contact Form */
+        .contact-container {
+            max-width: 800px;
             margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 3rem;
-            margin-bottom: 3rem;
+            background: #111;
+            border: 2px solid #222;
+            border-radius: 16px;
+            padding: 60px;
         }
 
-        .footer-section h3 {
-            margin-bottom: 1.5rem;
-            font-size: 1.3rem;
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 10px;
+            color: #fff;
+            font-size: 14px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 16px 20px;
+            background: #000;
+            border: 2px solid #222;
+            border-radius: 10px;
+            font-size: 15px;
+            font-family: inherit;
+            color: #fff;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #ff3b30;
+        }
+
+        .form-group textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .submit-btn-large {
+            width: 100%;
+            padding: 18px;
+            background: linear-gradient(135deg, #ff3b30 0%, #ff9500 100%);
+            color: white;
+            border: none;
+            font-size: 16px;
             font-weight: 700;
+            cursor: pointer;
+            border-radius: 10px;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 2px;
         }
 
-        .footer-section ul {
-            list-style: none;
+        .submit-btn-large:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 35px rgba(255, 59, 48, 0.5);
         }
 
-        .footer-section ul li {
-            margin-bottom: 0.8rem;
+        /* Scroll Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
         }
 
-        .footer-section a {
-            color: #999;
-            text-decoration: none;
-            transition: color 0.3s;
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
 
-        .footer-section a:hover {
-            color: #FF4655;
-        }
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .programs-grid,
+            .pricing-grid {
+                grid-template-columns: 1fr;
+            }
 
-        .footer-bottom {
-            text-align: center;
-            padding-top: 2rem;
-            border-top: 1px solid #222;
-            color: #666;
+            .trainers-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .pricing-card.featured {
+                transform: scale(1);
+            }
         }
 
         @media (max-width: 768px) {
-            .hero h1 { font-size: 3rem; }
-            .hero-buttons { flex-direction: column; }
-            .nav-menu { display: none; }
-            .transformation-grid { grid-template-columns: 1fr; }
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 56px;
+            }
+
+            .content-header h2 {
+                font-size: 48px;
+            }
+
+            .trainers-grid,
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-container {
+                padding: 40px 25px;
+            }
         }
     </style>
 </head>
 <body>
-    <!-- Navigation -->
-    <nav>
-        <div class="nav-container">
-            <div class="logo">IRONFIT</div>
-            <ul class="nav-menu">
-                <li><a href="#programs">프로그램</a></li>
-                <li><a href="#trainers">트레이너</a></li>
-                <li><a href="#pricing">가격</a></li>
-                <li><a href="#results">성과</a></li>
+    <header>
+        <nav>
+            <div class="logo" data-page="home">APEX FITNESS</div>
+            <ul class="nav-links">
+                <li><a href="#home" data-page="home">Home</a></li>
+                <li><a href="#programs" data-page="programs">Programs</a></li>
+                <li><a href="#trainers" data-page="trainers">Trainers</a></li>
+                <li><a href="#pricing" data-page="pricing">Pricing</a></li>
+                <li><a href="#contact" data-page="contact">Contact</a></li>
             </ul>
-            <button class="join-btn">무료 체험</button>
-        </div>
-    </nav>
+            <button class="join-btn" onclick="showPage('contact')">Join Now</button>
+        </nav>
+    </header>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="hero-content">
-            <h1>
-                TRANSFORM<br>
-                YOUR <span class="hero-highlight">BODY</span><br>
-                TRANSFORM YOUR <span class="hero-highlight">LIFE</span>
-            </h1>
-            <p>
-                최고의 트레이너와 함께하는 프리미엄 피트니스.<br>
-                당신의 한계를 뛰어넘으세요.
-            </p>
-            <div class="hero-buttons">
-                <button class="primary-btn">무료 체험 신청</button>
-                <button class="secondary-btn">프로그램 보기</button>
-            </div>
-        </div>
-    </section>
-
-    <!-- Stats Section -->
-    <section class="stats">
-        <div class="stats-container">
-            <div class="stat-item">
-                <h3>5000+</h3>
-                <p>회원 수</p>
-            </div>
-            <div class="stat-item">
-                <h3>50+</h3>
-                <p>전문 트레이너</p>
-            </div>
-            <div class="stat-item">
-                <h3>15+</h3>
-                <p>운영 년수</p>
-            </div>
-            <div class="stat-item">
-                <h3>98%</h3>
-                <p>만족도</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Programs Section -->
-    <section class="programs" id="programs">
-        <h2 class="section-title">프로그램</h2>
-        <p class="section-subtitle">목표에 맞는 최적의 프로그램을 선택하세요</p>
-
-        <div class="programs-grid">
-            <div class="program-card">
-                <div class="program-icon" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);"></div>
-                <h3>근력 트레이닝</h3>
-                <p>체계적인 웨이트 트레이닝으로 근육량을 증가시키고 강한 몸을 만듭니다.</p>
-                <ul class="program-features">
-                    <li>1:1 맞춤 프로그램 설계</li>
-                    <li>전문 트레이너 코칭</li>
-                    <li>주 3-5회 수업</li>
-                    <li>식단 컨설팅 포함</li>
-                </ul>
-            </div>
-
-            <div class="program-card">
-                <div class="program-icon" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);"></div>
-                <h3>체지방 감량</h3>
-                <p>과학적인 방법으로 건강하게 체중을 감량하고 탄탄한 몸매를 만듭니다.</p>
-                <ul class="program-features">
-                    <li>개인별 체성분 분석</li>
-                    <li>고강도 인터벌 트레이닝</li>
-                    <li>영양사 상담</li>
-                    <li>주간 진행 상황 체크</li>
-                </ul>
-            </div>
-
-            <div class="program-card">
-                <div class="program-icon" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);"></div>
-                <h3>기능성 트레이닝</h3>
-                <p>일상생활에 필요한 기능적 움직임을 향상시키는 운동 프로그램입니다.</p>
-                <ul class="program-features">
-                    <li>움직임 패턴 교정</li>
-                    <li>부상 예방 운동</li>
-                    <li>유연성 향상</li>
-                    <li>체력 증진</li>
-                </ul>
-            </div>
-
-            <div class="program-card">
-                <div class="program-icon" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);"></div>
-                <h3>크로스핏</h3>
-                <p>고강도 순환 운동으로 전신의 힘과 지구력을 동시에 향상시킵니다.</p>
-                <ul class="program-features">
-                    <li>그룹 클래스</li>
-                    <li>매일 다른 WOD</li>
-                    <li>커뮤니티 지원</li>
-                    <li>경쟁 이벤트 참가</li>
-                </ul>
-            </div>
-
-            <div class="program-card">
-                <div class="program-icon" style="background: linear-gradient(135deg, #30cfd0 0%, #330867 100%);"></div>
-                <h3>필라테스 & 요가</h3>
-                <p>코어 강화와 유연성 향상을 통해 균형 잡힌 몸을 만듭니다.</p>
-                <ul class="program-features">
-                    <li>소도구 활용 수업</li>
-                    <li>자세 교정</li>
-                    <li>스트레칭 집중</li>
-                    <li>마음의 평화</li>
-                </ul>
-            </div>
-
-            <div class="program-card">
-                <div class="program-icon" style="background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);"></div>
-                <h3>선수 육성</h3>
-                <p>경쟁 선수를 위한 전문적이고 체계적인 훈련 프로그램입니다.</p>
-                <ul class="program-features">
-                    <li>스포츠 특화 훈련</li>
-                    <li>경기력 향상</li>
-                    <li>과학적 분석</li>
-                    <li>심리 상담</li>
-                </ul>
-            </div>
-        </div>
-    </section>
-
-    <!-- Trainers Section -->
-    <section class="trainers" id="trainers">
-        <h2 class="section-title">트레이너</h2>
-        <p class="section-subtitle">최고의 전문가들이 당신을 기다립니다</p>
-
-        <div class="trainers-grid">
-            <div class="trainer-card">
-                <div class="trainer-image"></div>
-                <div class="trainer-overlay">
-                    <h3>김철수</h3>
-                    <p>헤드 트레이너</p>
-                    <div class="trainer-cert">NSCA-CPT, NASM-PES</div>
-                </div>
-            </div>
-
-            <div class="trainer-card">
-                <div class="trainer-image" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);"></div>
-                <div class="trainer-overlay">
-                    <h3>이영희</h3>
-                    <p>체지방 감량 전문</p>
-                    <div class="trainer-cert">ACE-CPT, PN Level 1</div>
-                </div>
-            </div>
-
-            <div class="trainer-card">
-                <div class="trainer-image" style="background: linear-gradient(135deg, #FA8BFF 0%, #2BD2FF 100%);"></div>
-                <div class="trainer-overlay">
-                    <h3>박민수</h3>
-                    <p>크로스핏 코치</p>
-                    <div class="trainer-cert">CrossFit Level 2, USAW</div>
-                </div>
-            </div>
-
-            <div class="trainer-card">
-                <div class="trainer-image" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);"></div>
-                <div class="trainer-overlay">
-                    <h3>정수연</h3>
-                    <p>필라테스 강사</p>
-                    <div class="trainer-cert">PMA-CPT, Basi Pilates</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Pricing Section -->
-    <section class="pricing" id="pricing">
-        <h2 class="section-title">가격 안내</h2>
-        <p class="section-subtitle">당신에게 맞는 최적의 플랜을 선택하세요</p>
-
-        <div class="pricing-grid">
-            <div class="pricing-card">
-                <h3>베이직</h3>
-                <div class="pricing-price">89,000<span>원/월</span></div>
-                <ul class="pricing-features">
-                    <li>무제한 센터 이용</li>
-                    <li>그룹 클래스 주 2회</li>
-                    <li>락커 & 샤워 시설</li>
-                    <li>무료 주차</li>
-                </ul>
-                <button class="secondary-btn">선택하기</button>
-            </div>
-
-            <div class="pricing-card featured">
-                <span class="pricing-badge">인기</span>
-                <h3>프로</h3>
-                <div class="pricing-price">149,000<span>원/월</span></div>
-                <ul class="pricing-features">
-                    <li>무제한 센터 이용</li>
-                    <li>그룹 클래스 무제한</li>
-                    <li>PT 수업 주 1회</li>
-                    <li>식단 컨설팅</li>
-                    <li>개인 락커</li>
-                    <li>무료 주차</li>
-                </ul>
-                <button class="primary-btn">선택하기</button>
-            </div>
-
-            <div class="pricing-card">
-                <h3>프리미엄</h3>
-                <div class="pricing-price">249,000<span>원/월</span></div>
-                <ul class="pricing-features">
-                    <li>무제한 센터 이용</li>
-                    <li>그룹 클래스 무제한</li>
-                    <li>PT 수업 주 3회</li>
-                    <li>식단 & 영양 관리</li>
-                    <li>개인 락커</li>
-                    <li>무료 주차</li>
-                    <li>사우나 & 스파</li>
-                    <li>우선 예약</li>
-                </ul>
-                <button class="secondary-btn">선택하기</button>
-            </div>
-        </div>
-    </section>
-
-    <!-- Transformation Section -->
-    <section class="transformation" id="results">
-        <h2 class="section-title">변화의 증거</h2>
-        <p class="section-subtitle">실제 회원들의 놀라운 변신</p>
-
-        <div class="transformation-grid">
-            <div class="transformation-card">
-                <div class="transformation-images">
-                    <div class="before-image">BEFORE</div>
-                    <div class="after-image">AFTER</div>
-                </div>
-                <div class="transformation-info">
-                    <h3>3개월 만에 -15kg 감량</h3>
-                    <p>체계적인 운동과 식단 관리로 건강하게 체중을 감량했습니다. 자신감도 함께 올라갔어요!</p>
-                </div>
-            </div>
-
-            <div class="transformation-card">
-                <div class="transformation-images">
-                    <div class="before-image">BEFORE</div>
-                    <div class="after-image">AFTER</div>
-                </div>
-                <div class="transformation-info">
-                    <h3>6개월 근육량 +8kg</h3>
-                    <p>전문 트레이너의 1:1 코칭으로 근육량을 효과적으로 늘릴 수 있었습니다.</p>
-                </div>
-            </div>
-
-            <div class="transformation-card">
-                <div class="transformation-images">
-                    <div class="before-image">BEFORE</div>
-                    <div class="after-image">AFTER</div>
-                </div>
-                <div class="transformation-info">
-                    <h3>4개월 만에 복근 완성</h3>
-                    <p>고강도 운동과 식단 관리로 꿈꾸던 복근을 만들 수 있었습니다!</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- CTA Section -->
-    <section class="cta">
-        <h2>지금 바로 시작하세요</h2>
-        <p>첫 달 50% 할인 이벤트 진행 중! 오늘 등록하면 PT 1회 무료 제공</p>
-        <button class="primary-btn" style="background: white; color: #FF4655; padding: 1.5rem 4rem; font-size: 1.2rem;">
-            무료 체험 신청하기
-        </button>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-        <div class="footer-container">
-            <div class="footer-section">
-                <h3>IRONFIT</h3>
-                <p style="color: #999; line-height: 1.8;">
-                    프리미엄 피트니스 센터<br>
-                    당신의 건강한 변화를 위한<br>
-                    최고의 파트너
+    <!-- HOME Page -->
+    <section id="home" class="page-section active">
+        <div class="hero" style="background-image: url('https://images.pexels.com/photos/841130/pexels-photo-841130.jpeg?auto=compress&cs=tinysrgb&w=1920');">
+            <div class="hero-content">
+                <h1>
+                    TRANSFORM<br>
+                    YOUR <span class="gradient-text">BODY</span>
+                </h1>
+                <p>
+                    Premium fitness training with world-class equipment and expert trainers.<br>
+                    Start your transformation journey today.
                 </p>
-            </div>
-            <div class="footer-section">
-                <h3>센터 정보</h3>
-                <ul>
-                    <li><a href="#">강남점</a></li>
-                    <li><a href="#">서초점</a></li>
-                    <li><a href="#">잠실점</a></li>
-                    <li><a href="#">분당점</a></li>
-                </ul>
-            </div>
-            <div class="footer-section">
-                <h3>프로그램</h3>
-                <ul>
-                    <li><a href="#">근력 트레이닝</a></li>
-                    <li><a href="#">체지방 감량</a></li>
-                    <li><a href="#">크로스핏</a></li>
-                    <li><a href="#">필라테스</a></li>
-                </ul>
-            </div>
-            <div class="footer-section">
-                <h3>고객 지원</h3>
-                <ul>
-                    <li><a href="#">자주 묻는 질문</a></li>
-                    <li><a href="#">이용 안내</a></li>
-                    <li><a href="#">환불 정책</a></li>
-                    <li><a href="#">1:1 문의</a></li>
-                </ul>
+                <button class="hero-btn" onclick="showPage('programs')">Explore Programs</button>
             </div>
         </div>
-        <div class="footer-bottom">
-            <p>&copy; 2024 IRONFIT. All rights reserved. | 사업자등록번호: 123-45-67890</p>
+    </section>
+
+    <!-- PROGRAMS Page -->
+    <section id="programs" class="page-section">
+        <div class="content">
+            <div class="content-header fade-in">
+                <h2>Training Programs</h2>
+                <p>Choose the perfect program for your fitness goals</p>
+            </div>
+
+            <div class="stats-grid fade-in">
+                <div class="stat-item">
+                    <h3>500+</h3>
+                    <p>Active Members</p>
+                </div>
+                <div class="stat-item">
+                    <h3>15+</h3>
+                    <p>Expert Trainers</p>
+                </div>
+                <div class="stat-item">
+                    <h3>10K+</h3>
+                    <p>Success Stories</p>
+                </div>
+                <div class="stat-item">
+                    <h3>24/7</h3>
+                    <p>Open Access</p>
+                </div>
+            </div>
+
+            <div class="programs-grid">
+                <div class="program-card fade-in">
+                    <img src="https://images.pexels.com/photos/4162487/pexels-photo-4162487.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Strength Training" class="program-image">
+                    <div class="program-content">
+                        <h3>Strength Training</h3>
+                        <p>Build muscle mass and increase strength with our comprehensive weightlifting program designed by certified trainers.</p>
+                        <button class="program-btn" onclick="alert('Program details...')">Learn More</button>
+                    </div>
+                </div>
+
+                <div class="program-card fade-in">
+                    <img src="https://images.pexels.com/photos/4046708/pexels-photo-4046708.jpeg?auto=compress&cs=tinysrgb&w=600" alt="HIIT Cardio" class="program-image">
+                    <div class="program-content">
+                        <h3>HIIT Cardio</h3>
+                        <p>High-intensity interval training to burn fat fast and boost your metabolism. Perfect for busy schedules.</p>
+                        <button class="program-btn" onclick="alert('Program details...')">Learn More</button>
+                    </div>
+                </div>
+
+                <div class="program-card fade-in">
+                    <img src="https://images.pexels.com/photos/3822906/pexels-photo-3822906.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Yoga & Flexibility" class="program-image">
+                    <div class="program-content">
+                        <h3>Yoga & Flexibility</h3>
+                        <p>Improve flexibility, balance, and mental wellness through guided yoga and stretching sessions.</p>
+                        <button class="program-btn" onclick="alert('Program details...')">Learn More</button>
+                    </div>
+                </div>
+
+                <div class="program-card fade-in">
+                    <img src="https://images.pexels.com/photos/4164772/pexels-photo-4164772.jpeg?auto=compress&cs=tinysrgb&w=600" alt="CrossFit" class="program-image">
+                    <div class="program-content">
+                        <h3>CrossFit</h3>
+                        <p>Functional fitness training combining cardio, weightlifting, and gymnastics for total body conditioning.</p>
+                        <button class="program-btn" onclick="alert('Program details...')">Learn More</button>
+                    </div>
+                </div>
+
+                <div class="program-card fade-in">
+                    <img src="https://images.pexels.com/photos/4162491/pexels-photo-4162491.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Boxing" class="program-image">
+                    <div class="program-content">
+                        <h3>Boxing</h3>
+                        <p>Learn boxing techniques while getting an incredible full-body workout. Build power and confidence.</p>
+                        <button class="program-btn" onclick="alert('Program details...')">Learn More</button>
+                    </div>
+                </div>
+
+                <div class="program-card fade-in">
+                    <img src="https://images.pexels.com/photos/3822906/pexels-photo-3822906.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Personal Training" class="program-image">
+                    <div class="program-content">
+                        <h3>Personal Training</h3>
+                        <p>One-on-one customized training programs tailored to your specific goals and fitness level.</p>
+                        <button class="program-btn" onclick="alert('Program details...')">Learn More</button>
+                    </div>
+                </div>
+            </div>
         </div>
-    </footer>
+    </section>
+
+    <!-- TRAINERS Page -->
+    <section id="trainers" class="page-section">
+        <div class="content">
+            <div class="content-header fade-in">
+                <h2>Expert Trainers</h2>
+                <p>Meet our world-class fitness professionals</p>
+            </div>
+
+            <div class="trainers-grid">
+                <div class="trainer-card fade-in">
+                    <img src="https://images.pexels.com/photos/1552242/pexels-photo-1552242.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Trainer 1" class="trainer-image">
+                    <div class="trainer-info">
+                        <h3>Marcus Steel</h3>
+                        <p>Strength Coach</p>
+                    </div>
+                </div>
+
+                <div class="trainer-card fade-in">
+                    <img src="https://images.pexels.com/photos/3768916/pexels-photo-3768916.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Trainer 2" class="trainer-image">
+                    <div class="trainer-info">
+                        <h3>Sarah Phoenix</h3>
+                        <p>HIIT Specialist</p>
+                    </div>
+                </div>
+
+                <div class="trainer-card fade-in">
+                    <img src="https://images.pexels.com/photos/1547248/pexels-photo-1547248.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Trainer 3" class="trainer-image">
+                    <div class="trainer-info">
+                        <h3>David Atlas</h3>
+                        <p>CrossFit Master</p>
+                    </div>
+                </div>
+
+                <div class="trainer-card fade-in">
+                    <img src="https://images.pexels.com/photos/3775164/pexels-photo-3775164.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Trainer 4" class="trainer-image">
+                    <div class="trainer-info">
+                        <h3>Emma Blaze</h3>
+                        <p>Yoga Instructor</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PRICING Page -->
+    <section id="pricing" class="page-section">
+        <div class="content">
+            <div class="content-header fade-in">
+                <h2>Membership Plans</h2>
+                <p>Choose your path to fitness excellence</p>
+            </div>
+
+            <div class="pricing-grid">
+                <div class="pricing-card fade-in">
+                    <h3>Basic</h3>
+                    <div class="price">$49<span>/mo</span></div>
+                    <ul class="pricing-features">
+                        <li>Gym access (6am-10pm)</li>
+                        <li>Cardio & weight equipment</li>
+                        <li>Locker room access</li>
+                        <li>Group classes (2/week)</li>
+                    </ul>
+                    <button class="program-btn" onclick="alert('Starting Basic plan...')">Get Started</button>
+                </div>
+
+                <div class="pricing-card featured fade-in">
+                    <div class="pricing-badge">Most Popular</div>
+                    <h3>Pro</h3>
+                    <div class="price">$99<span>/mo</span></div>
+                    <ul class="pricing-features">
+                        <li>24/7 gym access</li>
+                        <li>All equipment & facilities</li>
+                        <li>Unlimited group classes</li>
+                        <li>Free fitness assessment</li>
+                        <li>Nutrition consultation</li>
+                        <li>Guest passes (2/month)</li>
+                    </ul>
+                    <button class="program-btn" onclick="alert('Starting Pro plan...')">Get Started</button>
+                </div>
+
+                <div class="pricing-card fade-in">
+                    <h3>Elite</h3>
+                    <div class="price">$199<span>/mo</span></div>
+                    <ul class="pricing-features">
+                        <li>Everything in Pro</li>
+                        <li>Personal training (4/month)</li>
+                        <li>Custom meal plans</li>
+                        <li>Priority class booking</li>
+                        <li>Spa & sauna access</li>
+                        <li>VIP lounge access</li>
+                        <li>Unlimited guest passes</li>
+                    </ul>
+                    <button class="program-btn" onclick="alert('Starting Elite plan...')">Get Started</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT Page -->
+    <section id="contact" class="page-section">
+        <div class="content">
+            <div class="content-header fade-in">
+                <h2>Start Your Journey</h2>
+                <p>Join APEX FITNESS today</p>
+            </div>
+
+            <div class="contact-container fade-in">
+                <form onsubmit="alert('Welcome to APEX FITNESS! We will contact you within 24 hours.'); return false;">
+                    <div class="form-group">
+                        <label>Full Name *</label>
+                        <input type="text" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Email Address *</label>
+                        <input type="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Phone Number *</label>
+                        <input type="tel" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Fitness Goals</label>
+                        <textarea placeholder="Tell us about your fitness goals..."></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn-large">Join Now</button>
+                </form>
+
+                <div style="margin-top: 50px; text-align: center; padding-top: 50px; border-top: 2px solid #222;">
+                    <h3 style="font-family: 'Bebas Neue', sans-serif; font-size: 32px; margin-bottom: 25px; letter-spacing: 2px;">Visit Us</h3>
+                    <p style="color: #999; font-size: 16px; line-height: 2;">
+                        <strong style="color: #ff3b30;">Address:</strong> 789 Fitness Blvd, Los Angeles, CA 90028<br>
+                        <strong style="color: #ff3b30;">Phone:</strong> +1 (323) 555-0199<br>
+                        <strong style="color: #ff3b30;">Email:</strong> info@apexfitness.com<br>
+                        <strong style="color: #ff3b30;">Hours:</strong> 24/7 (Pro & Elite members)
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Page Navigation
+        function showPage(pageId) {
+            document.querySelectorAll('.page-section').forEach(section => {
+                section.classList.remove('active');
+            });
+
+            const targetPage = document.getElementById(pageId);
+            if (targetPage) {
+                targetPage.classList.add('active');
+                window.scrollTo(0, 0);
+                initializeAnimations();
+            }
+        }
+
+        // Navigation click handlers
+        document.querySelectorAll('[data-page]').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const pageId = link.getAttribute('data-page');
+                showPage(pageId);
+                window.location.hash = pageId;
+            });
+        });
+
+        // Handle browser back/forward
+        window.addEventListener('hashchange', () => {
+            const pageId = window.location.hash.slice(1) || 'home';
+            showPage(pageId);
+        });
+
+        // Initialize on load
+        window.addEventListener('DOMContentLoaded', () => {
+            const pageId = window.location.hash.slice(1) || 'home';
+            showPage(pageId);
+        });
+
+        // Scroll Animations
+        function initializeAnimations() {
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -100px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, observerOptions);
+
+            const activePage = document.querySelector('.page-section.active');
+            if (activePage) {
+                activePage.querySelectorAll('.fade-in').forEach(el => {
+                    el.classList.remove('visible');
+                    observer.observe(el);
+                });
+
+                setTimeout(() => {
+                    activePage.querySelectorAll('.hero .fade-in').forEach(el => {
+                        el.classList.add('visible');
+                    });
+                }, 100);
+            }
+        }
+    </script>
 </body>
 </html>

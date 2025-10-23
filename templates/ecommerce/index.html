@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LUXE SHOP - 프리미엄 라이프스타일 쇼핑몰</title>
+    <title>NOVA - Premium Lifestyle Store</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -12,137 +13,127 @@
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            background: #fff;
-            color: #333;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
             line-height: 1.6;
-            scroll-behavior: smooth;
+            overflow-x: hidden;
+            background: #f8f9fa;
+            color: #1a1a1a;
         }
 
-        /* Navigation */
-        nav {
+        /* Page sections */
+        .page-section {
+            display: none;
+        }
+        .page-section.active {
+            display: block;
+        }
+
+        /* Header */
+        header {
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(20px);
+            padding: 18px 0;
             position: fixed;
-            top: 0;
             width: 100%;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.05);
+            top: 0;
             z-index: 1000;
-            padding: 1rem 0;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.04);
         }
 
-        .nav-container {
+        nav {
             max-width: 1400px;
             margin: 0 auto;
-            padding: 0 2rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            padding: 0 40px;
         }
 
         .logo {
-            font-size: 1.8rem;
+            font-size: 28px;
             font-weight: 800;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            letter-spacing: -1px;
+            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            background-clip: text;
-            letter-spacing: 2px;
+            cursor: pointer;
         }
 
-        .nav-menu {
+        .nav-links {
             display: flex;
-            gap: 2rem;
             list-style: none;
+            gap: 45px;
         }
 
-        .nav-menu a {
+        .nav-links a {
+            color: #4b5563;
             text-decoration: none;
-            color: #333;
+            font-size: 14px;
             font-weight: 500;
+            letter-spacing: 0.5px;
             transition: color 0.3s;
+            text-transform: uppercase;
         }
 
-        .nav-menu a:hover {
-            color: #667eea;
+        .nav-links a:hover {
+            color: #6366f1;
         }
 
         .nav-icons {
             display: flex;
-            gap: 1.5rem;
+            gap: 15px;
         }
 
         .icon-btn {
-            background: none;
-            border: none;
-            font-size: 1.3rem;
-            cursor: pointer;
-            position: relative;
-            transition: transform 0.3s;
             width: 40px;
             height: 40px;
+            border-radius: 50%;
+            border: none;
+            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+            color: white;
+            cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
+            font-size: 18px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
         }
 
         .icon-btn:hover {
-            transform: scale(1.1);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(99, 102, 241, 0.4);
         }
-
-        .icon-btn .icon-gradient {
-            width: 32px;
-            height: 32px;
-            border-radius: 10px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .icon-btn .icon-gradient::after {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 20px;
-            height: 20px;
-            background: rgba(255, 255, 255, 0.3);
-            border-radius: 4px;
-        }
-
-        .search-icon { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
-        .heart-icon { background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); }
-        .cart-icon { background: linear-gradient(135deg, #fa709a 0%, #fee140 100%); }
-        .user-icon { background: linear-gradient(135deg, #30cfd0 0%, #330867 100%); }
 
         .cart-badge {
             position: absolute;
-            top: -8px;
-            right: -8px;
-            background: #FF6B6B;
+            top: -5px;
+            right: -5px;
+            background: #ef4444;
             color: white;
             border-radius: 50%;
             width: 18px;
             height: 18px;
-            font-size: 0.7rem;
+            font-size: 11px;
+            font-weight: 700;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-weight: bold;
         }
 
         /* Hero Section */
         .hero {
-            margin-top: 80px;
-            position: relative;
-            height: 650px;
-            background: linear-gradient(135deg, rgba(102, 126, 234, 0.95) 0%, rgba(118, 75, 162, 0.95) 100%),
-                        url('https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=1600&q=80') center/cover;
+            height: 90vh;
+            background-size: cover;
+            background-position: center;
             display: flex;
-            align-items: center;
+            flex-direction: column;
             justify-content: center;
-            color: white;
-            overflow: hidden;
+            align-items: center;
+            text-align: center;
+            color: #fff;
+            position: relative;
+            margin-top: 70px;
         }
 
         .hero::before {
@@ -152,677 +143,784 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="2" fill="white" opacity="0.1"/></svg>');
-            animation: float 20s linear infinite;
-        }
-
-        @keyframes float {
-            from { transform: translateY(0); }
-            to { transform: translateY(-100px); }
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.85) 0%, rgba(139, 92, 246, 0.85) 100%);
         }
 
         .hero-content {
             position: relative;
-            text-align: center;
-            max-width: 800px;
-            padding: 2rem;
+            z-index: 1;
+            max-width: 900px;
+            padding: 0 20px;
         }
 
         .hero h1 {
-            font-size: 5rem;
-            margin-bottom: 1.5rem;
-            font-weight: 900;
+            font-size: 90px;
+            font-weight: 800;
+            margin-bottom: 25px;
             letter-spacing: -3px;
-            text-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);
+            text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
         }
 
         .hero p {
-            font-size: 1.6rem;
-            margin-bottom: 2.5rem;
-            opacity: 0.95;
+            font-size: 24px;
             font-weight: 300;
             letter-spacing: 0.5px;
+            line-height: 1.6;
+            margin-bottom: 35px;
+            opacity: 0.95;
         }
 
         .hero-btn {
-            display: inline-block;
-            padding: 1rem 3rem;
+            padding: 16px 45px;
             background: white;
-            color: #667eea;
-            text-decoration: none;
+            color: #6366f1;
+            border: none;
             border-radius: 50px;
+            font-size: 16px;
             font-weight: 700;
-            font-size: 1.1rem;
-            transition: transform 0.3s, box-shadow 0.3s;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 10px 35px rgba(0, 0, 0, 0.2);
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
         }
 
         .hero-btn:hover {
             transform: translateY(-3px);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 15px 45px rgba(0, 0, 0, 0.3);
         }
 
-        /* Categories */
-        .categories {
+        /* Content Section */
+        .content {
             max-width: 1400px;
-            margin: 4rem auto;
-            padding: 0 2rem;
+            margin: 0 auto;
+            padding: 100px 40px;
         }
 
-        .section-title {
+        .content-header {
             text-align: center;
-            font-size: 2.8rem;
-            margin-bottom: 3.5rem;
-            font-weight: 900;
-            letter-spacing: -1px;
+            margin-bottom: 70px;
         }
 
-        .category-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
+        .content-header h1 {
+            font-size: 56px;
+            font-weight: 800;
+            color: #1a1a1a;
+            margin-bottom: 20px;
+            letter-spacing: -2px;
         }
 
-        .category-card {
-            position: relative;
-            height: 300px;
-            border-radius: 20px;
-            overflow: hidden;
+        .content-header p {
+            font-size: 18px;
+            color: #6b7280;
+            font-weight: 400;
+        }
+
+        /* Category Filters */
+        .category-filters {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-bottom: 60px;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 12px 30px;
+            border: 2px solid #e5e7eb;
+            background: white;
+            color: #6b7280;
+            border-radius: 50px;
+            font-size: 14px;
+            font-weight: 600;
             cursor: pointer;
-            transition: transform 0.3s, box-shadow 0.3s;
-            text-decoration: none;
-            display: block;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
-        .category-card:hover {
-            transform: scale(1.05);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
-        }
-
-        .category-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 0.7) 100%);
-            z-index: 1;
-        }
-
-        .category-card h3 {
-            position: absolute;
-            bottom: 2rem;
-            left: 2rem;
+        .filter-btn.active,
+        .filter-btn:hover {
+            border-color: #6366f1;
+            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
             color: white;
-            font-size: 1.8rem;
-            font-weight: 700;
-            z-index: 2;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(99, 102, 241, 0.3);
         }
 
-        .cat-fashion {
-            background: linear-gradient(135deg, rgba(250, 139, 255, 0.8) 0%, rgba(43, 210, 255, 0.8) 100%),
-                        url('https://images.unsplash.com/photo-1445205170230-053b83016050?w=600&q=80') center/cover;
-        }
-        .cat-electronics {
-            background: linear-gradient(135deg, rgba(253, 187, 45, 0.8) 0%, rgba(34, 193, 195, 0.8) 100%),
-                        url('https://images.unsplash.com/photo-1498049794561-7780e7231661?w=600&q=80') center/cover;
-        }
-        .cat-home {
-            background: linear-gradient(135deg, rgba(79, 172, 254, 0.8) 0%, rgba(0, 242, 254, 0.8) 100%),
-                        url('https://images.unsplash.com/photo-1556228578-0d85b1a4d571?w=600&q=80') center/cover;
-        }
-        .cat-beauty {
-            background: linear-gradient(135deg, rgba(240, 147, 251, 0.8) 0%, rgba(245, 87, 108, 0.8) 100%),
-                        url('https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=600&q=80') center/cover;
-        }
-
-        /* Products */
-        .products {
-            max-width: 1400px;
-            margin: 4rem auto;
-            padding: 0 2rem;
-        }
-
+        /* Product Grid */
         .product-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 35px;
         }
 
         .product-card {
             background: white;
-            border-radius: 15px;
+            border-radius: 20px;
             overflow: hidden;
             transition: transform 0.3s, box-shadow 0.3s;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
             cursor: pointer;
+            position: relative;
         }
 
         .product-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+            transform: translateY(-8px);
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.12);
         }
 
         .product-image {
             width: 100%;
-            height: 320px;
+            height: 350px;
             object-fit: cover;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: #f3f4f6;
         }
 
         .product-badge {
             position: absolute;
-            top: 1rem;
-            right: 1rem;
-            background: #FF6B6B;
+            top: 20px;
+            right: 20px;
+            padding: 8px 16px;
+            background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
             color: white;
-            padding: 0.3rem 0.8rem;
             border-radius: 20px;
-            font-size: 0.8rem;
+            font-size: 12px;
             font-weight: 700;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        .product-badge.new {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
         }
 
         .product-info {
-            padding: 1.5rem;
+            padding: 25px;
         }
 
         .product-category {
-            color: #999;
-            font-size: 0.9rem;
+            color: #9ca3af;
+            font-size: 12px;
             text-transform: uppercase;
             letter-spacing: 1px;
-            margin-bottom: 0.5rem;
+            margin-bottom: 8px;
+            font-weight: 600;
         }
 
         .product-name {
-            font-size: 1.2rem;
+            font-size: 18px;
             font-weight: 700;
-            margin-bottom: 0.5rem;
-            color: #333;
+            margin-bottom: 10px;
+            color: #1a1a1a;
+            letter-spacing: -0.5px;
         }
 
         .product-rating {
-            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 15px;
         }
 
         .stars {
-            color: #FFD700;
-            font-size: 0.9rem;
+            color: #fbbf24;
+            font-size: 14px;
+            letter-spacing: 2px;
+        }
+
+        .rating-count {
+            color: #9ca3af;
+            font-size: 13px;
         }
 
         .product-price {
             display: flex;
             align-items: center;
-            gap: 1rem;
-            margin-bottom: 1rem;
+            gap: 12px;
+            margin-bottom: 18px;
         }
 
         .price-current {
-            font-size: 1.5rem;
+            font-size: 24px;
             font-weight: 800;
-            color: #667eea;
+            color: #6366f1;
+            letter-spacing: -1px;
         }
 
         .price-original {
-            font-size: 1rem;
-            color: #999;
+            font-size: 16px;
+            color: #9ca3af;
             text-decoration: line-through;
         }
 
         .add-to-cart {
             width: 100%;
-            padding: 0.8rem;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 14px;
+            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
             color: white;
             border: none;
-            border-radius: 10px;
+            border-radius: 12px;
             font-weight: 700;
+            font-size: 14px;
             cursor: pointer;
             transition: all 0.3s;
-            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+            box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
         .add-to-cart:hover {
             transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.5);
-            background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+            box-shadow: 0 6px 20px rgba(99, 102, 241, 0.5);
         }
 
         .add-to-cart:active {
             transform: translateY(0);
         }
 
-        /* Banner */
-        .promo-banner {
-            max-width: 1400px;
-            margin: 4rem auto;
-            padding: 0 2rem;
-        }
-
-        .banner-content {
-            background: linear-gradient(135deg, #FA8BFF 0%, #2BD2FF 100%);
-            border-radius: 30px;
-            padding: 4rem;
-            text-align: center;
-            color: white;
-        }
-
-        .banner-content h2 {
-            font-size: 3.5rem;
-            margin-bottom: 1.5rem;
-            font-weight: 900;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 1rem;
-            letter-spacing: -1px;
-        }
-
-        .banner-icon {
-            width: 60px;
-            height: 60px;
-            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
-            border-radius: 16px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .banner-icon::after {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 35px;
-            height: 35px;
-            background: rgba(255, 255, 255, 0.4);
-            border-radius: 8px;
-        }
-
-        .banner-content p {
-            font-size: 1.4rem;
-            margin-bottom: 2.5rem;
-            opacity: 0.95;
-            font-weight: 300;
-        }
-
-        /* Footer */
-        footer {
-            background: #1a1a1a;
-            color: white;
-            padding: 4rem 2rem 2rem;
-            margin-top: 6rem;
-        }
-
-        .footer-container {
-            max-width: 1400px;
-            margin: 0 auto;
+        /* About Section Styles */
+        .about-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 3rem;
-            margin-bottom: 3rem;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-top: 60px;
         }
 
-        .footer-section h3 {
-            margin-bottom: 1.5rem;
-            font-size: 1.2rem;
+        .about-card {
+            padding: 40px;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+            text-align: center;
+            transition: transform 0.3s;
         }
 
-        .footer-section ul {
-            list-style: none;
+        .about-card:hover {
+            transform: translateY(-5px);
         }
 
-        .footer-section ul li {
-            margin-bottom: 0.8rem;
-        }
-
-        .footer-section a {
-            color: #999;
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-
-        .footer-section a:hover {
-            color: white;
-        }
-
-        .social-icons {
-            display: flex;
-            gap: 1rem;
-            margin-top: 1rem;
-        }
-
-        .social-icon {
-            width: 40px;
-            height: 40px;
-            border-radius: 12px;
+        .about-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+            border-radius: 20px;
+            margin: 0 auto 25px;
             display: flex;
             align-items: center;
             justify-content: center;
+            font-size: 36px;
+        }
+
+        .about-card h3 {
+            font-size: 22px;
+            margin-bottom: 15px;
+            color: #1a1a1a;
+            font-weight: 700;
+        }
+
+        .about-card p {
+            font-size: 15px;
+            color: #6b7280;
+            line-height: 1.8;
+        }
+
+        /* Contact Form */
+        .contact-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            padding: 60px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 10px;
+            color: #1a1a1a;
+            font-size: 14px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 16px 20px;
+            background: #f9fafb;
+            border: 2px solid #e5e7eb;
+            border-radius: 12px;
+            font-size: 15px;
+            font-family: inherit;
+            color: #1a1a1a;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #6366f1;
+        }
+
+        .form-group textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .submit-btn-large {
+            width: 100%;
+            padding: 18px;
+            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+            color: white;
+            border: none;
+            font-size: 16px;
+            font-weight: 700;
             cursor: pointer;
-            transition: transform 0.3s, box-shadow 0.3s;
-            position: relative;
-            overflow: hidden;
+            border-radius: 12px;
+            transition: all 0.3s;
+            margin-top: 10px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
         }
 
-        .social-icon::after {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 20px;
-            height: 20px;
-            background: rgba(255, 255, 255, 0.2);
-            border-radius: 4px;
+        .submit-btn-large:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(99, 102, 241, 0.5);
         }
 
-        .social-icon:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        /* Scroll Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
         }
 
-        .social-facebook { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
-        .social-instagram { background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); }
-        .social-twitter { background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); }
-        .social-youtube { background: linear-gradient(135deg, #fa709a 0%, #fee140 100%); }
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
 
-        .footer-bottom {
-            text-align: center;
-            padding-top: 2rem;
-            border-top: 1px solid #333;
-            color: #999;
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .product-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
         }
 
         @media (max-width: 768px) {
-            .hero h1 { font-size: 2.5rem; }
-            .hero p { font-size: 1.2rem; }
-            .nav-menu { display: none; }
-            .category-grid { grid-template-columns: 1fr 1fr; }
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 48px;
+            }
+
+            .content-header h1 {
+                font-size: 36px;
+            }
+
+            .product-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-container {
+                padding: 40px 25px;
+            }
         }
     </style>
 </head>
 <body>
-    <!-- Navigation -->
-    <nav>
-        <div class="nav-container">
-            <div class="logo">LUXE</div>
-            <ul class="nav-menu">
-                <li><a href="#products">신상품</a></li>
-                <li><a href="#products">베스트</a></li>
-                <li><a href="#promo">세일</a></li>
-                <li><a href="#categories">카테고리</a></li>
+    <header>
+        <nav>
+            <div class="logo" data-page="home">NOVA</div>
+            <ul class="nav-links">
+                <li><a href="#home" data-page="home">Home</a></li>
+                <li><a href="#shop" data-page="shop">Shop</a></li>
+                <li><a href="#about" data-page="about">About</a></li>
+                <li><a href="#contact" data-page="contact">Contact</a></li>
             </ul>
             <div class="nav-icons">
-                <button class="icon-btn" onclick="alert('검색 기능')">
-                    <div class="icon-gradient search-icon"></div>
-                </button>
-                <button class="icon-btn" onclick="alert('위시리스트')">
-                    <div class="icon-gradient heart-icon"></div>
-                </button>
-                <button class="icon-btn" onclick="alert('장바구니 (상품 3개)')">
-                    <div class="icon-gradient cart-icon"></div>
+                <button class="icon-btn" onclick="alert('Search products...')">🔍</button>
+                <button class="icon-btn" onclick="alert('Your wishlist is empty')">❤️</button>
+                <button class="icon-btn" onclick="alert('3 items in cart')">
+                    🛒
                     <span class="cart-badge">3</span>
                 </button>
-                <button class="icon-btn" onclick="alert('로그인 / 회원가입')">
-                    <div class="icon-gradient user-icon"></div>
-                </button>
+                <button class="icon-btn" onclick="alert('Login / Sign Up')">👤</button>
             </div>
-        </div>
-    </nav>
+        </nav>
+    </header>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="hero-content">
-            <h1>AUTUMN COLLECTION 2024</h1>
-            <p>새로운 시즌, 새로운 스타일 • 프리미엄 신상품 최대 50% 할인</p>
-            <a href="#products" class="hero-btn">컬렉션 둘러보기</a>
+    <!-- HOME Page -->
+    <section id="home" class="page-section active">
+        <div class="hero" style="background-image: url('https://images.pexels.com/photos/1070945/pexels-photo-1070945.jpeg?auto=compress&cs=tinysrgb&w=1920');">
+            <div class="hero-content">
+                <h1>WINTER COLLECTION 2024</h1>
+                <p>Discover Premium Lifestyle Products<br>Curated for Modern Living</p>
+                <button class="hero-btn" onclick="showPage('shop')">Shop Now</button>
+            </div>
         </div>
     </section>
 
-    <!-- Categories -->
-    <section class="categories" id="categories">
-        <h2 class="section-title">카테고리</h2>
-        <div class="category-grid">
-            <a href="#products" class="category-card cat-fashion">
-                <h3>패션</h3>
-            </a>
-            <a href="#products" class="category-card cat-electronics">
-                <h3>전자기기</h3>
-            </a>
-            <a href="#products" class="category-card cat-home">
-                <h3>홈 & 리빙</h3>
-            </a>
-            <a href="#products" class="category-card cat-beauty">
-                <h3>뷰티</h3>
-            </a>
-        </div>
-    </section>
-
-    <!-- Products -->
-    <section class="products" id="products">
-        <h2 class="section-title">베스트 상품</h2>
-        <div class="product-grid">
-            <div class="product-card">
-                <div style="position: relative;">
-                    <div class="product-image" style="background: url('https://images.unsplash.com/photo-1434389677669-e08b4cac3105?w=600&q=80') center/cover;"></div>
-                    <span class="product-badge">SALE</span>
-                </div>
-                <div class="product-info">
-                    <div class="product-category">Fashion</div>
-                    <h3 class="product-name">프리미엄 캐시미어 니트</h3>
-                    <div class="product-rating">
-                        <span class="stars">★★★★★</span>
-                        <span style="color: #999; font-size: 0.9rem;"> (127)</span>
-                    </div>
-                    <div class="product-price">
-                        <span class="price-current">89,000원</span>
-                        <span class="price-original">178,000원</span>
-                    </div>
-                    <button class="add-to-cart" onclick="alert('장바구니에 상품이 추가되었습니다!')">장바구니 담기</button>
-                </div>
+    <!-- SHOP Page -->
+    <section id="shop" class="page-section">
+        <div class="content">
+            <div class="content-header fade-in">
+                <h1>Featured Products</h1>
+                <p>Handpicked Premium Collection</p>
             </div>
 
-            <div class="product-card">
-                <div style="position: relative;">
-                    <div class="product-image" style="background: url('https://images.unsplash.com/photo-1590658268037-6bf12165a8df?w=600&q=80') center/cover;"></div>
-                    <span class="product-badge">NEW</span>
-                </div>
-                <div class="product-info">
-                    <div class="product-category">Electronics</div>
-                    <h3 class="product-name">무선 블루투스 이어폰 프로</h3>
-                    <div class="product-rating">
-                        <span class="stars">★★★★★</span>
-                        <span style="color: #999; font-size: 0.9rem;"> (189)</span>
-                    </div>
-                    <div class="product-price">
-                        <span class="price-current">149,000원</span>
-                    </div>
-                    <button class="add-to-cart" onclick="alert('장바구니에 상품이 추가되었습니다!')">장바구니 담기</button>
-                </div>
+            <div class="category-filters fade-in">
+                <button class="filter-btn active" data-category="all">All Products</button>
+                <button class="filter-btn" data-category="fashion">Fashion</button>
+                <button class="filter-btn" data-category="electronics">Electronics</button>
+                <button class="filter-btn" data-category="home">Home & Living</button>
+                <button class="filter-btn" data-category="beauty">Beauty</button>
             </div>
 
-            <div class="product-card">
-                <div style="position: relative;">
-                    <div class="product-image" style="background: url('https://images.unsplash.com/photo-1524484485831-a92ffc0de03f?w=600&q=80') center/cover;"></div>
-                </div>
-                <div class="product-info">
-                    <div class="product-category">Home & Living</div>
-                    <h3 class="product-name">미니멀 북유럽 펜던트 조명</h3>
-                    <div class="product-rating">
-                        <span class="stars">★★★★☆</span>
-                        <span style="color: #999; font-size: 0.9rem;"> (54)</span>
+            <div class="product-grid">
+                <!-- Fashion Products -->
+                <div class="product-card fade-in" data-category="fashion">
+                    <img src="https://images.pexels.com/photos/1126993/pexels-photo-1126993.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Premium Cashmere Sweater" class="product-image">
+                    <span class="product-badge">Sale</span>
+                    <div class="product-info">
+                        <div class="product-category">Fashion</div>
+                        <h3 class="product-name">Premium Cashmere Sweater</h3>
+                        <div class="product-rating">
+                            <span class="stars">★★★★★</span>
+                            <span class="rating-count">(247)</span>
+                        </div>
+                        <div class="product-price">
+                            <span class="price-current">$149</span>
+                            <span class="price-original">$298</span>
+                        </div>
+                        <button class="add-to-cart" onclick="alert('Added to cart!')">Add to Cart</button>
                     </div>
-                    <div class="product-price">
-                        <span class="price-current">79,000원</span>
-                    </div>
-                    <button class="add-to-cart" onclick="alert('장바구니에 상품이 추가되었습니다!')">장바구니 담기</button>
                 </div>
-            </div>
 
-            <div class="product-card">
-                <div style="position: relative;">
-                    <div class="product-image" style="background: url('https://images.unsplash.com/photo-1596755389378-c31d21fd1273?w=600&q=80') center/cover;"></div>
-                    <span class="product-badge">HOT</span>
-                </div>
-                <div class="product-info">
-                    <div class="product-category">Beauty</div>
-                    <h3 class="product-name">럭셔리 스킨케어 컬렉션</h3>
-                    <div class="product-rating">
-                        <span class="stars">★★★★★</span>
-                        <span style="color: #999; font-size: 0.9rem;"> (213)</span>
+                <div class="product-card fade-in" data-category="fashion">
+                    <img src="https://images.pexels.com/photos/1152077/pexels-photo-1152077.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Designer Leather Jacket" class="product-image">
+                    <span class="product-badge new">New</span>
+                    <div class="product-info">
+                        <div class="product-category">Fashion</div>
+                        <h3 class="product-name">Designer Leather Jacket</h3>
+                        <div class="product-rating">
+                            <span class="stars">★★★★★</span>
+                            <span class="rating-count">(189)</span>
+                        </div>
+                        <div class="product-price">
+                            <span class="price-current">$399</span>
+                        </div>
+                        <button class="add-to-cart" onclick="alert('Added to cart!')">Add to Cart</button>
                     </div>
-                    <div class="product-price">
-                        <span class="price-current">59,000원</span>
-                        <span class="price-original">89,000원</span>
-                    </div>
-                    <button class="add-to-cart" onclick="alert('장바구니에 상품이 추가되었습니다!')">장바구니 담기</button>
                 </div>
-            </div>
 
-            <div class="product-card">
-                <div style="position: relative;">
-                    <div class="product-image" style="background: url('https://images.unsplash.com/photo-1590874103328-eac38a683ce7?w=600&q=80') center/cover;"></div>
-                </div>
-                <div class="product-info">
-                    <div class="product-category">Fashion</div>
-                    <h3 class="product-name">프리미엄 레더 크로스백</h3>
-                    <div class="product-rating">
-                        <span class="stars">★★★★★</span>
-                        <span style="color: #999; font-size: 0.9rem;"> (198)</span>
+                <!-- Electronics Products -->
+                <div class="product-card fade-in" data-category="electronics">
+                    <img src="https://images.pexels.com/photos/3825517/pexels-photo-3825517.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Wireless Earbuds Pro" class="product-image">
+                    <span class="product-badge new">New</span>
+                    <div class="product-info">
+                        <div class="product-category">Electronics</div>
+                        <h3 class="product-name">Wireless Earbuds Pro</h3>
+                        <div class="product-rating">
+                            <span class="stars">★★★★★</span>
+                            <span class="rating-count">(512)</span>
+                        </div>
+                        <div class="product-price">
+                            <span class="price-current">$199</span>
+                        </div>
+                        <button class="add-to-cart" onclick="alert('Added to cart!')">Add to Cart</button>
                     </div>
-                    <div class="product-price">
-                        <span class="price-current">129,000원</span>
-                    </div>
-                    <button class="add-to-cart" onclick="alert('장바구니에 상품이 추가되었습니다!')">장바구니 담기</button>
                 </div>
-            </div>
 
-            <div class="product-card">
-                <div style="position: relative;">
-                    <div class="product-image" style="background: url('https://images.unsplash.com/photo-1579586337278-3befd40fd17a?w=600&q=80') center/cover;"></div>
-                    <span class="product-badge">SALE</span>
-                </div>
-                <div class="product-info">
-                    <div class="product-category">Electronics</div>
-                    <h3 class="product-name">프리미엄 스마트 워치</h3>
-                    <div class="product-rating">
-                        <span class="stars">★★★★★</span>
-                        <span style="color: #999; font-size: 0.9rem;"> (167)</span>
+                <div class="product-card fade-in" data-category="electronics">
+                    <img src="https://images.pexels.com/photos/437037/pexels-photo-437037.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Smart Watch Ultra" class="product-image">
+                    <span class="product-badge">Sale</span>
+                    <div class="product-info">
+                        <div class="product-category">Electronics</div>
+                        <h3 class="product-name">Smart Watch Ultra</h3>
+                        <div class="product-rating">
+                            <span class="stars">★★★★☆</span>
+                            <span class="rating-count">(389)</span>
+                        </div>
+                        <div class="product-price">
+                            <span class="price-current">$349</span>
+                            <span class="price-original">$499</span>
+                        </div>
+                        <button class="add-to-cart" onclick="alert('Added to cart!')">Add to Cart</button>
                     </div>
-                    <div class="product-price">
-                        <span class="price-current">299,000원</span>
-                        <span class="price-original">399,000원</span>
-                    </div>
-                    <button class="add-to-cart" onclick="alert('장바구니에 상품이 추가되었습니다!')">장바구니 담기</button>
                 </div>
-            </div>
 
-            <div class="product-card">
-                <div style="position: relative;">
-                    <div class="product-image" style="background: url('https://images.unsplash.com/photo-1602874801007-62dc5c6e46f9?w=600&q=80') center/cover;"></div>
-                </div>
-                <div class="product-info">
-                    <div class="product-category">Home & Living</div>
-                    <h3 class="product-name">아로마 디퓨저 & 캔들 세트</h3>
-                    <div class="product-rating">
-                        <span class="stars">★★★★★</span>
-                        <span style="color: #999; font-size: 0.9rem;"> (145)</span>
+                <!-- Home Products -->
+                <div class="product-card fade-in" data-category="home">
+                    <img src="https://images.pexels.com/photos/1090638/pexels-photo-1090638.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Minimalist Table Lamp" class="product-image">
+                    <div class="product-info">
+                        <div class="product-category">Home & Living</div>
+                        <h3 class="product-name">Minimalist Table Lamp</h3>
+                        <div class="product-rating">
+                            <span class="stars">★★★★★</span>
+                            <span class="rating-count">(156)</span>
+                        </div>
+                        <div class="product-price">
+                            <span class="price-current">$89</span>
+                        </div>
+                        <button class="add-to-cart" onclick="alert('Added to cart!')">Add to Cart</button>
                     </div>
-                    <div class="product-price">
-                        <span class="price-current">45,000원</span>
-                    </div>
-                    <button class="add-to-cart" onclick="alert('장바구니에 상품이 추가되었습니다!')">장바구니 담기</button>
                 </div>
-            </div>
 
-            <div class="product-card">
-                <div style="position: relative;">
-                    <div class="product-image" style="background: url('https://images.unsplash.com/photo-1539533018447-63fcce2678e3?w=600&q=80') center/cover;"></div>
-                    <span class="product-badge">NEW</span>
+                <div class="product-card fade-in" data-category="home">
+                    <img src="https://images.pexels.com/photos/1730877/pexels-photo-1730877.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Ceramic Vase Set" class="product-image">
+                    <span class="product-badge new">New</span>
+                    <div class="product-info">
+                        <div class="product-category">Home & Living</div>
+                        <h3 class="product-name">Ceramic Vase Set</h3>
+                        <div class="product-rating">
+                            <span class="stars">★★★★★</span>
+                            <span class="rating-count">(92)</span>
+                        </div>
+                        <div class="product-price">
+                            <span class="price-current">$125</span>
+                        </div>
+                        <button class="add-to-cart" onclick="alert('Added to cart!')">Add to Cart</button>
+                    </div>
                 </div>
-                <div class="product-info">
-                    <div class="product-category">Fashion</div>
-                    <h3 class="product-name">시그니처 트렌치 코트</h3>
-                    <div class="product-rating">
-                        <span class="stars">★★★★★</span>
-                        <span style="color: #999; font-size: 0.9rem;"> (176)</span>
+
+                <!-- Beauty Products -->
+                <div class="product-card fade-in" data-category="beauty">
+                    <img src="https://images.pexels.com/photos/3018845/pexels-photo-3018845.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Luxury Skincare Set" class="product-image">
+                    <span class="product-badge">Sale</span>
+                    <div class="product-info">
+                        <div class="product-category">Beauty</div>
+                        <h3 class="product-name">Luxury Skincare Set</h3>
+                        <div class="product-rating">
+                            <span class="stars">★★★★★</span>
+                            <span class="rating-count">(428)</span>
+                        </div>
+                        <div class="product-price">
+                            <span class="price-current">$79</span>
+                            <span class="price-original">$129</span>
+                        </div>
+                        <button class="add-to-cart" onclick="alert('Added to cart!')">Add to Cart</button>
                     </div>
-                    <div class="product-price">
-                        <span class="price-current">189,000원</span>
+                </div>
+
+                <div class="product-card fade-in" data-category="beauty">
+                    <img src="https://images.pexels.com/photos/2113855/pexels-photo-2113855.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Perfume Collection" class="product-image">
+                    <div class="product-info">
+                        <div class="product-category">Beauty</div>
+                        <h3 class="product-name">Perfume Collection</h3>
+                        <div class="product-rating">
+                            <span class="stars">★★★★★</span>
+                            <span class="rating-count">(367)</span>
+                        </div>
+                        <div class="product-price">
+                            <span class="price-current">$159</span>
+                        </div>
+                        <button class="add-to-cart" onclick="alert('Added to cart!')">Add to Cart</button>
                     </div>
-                    <button class="add-to-cart" onclick="alert('장바구니에 상품이 추가되었습니다!')">장바구니 담기</button>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Promo Banner -->
-    <section class="promo-banner" id="promo">
-        <div class="banner-content">
-            <h2>
-                <div class="banner-icon"></div>
-                첫 구매 15% 할인 쿠폰
-            </h2>
-            <p>신규 회원 가입 즉시 사용 가능한 웰컴 쿠폰을 드립니다.<br>
-            최소 주문금액 없음 • 전 상품 적용 가능 • 유효기간 30일</p>
-            <a href="#footer" class="hero-btn">지금 회원가입하고 쿠폰 받기</a>
-        </div>
-    </section>
+    <!-- ABOUT Page -->
+    <section id="about" class="page-section">
+        <div class="content">
+            <div class="content-header fade-in">
+                <h1>About NOVA</h1>
+                <p>Your Destination for Premium Lifestyle</p>
+            </div>
 
-    <!-- Footer -->
-    <footer id="footer">
-        <div class="footer-container">
-            <div class="footer-section">
-                <h3>고객센터</h3>
-                <ul>
-                    <li><a href="#footer">자주 묻는 질문</a></li>
-                    <li><a href="#footer">배송/반품 안내</a></li>
-                    <li><a href="#footer">교환/환불 정책</a></li>
-                    <li><a href="#footer">1:1 문의</a></li>
-                </ul>
-            </div>
-            <div class="footer-section">
-                <h3>쇼핑 정보</h3>
-                <ul>
-                    <li><a href="#promo">회원가입 혜택</a></li>
-                    <li><a href="#footer">멤버십 안내</a></li>
-                    <li><a href="#footer">적립금 정책</a></li>
-                    <li><a href="#promo">쿠폰 안내</a></li>
-                </ul>
-            </div>
-            <div class="footer-section">
-                <h3>회사 정보</h3>
-                <ul>
-                    <li><a href="#footer">회사 소개</a></li>
-                    <li><a href="#footer">채용 정보</a></li>
-                    <li><a href="#footer">이용약관</a></li>
-                    <li><a href="#footer">개인정보처리방침</a></li>
-                </ul>
-            </div>
-            <div class="footer-section">
-                <h3>LUXE SHOP</h3>
-                <p style="color: #999; margin-bottom: 1rem;">
-                    프리미엄 라이프스타일 브랜드<br>
-                    큐레이팅된 감각으로 채워가는 일상<br><br>
-                    <strong style="color: white;">고객센터 1588-0000</strong><br>
-                    평일 09:00 - 18:00 (점심 12:00 - 13:00)<br>
-                    주말/공휴일 휴무
-                </p>
-                <div class="social-icons">
-                    <div class="social-icon social-facebook" onclick="alert('Facebook')"></div>
-                    <div class="social-icon social-instagram" onclick="alert('Instagram')"></div>
-                    <div class="social-icon social-twitter" onclick="alert('Twitter')"></div>
-                    <div class="social-icon social-youtube" onclick="alert('YouTube')"></div>
+            <div class="about-grid">
+                <div class="about-card fade-in">
+                    <div class="about-icon">🎯</div>
+                    <h3>Curated Selection</h3>
+                    <p>We handpick every product to ensure the highest quality standards. Only the best makes it to our store.</p>
+                </div>
+
+                <div class="about-card fade-in">
+                    <div class="about-icon">🚚</div>
+                    <h3>Fast Shipping</h3>
+                    <p>Free express shipping on all orders over $100. Get your products delivered within 2-3 business days.</p>
+                </div>
+
+                <div class="about-card fade-in">
+                    <div class="about-icon">💎</div>
+                    <h3>Premium Quality</h3>
+                    <p>Every product comes with authenticity guarantee and 30-day money-back policy. Shop with confidence.</p>
+                </div>
+
+                <div class="about-card fade-in">
+                    <div class="about-icon">🌟</div>
+                    <h3>Exclusive Brands</h3>
+                    <p>Access to exclusive designer brands and limited edition collections you won't find anywhere else.</p>
+                </div>
+
+                <div class="about-card fade-in">
+                    <div class="about-icon">💳</div>
+                    <h3>Secure Payment</h3>
+                    <p>Industry-leading encryption and secure payment processing. Your information is always protected.</p>
+                </div>
+
+                <div class="about-card fade-in">
+                    <div class="about-icon">💬</div>
+                    <h3>24/7 Support</h3>
+                    <p>Our dedicated customer service team is always here to help. Reach us anytime via chat, email, or phone.</p>
                 </div>
             </div>
         </div>
-        <div class="footer-bottom">
-            <p>&copy; 2024 LUXE SHOP. All rights reserved.<br>
-            사업자등록번호: 123-45-67890 | 통신판매업신고: 2024-서울강남-12345 | 대표: 홍길동<br>
-            서울특별시 강남구 테헤란로 000, 00층 | 이메일: contact@luxeshop.kr</p>
+    </section>
+
+    <!-- CONTACT Page -->
+    <section id="contact" class="page-section">
+        <div class="content">
+            <div class="content-header fade-in">
+                <h1>Get In Touch</h1>
+                <p>We'd Love to Hear From You</p>
+            </div>
+
+            <div class="contact-container fade-in">
+                <form onsubmit="alert('Thank you for contacting us! We will get back to you soon.'); return false;">
+                    <div class="form-group">
+                        <label>Full Name *</label>
+                        <input type="text" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Email Address *</label>
+                        <input type="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Phone Number</label>
+                        <input type="tel">
+                    </div>
+                    <div class="form-group">
+                        <label>Message *</label>
+                        <textarea required placeholder="How can we help you?"></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn-large">Send Message</button>
+                </form>
+
+                <div style="margin-top: 50px; text-align: center; padding-top: 50px; border-top: 2px solid #f3f4f6;">
+                    <h3 style="font-size: 20px; margin-bottom: 20px; color: #1a1a1a;">Contact Information</h3>
+                    <p style="color: #6b7280; font-size: 15px; line-height: 2;">
+                        <strong style="color: #1a1a1a;">Customer Service:</strong> 1-800-NOVA-SHOP<br>
+                        <strong style="color: #1a1a1a;">Email:</strong> support@novashop.com<br>
+                        <strong style="color: #1a1a1a;">Hours:</strong> Monday - Friday, 9AM - 6PM EST
+                    </p>
+                </div>
+            </div>
         </div>
-    </footer>
+    </section>
+
+    <script>
+        // Page Navigation
+        function showPage(pageId) {
+            document.querySelectorAll('.page-section').forEach(section => {
+                section.classList.remove('active');
+            });
+
+            const targetPage = document.getElementById(pageId);
+            if (targetPage) {
+                targetPage.classList.add('active');
+                window.scrollTo(0, 0);
+                initializeAnimations();
+
+                if (pageId === 'shop') {
+                    initializeShopPage();
+                }
+            }
+        }
+
+        // Navigation click handlers
+        document.querySelectorAll('[data-page]').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const pageId = link.getAttribute('data-page');
+                showPage(pageId);
+                window.location.hash = pageId;
+            });
+        });
+
+        // Handle browser back/forward
+        window.addEventListener('hashchange', () => {
+            const pageId = window.location.hash.slice(1) || 'home';
+            showPage(pageId);
+        });
+
+        // Initialize on load
+        window.addEventListener('DOMContentLoaded', () => {
+            const pageId = window.location.hash.slice(1) || 'home';
+            showPage(pageId);
+        });
+
+        // Scroll Animations
+        function initializeAnimations() {
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -100px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, observerOptions);
+
+            const activePage = document.querySelector('.page-section.active');
+            if (activePage) {
+                activePage.querySelectorAll('.fade-in').forEach(el => {
+                    el.classList.remove('visible');
+                    observer.observe(el);
+                });
+
+                setTimeout(() => {
+                    activePage.querySelectorAll('.hero .fade-in').forEach(el => {
+                        el.classList.add('visible');
+                    });
+                }, 100);
+            }
+        }
+
+        // Shop Page Initialization
+        function initializeShopPage() {
+            const filterBtns = document.querySelectorAll('.filter-btn');
+            const productCards = document.querySelectorAll('.product-card');
+
+            filterBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const category = btn.dataset.category;
+
+                    filterBtns.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+
+                    productCards.forEach(card => {
+                        if (category === 'all' || card.dataset.category === category) {
+                            card.style.display = 'block';
+                            setTimeout(() => {
+                                card.style.opacity = '1';
+                                card.style.transform = 'translateY(0)';
+                            }, 10);
+                        } else {
+                            card.style.opacity = '0';
+                            card.style.transform = 'translateY(20px)';
+                            setTimeout(() => {
+                                card.style.display = 'none';
+                            }, 300);
+                        }
+                    });
+                });
+            });
+        }
+    </script>
 </body>
 </html>

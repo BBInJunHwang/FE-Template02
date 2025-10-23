@@ -3,738 +3,464 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FlowSync - 팀 협업의 새로운 기준</title>
+    <title>CloudFlow - Modern Team Collaboration Platform</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&display=swap');
-
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
-        :root {
-            --primary: #6366F1;
-            --primary-light: #818CF8;
-            --primary-dark: #4F46E5;
-            --secondary: #10B981;
-            --secondary-light: #34D399;
-            --bg: #FAFBFC;
-            --text-dark: #0F172A;
-            --text-gray: #64748B;
-            --accent-orange: #F59E0B;
-            --accent-pink: #EC4899;
-            --accent-cyan: #06B6D4;
-        }
-
         body {
-            font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-            background: var(--bg);
-            color: var(--text-dark);
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
             line-height: 1.6;
             overflow-x: hidden;
-            scroll-behavior: smooth;
+            background: #fff;
+            color: #1a1a1a;
         }
 
-        /* Floating Gradient Blobs */
-        .blob-container {
+        /* Page sections */
+        .page-section {
+            display: none;
+        }
+        .page-section.active {
+            display: block;
+        }
+
+        /* Header */
+        header {
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(20px);
+            padding: 20px 0;
             position: fixed;
-            top: 0;
-            left: 0;
             width: 100%;
-            height: 100%;
-            z-index: -1;
-            overflow: hidden;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid #f0f0f0;
         }
 
-        .blob {
-            position: absolute;
-            border-radius: 50%;
-            filter: blur(80px);
-            opacity: 0.6;
-            animation: float 20s ease-in-out infinite;
-        }
-
-        .blob-1 {
-            width: 500px;
-            height: 500px;
-            background: linear-gradient(135deg, #6366F1 0%, #818CF8 100%);
-            top: -200px;
-            left: -200px;
-            animation-delay: 0s;
-        }
-
-        .blob-2 {
-            width: 400px;
-            height: 400px;
-            background: linear-gradient(135deg, #10B981 0%, #34D399 100%);
-            bottom: -150px;
-            right: -150px;
-            animation-delay: -5s;
-        }
-
-        .blob-3 {
-            width: 350px;
-            height: 350px;
-            background: linear-gradient(135deg, #06B6D4 0%, #22D3EE 100%);
-            top: 50%;
-            right: 10%;
-            animation-delay: -10s;
-        }
-
-        @keyframes float {
-            0%, 100% {
-                transform: translate(0, 0) scale(1);
-            }
-            33% {
-                transform: translate(50px, -50px) scale(1.1);
-            }
-            66% {
-                transform: translate(-30px, 30px) scale(0.9);
-            }
-        }
-
-        /* Navigation */
         nav {
+            max-width: 1400px;
+            margin: 0 auto;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 2rem 5%;
-            position: sticky;
-            top: 0;
-            background: rgba(250, 251, 252, 0.8);
-            backdrop-filter: blur(20px);
-            z-index: 100;
-            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            padding: 0 50px;
         }
 
         .logo {
-            font-size: 1.8rem;
+            font-size: 26px;
             font-weight: 800;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            letter-spacing: -1px;
+            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            background-clip: text;
+            cursor: pointer;
         }
 
         .nav-links {
             display: flex;
-            gap: 2.5rem;
             list-style: none;
-            align-items: center;
+            gap: 45px;
         }
 
         .nav-links a {
+            color: #4b5563;
             text-decoration: none;
-            color: var(--text-dark);
-            font-weight: 600;
-            font-size: 0.95rem;
+            font-size: 15px;
+            font-weight: 500;
             transition: color 0.3s;
         }
 
         .nav-links a:hover {
-            color: var(--primary);
+            color: #6366f1;
         }
 
-        .btn {
-            padding: 0.9rem 2rem;
-            border-radius: 12px;
-            font-weight: 700;
-            text-decoration: none;
-            display: inline-block;
-            transition: all 0.3s ease;
-            font-size: 0.95rem;
+        .nav-actions {
+            display: flex;
+            gap: 15px;
+        }
+
+        .btn-secondary {
+            padding: 10px 24px;
+            background: transparent;
+            color: #6366f1;
             border: none;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
             cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn-secondary:hover {
+            background: #f3f4f6;
         }
 
         .btn-primary {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            padding: 10px 24px;
+            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
             color: white;
-            box-shadow: 0 10px 30px rgba(99, 102, 241, 0.35);
+            border: none;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
         }
 
         .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 40px rgba(99, 102, 241, 0.5);
-            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
-        }
-
-        .btn-outline {
-            background: white;
-            color: var(--primary);
-            border: 2px solid var(--primary);
-        }
-
-        .btn-outline:hover {
-            background: var(--primary);
-            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(99, 102, 241, 0.4);
         }
 
         /* Hero Section */
         .hero {
-            padding: 10rem 5% 8rem;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             text-align: center;
-            max-width: 1400px;
-            margin: 0 auto;
+            padding: 0 20px;
+            position: relative;
+            margin-top: 80px;
+            background: linear-gradient(180deg, #fafafa 0%, #fff 100%);
+        }
+
+        .hero-content {
+            max-width: 1100px;
         }
 
         .badge {
             display: inline-flex;
             align-items: center;
-            gap: 0.5rem;
-            background: white;
-            padding: 0.6rem 1.5rem;
+            gap: 8px;
+            background: #f3f4f6;
+            padding: 8px 20px;
             border-radius: 50px;
-            font-size: 0.9rem;
+            font-size: 14px;
             font-weight: 600;
-            color: var(--primary);
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
-            margin-bottom: 2rem;
-            animation: slideDown 0.8s ease;
-        }
-
-        .badge-icon {
-            width: 28px;
-            height: 28px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            border-radius: 8px;
-            position: relative;
-            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
-        }
-
-        .badge-icon::after {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 14px;
-            height: 14px;
-            background: white;
-            border-radius: 4px;
-        }
-
-        @keyframes slideDown {
-            from {
-                opacity: 0;
-                transform: translateY(-20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            color: #6366f1;
+            margin-bottom: 30px;
         }
 
         .hero h1 {
-            font-size: clamp(3rem, 7vw, 6rem);
-            font-weight: 900;
-            line-height: 1.1;
-            margin-bottom: 2rem;
-            animation: fadeIn 1s ease;
+            font-size: 72px;
+            font-weight: 800;
+            margin-bottom: 25px;
             letter-spacing: -2px;
+            line-height: 1.1;
         }
 
         .gradient-text {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--accent-pink) 100%);
+            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            background-clip: text;
         }
 
         .hero p {
-            font-size: 1.5rem;
-            color: var(--text-gray);
-            max-width: 800px;
-            margin: 0 auto 3.5rem;
+            font-size: 22px;
             font-weight: 400;
-            animation: fadeIn 1s ease 0.2s both;
-            line-height: 1.7;
+            color: #6b7280;
+            margin-bottom: 40px;
+            line-height: 1.6;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .hero-buttons {
+        .hero-actions {
             display: flex;
-            gap: 1.5rem;
+            gap: 15px;
             justify-content: center;
-            flex-wrap: wrap;
-            animation: fadeIn 1s ease 0.4s both;
+            margin-bottom: 60px;
+        }
+
+        .btn-large {
+            padding: 16px 40px;
+            font-size: 16px;
+            font-weight: 700;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn-hero-primary {
+            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+            color: white;
+            border: none;
+            box-shadow: 0 8px 25px rgba(99, 102, 241, 0.4);
+        }
+
+        .btn-hero-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(99, 102, 241, 0.5);
+        }
+
+        .btn-hero-secondary {
+            background: white;
+            color: #1a1a1a;
+            border: 2px solid #e5e7eb;
+        }
+
+        .btn-hero-secondary:hover {
+            border-color: #6366f1;
+            color: #6366f1;
         }
 
         .hero-image {
-            margin-top: 5rem;
-            animation: fadeIn 1s ease 0.6s both;
-        }
-
-        .mockup {
-            background: white;
-            border-radius: 20px;
-            box-shadow: 0 30px 100px rgba(0, 0, 0, 0.15);
-            padding: 3rem;
-            max-width: 1200px;
-            margin: 0 auto;
-            position: relative;
-        }
-
-        .mockup::before {
-            content: '';
-            position: absolute;
-            inset: -2px;
-            border-radius: 20px;
-            padding: 2px;
-            background: linear-gradient(135deg, var(--primary), var(--secondary), var(--accent-orange));
-            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-            -webkit-mask-composite: xor;
-            mask-composite: exclude;
-            opacity: 0.5;
-        }
-
-        .mockup-content {
-            background: url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1400&q=80') center/cover;
-            height: 600px;
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            box-shadow: inset 0 0 100px rgba(0, 0, 0, 0.1);
-        }
-
-        .mockup-content::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(135deg, rgba(99, 102, 241, 0.08) 0%, rgba(16, 185, 129, 0.08) 100%);
-            border-radius: 12px;
-        }
-
-        .mockup-icon {
-            width: 120px;
-            height: 120px;
-            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-            border-radius: 24px;
-            position: relative;
-            box-shadow: 0 20px 60px rgba(240, 147, 251, 0.4);
-            display: none;
-        }
-
-        .mockup-icon::after {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 70px;
-            height: 70px;
-            background: white;
+            margin-top: 60px;
             border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.12);
         }
 
-        /* Stats Section */
-        .stats {
-            padding: 6rem 5%;
+        .hero-image img {
+            width: 100%;
+            height: auto;
+        }
+
+        /* Content Section */
+        .content {
             max-width: 1400px;
             margin: 0 auto;
+            padding: 120px 50px;
         }
 
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 3rem;
+        .content-header {
             text-align: center;
+            margin-bottom: 80px;
         }
 
-        .stat-item {
-            background: white;
-            padding: 3rem 2rem;
-            border-radius: 20px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05);
-            transition: transform 0.3s;
-        }
-
-        .stat-item:hover {
-            transform: translateY(-10px);
-        }
-
-        .stat-number {
-            font-size: 3.5rem;
-            font-weight: 900;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--accent-pink) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 0.5rem;
-        }
-
-        .stat-label {
-            font-size: 1.1rem;
-            color: var(--text-gray);
-            font-weight: 600;
-        }
-
-        /* Features Section */
-        .features {
-            padding: 8rem 5%;
-            background: white;
-        }
-
-        .section-header {
-            text-align: center;
-            max-width: 700px;
-            margin: 0 auto 5rem;
-        }
-
-        .section-header .label {
-            display: inline-block;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
-            color: white;
-            padding: 0.5rem 1.5rem;
-            border-radius: 50px;
-            font-size: 0.9rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-        }
-
-        .section-header h2 {
-            font-size: clamp(2.5rem, 5vw, 4rem);
-            font-weight: 900;
-            margin-bottom: 1.5rem;
+        .content-header h2 {
+            font-size: 48px;
+            font-weight: 800;
+            margin-bottom: 20px;
             letter-spacing: -1px;
         }
 
-        .section-header p {
-            font-size: 1.3rem;
-            color: var(--text-gray);
-            line-height: 1.7;
+        .content-header p {
+            font-size: 20px;
+            color: #6b7280;
         }
 
+        /* Features Grid */
         .features-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2.5rem;
-            max-width: 1400px;
-            margin: 0 auto;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            margin-bottom: 100px;
         }
 
         .feature-card {
-            background: linear-gradient(135deg, #f9fafb 0%, #ffffff 100%);
-            padding: 3rem;
-            border-radius: 24px;
-            border: 2px solid transparent;
-            transition: all 0.4s;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .feature-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: linear-gradient(90deg, var(--primary), var(--accent-pink));
-            transform: scaleX(0);
-            transition: transform 0.4s;
-        }
-
-        .feature-card:hover::before {
-            transform: scaleX(1);
+            background: #fafafa;
+            border-radius: 16px;
+            padding: 40px;
+            transition: all 0.3s;
         }
 
         .feature-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
-            border-color: rgba(124, 58, 237, 0.2);
+            transform: translateY(-5px);
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.08);
         }
 
         .feature-icon {
-            width: 70px;
-            height: 70px;
-            border-radius: 16px;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+            border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-bottom: 1.5rem;
-            position: relative;
-        }
-
-        .feature-icon::after {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 40px;
-            height: 40px;
-            background: white;
-            border-radius: 10px;
-        }
-
-        .feature-card:nth-child(1) .feature-icon {
-            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
-            box-shadow: 0 10px 30px rgba(79, 172, 254, 0.4);
-        }
-
-        .feature-card:nth-child(2) .feature-icon {
-            background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
-            box-shadow: 0 10px 30px rgba(250, 112, 154, 0.4);
-        }
-
-        .feature-card:nth-child(3) .feature-icon {
-            background: linear-gradient(135deg, #30cfd0 0%, #330867 100%);
-            box-shadow: 0 10px 30px rgba(48, 207, 208, 0.4);
-        }
-
-        .feature-card:nth-child(4) .feature-icon {
-            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
-            box-shadow: 0 10px 30px rgba(168, 237, 234, 0.4);
-        }
-
-        .feature-card:nth-child(5) .feature-icon {
-            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);
-            box-shadow: 0 10px 30px rgba(255, 154, 158, 0.4);
-        }
-
-        .feature-card:nth-child(6) .feature-icon {
-            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
-            box-shadow: 0 10px 30px rgba(252, 182, 159, 0.4);
+            font-size: 28px;
+            margin-bottom: 25px;
         }
 
         .feature-card h3 {
-            font-size: 1.6rem;
-            font-weight: 800;
-            margin-bottom: 1rem;
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 15px;
         }
 
         .feature-card p {
-            color: var(--text-gray);
-            font-size: 1.05rem;
-            line-height: 1.8;
-            font-weight: 400;
+            font-size: 16px;
+            color: #6b7280;
+            line-height: 1.7;
         }
 
         /* Pricing Section */
-        .pricing {
-            padding: 8rem 5%;
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-
         .pricing-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 2.5rem;
-            margin-top: 4rem;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
         }
 
         .pricing-card {
             background: white;
-            padding: 3rem;
-            border-radius: 24px;
             border: 2px solid #e5e7eb;
-            transition: all 0.4s;
-            position: relative;
+            border-radius: 16px;
+            padding: 40px;
+            transition: all 0.3s;
         }
 
         .pricing-card.featured {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
-            color: white;
+            border-color: #6366f1;
+            background: linear-gradient(180deg, #fafafa 0%, #fff 100%);
             transform: scale(1.05);
-            border-color: transparent;
-            box-shadow: 0 30px 80px rgba(124, 58, 237, 0.4);
+            box-shadow: 0 20px 40px rgba(99, 102, 241, 0.15);
         }
 
-        .pricing-card.featured .price-tag {
-            color: white;
-        }
-
-        .pricing-card.featured p {
-            color: rgba(255, 255, 255, 0.9);
-        }
-
-        .pricing-card.featured .btn {
-            background: white;
-            color: var(--primary);
-        }
-
-        .pricing-card:not(.featured):hover {
-            transform: translateY(-10px);
-            border-color: var(--primary);
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
-        }
-
-        .plan-name {
-            font-size: 1.3rem;
-            font-weight: 800;
-            margin-bottom: 1rem;
-        }
-
-        .price-tag {
-            font-size: 3.5rem;
-            font-weight: 900;
-            color: var(--primary);
-            margin-bottom: 0.5rem;
-        }
-
-        .price-tag span {
-            font-size: 1.2rem;
-            font-weight: 600;
-            color: var(--text-gray);
-        }
-
-        .pricing-card p {
-            color: var(--text-gray);
-            margin-bottom: 2rem;
-        }
-
-        .features-list {
-            list-style: none;
-            margin: 2rem 0;
-        }
-
-        .features-list li {
-            padding: 0.8rem 0;
-            display: flex;
-            align-items: center;
-            gap: 0.8rem;
-            font-size: 1rem;
-        }
-
-        .features-list li::before {
-            content: '✓';
-            width: 24px;
-            height: 24px;
-            background: linear-gradient(135deg, var(--secondary) 0%, #34D399 100%);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-weight: 900;
-            flex-shrink: 0;
-        }
-
-        .pricing-card.featured .features-list li::before {
-            background: white;
-            color: var(--primary);
-        }
-
-        /* CTA Section */
-        .cta {
-            padding: 8rem 5%;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
-            text-align: center;
-            color: white;
-        }
-
-        .cta h2 {
-            font-size: clamp(2.5rem, 5vw, 4rem);
-            font-weight: 900;
-            margin-bottom: 1.5rem;
-        }
-
-        .cta p {
-            font-size: 1.3rem;
-            margin-bottom: 3rem;
-            opacity: 0.95;
-        }
-
-        .cta .btn {
-            background: white;
-            color: var(--primary);
-            font-size: 1.1rem;
-            padding: 1.2rem 3rem;
-        }
-
-        .cta .btn:hover {
+        .pricing-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.08);
         }
 
-        /* Footer */
-        footer {
-            background: #111827;
+        .pricing-card.featured:hover {
+            transform: scale(1.05) translateY(-5px);
+        }
+
+        .pricing-badge {
+            background: #6366f1;
             color: white;
-            padding: 4rem 5% 2rem;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 700;
+            display: inline-block;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
-        .footer-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 3rem;
-            max-width: 1400px;
-            margin: 0 auto 3rem;
+        .pricing-card h3 {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 10px;
         }
 
-        .footer-section h4 {
-            font-size: 1.2rem;
+        .pricing-card .price {
+            font-size: 48px;
             font-weight: 800;
-            margin-bottom: 1.5rem;
+            margin: 20px 0;
         }
 
-        .footer-section ul {
+        .pricing-card .price span {
+            font-size: 20px;
+            color: #6b7280;
+            font-weight: 500;
+        }
+
+        .pricing-features {
             list-style: none;
+            margin: 30px 0;
         }
 
-        .footer-section ul li {
-            margin-bottom: 0.8rem;
+        .pricing-features li {
+            padding: 12px 0;
+            font-size: 15px;
+            color: #4b5563;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
 
-        .footer-section a {
-            color: rgba(255, 255, 255, 0.7);
-            text-decoration: none;
-            transition: color 0.3s;
+        .pricing-features li::before {
+            content: '✓';
+            color: #10b981;
+            font-weight: 700;
+            font-size: 18px;
         }
 
-        .footer-section a:hover {
-            color: var(--primary-light);
+        .pricing-btn {
+            width: 100%;
+            padding: 14px;
+            border-radius: 10px;
+            font-size: 15px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
         }
 
-        .footer-bottom {
-            text-align: center;
-            padding-top: 2rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            color: rgba(255, 255, 255, 0.6);
+        /* Contact Form */
+        .contact-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: #fafafa;
+            border-radius: 16px;
+            padding: 60px;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 10px;
+            color: #1a1a1a;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 14px 18px;
+            background: white;
+            border: 2px solid #e5e7eb;
+            border-radius: 10px;
+            font-size: 15px;
+            font-family: inherit;
+            color: #1a1a1a;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #6366f1;
+        }
+
+        .form-group textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .submit-btn-large {
+            width: 100%;
+            padding: 16px;
+            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+            color: white;
+            border: none;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            border-radius: 10px;
+            transition: all 0.3s;
+            box-shadow: 0 8px 25px rgba(99, 102, 241, 0.4);
+        }
+
+        .submit-btn-large:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 35px rgba(99, 102, 241, 0.5);
+        }
+
+        /* Scroll Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         /* Responsive */
-        @media (max-width: 768px) {
-            nav {
-                padding: 1.5rem 5%;
-            }
-
-            .nav-links {
-                display: none;
-            }
-
-            .hero {
-                padding: 4rem 5%;
-            }
-
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-
-            .mockup {
-                padding: 1.5rem;
-            }
-
-            .mockup-content {
-                height: 300px;
-            }
-
+        @media (max-width: 1024px) {
             .features-grid,
             .pricing-grid {
                 grid-template-columns: 1fr;
@@ -745,262 +471,310 @@
             }
         }
 
-        /* Scroll reveal */
-        .reveal {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.8s ease;
-        }
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
 
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
+            .hero h1 {
+                font-size: 42px;
+            }
+
+            .content-header h2 {
+                font-size: 36px;
+            }
+
+            .hero-actions {
+                flex-direction: column;
+            }
+
+            .contact-container {
+                padding: 40px 25px;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="blob-container">
-        <div class="blob blob-1"></div>
-        <div class="blob blob-2"></div>
-        <div class="blob blob-3"></div>
-    </div>
+    <header>
+        <nav>
+            <div class="logo" data-page="home">CloudFlow</div>
+            <ul class="nav-links">
+                <li><a href="#home" data-page="home">Home</a></li>
+                <li><a href="#features" data-page="features">Features</a></li>
+                <li><a href="#pricing" data-page="pricing">Pricing</a></li>
+                <li><a href="#contact" data-page="contact">Contact</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button class="btn-secondary" onclick="alert('Sign In')">Sign In</button>
+                <button class="btn-primary" onclick="showPage('contact')">Get Started</button>
+            </div>
+        </nav>
+    </header>
 
-    <nav>
-        <div class="logo">FlowSync</div>
-        <ul class="nav-links">
-            <li><a href="#features">기능</a></li>
-            <li><a href="#pricing">가격</a></li>
-            <li><a href="#footer">회사소개</a></li>
-            <li><a href="#cta" class="btn btn-primary">무료 시작</a></li>
-        </ul>
-    </nav>
-
-    <section class="hero">
-        <div class="badge">
-            <div class="badge-icon"></div> 🚀 Series B 투자 유치 완료 • 10,000+ 기업이 신뢰
-        </div>
-        <h1>팀 협업의 <span class="gradient-text">새로운 기준</span></h1>
-        <p>
-            전 세계 10,000+ 팀이 선택한 올인원 프로젝트 관리 솔루션.<br>
-            복잡한 워크플로우를 단순하게, 팀의 생산성을 극대화하세요.
-        </p>
-        <div class="hero-buttons">
-            <a href="#pricing" class="btn btn-primary">14일 무료 체험 시작하기</a>
-            <a href="#features" class="btn btn-outline">자세히 알아보기</a>
-        </div>
-        <div class="hero-image">
-            <div class="mockup">
-                <div class="mockup-content">
-                    <div class="mockup-icon"></div>
+    <!-- HOME Page -->
+    <section id="home" class="page-section active">
+        <div class="hero">
+            <div class="hero-content">
+                <div class="badge">
+                    🚀 Now with AI-powered workflows
+                </div>
+                <h1>
+                    The Modern Way to<br>
+                    <span class="gradient-text">Collaborate & Manage</span>
+                </h1>
+                <p>
+                    Streamline your team's workflow with CloudFlow. The all-in-one platform
+                    for project management, communication, and collaboration.
+                </p>
+                <div class="hero-actions">
+                    <button class="btn-large btn-hero-primary" onclick="showPage('pricing')">Start Free Trial</button>
+                    <button class="btn-large btn-hero-secondary" onclick="showPage('features')">See How It Works</button>
+                </div>
+                <div class="hero-image">
+                    <img src="https://images.pexels.com/photos/3183197/pexels-photo-3183197.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="CloudFlow Dashboard">
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="stats reveal">
-        <div class="stats-grid">
-            <div class="stat-item">
-                <div class="stat-number">10K+</div>
-                <div class="stat-label">글로벌 기업 고객</div>
+    <!-- FEATURES Page -->
+    <section id="features" class="page-section">
+        <div class="content">
+            <div class="content-header fade-in">
+                <h2>Everything you need to succeed</h2>
+                <p>Powerful features to help your team work better together</p>
             </div>
-            <div class="stat-item">
-                <div class="stat-number">4.9/5</div>
-                <div class="stat-label">고객 만족도 (G2 리뷰)</div>
-            </div>
-            <div class="stat-item">
-                <div class="stat-number">250M+</div>
-                <div class="stat-label">월간 처리 태스크</div>
-            </div>
-            <div class="stat-item">
-                <div class="stat-number">99.9%</div>
-                <div class="stat-label">서비스 가동률</div>
+
+            <div class="features-grid">
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">⚡</div>
+                    <h3>Lightning Fast</h3>
+                    <p>Built for speed with cutting-edge technology. Experience real-time collaboration without any lag.</p>
+                </div>
+
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">🤖</div>
+                    <h3>AI-Powered</h3>
+                    <p>Smart automation and insights powered by artificial intelligence to boost your productivity.</p>
+                </div>
+
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">🔒</div>
+                    <h3>Enterprise Security</h3>
+                    <p>Bank-level encryption and security compliance. Your data is always protected and private.</p>
+                </div>
+
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">📊</div>
+                    <h3>Advanced Analytics</h3>
+                    <p>Comprehensive insights and reporting to help you make data-driven decisions.</p>
+                </div>
+
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">🌐</div>
+                    <h3>Global Collaboration</h3>
+                    <p>Work seamlessly with teams across the world. Support for 50+ languages and time zones.</p>
+                </div>
+
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">🔗</div>
+                    <h3>Seamless Integrations</h3>
+                    <p>Connect with 100+ apps and tools you already use. One platform for everything.</p>
+                </div>
+
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">📱</div>
+                    <h3>Mobile Ready</h3>
+                    <p>Native apps for iOS and Android. Work from anywhere, on any device.</p>
+                </div>
+
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">💬</div>
+                    <h3>Real-time Chat</h3>
+                    <p>Built-in messaging, video calls, and screen sharing. Stay connected with your team.</p>
+                </div>
+
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">🎯</div>
+                    <h3>Smart Task Management</h3>
+                    <p>Intuitive task boards, timelines, and calendars. Never miss a deadline again.</p>
+                </div>
             </div>
         </div>
     </section>
 
-    <section class="features" id="features">
-        <div class="section-header reveal">
-            <div class="label">FEATURES</div>
-            <h2>프로젝트 관리의 모든 것을 하나로</h2>
-            <p>팀이 필요한 모든 기능을 하나의 플랫폼에서 제공합니다.<br>더 이상 여러 도구를 오가며 시간을 낭비하지 마세요.</p>
-        </div>
-        <div class="features-grid">
-            <div class="feature-card reveal">
-                <div class="feature-icon"></div>
-                <h3>실시간 협업</h3>
-                <p>팀원들과 실시간으로 소통하고 협업하세요. Google Docs처럼 모든 변경 사항이 즉시 동기화되며, 누가 무엇을 작업 중인지 실시간으로 확인할 수 있습니다.</p>
+    <!-- PRICING Page -->
+    <section id="pricing" class="page-section">
+        <div class="content">
+            <div class="content-header fade-in">
+                <h2>Simple, transparent pricing</h2>
+                <p>Choose the perfect plan for your team</p>
             </div>
-            <div class="feature-card reveal">
-                <div class="feature-icon"></div>
-                <h3>AI 기반 자동화</h3>
-                <p>반복적인 작업은 AI가 자동으로 처리합니다. 스마트 워크플로우로 팀의 업무 시간을 50% 단축하고, 중요한 의사결정에만 집중하세요.</p>
-            </div>
-            <div class="feature-card reveal">
-                <div class="feature-icon"></div>
-                <h3>실시간 인사이트 대시보드</h3>
-                <p>프로젝트 진행률, 팀 생산성, 리소스 배분을 한눈에 파악하세요. 커스터마이징 가능한 차트와 리포트로 데이터 기반 의사결정을 지원합니다.</p>
-            </div>
-            <div class="feature-card reveal">
-                <div class="feature-icon"></div>
-                <h3>엔터프라이즈급 보안</h3>
-                <p>SOC 2 Type II, ISO 27001 인증 완료. 은행 수준의 256-bit 암호화와 2FA 인증으로 기업 데이터를 안전하게 보호합니다.</p>
-            </div>
-            <div class="feature-card reveal">
-                <div class="feature-icon"></div>
-                <h3>무제한 통합</h3>
-                <p>Slack, Microsoft Teams, Google Workspace, Zoom, GitHub, Jira 등 1,000+ 생산성 도구와 원클릭 연동. API와 Webhook으로 커스텀 통합도 가능합니다.</p>
-            </div>
-            <div class="feature-card reveal">
-                <div class="feature-icon"></div>
-                <h3>크로스 플랫폼 지원</h3>
-                <p>Web, iOS, Android, Mac, Windows 앱으로 언제 어디서나 접속 가능. 오프라인 모드 지원으로 인터넷 없이도 작업을 계속할 수 있습니다.</p>
+
+            <div class="pricing-grid">
+                <div class="pricing-card fade-in">
+                    <h3>Starter</h3>
+                    <div class="price">$9<span>/month</span></div>
+                    <p style="color: #6b7280; margin-bottom: 30px;">Perfect for small teams</p>
+                    <ul class="pricing-features">
+                        <li>Up to 5 team members</li>
+                        <li>5GB storage</li>
+                        <li>Basic features</li>
+                        <li>Email support</li>
+                        <li>Mobile apps</li>
+                    </ul>
+                    <button class="pricing-btn btn-primary" onclick="alert('Starting Starter plan...')">Get Started</button>
+                </div>
+
+                <div class="pricing-card featured fade-in">
+                    <div class="pricing-badge">Most Popular</div>
+                    <h3>Professional</h3>
+                    <div class="price">$29<span>/month</span></div>
+                    <p style="color: #6b7280; margin-bottom: 30px;">For growing businesses</p>
+                    <ul class="pricing-features">
+                        <li>Up to 25 team members</li>
+                        <li>100GB storage</li>
+                        <li>All features included</li>
+                        <li>Priority support</li>
+                        <li>Advanced analytics</li>
+                        <li>Custom integrations</li>
+                        <li>API access</li>
+                    </ul>
+                    <button class="pricing-btn btn-primary" onclick="alert('Starting Professional plan...')">Get Started</button>
+                </div>
+
+                <div class="pricing-card fade-in">
+                    <h3>Enterprise</h3>
+                    <div class="price">$99<span>/month</span></div>
+                    <p style="color: #6b7280; margin-bottom: 30px;">For large organizations</p>
+                    <ul class="pricing-features">
+                        <li>Unlimited team members</li>
+                        <li>Unlimited storage</li>
+                        <li>All features + more</li>
+                        <li>24/7 phone support</li>
+                        <li>Dedicated account manager</li>
+                        <li>Custom onboarding</li>
+                        <li>SLA guarantee</li>
+                        <li>Advanced security</li>
+                    </ul>
+                    <button class="pricing-btn btn-primary" onclick="alert('Contact sales...')">Contact Sales</button>
+                </div>
             </div>
         </div>
     </section>
 
-    <section class="pricing" id="pricing">
-        <div class="section-header reveal">
-            <div class="label">PRICING</div>
-            <h2>팀 규모에 맞는 유연한 가격 정책</h2>
-            <p>14일 무료 체험으로 시작하세요. 신용카드 등록 없이 모든 기능을 사용해보실 수 있습니다.<br>언제든지 플랜 업그레이드 및 다운그레이드가 가능합니다.</p>
-        </div>
-        <div class="pricing-grid">
-            <div class="pricing-card reveal">
-                <div class="plan-name">Starter</div>
-                <div class="price-tag">₩12,000<span>/월</span></div>
-                <p>스타트업과 소규모 팀을 위한 시작 플랜</p>
-                <ul class="features-list">
-                    <li>팀원 최대 10명</li>
-                    <li>프로젝트 무제한</li>
-                    <li>10GB 저장공간</li>
-                    <li>기본 통합 (Slack, Google Drive)</li>
-                    <li>이메일 지원 (24시간 내 응답)</li>
-                    <li>모바일 앱 접근</li>
-                    <li>기본 대시보드</li>
-                </ul>
-                <a href="#cta" class="btn btn-outline">14일 무료 체험</a>
+    <!-- CONTACT Page -->
+    <section id="contact" class="page-section">
+        <div class="content">
+            <div class="content-header fade-in">
+                <h2>Get in touch</h2>
+                <p>Have questions? We'd love to hear from you</p>
             </div>
 
-            <div class="pricing-card featured reveal">
-                <div class="plan-name">Professional</div>
-                <div class="price-tag">₩29,000<span>/월</span></div>
-                <p>성장하는 팀을 위한 가장 인기있는 플랜</p>
-                <ul class="features-list">
-                    <li>팀원 무제한</li>
-                    <li>프로젝트 무제한</li>
-                    <li>100GB 저장공간</li>
-                    <li>1,000+ 통합 서비스</li>
-                    <li>우선 지원 (2시간 내 응답)</li>
-                    <li>고급 분석 및 리포트</li>
-                    <li>AI 자동화 기능</li>
-                    <li>커스텀 워크플로우</li>
-                    <li>게스트 초대 무제한</li>
-                </ul>
-                <a href="#cta" class="btn">지금 시작하기</a>
-            </div>
+            <div class="contact-container fade-in">
+                <form onsubmit="alert('Thank you! Our team will contact you within 24 hours.'); return false;">
+                    <div class="form-group">
+                        <label>Full Name *</label>
+                        <input type="text" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Work Email *</label>
+                        <input type="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Company Name</label>
+                        <input type="text">
+                    </div>
+                    <div class="form-group">
+                        <label>Team Size</label>
+                        <input type="text" placeholder="e.g., 10-50 people">
+                    </div>
+                    <div class="form-group">
+                        <label>Message *</label>
+                        <textarea required placeholder="Tell us about your needs..."></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn-large">Send Message</button>
+                </form>
 
-            <div class="pricing-card reveal">
-                <div class="plan-name">Enterprise</div>
-                <div class="price-tag">문의</div>
-                <p>대규모 조직을 위한 맞춤형 엔터프라이즈 솔루션</p>
-                <ul class="features-list">
-                    <li>모든 Professional 기능</li>
-                    <li>무제한 저장공간</li>
-                    <li>전담 CSM(고객 성공 매니저)</li>
-                    <li>맞춤 통합 개발 지원</li>
-                    <li>24/7 전화/채팅 지원</li>
-                    <li>온프레미스 배포 옵션</li>
-                    <li>99.99% SLA 보장</li>
-                    <li>고급 보안 및 컴플라이언스</li>
-                    <li>맞춤 교육 및 온보딩</li>
-                </ul>
-                <a href="#cta" class="btn btn-outline">영업팀 문의</a>
+                <div style="margin-top: 50px; text-align: center; padding-top: 50px; border-top: 2px solid #e5e7eb;">
+                    <h3 style="font-size: 22px; margin-bottom: 20px; font-weight: 700;">Contact Information</h3>
+                    <p style="color: #6b7280; font-size: 16px; line-height: 2;">
+                        <strong style="color: #1a1a1a;">Sales:</strong> sales@cloudflow.com<br>
+                        <strong style="color: #1a1a1a;">Support:</strong> support@cloudflow.com<br>
+                        <strong style="color: #1a1a1a;">Phone:</strong> +1 (800) 123-4567<br>
+                        <strong style="color: #1a1a1a;">Address:</strong> 123 Tech Street, San Francisco, CA 94105
+                    </p>
+                </div>
             </div>
         </div>
     </section>
-
-    <section class="cta reveal" id="cta">
-        <h2>전 세계 10,000+ 기업이 선택한 이유를 경험하세요</h2>
-        <p>신용카드 등록 없이 14일 동안 모든 Professional 기능을 무료로 체험하세요.<br>언제든지 취소 가능하며, 체험 종료 후 자동 결제되지 않습니다.</p>
-        <a href="#pricing" class="btn">지금 무료로 시작하기 →</a>
-    </section>
-
-    <footer id="footer">
-        <div class="footer-grid">
-            <div class="footer-section">
-                <h4>FlowSync</h4>
-                <p style="color: rgba(255,255,255,0.7); margin-top: 1rem;">
-                    전 세계 10,000+ 기업이 신뢰하는<br>
-                    AI 기반 프로젝트 관리 플랫폼
-                </p>
-                <p style="color: rgba(255,255,255,0.5); margin-top: 1rem; font-size: 0.9rem;">
-                    SOC 2 Type II • ISO 27001 인증<br>
-                    © 2024 FlowSync Inc. All rights reserved.
-                </p>
-            </div>
-            <div class="footer-section">
-                <h4>제품</h4>
-                <ul>
-                    <li><a href="#features">기능</a></li>
-                    <li><a href="#pricing">가격</a></li>
-                    <li><a href="#features">통합</a></li>
-                    <li><a href="#footer">API</a></li>
-                </ul>
-            </div>
-            <div class="footer-section">
-                <h4>회사</h4>
-                <ul>
-                    <li><a href="#footer">소개</a></li>
-                    <li><a href="#footer">채용</a></li>
-                    <li><a href="#footer">블로그</a></li>
-                    <li><a href="#cta">문의</a></li>
-                </ul>
-            </div>
-            <div class="footer-section">
-                <h4>지원</h4>
-                <ul>
-                    <li><a href="#footer">헬프 센터</a></li>
-                    <li><a href="#footer">개발자 문서</a></li>
-                    <li><a href="#footer">커뮤니티</a></li>
-                    <li><a href="#footer">상태</a></li>
-                </ul>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>&copy; 2024 FlowSync Inc. All rights reserved.</p>
-        </div>
-    </footer>
 
     <script>
-        // Scroll reveal animation
-        function reveal() {
-            const reveals = document.querySelectorAll('.reveal');
-            reveals.forEach(element => {
-                const windowHeight = window.innerHeight;
-                const elementTop = element.getBoundingClientRect().top;
-                const elementVisible = 150;
-
-                if (elementTop < windowHeight - elementVisible) {
-                    element.classList.add('active');
-                }
+        // Page Navigation
+        function showPage(pageId) {
+            document.querySelectorAll('.page-section').forEach(section => {
+                section.classList.remove('active');
             });
+
+            const targetPage = document.getElementById(pageId);
+            if (targetPage) {
+                targetPage.classList.add('active');
+                window.scrollTo(0, 0);
+                initializeAnimations();
+            }
         }
 
-        window.addEventListener('scroll', reveal);
-        reveal();
-
-        // Smooth scroll
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
+        // Navigation click handlers
+        document.querySelectorAll('[data-page]').forEach(link => {
+            link.addEventListener('click', (e) => {
                 e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth'
-                    });
-                }
+                const pageId = link.getAttribute('data-page');
+                showPage(pageId);
+                window.location.hash = pageId;
             });
         });
+
+        // Handle browser back/forward
+        window.addEventListener('hashchange', () => {
+            const pageId = window.location.hash.slice(1) || 'home';
+            showPage(pageId);
+        });
+
+        // Initialize on load
+        window.addEventListener('DOMContentLoaded', () => {
+            const pageId = window.location.hash.slice(1) || 'home';
+            showPage(pageId);
+        });
+
+        // Scroll Animations
+        function initializeAnimations() {
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -100px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, observerOptions);
+
+            const activePage = document.querySelector('.page-section.active');
+            if (activePage) {
+                activePage.querySelectorAll('.fade-in').forEach(el => {
+                    el.classList.remove('visible');
+                    observer.observe(el);
+                });
+
+                setTimeout(() => {
+                    activePage.querySelectorAll('.hero .fade-in').forEach(el => {
+                        el.classList.add('visible');
+                    });
+                }, 100);
+            }
+        }
     </script>
 </body>
 </html>

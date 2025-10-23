@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NOIR - Contemporary Fashion Brand</title>
+    <title>MAISON - Luxury Fashion Brand</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -12,333 +13,309 @@
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            background: #fff;
-            color: #000;
+            font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
             line-height: 1.6;
-            scroll-behavior: smooth;
+            overflow-x: hidden;
+            background: #fff;
+            color: #1a1a1a;
         }
 
-        /* Navigation */
-        nav {
-            position: fixed;
-            top: 0;
-            width: 100%;
+        /* Page sections */
+        .page-section {
+            display: none;
+        }
+        .page-section.active {
+            display: block;
+        }
+
+        /* Header */
+        header {
             background: rgba(255, 255, 255, 0.98);
-            backdrop-filter: blur(10px);
+            backdrop-filter: blur(20px);
+            padding: 22px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
             z-index: 1000;
-            padding: 1.5rem 0;
-            border-bottom: 1px solid #eee;
+            border-bottom: 1px solid #f0f0f0;
         }
 
-        .nav-container {
+        nav {
             max-width: 1600px;
             margin: 0 auto;
-            padding: 0 3rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            padding: 0 50px;
         }
 
         .logo {
-            font-size: 2rem;
-            font-weight: 300;
-            letter-spacing: 8px;
-            color: #000;
+            font-family: 'Playfair Display', serif;
+            font-size: 32px;
+            font-weight: 600;
+            letter-spacing: 4px;
+            color: #1a1a1a;
+            cursor: pointer;
         }
 
-        .nav-menu {
+        .nav-links {
             display: flex;
-            gap: 3rem;
             list-style: none;
+            gap: 50px;
         }
 
-        .nav-menu a {
+        .nav-links a {
+            color: #1a1a1a;
             text-decoration: none;
-            color: #000;
-            font-weight: 300;
+            font-size: 13px;
+            font-weight: 500;
             letter-spacing: 2px;
-            font-size: 0.9rem;
             transition: opacity 0.3s;
+            text-transform: uppercase;
         }
 
-        .nav-menu a:hover {
-            opacity: 0.5;
+        .nav-links a:hover {
+            opacity: 0.6;
         }
 
         .nav-icons {
             display: flex;
-            gap: 1.5rem;
-            font-size: 1.2rem;
+            gap: 18px;
         }
 
-        .icon {
+        .icon-btn {
+            width: 38px;
+            height: 38px;
+            border: none;
+            background: #1a1a1a;
+            color: white;
             cursor: pointer;
-            transition: all 0.3s;
-            width: 32px;
-            height: 32px;
-            border-radius: 8px;
-            position: relative;
             display: flex;
             align-items: center;
             justify-content: center;
-        }
-
-        .icon::before {
-            content: '';
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            border-radius: 8px;
-            opacity: 0.9;
+            font-size: 16px;
             transition: all 0.3s;
+            border-radius: 50%;
         }
 
-        .icon::after {
-            content: '';
-            position: absolute;
-            width: 14px;
-            height: 14px;
-            background: #fff;
-            border-radius: 4px;
-            transition: all 0.3s;
-        }
-
-        .icon:hover::before {
-            opacity: 1;
+        .icon-btn:hover {
             transform: scale(1.1);
-        }
-
-        .icon:hover::after {
-            transform: scale(0.95);
-        }
-
-        .icon.search::before {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        }
-
-        .icon.favorite::before {
-            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-        }
-
-        .icon.cart::before {
-            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
-        }
-
-        .icon.user::before {
-            background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+            background: #333;
         }
 
         /* Hero Section */
         .hero {
-            margin-top: 80px;
             height: 100vh;
-            position: relative;
+            background-size: cover;
+            background-position: center;
             display: flex;
-            align-items: center;
+            flex-direction: column;
             justify-content: center;
-            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)),
-                        url('https://images.unsplash.com/photo-1483985988355-763728e1935b?w=1920&q=80') center/cover;
+            align-items: center;
+            text-align: center;
             color: #fff;
+            position: relative;
+            margin-top: 80px;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.35);
         }
 
         .hero-content {
-            text-align: center;
+            position: relative;
             z-index: 1;
+            max-width: 1000px;
+            padding: 0 20px;
         }
 
         .hero h1 {
-            font-size: 8rem;
-            margin-bottom: 2rem;
-            font-weight: 300;
-            letter-spacing: 20px;
-            animation: fadeInUp 1s ease;
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            font-family: 'Playfair Display', serif;
+            font-size: 120px;
+            font-weight: 600;
+            margin-bottom: 30px;
+            letter-spacing: 12px;
+            text-shadow: 0 4px 25px rgba(0, 0, 0, 0.4);
         }
 
         .hero p {
-            font-size: 1.2rem;
+            font-size: 20px;
+            font-weight: 300;
             letter-spacing: 4px;
-            font-weight: 300;
-            margin-bottom: 3rem;
-            animation: fadeInUp 1s ease 0.3s both;
+            line-height: 1.8;
+            margin-bottom: 40px;
+            text-transform: uppercase;
         }
 
-        .shop-btn {
-            padding: 1.2rem 4rem;
+        .hero-btn {
+            padding: 18px 50px;
             background: transparent;
-            color: #fff;
-            border: 1px solid #fff;
+            color: white;
+            border: 2px solid white;
+            font-size: 13px;
+            font-weight: 600;
             cursor: pointer;
-            font-size: 1rem;
-            letter-spacing: 3px;
-            font-weight: 300;
             transition: all 0.3s;
-            animation: fadeInUp 1s ease 0.6s both;
+            letter-spacing: 3px;
+            text-transform: uppercase;
         }
 
-        .shop-btn:hover {
-            background: #fff;
-            color: #000;
+        .hero-btn:hover {
+            background: white;
+            color: #1a1a1a;
         }
 
-        /* New Collection Section */
-        .new-collection {
-            padding: 8rem 3rem;
+        /* Content Section */
+        .content {
             max-width: 1600px;
             margin: 0 auto;
+            padding: 120px 50px;
         }
 
-        .section-header {
+        .content-header {
             text-align: center;
-            margin-bottom: 6rem;
+            margin-bottom: 100px;
         }
 
-        .section-title {
-            font-size: 3.5rem;
-            font-weight: 300;
-            letter-spacing: 8px;
-            margin-bottom: 1rem;
+        .content-header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 64px;
+            font-weight: 600;
+            color: #1a1a1a;
+            margin-bottom: 25px;
+            letter-spacing: 4px;
         }
 
-        .section-subtitle {
-            font-size: 1.1rem;
+        .content-header p {
+            font-size: 16px;
             color: #666;
-            letter-spacing: 3px;
-            font-weight: 300;
+            font-weight: 400;
+            letter-spacing: 2px;
+            text-transform: uppercase;
         }
 
+        /* Collection Grid */
         .collection-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-            gap: 3rem;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
         }
 
         .collection-item {
-            position: relative;
             cursor: pointer;
-            overflow: hidden;
+            transition: transform 0.3s;
+        }
+
+        .collection-item:hover {
+            transform: translateY(-10px);
         }
 
         .collection-image {
             width: 100%;
-            height: 600px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            transition: transform 0.6s ease;
-        }
-
-        .collection-item:hover .collection-image {
-            transform: scale(1.05);
-        }
-
-        .collection-info {
-            margin-top: 1.5rem;
-            text-align: center;
+            height: 650px;
+            object-fit: cover;
+            margin-bottom: 25px;
         }
 
         .collection-category {
-            font-size: 0.85rem;
-            letter-spacing: 3px;
             color: #999;
-            margin-bottom: 0.5rem;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+            font-weight: 600;
         }
 
         .collection-name {
-            font-size: 1.3rem;
-            font-weight: 300;
-            letter-spacing: 2px;
-            margin-bottom: 0.5rem;
+            font-family: 'Playfair Display', serif;
+            font-size: 22px;
+            font-weight: 500;
+            margin-bottom: 12px;
+            color: #1a1a1a;
+            letter-spacing: 1px;
         }
 
         .collection-price {
-            font-size: 1.1rem;
-            color: #000;
-            font-weight: 400;
+            font-size: 18px;
+            color: #1a1a1a;
+            font-weight: 600;
+            letter-spacing: 0.5px;
         }
 
         /* Featured Section */
-        .featured {
-            padding: 8rem 0;
+        .featured-section {
+            padding: 100px 0;
             background: #f8f8f8;
         }
 
         .featured-container {
             max-width: 1600px;
             margin: 0 auto;
-            padding: 0 3rem;
+            padding: 0 50px;
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 6rem;
+            gap: 100px;
             align-items: center;
         }
 
         .featured-image {
             width: 100%;
             height: 700px;
-            background: linear-gradient(135deg, #000 0%, #333 100%);
+            object-fit: cover;
         }
 
         .featured-content h2 {
-            font-size: 4rem;
-            font-weight: 300;
-            letter-spacing: 6px;
-            margin-bottom: 2rem;
+            font-family: 'Playfair Display', serif;
+            font-size: 56px;
+            font-weight: 600;
+            margin-bottom: 30px;
+            color: #1a1a1a;
+            letter-spacing: 2px;
             line-height: 1.2;
         }
 
         .featured-content p {
-            font-size: 1.1rem;
-            color: #666;
+            font-size: 17px;
             line-height: 2;
-            margin-bottom: 2rem;
-            letter-spacing: 1px;
+            color: #666;
+            margin-bottom: 25px;
+            font-weight: 300;
         }
 
-        /* Lookbook Section */
-        .lookbook {
-            padding: 8rem 3rem;
-            max-width: 1600px;
-            margin: 0 auto;
-        }
-
-        .lookbook-grid {
+        /* Lookbook Gallery */
+        .lookbook-gallery {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 1.5rem;
+            gap: 25px;
+            margin-top: 80px;
         }
 
         .lookbook-item {
             position: relative;
-            height: 500px;
             overflow: hidden;
             cursor: pointer;
         }
 
-        .lookbook-item:nth-child(1) {
+        .lookbook-item:first-child {
             grid-column: span 2;
             grid-row: span 2;
-            height: auto;
         }
 
         .lookbook-image {
             width: 100%;
             height: 100%;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            transition: transform 0.6s ease;
+            object-fit: cover;
+            transition: transform 0.6s;
         }
 
         .lookbook-item:hover .lookbook-image {
-            transform: scale(1.1);
+            transform: scale(1.08);
         }
 
         .lookbook-overlay {
@@ -346,568 +323,537 @@
             bottom: 0;
             left: 0;
             right: 0;
-            padding: 2rem;
-            background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+            padding: 30px;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.85));
             color: white;
             transform: translateY(100%);
-            transition: transform 0.3s;
+            transition: transform 0.4s;
         }
 
         .lookbook-item:hover .lookbook-overlay {
             transform: translateY(0);
         }
 
-        /* Brand Story Section */
-        .brand-story {
-            padding: 8rem 3rem;
-            background: #000;
-            color: #fff;
-            text-align: center;
+        .lookbook-overlay h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 24px;
+            font-weight: 500;
+            letter-spacing: 1px;
         }
 
-        .brand-story-content {
+        /* About Section */
+        .about-content {
             max-width: 900px;
             margin: 0 auto;
+            text-align: center;
         }
 
-        .brand-story h2 {
-            font-size: 4rem;
-            font-weight: 300;
-            letter-spacing: 8px;
-            margin-bottom: 3rem;
+        .about-content h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 56px;
+            font-weight: 600;
+            margin-bottom: 40px;
+            color: #1a1a1a;
+            letter-spacing: 2px;
         }
 
-        .brand-story p {
-            font-size: 1.3rem;
+        .about-content p {
+            font-size: 18px;
             line-height: 2.2;
-            font-weight: 300;
-            letter-spacing: 2px;
-            margin-bottom: 2rem;
-            color: #ccc;
-        }
-
-        /* Categories Section */
-        .categories {
-            padding: 8rem 3rem;
-            max-width: 1600px;
-            margin: 0 auto;
-        }
-
-        .categories-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 2rem;
-        }
-
-        .category-card {
-            text-align: center;
-            cursor: pointer;
-            transition: transform 0.3s;
-        }
-
-        .category-card:hover {
-            transform: translateY(-10px);
-        }
-
-        .category-image {
-            width: 100%;
-            height: 400px;
-            background: #f8f8f8;
-            margin-bottom: 1.5rem;
-            transition: background 0.3s;
-        }
-
-        .category-card:hover .category-image {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        }
-
-        .category-name {
-            font-size: 1.3rem;
-            letter-spacing: 3px;
-            font-weight: 300;
-        }
-
-        /* Newsletter Section */
-        .newsletter {
-            padding: 8rem 3rem;
-            background: #f8f8f8;
-            text-align: center;
-        }
-
-        .newsletter h2 {
-            font-size: 3rem;
-            font-weight: 300;
-            letter-spacing: 6px;
-            margin-bottom: 2rem;
-        }
-
-        .newsletter p {
-            font-size: 1.1rem;
             color: #666;
-            letter-spacing: 2px;
-            margin-bottom: 3rem;
+            margin-bottom: 30px;
+            font-weight: 300;
+            letter-spacing: 0.3px;
         }
 
-        .newsletter-form {
-            max-width: 600px;
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 60px;
+            margin-top: 100px;
+        }
+
+        .value-item {
+            text-align: center;
+        }
+
+        .value-icon {
+            font-size: 48px;
+            margin-bottom: 25px;
+        }
+
+        .value-item h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 22px;
+            margin-bottom: 15px;
+            color: #1a1a1a;
+            letter-spacing: 1px;
+        }
+
+        .value-item p {
+            font-size: 15px;
+            color: #666;
+            line-height: 1.8;
+        }
+
+        /* Contact Form */
+        .contact-container {
+            max-width: 900px;
             margin: 0 auto;
-            display: flex;
-            gap: 1rem;
+            background: #f8f8f8;
+            padding: 80px 70px;
+            border-radius: 4px;
         }
 
-        .newsletter-input {
-            flex: 1;
-            padding: 1.2rem;
-            border: 1px solid #ddd;
-            font-size: 1rem;
+        .form-group {
+            margin-bottom: 30px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 12px;
+            color: #1a1a1a;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
             letter-spacing: 2px;
         }
 
-        .newsletter-btn {
-            padding: 1.2rem 3rem;
-            background: #000;
-            color: #fff;
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 18px 22px;
+            background: white;
+            border: 1px solid #e0e0e0;
+            border-radius: 0;
+            font-size: 15px;
+            font-family: inherit;
+            color: #1a1a1a;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #1a1a1a;
+        }
+
+        .form-group textarea {
+            min-height: 180px;
+            resize: vertical;
+        }
+
+        .submit-btn-large {
+            width: 100%;
+            padding: 20px;
+            background: #1a1a1a;
+            color: white;
             border: none;
+            font-size: 13px;
+            font-weight: 600;
             cursor: pointer;
-            font-size: 1rem;
-            letter-spacing: 2px;
-            transition: background 0.3s;
+            transition: all 0.3s;
+            margin-top: 15px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
         }
 
-        .newsletter-btn:hover {
+        .submit-btn-large:hover {
             background: #333;
         }
 
-        /* Instagram Section */
-        .instagram {
-            padding: 8rem 3rem;
-            max-width: 1600px;
-            margin: 0 auto;
+        /* Scroll Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
         }
 
-        .instagram-grid {
-            display: grid;
-            grid-template-columns: repeat(6, 1fr);
-            gap: 1rem;
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
 
-        .instagram-item {
-            height: 250px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            cursor: pointer;
-            transition: transform 0.3s;
+        .slide-in-left {
+            opacity: 0;
+            transform: translateX(-100px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
         }
 
-        .instagram-item:hover {
-            transform: scale(0.95);
+        .slide-in-left.visible {
+            opacity: 1;
+            transform: translateX(0);
         }
 
-        /* Footer */
-        footer {
-            background: #000;
-            color: #fff;
-            padding: 6rem 3rem 3rem;
+        .slide-in-right {
+            opacity: 0;
+            transform: translateX(100px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
         }
 
-        .footer-container {
-            max-width: 1600px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 4rem;
-            margin-bottom: 4rem;
+        .slide-in-right.visible {
+            opacity: 1;
+            transform: translateX(0);
         }
 
-        .footer-section h3 {
-            font-size: 1.2rem;
-            font-weight: 300;
-            letter-spacing: 3px;
-            margin-bottom: 2rem;
-        }
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .collection-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
 
-        .footer-section ul {
-            list-style: none;
-        }
+            .featured-container {
+                grid-template-columns: 1fr;
+            }
 
-        .footer-section ul li {
-            margin-bottom: 1rem;
-        }
+            .lookbook-gallery {
+                grid-template-columns: repeat(2, 1fr);
+            }
 
-        .footer-section a {
-            color: #999;
-            text-decoration: none;
-            font-size: 0.95rem;
-            letter-spacing: 2px;
-            font-weight: 300;
-            transition: color 0.3s;
-        }
+            .lookbook-item:first-child {
+                grid-column: span 2;
+                grid-row: span 1;
+            }
 
-        .footer-section a:hover {
-            color: #fff;
-        }
-
-        .footer-bottom {
-            text-align: center;
-            padding-top: 3rem;
-            border-top: 1px solid #333;
-            color: #666;
-            letter-spacing: 2px;
-            font-size: 0.9rem;
-        }
-
-        .contact-info {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-        }
-
-        .contact-item {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-
-        .contact-icon {
-            width: 36px;
-            height: 36px;
-            border-radius: 10px;
-            position: relative;
-            flex-shrink: 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .contact-icon::before {
-            content: '';
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            border-radius: 10px;
-            transition: all 0.3s;
-        }
-
-        .contact-icon::after {
-            content: '';
-            position: absolute;
-            width: 16px;
-            height: 16px;
-            background: rgba(255, 255, 255, 0.95);
-            border-radius: 4px;
-            transition: all 0.3s;
-        }
-
-        .contact-icon.email::before {
-            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
-        }
-
-        .contact-icon.phone::before {
-            background: linear-gradient(135deg, #30cfd0 0%, #330867 100%);
-        }
-
-        .contact-item:hover .contact-icon::before {
-            transform: scale(1.05);
-        }
-
-        .contact-item:hover .contact-icon::after {
-            transform: scale(0.9);
+            .values-grid {
+                grid-template-columns: 1fr;
+            }
         }
 
         @media (max-width: 768px) {
-            .hero h1 { font-size: 3rem; letter-spacing: 10px; }
-            .collection-grid { grid-template-columns: 1fr; }
-            .featured-container { grid-template-columns: 1fr; }
-            .lookbook-grid { grid-template-columns: 1fr; }
-            .lookbook-item:nth-child(1) { grid-column: span 1; grid-row: span 1; }
-            .categories-grid { grid-template-columns: repeat(2, 1fr); }
-            .instagram-grid { grid-template-columns: repeat(3, 1fr); }
-            .nav-menu { display: none; }
-            .newsletter-form { flex-direction: column; }
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 56px;
+                letter-spacing: 6px;
+            }
+
+            .content-header h1 {
+                font-size: 42px;
+            }
+
+            .collection-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .lookbook-gallery {
+                grid-template-columns: 1fr;
+            }
+
+            .lookbook-item:first-child {
+                grid-column: span 1;
+            }
+
+            .contact-container {
+                padding: 50px 30px;
+            }
         }
     </style>
 </head>
 <body>
-    <!-- Navigation -->
-    <nav>
-        <div class="nav-container">
-            <div class="logo">NOIR</div>
-            <ul class="nav-menu">
-                <li><a href="#new">NEW IN</a></li>
-                <li><a href="#women">WOMEN</a></li>
-                <li><a href="#men">MEN</a></li>
-                <li><a href="#lookbook">LOOKBOOK</a></li>
-                <li><a href="#about">ABOUT</a></li>
+    <header>
+        <nav>
+            <div class="logo" data-page="home">MAISON</div>
+            <ul class="nav-links">
+                <li><a href="#home" data-page="home">Home</a></li>
+                <li><a href="#collection" data-page="collection">Collection</a></li>
+                <li><a href="#lookbook" data-page="lookbook">Lookbook</a></li>
+                <li><a href="#about" data-page="about">About</a></li>
+                <li><a href="#contact" data-page="contact">Contact</a></li>
             </ul>
             <div class="nav-icons">
-                <span class="icon search"></span>
-                <span class="icon favorite"></span>
-                <span class="icon cart"></span>
-                <span class="icon user"></span>
+                <button class="icon-btn" onclick="alert('Search fashion items...')">🔍</button>
+                <button class="icon-btn" onclick="alert('Wishlist is empty')">❤️</button>
+                <button class="icon-btn" onclick="alert('Shopping bag is empty')">🛍️</button>
+                <button class="icon-btn" onclick="alert('Account / Sign In')">👤</button>
             </div>
-        </div>
-    </nav>
+        </nav>
+    </header>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="hero-content">
-            <h1>NOIR</h1>
-            <p>2024 WINTER COLLECTION</p>
-            <button class="shop-btn">SHOP NOW</button>
+    <!-- HOME Page -->
+    <section id="home" class="page-section active">
+        <div class="hero" style="background-image: url('https://images.pexels.com/photos/291762/pexels-photo-291762.jpeg?auto=compress&cs=tinysrgb&w=1920');">
+            <div class="hero-content">
+                <h1>MAISON</h1>
+                <p>Winter Collection 2024</p>
+                <button class="hero-btn" onclick="showPage('collection')">Discover Collection</button>
+            </div>
         </div>
     </section>
 
-    <!-- New Collection Section -->
-    <section class="new-collection" id="new">
-        <div class="section-header">
-            <h2 class="section-title">NEW ARRIVALS</h2>
-            <p class="section-subtitle">최신 컬렉션을 만나보세요</p>
-        </div>
-
-        <div class="collection-grid">
-            <div class="collection-item">
-                <div class="collection-image"></div>
-                <div class="collection-info">
-                    <p class="collection-category">OUTERWEAR</p>
-                    <h3 class="collection-name">Wool Blend Coat</h3>
-                    <p class="collection-price">₩489,000</p>
-                </div>
+    <!-- COLLECTION Page -->
+    <section id="collection" class="page-section">
+        <div class="content">
+            <div class="content-header fade-in">
+                <h1>New Arrivals</h1>
+                <p>Winter Collection 2024</p>
             </div>
 
-            <div class="collection-item">
-                <div class="collection-image" style="background: linear-gradient(135deg, #FA8BFF 0%, #2BD2FF 100%);"></div>
-                <div class="collection-info">
-                    <p class="collection-category">KNITWEAR</p>
-                    <h3 class="collection-name">Cashmere Turtleneck</h3>
-                    <p class="collection-price">₩329,000</p>
+            <div class="collection-grid">
+                <div class="collection-item fade-in">
+                    <img src="https://images.pexels.com/photos/1926769/pexels-photo-1926769.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Wool Cashmere Coat" class="collection-image">
+                    <p class="collection-category">Outerwear</p>
+                    <h3 class="collection-name">Wool Cashmere Coat</h3>
+                    <p class="collection-price">$1,290</p>
                 </div>
-            </div>
 
-            <div class="collection-item">
-                <div class="collection-image" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);"></div>
-                <div class="collection-info">
-                    <p class="collection-category">TAILORING</p>
-                    <h3 class="collection-name">Double-Breasted Blazer</h3>
-                    <p class="collection-price">₩589,000</p>
+                <div class="collection-item fade-in">
+                    <img src="https://images.pexels.com/photos/1661471/pexels-photo-1661471.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Silk Evening Dress" class="collection-image">
+                    <p class="collection-category">Dresses</p>
+                    <h3 class="collection-name">Silk Evening Dress</h3>
+                    <p class="collection-price">$890</p>
                 </div>
-            </div>
 
-            <div class="collection-item">
-                <div class="collection-image" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);"></div>
-                <div class="collection-info">
-                    <p class="collection-category">DRESSES</p>
-                    <h3 class="collection-name">Silk Midi Dress</h3>
-                    <p class="collection-price">₩429,000</p>
-                </div>
-            </div>
-
-            <div class="collection-item">
-                <div class="collection-image" style="background: linear-gradient(135deg, #FDBB2D 0%, #22C1C3 100%);"></div>
-                <div class="collection-info">
-                    <p class="collection-category">ACCESSORIES</p>
+                <div class="collection-item fade-in">
+                    <img src="https://images.pexels.com/photos/2584269/pexels-photo-2584269.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Leather Handbag" class="collection-image">
+                    <p class="collection-category">Accessories</p>
                     <h3 class="collection-name">Leather Handbag</h3>
-                    <p class="collection-price">₩729,000</p>
+                    <p class="collection-price">$1,450</p>
                 </div>
-            </div>
 
-            <div class="collection-item">
-                <div class="collection-image" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);"></div>
-                <div class="collection-info">
-                    <p class="collection-category">FOOTWEAR</p>
+                <div class="collection-item fade-in">
+                    <img src="https://images.pexels.com/photos/1926769/pexels-photo-1926769.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Cashmere Sweater" class="collection-image">
+                    <p class="collection-category">Knitwear</p>
+                    <h3 class="collection-name">Cashmere Sweater</h3>
+                    <p class="collection-price">$680</p>
+                </div>
+
+                <div class="collection-item fade-in">
+                    <img src="https://images.pexels.com/photos/1598507/pexels-photo-1598507.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Tailored Trousers" class="collection-image">
+                    <p class="collection-category">Tailoring</p>
+                    <h3 class="collection-name">Tailored Trousers</h3>
+                    <p class="collection-price">$520</p>
+                </div>
+
+                <div class="collection-item fade-in">
+                    <img src="https://images.pexels.com/photos/2220315/pexels-photo-2220315.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Ankle Boots" class="collection-image">
+                    <p class="collection-category">Footwear</p>
                     <h3 class="collection-name">Ankle Boots</h3>
-                    <p class="collection-price">₩389,000</p>
+                    <p class="collection-price">$790</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="featured-section">
+            <div class="featured-container">
+                <img src="https://images.pexels.com/photos/1036622/pexels-photo-1036622.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Featured Collection" class="featured-image slide-in-left">
+                <div class="featured-content slide-in-right">
+                    <h2>Timeless Elegance</h2>
+                    <p>
+                        Our Winter 2024 collection celebrates the art of refined simplicity.
+                        Each piece is meticulously crafted from the finest materials, combining
+                        classic silhouettes with contemporary details.
+                    </p>
+                    <p>
+                        From luxurious cashmere coats to exquisitely tailored evening wear,
+                        every item embodies our commitment to exceptional quality and enduring style.
+                    </p>
+                    <button class="hero-btn" style="border-color: #1a1a1a; color: #1a1a1a;" onclick="showPage('about')">
+                        Learn More
+                    </button>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Featured Section -->
-    <section class="featured">
-        <div class="featured-container">
-            <div class="featured-image"></div>
-            <div class="featured-content">
-                <h2>TIMELESS<br>ELEGANCE</h2>
-                <p>
-                    시간을 초월한 우아함. NOIR의 2024 겨울 컬렉션은
-                    클래식한 실루엣과 현대적인 감각이 조화를 이룹니다.
-                </p>
-                <p>
-                    최고급 원단과 정교한 디테일로 완성된 프리미엄 의류는
-                    당신의 일상에 특별함을 더합니다.
-                </p>
-                <button class="shop-btn" style="color: #000; border-color: #000;">
-                    DISCOVER MORE
-                </button>
+    <!-- LOOKBOOK Page -->
+    <section id="lookbook" class="page-section">
+        <div class="content">
+            <div class="content-header fade-in">
+                <h1>Lookbook</h1>
+                <p>Winter 2024 Collection</p>
             </div>
-        </div>
-    </section>
 
-    <!-- Lookbook Section -->
-    <section class="lookbook" id="lookbook">
-        <div class="section-header">
-            <h2 class="section-title">LOOKBOOK</h2>
-            <p class="section-subtitle">2024 Winter Collection</p>
-        </div>
-
-        <div class="lookbook-grid">
-            <div class="lookbook-item">
-                <div class="lookbook-image"></div>
-                <div class="lookbook-overlay">
-                    <h3>WINTER ESSENTIALS</h3>
-                </div>
-            </div>
-            <div class="lookbook-item">
-                <div class="lookbook-image" style="background: linear-gradient(135deg, #FA8BFF 0%, #2BD2FF 100%);"></div>
-                <div class="lookbook-overlay">
-                    <h3>TAILORED SUITING</h3>
-                </div>
-            </div>
-            <div class="lookbook-item">
-                <div class="lookbook-image" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);"></div>
-                <div class="lookbook-overlay">
-                    <h3>EVENING WEAR</h3>
-                </div>
-            </div>
-            <div class="lookbook-item">
-                <div class="lookbook-image" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);"></div>
-                <div class="lookbook-overlay">
-                    <h3>CASUAL CHIC</h3>
-                </div>
-            </div>
-            <div class="lookbook-item">
-                <div class="lookbook-image" style="background: linear-gradient(135deg, #FDBB2D 0%, #22C1C3 100%);"></div>
-                <div class="lookbook-overlay">
-                    <h3>LAYERING</h3>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Brand Story Section -->
-    <section class="brand-story" id="about">
-        <div class="brand-story-content">
-            <h2>OUR STORY</h2>
-            <p>
-                2015년 서울에서 시작된 NOIR는 미니멀하면서도 세련된 디자인으로
-                현대 여성과 남성의 라이프스타일을 재정의합니다.
-            </p>
-            <p>
-                우리는 시간이 지나도 변하지 않는 가치,
-                지속 가능한 패션, 그리고 완벽한 핏을 추구합니다.
-            </p>
-            <p>
-                NOIR와 함께 당신만의 스타일을 완성하세요.
-            </p>
-        </div>
-    </section>
-
-    <!-- Categories Section -->
-    <section class="categories">
-        <div class="section-header">
-            <h2 class="section-title">SHOP BY CATEGORY</h2>
-            <p class="section-subtitle">카테고리별로 둘러보세요</p>
-        </div>
-
-        <div class="categories-grid">
-            <div class="category-card">
-                <div class="category-image"></div>
-                <h3 class="category-name">OUTERWEAR</h3>
-            </div>
-            <div class="category-card">
-                <div class="category-image"></div>
-                <h3 class="category-name">KNITWEAR</h3>
-            </div>
-            <div class="category-card">
-                <div class="category-image"></div>
-                <h3 class="category-name">TAILORING</h3>
-            </div>
-            <div class="category-card">
-                <div class="category-image"></div>
-                <h3 class="category-name">ACCESSORIES</h3>
-            </div>
-        </div>
-    </section>
-
-    <!-- Newsletter Section -->
-    <section class="newsletter">
-        <h2>STAY UPDATED</h2>
-        <p>최신 컬렉션과 특별 혜택을 가장 먼저 받아보세요</p>
-
-        <form class="newsletter-form">
-            <input type="email" class="newsletter-input" placeholder="이메일 주소를 입력하세요" required>
-            <button type="submit" class="newsletter-btn">SUBSCRIBE</button>
-        </form>
-    </section>
-
-    <!-- Instagram Section -->
-    <section class="instagram">
-        <div class="section-header">
-            <h2 class="section-title">@NOIR_OFFICIAL</h2>
-            <p class="section-subtitle">Instagram에서 더 많은 스타일을 만나보세요</p>
-        </div>
-
-        <div class="instagram-grid">
-            <div class="instagram-item"></div>
-            <div class="instagram-item" style="background: linear-gradient(135deg, #FA8BFF 0%, #2BD2FF 100%);"></div>
-            <div class="instagram-item" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);"></div>
-            <div class="instagram-item" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);"></div>
-            <div class="instagram-item" style="background: linear-gradient(135deg, #FDBB2D 0%, #22C1C3 100%);"></div>
-            <div class="instagram-item" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);"></div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-        <div class="footer-container">
-            <div class="footer-section">
-                <h3>CUSTOMER SERVICE</h3>
-                <ul>
-                    <li><a href="#">Contact Us</a></li>
-                    <li><a href="#">Shipping & Returns</a></li>
-                    <li><a href="#">Size Guide</a></li>
-                    <li><a href="#">FAQs</a></li>
-                    <li><a href="#">Track Order</a></li>
-                </ul>
-            </div>
-            <div class="footer-section">
-                <h3>ABOUT NOIR</h3>
-                <ul>
-                    <li><a href="#">Our Story</a></li>
-                    <li><a href="#">Sustainability</a></li>
-                    <li><a href="#">Careers</a></li>
-                    <li><a href="#">Press</a></li>
-                    <li><a href="#">Stores</a></li>
-                </ul>
-            </div>
-            <div class="footer-section">
-                <h3>FOLLOW US</h3>
-                <ul>
-                    <li><a href="#">Instagram</a></li>
-                    <li><a href="#">Facebook</a></li>
-                    <li><a href="#">Pinterest</a></li>
-                    <li><a href="#">YouTube</a></li>
-                    <li><a href="#">TikTok</a></li>
-                </ul>
-            </div>
-            <div class="footer-section">
-                <h3>NEWSLETTER</h3>
-                <p style="color: #999; margin-bottom: 1.5rem; line-height: 1.8; font-size: 0.95rem;">
-                    최신 컬렉션과 특별 이벤트 소식을 가장 먼저 받아보세요.
-                </p>
-                <div class="contact-info">
-                    <div class="contact-item">
-                        <div class="contact-icon email"></div>
-                        <span style="color: #fff; font-size: 1rem; letter-spacing: 1px;">hello@noir.com</span>
+            <div class="lookbook-gallery">
+                <div class="lookbook-item">
+                    <img src="https://images.pexels.com/photos/1055691/pexels-photo-1055691.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Lookbook 1" class="lookbook-image" style="height: 100%;">
+                    <div class="lookbook-overlay">
+                        <h3>Winter Essentials</h3>
                     </div>
-                    <div class="contact-item">
-                        <div class="contact-icon phone"></div>
-                        <span style="color: #fff; font-size: 1rem; letter-spacing: 1px;">1588-0000</span>
+                </div>
+                <div class="lookbook-item">
+                    <img src="https://images.pexels.com/photos/1926769/pexels-photo-1926769.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Lookbook 2" class="lookbook-image" style="height: 450px;">
+                    <div class="lookbook-overlay">
+                        <h3>Outerwear</h3>
+                    </div>
+                </div>
+                <div class="lookbook-item">
+                    <img src="https://images.pexels.com/photos/1661471/pexels-photo-1661471.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Lookbook 3" class="lookbook-image" style="height: 450px;">
+                    <div class="lookbook-overlay">
+                        <h3>Evening Wear</h3>
+                    </div>
+                </div>
+                <div class="lookbook-item">
+                    <img src="https://images.pexels.com/photos/2043590/pexels-photo-2043590.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Lookbook 4" class="lookbook-image" style="height: 450px;">
+                    <div class="lookbook-overlay">
+                        <h3>Accessories</h3>
+                    </div>
+                </div>
+                <div class="lookbook-item">
+                    <img src="https://images.pexels.com/photos/1598507/pexels-photo-1598507.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Lookbook 5" class="lookbook-image" style="height: 450px;">
+                    <div class="lookbook-overlay">
+                        <h3>Tailoring</h3>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="footer-bottom">
-            <p>&copy; 2024 NOIR. ALL RIGHTS RESERVED. | PRIVACY POLICY | TERMS & CONDITIONS</p>
+    </section>
+
+    <!-- ABOUT Page -->
+    <section id="about" class="page-section">
+        <div class="content">
+            <div class="about-content fade-in">
+                <h2>Our Story</h2>
+                <p>
+                    Founded in 2018, MAISON represents the pinnacle of luxury fashion.
+                    We believe in creating pieces that transcend trends, focusing instead on timeless
+                    elegance and exceptional craftsmanship.
+                </p>
+                <p>
+                    Every garment in our collection is a testament to our dedication to quality.
+                    From sourcing the finest fabrics to the meticulous attention paid to every stitch,
+                    we ensure that each piece meets our exacting standards.
+                </p>
+                <p>
+                    Our philosophy is simple: luxury should be sustainable, style should be timeless,
+                    and fashion should make you feel extraordinary.
+                </p>
+            </div>
+
+            <div class="values-grid">
+                <div class="value-item fade-in">
+                    <div class="value-icon">✨</div>
+                    <h3>Exceptional Quality</h3>
+                    <p>Only the finest materials and craftsmanship. Each piece is created to last a lifetime.</p>
+                </div>
+
+                <div class="value-item fade-in">
+                    <div class="value-icon">🌿</div>
+                    <h3>Sustainable Luxury</h3>
+                    <p>We are committed to ethical practices and environmental responsibility in every aspect of our business.</p>
+                </div>
+
+                <div class="value-item fade-in">
+                    <div class="value-icon">💎</div>
+                    <h3>Timeless Design</h3>
+                    <p>Our collections are designed to transcend seasons, offering enduring style and elegance.</p>
+                </div>
+            </div>
         </div>
-    </footer>
+    </section>
+
+    <!-- CONTACT Page -->
+    <section id="contact" class="page-section">
+        <div class="content">
+            <div class="content-header fade-in">
+                <h1>Get In Touch</h1>
+                <p>We'd Love to Hear From You</p>
+            </div>
+
+            <div class="contact-container fade-in">
+                <form onsubmit="alert('Thank you for your message. Our team will respond within 24 hours.'); return false;">
+                    <div class="form-group">
+                        <label>Full Name *</label>
+                        <input type="text" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Email Address *</label>
+                        <input type="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Phone Number</label>
+                        <input type="tel">
+                    </div>
+                    <div class="form-group">
+                        <label>Message *</label>
+                        <textarea required placeholder="How can we assist you?"></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn-large">Send Message</button>
+                </form>
+
+                <div style="margin-top: 60px; text-align: center; padding-top: 60px; border-top: 1px solid #e0e0e0;">
+                    <h3 style="font-family: 'Playfair Display', serif; font-size: 28px; margin-bottom: 30px; color: #1a1a1a; letter-spacing: 1px;">Visit Our Boutique</h3>
+                    <p style="color: #666; font-size: 16px; line-height: 2;">
+                        <strong style="color: #1a1a1a;">Fifth Avenue Flagship</strong><br>
+                        520 Fifth Avenue, New York, NY 10036<br>
+                        Monday - Saturday: 10AM - 8PM<br>
+                        Sunday: 12PM - 6PM<br><br>
+                        <strong style="color: #1a1a1a;">Phone:</strong> +1 (212) 555-0199<br>
+                        <strong style="color: #1a1a1a;">Email:</strong> boutique@maison.com
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Page Navigation
+        function showPage(pageId) {
+            document.querySelectorAll('.page-section').forEach(section => {
+                section.classList.remove('active');
+            });
+
+            const targetPage = document.getElementById(pageId);
+            if (targetPage) {
+                targetPage.classList.add('active');
+                window.scrollTo(0, 0);
+                initializeAnimations();
+            }
+        }
+
+        // Navigation click handlers
+        document.querySelectorAll('[data-page]').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const pageId = link.getAttribute('data-page');
+                showPage(pageId);
+                window.location.hash = pageId;
+            });
+        });
+
+        // Handle browser back/forward
+        window.addEventListener('hashchange', () => {
+            const pageId = window.location.hash.slice(1) || 'home';
+            showPage(pageId);
+        });
+
+        // Initialize on load
+        window.addEventListener('DOMContentLoaded', () => {
+            const pageId = window.location.hash.slice(1) || 'home';
+            showPage(pageId);
+        });
+
+        // Scroll Animations
+        function initializeAnimations() {
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -100px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, observerOptions);
+
+            const activePage = document.querySelector('.page-section.active');
+            if (activePage) {
+                activePage.querySelectorAll('.fade-in, .slide-in-left, .slide-in-right').forEach(el => {
+                    el.classList.remove('visible');
+                    observer.observe(el);
+                });
+
+                setTimeout(() => {
+                    activePage.querySelectorAll('.hero .fade-in').forEach(el => {
+                        el.classList.add('visible');
+                    });
+                }, 100);
+            }
+        }
+    </script>
 </body>
 </html>

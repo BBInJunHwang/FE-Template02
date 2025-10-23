@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LA MAISON - 파인 다이닝 레스토랑</title>
+    <title>AZURE DINING - Premium Fine Dining Restaurant</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -12,623 +13,896 @@
         }
 
         body {
-            font-family: 'Georgia', serif;
-            background: #0a0a0a;
-            color: #fff;
+            font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
             line-height: 1.6;
-            scroll-behavior: smooth;
+            overflow-x: hidden;
+            background: #0f0f0f;
+            color: #fff;
         }
 
-        /* Navigation */
-        nav {
+        /* Page sections */
+        .page-section {
+            display: none;
+        }
+        .page-section.active {
+            display: block;
+        }
+
+        /* Header */
+        header {
+            background: rgba(15, 15, 15, 0.98);
+            backdrop-filter: blur(20px);
+            padding: 20px 0;
             position: fixed;
-            top: 0;
             width: 100%;
-            background: rgba(10, 10, 10, 0.95);
-            backdrop-filter: blur(10px);
+            top: 0;
             z-index: 1000;
-            padding: 1.5rem 0;
-            border-bottom: 1px solid rgba(197, 169, 115, 0.2);
+            border-bottom: 1px solid rgba(180, 142, 87, 0.15);
         }
 
-        .nav-container {
+        nav {
             max-width: 1400px;
             margin: 0 auto;
-            padding: 0 2rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            padding: 0 40px;
         }
 
         .logo {
-            font-size: 2rem;
-            font-weight: 300;
-            letter-spacing: 4px;
-            color: #C5A973;
-            font-family: 'Palatino', serif;
-        }
-
-        .nav-menu {
-            display: flex;
-            gap: 3rem;
-            list-style: none;
-        }
-
-        .nav-menu a {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 36px;
+            color: #B48E57;
+            font-weight: 400;
+            letter-spacing: 3px;
             text-decoration: none;
-            color: #fff;
-            font-weight: 300;
-            letter-spacing: 2px;
-            font-size: 0.9rem;
-            transition: color 0.3s;
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            cursor: pointer;
         }
 
-        .nav-menu a:hover {
-            color: #C5A973;
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 50px;
+        }
+
+        .nav-links a {
+            color: #e0e0e0;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 400;
+            letter-spacing: 2px;
+            transition: color 0.3s;
+            text-transform: uppercase;
+        }
+
+        .nav-links a:hover {
+            color: #B48E57;
         }
 
         .reserve-btn {
-            padding: 0.8rem 2rem;
+            padding: 12px 30px;
             background: transparent;
-            border: 1px solid #C5A973;
-            color: #C5A973;
-            border-radius: 0;
-            cursor: pointer;
+            border: 1px solid #B48E57;
+            color: #B48E57;
+            font-size: 13px;
             letter-spacing: 2px;
-            font-size: 0.9rem;
+            cursor: pointer;
             transition: all 0.3s;
+            text-transform: uppercase;
+            font-weight: 500;
         }
 
         .reserve-btn:hover {
-            background: #C5A973;
-            color: #0a0a0a;
+            background: #B48E57;
+            color: #0f0f0f;
         }
 
         /* Hero Section */
         .hero {
-            margin-top: 80px;
             height: 100vh;
-            position: relative;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
-                        url('https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1920&q=80');
             background-size: cover;
             background-position: center;
-            background-attachment: fixed;
-        }
-
-        .hero-content {
-            text-align: center;
-            max-width: 900px;
-            padding: 2rem;
-        }
-
-        .hero h1 {
-            font-size: 5rem;
-            margin-bottom: 1rem;
-            font-weight: 300;
-            letter-spacing: 8px;
-            color: #C5A973;
-        }
-
-        .hero-subtitle {
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
-            letter-spacing: 4px;
-            font-weight: 300;
-            opacity: 0.9;
-        }
-
-        .hero-description {
-            font-size: 1.1rem;
-            margin-bottom: 3rem;
-            line-height: 2;
-            font-style: italic;
-            color: #ddd;
-        }
-
-        /* About Section */
-        .about {
-            padding: 8rem 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 6rem;
-            align-items: center;
-        }
-
-        .about-image {
-            width: 100%;
-            height: 500px;
-            background: url('https://images.unsplash.com/photo-1600565193348-f74bd3c7ccdf?w=800&q=80') center/cover;
-            border-radius: 2px;
-        }
-
-        .about-content h2 {
-            font-size: 3rem;
-            margin-bottom: 2rem;
-            font-weight: 300;
-            letter-spacing: 4px;
-            color: #C5A973;
-        }
-
-        .about-content p {
-            font-size: 1.1rem;
-            line-height: 2;
-            margin-bottom: 1.5rem;
-            color: #ccc;
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-        }
-
-        /* Menu Section */
-        .menu {
-            background: #111;
-            padding: 8rem 2rem;
-        }
-
-        .menu-container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .section-title {
-            text-align: center;
-            font-size: 3.5rem;
-            margin-bottom: 1rem;
-            font-weight: 300;
-            letter-spacing: 6px;
-            color: #C5A973;
-        }
-
-        .section-subtitle {
-            text-align: center;
-            font-size: 1.1rem;
-            margin-bottom: 5rem;
-            letter-spacing: 3px;
-            color: #999;
-            font-weight: 300;
-        }
-
-        .menu-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-            gap: 4rem;
-        }
-
-        .menu-item {
-            padding-bottom: 2rem;
-            border-bottom: 1px solid rgba(197, 169, 115, 0.2);
-        }
-
-        .menu-header {
             display: flex;
-            justify-content: space-between;
-            align-items: baseline;
-            margin-bottom: 1rem;
-        }
-
-        .menu-name {
-            font-size: 1.5rem;
-            color: #C5A973;
-            font-weight: 300;
-            letter-spacing: 2px;
-        }
-
-        .menu-price {
-            font-size: 1.3rem;
-            color: #C5A973;
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-        }
-
-        .menu-description {
-            color: #999;
-            line-height: 1.8;
-            font-size: 0.95rem;
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-        }
-
-        /* Chef Section */
-        .chef {
-            padding: 8rem 2rem;
-            background: #0a0a0a;
-        }
-
-        .chef-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 6rem;
-            align-items: center;
-        }
-
-        .chef-image {
-            width: 100%;
-            height: 600px;
-            background: linear-gradient(135deg, #8B7355 0%, #C5A973 100%);
-            border-radius: 2px;
-        }
-
-        .chef-content h2 {
-            font-size: 3rem;
-            margin-bottom: 2rem;
-            font-weight: 300;
-            letter-spacing: 4px;
-            color: #C5A973;
-        }
-
-        .chef-content h3 {
-            font-size: 1.5rem;
-            margin-bottom: 3rem;
-            font-weight: 300;
-            letter-spacing: 3px;
-            color: #999;
-        }
-
-        .chef-content p {
-            font-size: 1.1rem;
-            line-height: 2;
-            margin-bottom: 1.5rem;
-            color: #ccc;
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-        }
-
-        .awards {
-            margin-top: 3rem;
-            padding-top: 3rem;
-            border-top: 1px solid rgba(197, 169, 115, 0.2);
-        }
-
-        .award-item {
-            margin-bottom: 1.5rem;
-            color: #C5A973;
-            font-size: 1.1rem;
-            letter-spacing: 2px;
-            display: flex;
-            align-items: center;
-            gap: 1.5rem;
-        }
-
-        .award-icon {
-            width: 50px;
-            height: 50px;
-            border-radius: 16px;
-            position: relative;
-            flex-shrink: 0;
-        }
-
-        .award-icon::after {
-            content: '';
-            position: absolute;
-            top: 6px;
-            left: 6px;
-            right: 6px;
-            bottom: 6px;
-            background: rgba(10, 10, 10, 0.95);
-            border-radius: 10px;
-        }
-
-        /* Reservation Section */
-        .reservation {
-            background: linear-gradient(135deg, #C5A973 0%, #8B7355 100%);
-            padding: 8rem 2rem;
-            text-align: center;
-        }
-
-        .reservation h2 {
-            font-size: 3.5rem;
-            margin-bottom: 2rem;
-            font-weight: 300;
-            letter-spacing: 6px;
-            color: #0a0a0a;
-        }
-
-        .reservation p {
-            font-size: 1.2rem;
-            margin-bottom: 3rem;
-            color: rgba(10, 10, 10, 0.8);
-            letter-spacing: 2px;
-        }
-
-        .reservation-form {
-            max-width: 600px;
-            margin: 0 auto;
-            display: grid;
-            gap: 1.5rem;
-        }
-
-        .form-group {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1.5rem;
-        }
-
-        input, select, textarea {
-            padding: 1rem;
-            background: rgba(255, 255, 255, 0.95);
-            border: none;
-            font-size: 1rem;
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-            letter-spacing: 1px;
-        }
-
-        textarea {
-            height: 120px;
-            resize: none;
-        }
-
-        .submit-btn {
-            padding: 1.2rem;
-            background: #0a0a0a;
-            color: #C5A973;
-            border: none;
-            cursor: pointer;
-            font-size: 1rem;
-            letter-spacing: 3px;
-            transition: all 0.3s;
-            margin-top: 1rem;
-        }
-
-        .submit-btn:hover {
-            background: #1a1a1a;
-        }
-
-        /* Info Section */
-        .info {
-            padding: 8rem 2rem;
-            background: #111;
-        }
-
-        .info-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 4rem;
-        }
-
-        .info-box h3 {
-            font-size: 1.8rem;
-            margin-bottom: 2rem;
-            font-weight: 300;
-            letter-spacing: 3px;
-            color: #C5A973;
-        }
-
-        .info-box p {
-            color: #999;
-            line-height: 2;
-            font-size: 1.05rem;
-            margin-bottom: 1rem;
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-        }
-
-        /* Footer */
-        footer {
-            background: #0a0a0a;
-            padding: 4rem 2rem 2rem;
-            border-top: 1px solid rgba(197, 169, 115, 0.2);
-        }
-
-        .footer-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            text-align: center;
-        }
-
-        .footer-logo {
-            font-size: 2.5rem;
-            margin-bottom: 2rem;
-            letter-spacing: 6px;
-            color: #C5A973;
-            font-family: 'Palatino', serif;
-            font-weight: 300;
-        }
-
-        .social-icons {
-            display: flex;
-            gap: 2rem;
+            flex-direction: column;
             justify-content: center;
-            margin-bottom: 2rem;
-        }
-
-        .social-icon {
-            width: 50px;
-            height: 50px;
-            display: flex;
             align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: all 0.3s;
-            border-radius: 16px;
+            text-align: center;
+            color: #fff;
             position: relative;
-            overflow: hidden;
+            margin-top: 70px;
         }
 
-        .social-icon::before {
+        .hero::before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
             right: 0;
             bottom: 0;
-            border-radius: 16px;
-            transition: opacity 0.3s;
+            background: rgba(0, 0, 0, 0.45);
         }
 
-        .social-icon::after {
-            content: '';
-            position: absolute;
-            top: 6px;
-            left: 6px;
-            right: 6px;
-            bottom: 6px;
-            background: rgba(10, 10, 10, 0.95);
-            border-radius: 10px;
+        .hero-content {
+            position: relative;
             z-index: 1;
-            transition: all 0.3s;
+            max-width: 1200px;
+            padding: 0 20px;
         }
 
-        .social-icon:hover::after {
-            background: rgba(10, 10, 10, 0.7);
+        .hero h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 110px;
+            font-weight: 400;
+            margin-bottom: 30px;
+            letter-spacing: 6px;
+            text-shadow: 2px 2px 15px rgba(0, 0, 0, 0.7);
+            color: #B48E57;
         }
 
-        .footer-bottom {
-            padding-top: 2rem;
-            color: #666;
-            font-size: 0.9rem;
+        .hero p {
+            font-size: 22px;
+            font-weight: 300;
+            letter-spacing: 3px;
+            line-height: 1.8;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Content Section */
+        .content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 120px 40px;
+        }
+
+        .content-header {
+            text-align: center;
+            margin-bottom: 100px;
+        }
+
+        .content-header h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 72px;
+            font-weight: 400;
+            color: #B48E57;
+            margin-bottom: 25px;
+            letter-spacing: 4px;
+        }
+
+        .content-header p {
+            font-size: 18px;
+            color: #999;
+            font-weight: 300;
             letter-spacing: 2px;
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        }
+
+        /* Two Column Layout */
+        .two-column {
+            display: flex;
+            gap: 80px;
+            align-items: center;
+            margin-bottom: 100px;
+        }
+
+        .column {
+            flex: 1;
+        }
+
+        .column img {
+            width: 100%;
+            height: 550px;
+            object-fit: cover;
+            border-radius: 4px;
+        }
+
+        .column h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 48px;
+            margin-bottom: 30px;
+            color: #B48E57;
+            font-weight: 400;
+            letter-spacing: 2px;
+        }
+
+        .column h3 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            margin-top: 50px;
+            color: #e0e0e0;
+            font-weight: 500;
+            letter-spacing: 1px;
+        }
+
+        .column p {
+            font-size: 17px;
+            line-height: 2;
+            color: #aaa;
+            margin-bottom: 20px;
+            font-weight: 300;
+        }
+
+        .column ul {
+            list-style: none;
+            margin-top: 40px;
+        }
+
+        .column ul li {
+            font-size: 17px;
+            color: #ccc;
+            margin-bottom: 20px;
+            padding-left: 25px;
+            position: relative;
+            line-height: 1.8;
+        }
+
+        .column ul li::before {
+            content: '◆';
+            color: #B48E57;
+            font-size: 14px;
+            position: absolute;
+            left: 0;
+        }
+
+        /* Menu Tabs */
+        .menu-tabs {
+            display: flex;
+            gap: 40px;
+            justify-content: center;
+            margin-bottom: 80px;
+            border-bottom: 1px solid rgba(180, 142, 87, 0.2);
+        }
+
+        .menu-tab {
+            padding: 20px 35px;
+            font-size: 16px;
+            color: #999;
+            cursor: pointer;
+            border: none;
+            background: none;
+            transition: all 0.3s;
+            border-bottom: 2px solid transparent;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-weight: 500;
+        }
+
+        .menu-tab.active {
+            color: #B48E57;
+            border-bottom: 2px solid #B48E57;
+        }
+
+        /* Menu Content */
+        .menu-content {
+            display: none;
+        }
+
+        .menu-content.active {
+            display: block;
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 50px;
+        }
+
+        .menu-item {
+            padding-bottom: 35px;
+            border-bottom: 1px solid rgba(180, 142, 87, 0.15);
+        }
+
+        .menu-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 15px;
+        }
+
+        .menu-name {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 26px;
+            color: #B48E57;
+            font-weight: 400;
+            letter-spacing: 1px;
+        }
+
+        .menu-price {
+            font-size: 22px;
+            color: #B48E57;
+            font-weight: 500;
+        }
+
+        .menu-description {
+            color: #999;
+            line-height: 1.9;
+            font-size: 15px;
+        }
+
+        /* Chef Section */
+        .chef-container {
+            display: flex;
+            gap: 100px;
+            align-items: center;
+        }
+
+        .chef-image {
+            flex: 0 0 45%;
+            height: 650px;
+            background-size: cover;
+            background-position: center;
+            border-radius: 4px;
+        }
+
+        .chef-text {
+            flex: 1;
+        }
+
+        .chef-quote {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 28px;
+            font-style: italic;
+            color: #B48E57;
+            margin-bottom: 40px;
+            line-height: 1.7;
+            font-weight: 400;
+        }
+
+        .awards {
+            margin-top: 60px;
+            padding-top: 60px;
+            border-top: 1px solid rgba(180, 142, 87, 0.2);
+        }
+
+        .award-item {
+            margin-bottom: 30px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .award-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #B48E57 0%, #8B6F3E 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            flex-shrink: 0;
+        }
+
+        .award-text {
+            font-size: 17px;
+            color: #ccc;
+            letter-spacing: 1px;
+        }
+
+        /* Gallery Section */
+        .gallery-section {
+            margin: 100px 0;
+        }
+
+        .gallery-slider {
+            position: relative;
+            max-width: 1100px;
+            margin: 0 auto;
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .slider-track {
+            position: relative;
+            width: 100%;
+            height: 550px;
+        }
+
+        .gallery-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 1s ease;
+        }
+
+        .gallery-slide.active {
+            opacity: 1;
+        }
+
+        .gallery-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .gallery-caption {
+            position: absolute;
+            bottom: 40px;
+            left: 40px;
+            color: #fff;
+            text-shadow: 2px 2px 15px rgba(0, 0, 0, 0.8);
+        }
+
+        .gallery-caption h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 36px;
+            margin-bottom: 10px;
+            font-weight: 400;
+            letter-spacing: 2px;
+        }
+
+        .gallery-caption p {
+            font-size: 16px;
+            letter-spacing: 1px;
+        }
+
+        .slider-dots {
+            position: absolute;
+            bottom: 30px;
+            right: 40px;
+            display: flex;
+            gap: 12px;
+            z-index: 10;
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.4);
+            cursor: pointer;
+            transition: all 0.4s;
+        }
+
+        .dot.active {
+            background: #B48E57;
+            width: 35px;
+            border-radius: 6px;
+        }
+
+        .dot:hover {
+            background: rgba(255, 255, 255, 0.7);
+        }
+
+        /* Contact Section */
+        .contact-container {
+            display: flex;
+            gap: 60px;
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+
+        .contact-form-section {
+            flex: 1;
+            background: rgba(25, 25, 25, 0.8);
+            padding: 60px;
+            border-radius: 8px;
+            border: 1px solid rgba(180, 142, 87, 0.15);
+        }
+
+        .contact-form-section h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 42px;
+            margin-bottom: 40px;
+            color: #B48E57;
+            font-weight: 400;
+            letter-spacing: 2px;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 10px;
+            color: #ccc;
+            font-size: 14px;
+            font-weight: 400;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .form-row {
+            display: flex;
+            gap: 20px;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 16px 20px;
+            background: rgba(40, 40, 40, 0.8);
+            border: 1px solid rgba(180, 142, 87, 0.2);
+            border-radius: 4px;
+            font-size: 15px;
+            font-family: inherit;
+            color: #fff;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #B48E57;
+        }
+
+        .form-group textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .submit-btn-large {
+            width: 100%;
+            padding: 18px;
+            background: #B48E57;
+            color: #0f0f0f;
+            border: none;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: background 0.3s;
+            margin-top: 15px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .submit-btn-large:hover {
+            background: #9a7546;
+        }
+
+        .contact-info-section {
+            flex: 0 0 400px;
+        }
+
+        .info-card {
+            background: rgba(25, 25, 25, 0.8);
+            padding: 50px 40px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            border: 1px solid rgba(180, 142, 87, 0.15);
+        }
+
+        .info-card h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 28px;
+            margin-bottom: 30px;
+            color: #B48E57;
+            font-weight: 400;
+            letter-spacing: 2px;
+        }
+
+        .info-item {
+            margin-bottom: 30px;
+        }
+
+        .info-item-title {
+            font-size: 15px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #e0e0e0;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .info-item-detail {
+            color: #999;
+            font-size: 15px;
+            line-height: 1.8;
+        }
+
+        /* Scroll Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .slide-in-left {
+            opacity: 0;
+            transform: translateX(-100px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .slide-in-left.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .slide-in-right {
+            opacity: 0;
+            transform: translateX(100px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .slide-in-right.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .two-column,
+            .chef-container,
+            .contact-container {
+                flex-direction: column;
+            }
+
+            .menu-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .chef-image {
+                height: 450px;
+                width: 100%;
+            }
+
+            .contact-info-section {
+                flex: 1;
+            }
         }
 
         @media (max-width: 768px) {
-            .hero h1 { font-size: 3rem; }
-            .about, .chef-container { grid-template-columns: 1fr; }
-            .menu-grid { grid-template-columns: 1fr; }
-            .form-group { grid-template-columns: 1fr; }
-            .nav-menu { display: none; }
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 60px;
+            }
+
+            .content-header h1 {
+                font-size: 48px;
+            }
+
+            .menu-tabs {
+                flex-wrap: wrap;
+                gap: 20px;
+            }
+
+            .slider-track {
+                height: 350px;
+            }
         }
     </style>
 </head>
 <body>
-    <!-- Navigation -->
-    <nav>
-        <div class="nav-container">
-            <div class="logo">LA MAISON</div>
-            <ul class="nav-menu">
-                <li><a href="#about">ABOUT</a></li>
-                <li><a href="#menu">MENU</a></li>
-                <li><a href="#chef">CHEF</a></li>
-                <li><a href="#contact">CONTACT</a></li>
+    <header>
+        <nav>
+            <div class="logo" data-page="home">AZURE DINING</div>
+            <ul class="nav-links">
+                <li><a href="#home" data-page="home">Home</a></li>
+                <li><a href="#about" data-page="about">About</a></li>
+                <li><a href="#menu" data-page="menu">Menu</a></li>
+                <li><a href="#chef" data-page="chef">Chef</a></li>
+                <li><a href="#gallery" data-page="gallery">Gallery</a></li>
+                <li><a href="#contact" data-page="contact">Contact</a></li>
             </ul>
-            <button class="reserve-btn" onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'});">RESERVE</button>
-        </div>
-    </nav>
+            <button class="reserve-btn" onclick="showPage('contact')">Reserve</button>
+        </nav>
+    </header>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="hero-content">
-            <h1>LA MAISON</h1>
-            <p class="hero-subtitle">FINE DINING EXPERIENCE</p>
-            <p class="hero-description">
-                프랑스 전통 요리법과 현대적 감각이 어우러진<br>
-                특별한 미식 경험을 선사합니다
-            </p>
-            <button class="reserve-btn" style="padding: 1rem 3rem; font-size: 1rem;" onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'});">예약하기</button>
+    <!-- HOME Page -->
+    <section id="home" class="page-section active">
+        <div class="hero" style="background-image: url('https://images.pexels.com/photos/262978/pexels-photo-262978.jpeg?auto=compress&cs=tinysrgb&w=1920');">
+            <div class="hero-content">
+                <h1>AZURE DINING</h1>
+                <p>Experience the Art of Contemporary Fine Dining<br>where Culinary Excellence meets Timeless Elegance</p>
+            </div>
         </div>
     </section>
 
-    <!-- About Section -->
-    <section class="about" id="about">
-        <div class="about-image"></div>
-        <div class="about-content">
-            <h2>OUR STORY</h2>
-            <p>
-                2010년 서울 강남에 문을 연 LA MAISON은 정통 프랑스 요리의 정수를
-                현대적으로 재해석한 파인 다이닝 레스토랑입니다.
-            </p>
-            <p>
-                엄선된 제철 식재료와 정교한 조리법, 그리고 예술적인 플레이팅으로
-                잊을 수 없는 미식 경험을 제공합니다.
-            </p>
-            <p>
-                미슐랭 2스타의 영예를 5년 연속 유지하며, 대한민국 최고의
-                파인 다이닝 레스토랑으로 자리매김했습니다.
-            </p>
+    <!-- ABOUT Page -->
+    <section id="about" class="page-section">
+        <div class="content">
+            <div class="content-header fade-in">
+                <h1>Our Philosophy</h1>
+                <p>A Journey Through Flavor and Artistry</p>
+            </div>
+
+            <div class="two-column">
+                <div class="column slide-in-left">
+                    <img src="https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg?auto=compress&cs=tinysrgb&w=900" alt="Restaurant Interior">
+                </div>
+                <div class="column slide-in-right">
+                    <h2>Redefining Fine Dining</h2>
+                    <p>
+                        Since opening our doors in 2015, Azure Dining has been at the forefront of contemporary fine dining,
+                        earning recognition from Michelin Guide and establishing itself as one of the most sought-after
+                        culinary destinations.
+                    </p>
+                    <h3>Our Commitment</h3>
+                    <p>
+                        We source only the finest seasonal ingredients from artisan producers and local farms,
+                        ensuring that every dish tells a story of quality, sustainability, and exceptional taste.
+                    </p>
+                    <ul>
+                        <li>Michelin Two Star Recognition (2018-2024)</li>
+                        <li>Zagat's Best Fine Dining Experience 2023</li>
+                        <li>Wine Spectator Grand Award Winner</li>
+                        <li>Top 50 Restaurants by Gourmet Magazine</li>
+                        <li>James Beard Foundation Semifinalist</li>
+                    </ul>
+                </div>
+            </div>
         </div>
     </section>
 
-    <!-- Menu Section -->
-    <section class="menu" id="menu">
-        <div class="menu-container">
-            <h2 class="section-title">MENU</h2>
-            <p class="section-subtitle">SIGNATURE DISHES</p>
+    <!-- MENU Page -->
+    <section id="menu" class="page-section">
+        <div class="content">
+            <div class="content-header fade-in">
+                <h1>Our Menu</h1>
+                <p>Artfully Crafted Seasonal Cuisine</p>
+            </div>
 
-            <div class="menu-grid">
-                <div>
+            <div class="menu-tabs fade-in">
+                <button class="menu-tab active" data-menu="appetizers">Appetizers</button>
+                <button class="menu-tab" data-menu="mains">Main Courses</button>
+                <button class="menu-tab" data-menu="desserts">Desserts</button>
+            </div>
+
+            <div class="menu-content active" data-menu="appetizers">
+                <div class="menu-grid">
                     <div class="menu-item">
                         <div class="menu-header">
-                            <h3 class="menu-name">Foie Gras Terrine</h3>
-                            <span class="menu-price">58,000</span>
+                            <h3 class="menu-name">Seared Scallops</h3>
+                            <span class="menu-price">$42</span>
                         </div>
                         <p class="menu-description">
-                            프랑스산 푸아그라 테린, 브리오슈, 무화과 콩피
+                            Diver scallops with cauliflower purée, capers, and brown butter
                         </p>
                     </div>
 
                     <div class="menu-item">
                         <div class="menu-header">
-                            <h3 class="menu-name">Lobster Bisque</h3>
-                            <span class="menu-price">45,000</span>
+                            <h3 class="menu-name">Foie Gras Torchon</h3>
+                            <span class="menu-price">$58</span>
                         </div>
                         <p class="menu-description">
-                            랍스터 비스크 수프, 코냑, 타라곤
+                            Hudson Valley foie gras with brioche, fig compote, and Sauternes gelée
                         </p>
                     </div>
 
                     <div class="menu-item">
                         <div class="menu-header">
-                            <h3 class="menu-name">Beef Wellington</h3>
-                            <span class="menu-price">125,000</span>
+                            <h3 class="menu-name">Tuna Tartare</h3>
+                            <span class="menu-price">$38</span>
                         </div>
                         <p class="menu-description">
-                            호주산 와규 안심, 뒤셀 소스, 퍼프 페이스트리
+                            Yellowfin tuna with avocado, sesame, and yuzu-soy dressing
                         </p>
                     </div>
 
                     <div class="menu-item">
                         <div class="menu-header">
-                            <h3 class="menu-name">Duck Confit</h3>
-                            <span class="menu-price">89,000</span>
+                            <h3 class="menu-name">Burrata & Heirloom Tomatoes</h3>
+                            <span class="menu-price">$32</span>
                         </div>
                         <p class="menu-description">
-                            프랑스식 오리 꽁피, 그라탱 도피누아
+                            Fresh burrata with heirloom tomatoes, basil, and aged balsamic
                         </p>
                     </div>
                 </div>
+            </div>
 
-                <div>
+            <div class="menu-content" data-menu="mains">
+                <div class="menu-grid">
                     <div class="menu-item">
                         <div class="menu-header">
-                            <h3 class="menu-name">Sea Bass en Papillote</h3>
-                            <span class="menu-price">95,000</span>
+                            <h3 class="menu-name">Wagyu Beef Tenderloin</h3>
+                            <span class="menu-price">$125</span>
                         </div>
                         <p class="menu-description">
-                            농어 파피요트, 지중해 허브, 레몬 버터 소스
+                            Japanese A5 wagyu with truffle mashed potatoes and red wine reduction
                         </p>
                     </div>
 
                     <div class="menu-item">
                         <div class="menu-header">
-                            <h3 class="menu-name">Rack of Lamb</h3>
-                            <span class="menu-price">115,000</span>
+                            <h3 class="menu-name">Pan-Roasted Sea Bass</h3>
+                            <span class="menu-price">$78</span>
                         </div>
                         <p class="menu-description">
-                            뉴질랜드산 양갈비, 로즈마리, 적포도주 소스
+                            Chilean sea bass with roasted fennel, olives, and lemon butter
+                        </p>
+                    </div>
+
+                    <div class="menu-item">
+                        <div class="menu-header">
+                            <h3 class="menu-name">Lamb Rack</h3>
+                            <span class="menu-price">$98</span>
+                        </div>
+                        <p class="menu-description">
+                            Colorado lamb rack with rosemary, garlic, and mint chimichurri
+                        </p>
+                    </div>
+
+                    <div class="menu-item">
+                        <div class="menu-header">
+                            <h3 class="menu-name">Lobster Risotto</h3>
+                            <span class="menu-price">$85</span>
+                        </div>
+                        <p class="menu-description">
+                            Maine lobster with saffron risotto, peas, and lobster bisque
+                        </p>
+                    </div>
+
+                    <div class="menu-item">
+                        <div class="menu-header">
+                            <h3 class="menu-name">Duck Breast</h3>
+                            <span class="menu-price">$72</span>
+                        </div>
+                        <p class="menu-description">
+                            Muscovy duck breast with cherry gastrique and wild mushrooms
+                        </p>
+                    </div>
+
+                    <div class="menu-item">
+                        <div class="menu-header">
+                            <h3 class="menu-name">Vegetarian Tasting</h3>
+                            <span class="menu-price">$65</span>
+                        </div>
+                        <p class="menu-description">
+                            Chef's selection of seasonal vegetables with artisan grains
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="menu-content" data-menu="desserts">
+                <div class="menu-grid">
+                    <div class="menu-item">
+                        <div class="menu-header">
+                            <h3 class="menu-name">Dark Chocolate Soufflé</h3>
+                            <span class="menu-price">$28</span>
+                        </div>
+                        <p class="menu-description">
+                            Valrhona chocolate soufflé with vanilla bean ice cream
+                        </p>
+                    </div>
+
+                    <div class="menu-item">
+                        <div class="menu-header">
+                            <h3 class="menu-name">Lemon Tart</h3>
+                            <span class="menu-price">$24</span>
+                        </div>
+                        <p class="menu-description">
+                            Meyer lemon tart with Italian meringue and raspberry coulis
                         </p>
                     </div>
 
                     <div class="menu-item">
                         <div class="menu-header">
                             <h3 class="menu-name">Crème Brûlée</h3>
-                            <span class="menu-price">28,000</span>
+                            <span class="menu-price">$22</span>
                         </div>
                         <p class="menu-description">
-                            바닐라 크렘 브륄레, 베리 컴포트
+                            Classic vanilla bean crème brûlée with fresh berries
                         </p>
                     </div>
 
                     <div class="menu-item">
                         <div class="menu-header">
-                            <h3 class="menu-name">Tarte Tatin</h3>
-                            <span class="menu-price">32,000</span>
+                            <h3 class="menu-name">Seasonal Sorbet Selection</h3>
+                            <span class="menu-price">$18</span>
                         </div>
                         <p class="menu-description">
-                            캐러멜 사과 타르트, 바닐라 아이스크림
+                            House-made sorbets with fresh fruit and mint
                         </p>
                     </div>
                 </div>
@@ -636,119 +910,371 @@
         </div>
     </section>
 
-    <!-- Chef Section -->
-    <section class="chef" id="chef">
-        <div class="chef-container">
-            <div class="chef-image"></div>
-            <div class="chef-content">
-                <h2>CHEF</h2>
-                <h3>Jean-Pierre Dubois</h3>
-                <p>
-                    파리 Le Cordon Bleu를 수석 졸업한 뒤, 미슐랭 3스타
-                    레스토랑에서 15년간 경력을 쌓았습니다.
-                </p>
-                <p>
-                    프랑스 전통 요리의 정수를 지키면서도 현대적 감각을
-                    더해 새로운 미식의 세계를 열어가고 있습니다.
-                </p>
-                <p>
-                    "요리는 단순히 음식을 만드는 것이 아닙니다.
-                    그것은 예술이며, 사랑이고, 삶입니다."
-                </p>
+    <!-- CHEF Page -->
+    <section id="chef" class="page-section">
+        <div class="content">
+            <div class="content-header fade-in">
+                <h1>Executive Chef</h1>
+                <p>Master of Culinary Arts</p>
+            </div>
 
-                <div class="awards">
-                    <div class="award-item">
-                        <div class="award-icon" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);"></div>
-                        <span>Michelin Star (2019-2024)</span>
-                    </div>
-                    <div class="award-item">
-                        <div class="award-icon" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);"></div>
-                        <span>Best Chef Award 2022</span>
-                    </div>
-                    <div class="award-item">
-                        <div class="award-icon" style="background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);"></div>
-                        <span>Author of "Modern French Cuisine"</span>
+            <div class="chef-container">
+                <div class="chef-image slide-in-left" style="background-image: url('https://images.pexels.com/photos/2253643/pexels-photo-2253643.jpeg?auto=compress&cs=tinysrgb&w=900');"></div>
+                <div class="chef-text slide-in-right">
+                    <h2 style="font-family: 'Cormorant Garamond', serif; font-size: 48px; color: #B48E57; margin-bottom: 15px; font-weight: 400; letter-spacing: 2px;">Alessandro Moretti</h2>
+                    <p style="font-size: 20px; color: #999; margin-bottom: 40px; letter-spacing: 1px;">Executive Chef & Culinary Director</p>
+
+                    <p class="chef-quote">
+                        "Cooking is not just about technique—it's about passion, creativity, and the endless pursuit
+                        of perfection. Every plate that leaves our kitchen tells a story."
+                    </p>
+
+                    <p style="font-size: 17px; line-height: 2; color: #aaa; margin-bottom: 20px;">
+                        Chef Alessandro Moretti brings over 25 years of culinary experience from Michelin-starred
+                        restaurants across Europe. Trained in the classical French tradition at Le Cordon Bleu Paris,
+                        he has worked alongside legendary chefs in Italy, France, and Spain.
+                    </p>
+
+                    <p style="font-size: 17px; line-height: 2; color: #aaa; margin-bottom: 20px;">
+                        His innovative approach combines traditional techniques with modern gastronomy, creating
+                        dishes that are both visually stunning and unforgettable in flavor.
+                    </p>
+
+                    <div class="awards">
+                        <div class="award-item">
+                            <div class="award-icon">★</div>
+                            <div class="award-text">Michelin Two Stars (2018-2024)</div>
+                        </div>
+                        <div class="award-item">
+                            <div class="award-icon">★</div>
+                            <div class="award-text">James Beard Award Semifinalist</div>
+                        </div>
+                        <div class="award-item">
+                            <div class="award-icon">★</div>
+                            <div class="award-text">Best New Chef - Food & Wine Magazine</div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Reservation Section -->
-    <section class="reservation" id="contact">
-        <h2>RESERVATION</h2>
-        <p>특별한 경험을 위한 예약</p>
+    <!-- GALLERY Page -->
+    <section id="gallery" class="page-section">
+        <div class="content">
+            <div class="content-header fade-in">
+                <h1>Gallery</h1>
+                <p>A Visual Journey Through Our Culinary World</p>
+            </div>
 
-        <form class="reservation-form" onsubmit="alert('예약 신청이 접수되었습니다. 담당자가 곧 연락드리겠습니다.'); return false;">
-            <div class="form-group">
-                <input type="text" placeholder="성함" required>
-                <input type="tel" placeholder="연락처" required>
-            </div>
-            <div class="form-group">
-                <input type="date" required>
-                <select required>
-                    <option value="">시간 선택</option>
-                    <option value="18:00">18:00</option>
-                    <option value="18:30">18:30</option>
-                    <option value="19:00">19:00</option>
-                    <option value="19:30">19:30</option>
-                    <option value="20:00">20:00</option>
-                    <option value="20:30">20:30</option>
-                </select>
-            </div>
-            <select required>
-                <option value="">인원 선택</option>
-                <option value="2">2명</option>
-                <option value="3">3명</option>
-                <option value="4">4명</option>
-                <option value="5">5명</option>
-                <option value="6+">6명 이상</option>
-            </select>
-            <textarea placeholder="특별한 요청사항 (선택)"></textarea>
-            <button type="submit" class="submit-btn">예약하기</button>
-        </form>
-    </section>
-
-    <!-- Info Section -->
-    <section class="info">
-        <div class="info-container">
-            <div class="info-box">
-                <h3>HOURS</h3>
-                <p>화요일 - 토요일<br>18:00 - 22:00</p>
-                <p>일요일 - 월요일<br>정기 휴무</p>
-            </div>
-            <div class="info-box">
-                <h3>LOCATION</h3>
-                <p>서울특별시 강남구<br>청담동 123-45</p>
-                <p>청담역 3번 출구<br>도보 5분</p>
-            </div>
-            <div class="info-box">
-                <h3>CONTACT</h3>
-                <p>전화: 02-1234-5678<br>이메일: info@lamaison.kr</p>
-                <p>예약 문의<br>평일 10:00 - 17:00</p>
+            <div class="gallery-section fade-in">
+                <div class="gallery-slider">
+                    <div class="slider-track">
+                        <div class="gallery-slide active">
+                            <img src="https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Elegant Dining Room">
+                            <div class="gallery-caption">
+                                <h3>Main Dining Room</h3>
+                                <p>Sophisticated Ambiance</p>
+                            </div>
+                        </div>
+                        <div class="gallery-slide">
+                            <img src="https://images.pexels.com/photos/1126728/pexels-photo-1126728.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Signature Dish">
+                            <div class="gallery-caption">
+                                <h3>Wagyu Perfection</h3>
+                                <p>Japanese A5 Tenderloin</p>
+                            </div>
+                        </div>
+                        <div class="gallery-slide">
+                            <img src="https://images.pexels.com/photos/958545/pexels-photo-958545.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Fine Wine Selection">
+                            <div class="gallery-caption">
+                                <h3>Wine Cellar</h3>
+                                <p>5,000+ Curated Bottles</p>
+                            </div>
+                        </div>
+                        <div class="gallery-slide">
+                            <img src="https://images.pexels.com/photos/1267320/pexels-photo-1267320.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Chef's Table">
+                            <div class="gallery-caption">
+                                <h3>Chef's Table Experience</h3>
+                                <p>Exclusive Kitchen View</p>
+                            </div>
+                        </div>
+                        <div class="gallery-slide">
+                            <img src="https://images.pexels.com/photos/262978/pexels-photo-262978.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Private Dining">
+                            <div class="gallery-caption">
+                                <h3>Private Dining Room</h3>
+                                <p>Intimate Celebrations</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slider-dots"></div>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer>
-        <div class="footer-content">
-            <div class="footer-logo">LA MAISON</div>
-            <div class="social-icons">
-                <div class="social-icon" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);">
-                    <div style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%); width: 100%; height: 100%; border-radius: 16px;"></div>
-                </div>
-                <div class="social-icon" style="background: linear-gradient(135deg, #30cfd0 0%, #330867 100%);">
-                    <div style="background: linear-gradient(135deg, #30cfd0 0%, #330867 100%); width: 100%; height: 100%; border-radius: 16px;"></div>
-                </div>
-                <div class="social-icon" style="background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);">
-                    <div style="background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%); width: 100%; height: 100%; border-radius: 16px;"></div>
-                </div>
+    <!-- CONTACT Page -->
+    <section id="contact" class="page-section">
+        <div class="content">
+            <div class="content-header fade-in">
+                <h1>Reservations</h1>
+                <p>Join Us for an Unforgettable Dining Experience</p>
             </div>
-            <div class="footer-bottom">
-                <p>&copy; 2024 LA MAISON. ALL RIGHTS RESERVED.</p>
+
+            <div class="contact-container">
+                <div class="contact-form-section slide-in-left">
+                    <h2>Make a Reservation</h2>
+                    <form onsubmit="alert('Thank you for your reservation request. Our team will contact you shortly to confirm.'); return false;">
+                        <div class="form-row">
+                            <div class="form-group" style="flex: 1;">
+                                <label>Full Name *</label>
+                                <input type="text" required>
+                            </div>
+                            <div class="form-group" style="flex: 1;">
+                                <label>Phone Number *</label>
+                                <input type="tel" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Email Address *</label>
+                            <input type="email" required>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group" style="flex: 1;">
+                                <label>Date *</label>
+                                <input type="date" required>
+                            </div>
+                            <div class="form-group" style="flex: 1;">
+                                <label>Time *</label>
+                                <select required>
+                                    <option value="">Select Time</option>
+                                    <option value="17:30">5:30 PM</option>
+                                    <option value="18:00">6:00 PM</option>
+                                    <option value="18:30">6:30 PM</option>
+                                    <option value="19:00">7:00 PM</option>
+                                    <option value="19:30">7:30 PM</option>
+                                    <option value="20:00">8:00 PM</option>
+                                    <option value="20:30">8:30 PM</option>
+                                    <option value="21:00">9:00 PM</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Number of Guests *</label>
+                            <select required>
+                                <option value="">Select Party Size</option>
+                                <option value="1">1 Guest</option>
+                                <option value="2">2 Guests</option>
+                                <option value="3">3 Guests</option>
+                                <option value="4">4 Guests</option>
+                                <option value="5">5 Guests</option>
+                                <option value="6">6 Guests</option>
+                                <option value="7+">7+ Guests (Special Event)</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Special Requests</label>
+                            <textarea placeholder="Dietary restrictions, allergies, special occasions..."></textarea>
+                        </div>
+                        <button type="submit" class="submit-btn-large">Confirm Reservation</button>
+                    </form>
+                </div>
+
+                <div class="contact-info-section slide-in-right">
+                    <div class="info-card">
+                        <h3>Contact Information</h3>
+                        <div class="info-item">
+                            <p class="info-item-title">📍 Location</p>
+                            <p class="info-item-detail">
+                                425 Park Avenue<br>
+                                New York, NY 10022<br>
+                                United States
+                            </p>
+                        </div>
+                        <div class="info-item">
+                            <p class="info-item-title">📞 Phone</p>
+                            <p class="info-item-detail">
+                                +1 (212) 555-0123<br>
+                                Reservations: +1 (212) 555-0124
+                            </p>
+                        </div>
+                        <div class="info-item">
+                            <p class="info-item-title">✉️ Email</p>
+                            <p class="info-item-detail">
+                                reservations@azuredining.com
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="info-card">
+                        <h3>Hours</h3>
+                        <div class="info-item">
+                            <p class="info-item-title">Dinner Service</p>
+                            <p class="info-item-detail">
+                                Tuesday - Thursday: 5:30 PM - 10:00 PM<br>
+                                Friday - Saturday: 5:30 PM - 11:00 PM<br>
+                                Sunday: 5:30 PM - 9:00 PM
+                            </p>
+                        </div>
+                        <div class="info-item">
+                            <p class="info-item-title">Closed</p>
+                            <p class="info-item-detail">Monday</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-    </footer>
+    </section>
+
+    <script>
+        // Page Navigation
+        function showPage(pageId) {
+            document.querySelectorAll('.page-section').forEach(section => {
+                section.classList.remove('active');
+            });
+
+            const targetPage = document.getElementById(pageId);
+            if (targetPage) {
+                targetPage.classList.add('active');
+                window.scrollTo(0, 0);
+                initializeAnimations();
+
+                if (pageId === 'menu') {
+                    initializeMenuPage();
+                }
+
+                if (pageId === 'gallery') {
+                    initializeGalleryPage();
+                }
+            }
+        }
+
+        // Navigation click handlers
+        document.querySelectorAll('[data-page]').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const pageId = link.getAttribute('data-page');
+                showPage(pageId);
+                window.location.hash = pageId;
+            });
+        });
+
+        // Handle browser back/forward
+        window.addEventListener('hashchange', () => {
+            const pageId = window.location.hash.slice(1) || 'home';
+            showPage(pageId);
+        });
+
+        // Initialize on load
+        window.addEventListener('DOMContentLoaded', () => {
+            const pageId = window.location.hash.slice(1) || 'home';
+            showPage(pageId);
+        });
+
+        // Scroll Animations
+        function initializeAnimations() {
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -100px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, observerOptions);
+
+            const activePage = document.querySelector('.page-section.active');
+            if (activePage) {
+                activePage.querySelectorAll('.fade-in, .slide-in-left, .slide-in-right').forEach(el => {
+                    el.classList.remove('visible');
+                    observer.observe(el);
+                });
+
+                setTimeout(() => {
+                    activePage.querySelectorAll('.hero .fade-in, .hero .slide-in-left, .hero .slide-in-right').forEach(el => {
+                        el.classList.add('visible');
+                    });
+                }, 100);
+            }
+        }
+
+        // Menu Page Initialization
+        function initializeMenuPage() {
+            const tabs = document.querySelectorAll('.menu-tab');
+            const contents = document.querySelectorAll('.menu-content');
+
+            tabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    const menu = tab.dataset.menu;
+
+                    tabs.forEach(t => t.classList.remove('active'));
+                    tab.classList.add('active');
+
+                    contents.forEach(content => {
+                        if (content.dataset.menu === menu) {
+                            content.classList.add('active');
+                        } else {
+                            content.classList.remove('active');
+                        }
+                    });
+                });
+            });
+        }
+
+        // Gallery Page Initialization
+        function initializeGalleryPage() {
+            const slides = document.querySelectorAll('.gallery-slide');
+            const dotsContainer = document.querySelector('.slider-dots');
+
+            if (slides.length > 0 && dotsContainer && dotsContainer.children.length === 0) {
+                let currentSlide = 0;
+                let autoSlideInterval;
+
+                // Create dots
+                slides.forEach((_, index) => {
+                    const dot = document.createElement('span');
+                    dot.classList.add('dot');
+                    if (index === 0) dot.classList.add('active');
+                    dot.addEventListener('click', () => goToSlide(index));
+                    dotsContainer.appendChild(dot);
+                });
+
+                const dots = document.querySelectorAll('.dot');
+
+                function goToSlide(index) {
+                    slides[currentSlide].classList.remove('active');
+                    dots[currentSlide].classList.remove('active');
+
+                    currentSlide = index;
+
+                    slides[currentSlide].classList.add('active');
+                    dots[currentSlide].classList.add('active');
+                }
+
+                function nextSlide() {
+                    const next = (currentSlide + 1) % slides.length;
+                    goToSlide(next);
+                }
+
+                function startAutoSlide() {
+                    autoSlideInterval = setInterval(nextSlide, 4000);
+                }
+
+                function stopAutoSlide() {
+                    clearInterval(autoSlideInterval);
+                }
+
+                startAutoSlide();
+
+                const slider = document.querySelector('.gallery-slider');
+                if (slider) {
+                    slider.addEventListener('mouseenter', stopAutoSlide);
+                    slider.addEventListener('mouseleave', startAutoSlide);
+                }
+            }
+        }
+    </script>
 </body>
 </html>
