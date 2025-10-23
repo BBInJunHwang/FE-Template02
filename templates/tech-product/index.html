@@ -1,0 +1,809 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>APEX Pro - Innovation Redefined</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            overflow-x: hidden;
+            color: #1d1d1f;
+            background: #fbfbfd;
+        }
+
+        .page-section {
+            display: none;
+        }
+
+        .page-section.active {
+            display: block;
+        }
+
+        /* Header */
+        header {
+            background: rgba(255, 255, 255, 0.8);
+            padding: 15px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: saturate(180%) blur(20px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+        }
+
+        nav {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 40px;
+        }
+
+        .logo {
+            font-size: 24px;
+            color: #1d1d1f;
+            font-weight: 800;
+            text-decoration: none;
+            letter-spacing: -0.5px;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 40px;
+        }
+
+        .nav-links a {
+            color: #1d1d1f;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #0066CC;
+        }
+
+        .nav-actions {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .buy-btn {
+            padding: 8px 18px;
+            background: #0066CC;
+            color: #fff;
+            border: none;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+        }
+
+        .buy-btn:hover {
+            background: #0055b3;
+            transform: translateY(-2px);
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            margin-top: 60px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #fff;
+        }
+
+        .hero-content {
+            max-width: 900px;
+            padding: 0 20px;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: 96px;
+            font-weight: 900;
+            margin-bottom: 20px;
+            letter-spacing: -3px;
+            line-height: 1.05;
+        }
+
+        .hero .subtitle {
+            font-size: 32px;
+            font-weight: 300;
+            margin-bottom: 15px;
+            letter-spacing: -0.5px;
+        }
+
+        .hero .description {
+            font-size: 21px;
+            font-weight: 400;
+            margin-bottom: 40px;
+            opacity: 0.9;
+        }
+
+        .hero .price {
+            font-size: 28px;
+            font-weight: 600;
+            margin-bottom: 30px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .primary-btn {
+            padding: 16px 40px;
+            background: #fff;
+            color: #0066CC;
+            border: none;
+            border-radius: 25px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .primary-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .secondary-btn {
+            padding: 16px 40px;
+            background: transparent;
+            color: #fff;
+            border: 2px solid #fff;
+            border-radius: 25px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .secondary-btn:hover {
+            background: #fff;
+            color: #667eea;
+        }
+
+        .hero-image {
+            margin-top: 60px;
+            max-width: 800px;
+            width: 90%;
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: auto;
+            filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.3));
+        }
+
+        /* Content */
+        .content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 100px 40px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 56px;
+            font-weight: 800;
+            color: #1d1d1f;
+            margin-bottom: 20px;
+            letter-spacing: -2px;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 28px;
+            font-weight: 400;
+            color: #6e6e73;
+            margin-bottom: 80px;
+        }
+
+        /* Feature Grid */
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            margin: 80px 0;
+        }
+
+        .feature-card {
+            background: #fff;
+            padding: 50px 40px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.12);
+        }
+
+        .feature-icon {
+            font-size: 64px;
+            margin-bottom: 25px;
+        }
+
+        .feature-card h3 {
+            font-size: 28px;
+            margin-bottom: 15px;
+            font-weight: 700;
+            color: #1d1d1f;
+        }
+
+        .feature-card p {
+            font-size: 17px;
+            color: #6e6e73;
+            line-height: 1.7;
+        }
+
+        /* Spec Section */
+        .spec-section {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: #fff;
+            padding: 120px 40px;
+            margin: 100px 0;
+        }
+
+        .spec-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 80px;
+            align-items: center;
+        }
+
+        .spec-image img {
+            width: 100%;
+            height: auto;
+            border-radius: 20px;
+        }
+
+        .spec-details h2 {
+            font-size: 48px;
+            margin-bottom: 30px;
+            font-weight: 800;
+            letter-spacing: -1px;
+        }
+
+        .spec-list {
+            list-style: none;
+        }
+
+        .spec-list li {
+            font-size: 20px;
+            margin-bottom: 25px;
+            padding-left: 35px;
+            position: relative;
+            line-height: 1.6;
+        }
+
+        .spec-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #4ade80;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        /* Product Showcase */
+        .product-showcase {
+            display: flex;
+            gap: 60px;
+            align-items: center;
+            margin: 120px 0;
+        }
+
+        .product-showcase.reverse {
+            flex-direction: row-reverse;
+        }
+
+        .showcase-image {
+            flex: 1;
+        }
+
+        .showcase-image img {
+            width: 100%;
+            height: auto;
+            border-radius: 20px;
+        }
+
+        .showcase-content {
+            flex: 1;
+        }
+
+        .showcase-content h2 {
+            font-size: 48px;
+            margin-bottom: 25px;
+            font-weight: 800;
+            color: #1d1d1f;
+            letter-spacing: -1px;
+        }
+
+        .showcase-content p {
+            font-size: 21px;
+            line-height: 1.7;
+            color: #6e6e73;
+            margin-bottom: 20px;
+        }
+
+        /* Comparison Table */
+        .comparison-section {
+            background: #fff;
+            padding: 100px 40px;
+            margin: 80px 0;
+        }
+
+        .comparison-table {
+            max-width: 1200px;
+            margin: 60px auto 0;
+            border-collapse: collapse;
+            width: 100%;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+        .comparison-table th {
+            background: #f5f5f7;
+            padding: 25px 20px;
+            text-align: left;
+            font-size: 16px;
+            font-weight: 700;
+            color: #1d1d1f;
+        }
+
+        .comparison-table td {
+            padding: 25px 20px;
+            border-bottom: 1px solid #f0f0f0;
+            font-size: 17px;
+            color: #6e6e73;
+        }
+
+        .comparison-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .comparison-table .model-name {
+            font-weight: 700;
+            color: #0066CC;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #fff;
+            padding: 120px 40px;
+            text-align: center;
+            margin: 100px 0 0;
+        }
+
+        .cta-section h2 {
+            font-size: 64px;
+            margin-bottom: 25px;
+            font-weight: 900;
+            letter-spacing: -2px;
+        }
+
+        .cta-section p {
+            font-size: 24px;
+            margin-bottom: 50px;
+            opacity: 0.9;
+        }
+
+        /* Footer */
+        footer {
+            background: #1d1d1f;
+            color: #f5f5f7;
+            padding: 80px 40px 40px;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+
+        .footer-section h3 {
+            font-size: 14px;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .footer-section a {
+            display: block;
+            font-size: 13px;
+            color: #a1a1a6;
+            line-height: 2.2;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-section a:hover {
+            color: #fff;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid #424245;
+            font-size: 12px;
+            color: #a1a1a6;
+        }
+
+        @media (max-width: 1024px) {
+            .feature-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .spec-content, .product-showcase {
+                grid-template-columns: 1fr;
+                flex-direction: column;
+            }
+
+            .product-showcase.reverse {
+                flex-direction: column;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 56px;
+            }
+
+            .section-title {
+                font-size: 40px;
+            }
+
+            .feature-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-content {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s, transform 0.8s;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="#home" class="logo" data-page="home">APEX</a>
+            <ul class="nav-links">
+                <li><a href="#home" data-page="home">Home</a></li>
+                <li><a href="#features" data-page="features">Features</a></li>
+                <li><a href="#specs" data-page="specs">Tech Specs</a></li>
+                <li><a href="#buy" data-page="buy">Buy</a></li>
+            </ul>
+            <div class="nav-actions">
+                <a href="#" class="buy-btn">Pre-Order Now</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- HOME Page -->
+    <section id="home" class="page-section active">
+        <div class="hero">
+            <div class="hero-content">
+                <h1>APEX Pro</h1>
+                <p class="subtitle">Beyond Innovation</p>
+                <p class="description">Experience the future with our revolutionary foldable display technology</p>
+                <p class="price">Starting at $1,799</p>
+                <div class="hero-buttons">
+                    <a href="#buy" data-page="buy" class="primary-btn">Pre-Order</a>
+                    <a href="#features" data-page="features" class="secondary-btn">Learn More</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="https://images.unsplash.com/photo-1592286927505-b45a3e6b0334?w=1200&q=80" alt="APEX Pro">
+            </div>
+        </div>
+    </section>
+
+    <!-- FEATURES Page -->
+    <section id="features" class="page-section">
+        <div class="content">
+            <h2 class="section-title fade-in">Engineered to Perfection</h2>
+            <p class="section-subtitle fade-in">Every detail crafted with precision</p>
+
+            <div class="feature-grid">
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">📱</div>
+                    <h3>7.8" Foldable AMOLED</h3>
+                    <p>Ultra-thin glass display with 120Hz adaptive refresh rate. Experience seamless multitasking with our revolutionary hinge technology.</p>
+                </div>
+
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">⚡</div>
+                    <h3>All-Day Battery</h3>
+                    <p>5000mAh dual battery system with 65W fast charging. Get 50% charge in just 15 minutes.</p>
+                </div>
+
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">📸</div>
+                    <h3>Pro Camera System</h3>
+                    <p>108MP main sensor with AI-enhanced computational photography. Capture stunning 8K videos.</p>
+                </div>
+
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">🔒</div>
+                    <h3>Enterprise Security</h3>
+                    <p>Military-grade encryption with Knox Vault protection. Your data stays private and secure.</p>
+                </div>
+
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">🎮</div>
+                    <h3>Gaming Beast</h3>
+                    <p>Snapdragon 8 Gen 3 processor with vapor cooling. Console-quality gaming in your pocket.</p>
+                </div>
+
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">🌐</div>
+                    <h3>5G Ultra Connectivity</h3>
+                    <p>Multi-band 5G with Wi-Fi 7 support. Download movies in seconds, stream without buffering.</p>
+                </div>
+            </div>
+
+            <div class="product-showcase fade-in">
+                <div class="showcase-image">
+                    <img src="https://images.unsplash.com/photo-1598327105666-5b89351aff97?w=800&q=80" alt="Multitasking">
+                </div>
+                <div class="showcase-content">
+                    <h2>Multitasking Reimagined</h2>
+                    <p>Run three apps simultaneously with our enhanced split-screen mode. The large foldable display gives you desktop-like productivity on the go.</p>
+                    <p>Seamlessly transition between tablet and phone modes with our innovative Flex Mode that adapts to your needs.</p>
+                </div>
+            </div>
+
+            <div class="product-showcase reverse fade-in">
+                <div class="showcase-image">
+                    <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=800&q=80" alt="Camera">
+                </div>
+                <div class="showcase-content">
+                    <h2>Professional Photography</h2>
+                    <p>Triple rear camera system with 3x optical zoom and advanced night mode. The 108MP sensor captures every detail with stunning clarity.</p>
+                    <p>Director's View lets you see and switch between all lenses while recording, giving you complete creative control.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SPECS Page -->
+    <section id="specs" class="page-section">
+        <div class="spec-section">
+            <div class="spec-content">
+                <div class="spec-image fade-in">
+                    <img src="https://images.unsplash.com/photo-1610945415295-d9bbf067e59c?w=800&q=80" alt="APEX Pro Specs">
+                </div>
+                <div class="spec-details fade-in">
+                    <h2>Technical Excellence</h2>
+                    <ul class="spec-list">
+                        <li>7.8" AMOLED Display (2208 x 1768)</li>
+                        <li>Snapdragon 8 Gen 3 Processor</li>
+                        <li>12GB RAM / 512GB Storage</li>
+                        <li>108MP + 12MP + 12MP Camera</li>
+                        <li>5000mAh Dual Battery</li>
+                        <li>65W Fast Charging</li>
+                        <li>IPX8 Water Resistance</li>
+                        <li>Android 14 with 5 Years Updates</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="content">
+            <div class="comparison-section fade-in">
+                <h2 class="section-title">Compare Models</h2>
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>Model</th>
+                            <th>Display</th>
+                            <th>Storage</th>
+                            <th>Price</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="model-name">APEX Pro</td>
+                            <td>7.8" Foldable AMOLED</td>
+                            <td>512GB</td>
+                            <td>$1,799</td>
+                        </tr>
+                        <tr>
+                            <td class="model-name">APEX Pro Max</td>
+                            <td>7.8" Foldable AMOLED</td>
+                            <td>1TB</td>
+                            <td>$1,999</td>
+                        </tr>
+                        <tr>
+                            <td class="model-name">APEX Ultra</td>
+                            <td>8.0" Foldable AMOLED</td>
+                            <td>1TB + 16GB RAM</td>
+                            <td>$2,299</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- BUY Page -->
+    <section id="buy" class="page-section">
+        <div class="cta-section">
+            <h2 class="fade-in">Pre-Order Today</h2>
+            <p class="fade-in">Limited early bird pricing available</p>
+            <div class="hero-buttons">
+                <button class="primary-btn">Order APEX Pro</button>
+                <button class="secondary-btn">Visit Store</button>
+            </div>
+        </div>
+
+        <div class="content">
+            <h2 class="section-title fade-in">What's in the Box</h2>
+            <div class="feature-grid">
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">📦</div>
+                    <h3>APEX Pro Device</h3>
+                    <p>Premium foldable smartphone with protective film pre-installed</p>
+                </div>
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">🔌</div>
+                    <h3>65W Charger</h3>
+                    <p>Super fast charging adapter with USB-C cable</p>
+                </div>
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">🎧</div>
+                    <h3>Wireless Earbuds</h3>
+                    <p>Premium ANC earbuds with charging case (Pre-order bonus)</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Shop</h3>
+                <a href="#">APEX Pro</a>
+                <a href="#">APEX Ultra</a>
+                <a href="#">Accessories</a>
+                <a href="#">Trade In</a>
+            </div>
+            <div class="footer-section">
+                <h3>Support</h3>
+                <a href="#">Product Help</a>
+                <a href="#">Warranty</a>
+                <a href="#">Contact Us</a>
+                <a href="#">Service Centers</a>
+            </div>
+            <div class="footer-section">
+                <h3>Account</h3>
+                <a href="#">Sign In</a>
+                <a href="#">Orders</a>
+                <a href="#">Returns</a>
+                <a href="#">Profile</a>
+            </div>
+            <div class="footer-section">
+                <h3>Company</h3>
+                <a href="#">About APEX</a>
+                <a href="#">Careers</a>
+                <a href="#">Newsroom</a>
+                <a href="#">Investors</a>
+            </div>
+            <div class="footer-section">
+                <h3>Connect</h3>
+                <a href="#">Instagram</a>
+                <a href="#">Twitter</a>
+                <a href="#">YouTube</a>
+                <a href="#">LinkedIn</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 APEX Technologies. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        function showPage(pageId) {
+            document.querySelectorAll('.page-section').forEach(section => {
+                section.classList.remove('active');
+            });
+
+            const targetPage = document.getElementById(pageId);
+            if (targetPage) {
+                targetPage.classList.add('active');
+                window.scrollTo(0, 0);
+                initializeAnimations();
+            }
+        }
+
+        document.querySelectorAll('[data-page]').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const pageId = link.getAttribute('data-page');
+                showPage(pageId);
+                window.location.hash = pageId;
+            });
+        });
+
+        window.addEventListener('hashchange', () => {
+            const pageId = window.location.hash.slice(1) || 'home';
+            showPage(pageId);
+        });
+
+        window.addEventListener('DOMContentLoaded', () => {
+            const pageId = window.location.hash.slice(1) || 'home';
+            showPage(pageId);
+        });
+
+        function initializeAnimations() {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, {
+                threshold: 0.1,
+                rootMargin: '0px 0px -80px 0px'
+            });
+
+            const activePage = document.querySelector('.page-section.active');
+            if (activePage) {
+                activePage.querySelectorAll('.fade-in').forEach(el => {
+                    el.classList.remove('visible');
+                    observer.observe(el);
+                });
+            }
+        }
+    </script>
+</body>
+</html>

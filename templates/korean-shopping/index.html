@@ -1,0 +1,1230 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>트렌디몰 - 당신의 스타일을 완성하다</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            line-height: 1.6;
+            overflow-x: hidden;
+            color: #333;
+            background: #fff;
+        }
+
+        .page-section {
+            display: none;
+        }
+
+        .page-section.active {
+            display: block;
+        }
+
+        /* Header */
+        header {
+            background: #fff;
+            padding: 15px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid #eee;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        nav {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 30px;
+        }
+
+        .logo {
+            font-size: 28px;
+            color: #FF6B6B;
+            font-weight: 900;
+            text-decoration: none;
+            letter-spacing: -1px;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 35px;
+        }
+
+        .nav-links a {
+            color: #333;
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #FF6B6B;
+        }
+
+        .nav-icons {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .icon-btn {
+            background: none;
+            border: none;
+            font-size: 20px;
+            cursor: pointer;
+            color: #333;
+            transition: color 0.3s;
+        }
+
+        .icon-btn:hover {
+            color: #FF6B6B;
+        }
+
+        .cart-badge {
+            position: relative;
+        }
+
+        .cart-badge::after {
+            content: '3';
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background: #FF6B6B;
+            color: #fff;
+            font-size: 11px;
+            padding: 2px 6px;
+            border-radius: 10px;
+            font-weight: 700;
+        }
+
+        /* Hero Banner */
+        .hero-banner {
+            margin-top: 70px;
+            height: 600px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: #fff;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-banner::before {
+            content: '';
+            position: absolute;
+            width: 150%;
+            height: 150%;
+            background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="2" fill="white" opacity="0.1"/></svg>');
+            animation: float 30s linear infinite;
+        }
+
+        @keyframes float {
+            0% { transform: translate(0, 0) rotate(0deg); }
+            100% { transform: translate(-50px, -50px) rotate(360deg); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            padding: 0 20px;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 14px;
+            margin-bottom: 25px;
+            backdrop-filter: blur(10px);
+        }
+
+        .hero-banner h1 {
+            font-size: 56px;
+            font-weight: 900;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .hero-banner p {
+            font-size: 20px;
+            font-weight: 300;
+            margin-bottom: 40px;
+            opacity: 0.95;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+        }
+
+        .btn-primary {
+            padding: 16px 40px;
+            background: #fff;
+            color: #667eea;
+            border: none;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+            border-radius: 8px;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-secondary {
+            padding: 16px 40px;
+            background: transparent;
+            color: #fff;
+            border: 2px solid #fff;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+            border-radius: 8px;
+        }
+
+        .btn-secondary:hover {
+            background: #fff;
+            color: #667eea;
+        }
+
+        /* Category Section */
+        .category-section {
+            padding: 80px 30px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-header h2 {
+            font-size: 38px;
+            font-weight: 900;
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        .section-header p {
+            font-size: 16px;
+            color: #666;
+        }
+
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 25px;
+        }
+
+        .category-card {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 40px 20px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .category-card:hover {
+            background: #FF6B6B;
+            color: #fff;
+            transform: translateY(-10px);
+        }
+
+        .category-icon {
+            font-size: 48px;
+            margin-bottom: 15px;
+        }
+
+        .category-card h3 {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .category-card p {
+            font-size: 13px;
+            opacity: 0.8;
+        }
+
+        /* Product Grid */
+        .product-section {
+            padding: 80px 30px;
+            background: #f8f9fa;
+        }
+
+        .product-grid {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+        }
+
+        .product-card {
+            background: #fff;
+            border-radius: 15px;
+            overflow: hidden;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .product-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+        }
+
+        .product-image {
+            position: relative;
+            overflow: hidden;
+            height: 320px;
+        }
+
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .product-card:hover .product-image img {
+            transform: scale(1.1);
+        }
+
+        .product-badge {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: #FF6B6B;
+            color: #fff;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+        .product-badge.new {
+            background: #4ECDC4;
+        }
+
+        .product-badge.sale {
+            background: #FFE66D;
+            color: #333;
+        }
+
+        .product-info {
+            padding: 25px;
+        }
+
+        .product-brand {
+            font-size: 13px;
+            color: #999;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        .product-name {
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: #333;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .product-price {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .price-current {
+            font-size: 22px;
+            font-weight: 900;
+            color: #FF6B6B;
+        }
+
+        .price-original {
+            font-size: 16px;
+            color: #999;
+            text-decoration: line-through;
+        }
+
+        .product-rating {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+            color: #666;
+        }
+
+        .stars {
+            color: #FFD700;
+        }
+
+        .add-to-cart {
+            width: 100%;
+            padding: 12px;
+            background: #333;
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-top: 10px;
+        }
+
+        .add-to-cart:hover {
+            background: #FF6B6B;
+        }
+
+        /* Best Seller Section */
+        .bestseller-section {
+            padding: 100px 30px;
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: #fff;
+            text-align: center;
+        }
+
+        .bestseller-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .bestseller-section h2 {
+            font-size: 42px;
+            font-weight: 900;
+            margin-bottom: 20px;
+        }
+
+        .bestseller-section p {
+            font-size: 18px;
+            margin-bottom: 50px;
+            opacity: 0.95;
+        }
+
+        .bestseller-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .bestseller-item {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 40px 30px;
+            text-align: center;
+        }
+
+        .rank {
+            font-size: 72px;
+            font-weight: 900;
+            opacity: 0.3;
+            line-height: 1;
+            margin-bottom: 15px;
+        }
+
+        .bestseller-item h3 {
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .bestseller-item p {
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+
+        .bestseller-price {
+            font-size: 28px;
+            font-weight: 900;
+        }
+
+        /* Review Section */
+        .review-section {
+            padding: 80px 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .review-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .review-card {
+            background: #fff;
+            padding: 35px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        .review-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .reviewer-image {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+        }
+
+        .reviewer-info h4 {
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .review-stars {
+            color: #FFD700;
+            font-size: 14px;
+        }
+
+        .review-text {
+            font-size: 15px;
+            line-height: 1.7;
+            color: #666;
+        }
+
+        /* Newsletter */
+        .newsletter-section {
+            padding: 80px 30px;
+            background: #333;
+            color: #fff;
+            text-align: center;
+        }
+
+        .newsletter-content {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .newsletter-section h2 {
+            font-size: 38px;
+            font-weight: 900;
+            margin-bottom: 15px;
+        }
+
+        .newsletter-section p {
+            font-size: 16px;
+            margin-bottom: 35px;
+            opacity: 0.9;
+        }
+
+        .newsletter-form {
+            display: flex;
+            gap: 10px;
+            max-width: 550px;
+            margin: 0 auto;
+        }
+
+        .newsletter-input {
+            flex: 1;
+            padding: 16px 25px;
+            border: none;
+            border-radius: 8px;
+            font-size: 15px;
+            font-family: inherit;
+        }
+
+        .newsletter-btn {
+            padding: 16px 35px;
+            background: #FF6B6B;
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            font-size: 15px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .newsletter-btn:hover {
+            background: #ff5252;
+        }
+
+        /* Footer */
+        footer {
+            background: #1a1a1a;
+            color: #fff;
+            padding: 60px 30px 30px;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 50px;
+            margin-bottom: 40px;
+        }
+
+        .footer-section h3 {
+            font-size: 18px;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .footer-section p {
+            font-size: 14px;
+            color: #ccc;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links a {
+            color: #ccc;
+            text-decoration: none;
+            font-size: 14px;
+            line-height: 2;
+            display: block;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: #FF6B6B;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            background: #333;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .social-icon:hover {
+            background: #FF6B6B;
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid #333;
+            font-size: 13px;
+            color: #888;
+        }
+
+        @media (max-width: 1024px) {
+            .category-grid,
+            .product-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .bestseller-grid,
+            .review-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-banner h1 {
+                font-size: 36px;
+            }
+
+            .category-grid,
+            .product-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+
+            .newsletter-form {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="#home" class="logo" data-page="home">트렌디몰</a>
+            <ul class="nav-links">
+                <li><a href="#products" data-page="products">전체상품</a></li>
+                <li><a href="#home" data-page="home">홈</a></li>
+                <li><a href="#best" data-page="best">베스트</a></li>
+                <li><a href="#reviews" data-page="reviews">리뷰</a></li>
+            </ul>
+            <div class="nav-icons">
+                <button class="icon-btn">🔍</button>
+                <button class="icon-btn">❤️</button>
+                <button class="icon-btn cart-badge">🛒</button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- HOME Page -->
+    <section id="home" class="page-section">
+        <div class="hero-banner">
+            <div class="hero-content">
+                <div class="hero-badge">🎉 신규회원 15% 할인 쿠폰</div>
+                <h1>당신의 스타일을<br>완성하다</h1>
+                <p>트렌디한 패션 아이템부터 라이프스타일 제품까지, 지금 바로 만나보세요</p>
+                <div class="hero-buttons">
+                    <a href="#products" data-page="products" class="btn-primary">쇼핑하기</a>
+                    <a href="#best" data-page="best" class="btn-secondary">베스트 상품</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="category-section">
+            <div class="section-header">
+                <h2>카테고리</h2>
+                <p>원하는 카테고리를 선택하고 쇼핑을 시작하세요</p>
+            </div>
+            <div class="category-grid">
+                <div class="category-card">
+                    <div class="category-icon">👔</div>
+                    <h3>패션의류</h3>
+                    <p>2,450개 상품</p>
+                </div>
+                <div class="category-card">
+                    <div class="category-icon">👟</div>
+                    <h3>신발/가방</h3>
+                    <p>1,380개 상품</p>
+                </div>
+                <div class="category-card">
+                    <div class="category-icon">💄</div>
+                    <h3>뷰티</h3>
+                    <p>3,120개 상품</p>
+                </div>
+                <div class="category-card">
+                    <div class="category-icon">🏠</div>
+                    <h3>리빙</h3>
+                    <p>890개 상품</p>
+                </div>
+                <div class="category-card">
+                    <div class="category-icon">📱</div>
+                    <h3>디지털</h3>
+                    <p>1,560개 상품</p>
+                </div>
+                <div class="category-card">
+                    <div class="category-icon">⚽</div>
+                    <h3>스포츠</h3>
+                    <p>670개 상품</p>
+                </div>
+                <div class="category-card">
+                    <div class="category-icon">🍽️</div>
+                    <h3>식품</h3>
+                    <p>2,340개 상품</p>
+                </div>
+                <div class="category-card">
+                    <div class="category-icon">🎮</div>
+                    <h3>취미/게임</h3>
+                    <p>920개 상품</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PRODUCTS Page -->
+    <section id="products" class="page-section active">
+        <div class="product-section">
+            <div class="section-header">
+                <h2>신상품</h2>
+                <p>매주 업데이트되는 최신 트렌드 아이템</p>
+            </div>
+            <div class="product-grid">
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1523381210434-271e8be1f52b?w=500&q=80" alt="Product">
+                        <div class="product-badge new">NEW</div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-brand">FASHION BRAND</div>
+                        <div class="product-name">오버핏 데님 자켓 - 워싱 블루</div>
+                        <div class="product-price">
+                            <span class="price-current">89,000원</span>
+                            <span class="price-original">120,000원</span>
+                        </div>
+                        <div class="product-rating">
+                            <span class="stars">★★★★★</span>
+                            <span>(1,234)</span>
+                        </div>
+                        <button class="add-to-cart">장바구니 담기</button>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1572635196237-14b3f281503f?w=500&q=80" alt="Product">
+                        <div class="product-badge">HOT</div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-brand">SNEAKERS SHOP</div>
+                        <div class="product-name">클래식 화이트 스니커즈</div>
+                        <div class="product-price">
+                            <span class="price-current">79,000원</span>
+                            <span class="price-original">95,000원</span>
+                        </div>
+                        <div class="product-rating">
+                            <span class="stars">★★★★☆</span>
+                            <span>(856)</span>
+                        </div>
+                        <button class="add-to-cart">장바구니 담기</button>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1434389677669-e08b4cac3105?w=500&q=80" alt="Product">
+                        <div class="product-badge sale">30%</div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-brand">BEAUTY LAB</div>
+                        <div class="product-name">수분 에센스 세트 (3종)</div>
+                        <div class="product-price">
+                            <span class="price-current">49,000원</span>
+                            <span class="price-original">70,000원</span>
+                        </div>
+                        <div class="product-rating">
+                            <span class="stars">★★★★★</span>
+                            <span>(2,341)</span>
+                        </div>
+                        <button class="add-to-cart">장바구니 담기</button>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1491553895911-0055eca6402d?w=500&q=80" alt="Product">
+                        <div class="product-badge new">NEW</div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-brand">WATCH GALLERY</div>
+                        <div class="product-name">미니멀 메탈 손목시계</div>
+                        <div class="product-price">
+                            <span class="price-current">129,000원</span>
+                        </div>
+                        <div class="product-rating">
+                            <span class="stars">★★★★★</span>
+                            <span>(567)</span>
+                        </div>
+                        <button class="add-to-cart">장바구니 담기</button>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1547949003-9792a18a2601?w=500&q=80" alt="Product">
+                        <div class="product-badge">HOT</div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-brand">HOME DECO</div>
+                        <div class="product-name">북유럽 스타일 테이블 스탠드</div>
+                        <div class="product-price">
+                            <span class="price-current">59,000원</span>
+                            <span class="price-original">75,000원</span>
+                        </div>
+                        <div class="product-rating">
+                            <span class="stars">★★★★☆</span>
+                            <span>(432)</span>
+                        </div>
+                        <button class="add-to-cart">장바구니 담기</button>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=500&q=80" alt="Product">
+                        <div class="product-badge sale">20%</div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-brand">SOUND TECH</div>
+                        <div class="product-name">무선 블루투스 이어폰 프로</div>
+                        <div class="product-price">
+                            <span class="price-current">159,000원</span>
+                            <span class="price-original">199,000원</span>
+                        </div>
+                        <div class="product-rating">
+                            <span class="stars">★★★★★</span>
+                            <span>(3,245)</span>
+                        </div>
+                        <button class="add-to-cart">장바구니 담기</button>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=500&q=80" alt="Product">
+                        <div class="product-badge new">NEW</div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-brand">BAG STUDIO</div>
+                        <div class="product-name">레더 크로스백 - 블랙</div>
+                        <div class="product-price">
+                            <span class="price-current">99,000원</span>
+                        </div>
+                        <div class="product-rating">
+                            <span class="stars">★★★★★</span>
+                            <span>(789)</span>
+                        </div>
+                        <button class="add-to-cart">장바구니 담기</button>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1556306535-38febf6782e7?w=500&q=80" alt="Product">
+                        <div class="product-badge">HOT</div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-brand">SPORTS WEAR</div>
+                        <div class="product-name">퍼포먼스 트레이닝 세트</div>
+                        <div class="product-price">
+                            <span class="price-current">69,000원</span>
+                            <span class="price-original">89,000원</span>
+                        </div>
+                        <div class="product-rating">
+                            <span class="stars">★★★★☆</span>
+                            <span>(1,123)</span>
+                        </div>
+                        <button class="add-to-cart">장바구니 담기</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- BEST Page -->
+    <section id="best" class="page-section">
+        <div class="bestseller-section">
+            <div class="bestseller-content">
+                <h2>🏆 이번 주 베스트셀러</h2>
+                <p>가장 많은 고객님들이 선택한 인기 상품</p>
+                <div class="bestseller-grid">
+                    <div class="bestseller-item">
+                        <div class="rank">01</div>
+                        <h3>프리미엄 후드 집업</h3>
+                        <p>편안한 착용감과 세련된 디자인</p>
+                        <div class="bestseller-price">79,000원</div>
+                    </div>
+                    <div class="bestseller-item">
+                        <div class="rank">02</div>
+                        <h3>클래식 데님 팬츠</h3>
+                        <p>어떤 스타일에도 잘 어울리는 필수 아이템</p>
+                        <div class="bestseller-price">65,000원</div>
+                    </div>
+                    <div class="bestseller-item">
+                        <div class="rank">03</div>
+                        <h3>에어 쿠셔닝 스니커즈</h3>
+                        <p>발의 피로를 줄여주는 특수 쿠셔닝</p>
+                        <div class="bestseller-price">89,000원</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="category-section">
+            <div class="section-header">
+                <h2>💝 특별 혜택</h2>
+                <p>놓치면 후회할 타임딜 상품</p>
+            </div>
+            <div class="product-grid">
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?w=500&q=80" alt="Product">
+                        <div class="product-badge sale">50%</div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-brand">WINTER SPECIAL</div>
+                        <div class="product-name">롱 패딩 코트 - 블랙</div>
+                        <div class="product-price">
+                            <span class="price-current">149,000원</span>
+                            <span class="price-original">298,000원</span>
+                        </div>
+                        <div class="product-rating">
+                            <span class="stars">★★★★★</span>
+                            <span>(1,892)</span>
+                        </div>
+                        <button class="add-to-cart">장바구니 담기</button>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1460353581641-37baddab0fa2?w=500&q=80" alt="Product">
+                        <div class="product-badge sale">40%</div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-brand">ACCESSORY</div>
+                        <div class="product-name">캐시미어 머플러 세트</div>
+                        <div class="product-price">
+                            <span class="price-current">39,000원</span>
+                            <span class="price-original">65,000원</span>
+                        </div>
+                        <div class="product-rating">
+                            <span class="stars">★★★★☆</span>
+                            <span>(654)</span>
+                        </div>
+                        <button class="add-to-cart">장바구니 담기</button>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1512374382149-233c42b6a83b?w=500&q=80" alt="Product">
+                        <div class="product-badge sale">35%</div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-brand">FOOTWEAR</div>
+                        <div class="product-name">워커 부츠 - 브라운</div>
+                        <div class="product-price">
+                            <span class="price-current">119,000원</span>
+                            <span class="price-original">183,000원</span>
+                        </div>
+                        <div class="product-rating">
+                            <span class="stars">★★★★★</span>
+                            <span>(1,456)</span>
+                        </div>
+                        <button class="add-to-cart">장바구니 담기</button>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1585487000160-6ebcfceb0d03?w=500&q=80" alt="Product">
+                        <div class="product-badge sale">45%</div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-brand">TECH GEAR</div>
+                        <div class="product-name">스마트워치 프로 3세대</div>
+                        <div class="product-price">
+                            <span class="price-current">249,000원</span>
+                            <span class="price-original">453,000원</span>
+                        </div>
+                        <div class="product-rating">
+                            <span class="stars">★★★★★</span>
+                            <span>(2,789)</span>
+                        </div>
+                        <button class="add-to-cart">장바구니 담기</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- REVIEWS Page -->
+    <section id="reviews" class="page-section">
+        <div class="review-section">
+            <div class="section-header">
+                <h2>고객 리뷰</h2>
+                <p>실제 구매 고객님들의 생생한 후기</p>
+            </div>
+            <div class="review-grid">
+                <div class="review-card">
+                    <div class="review-header">
+                        <div class="reviewer-image"></div>
+                        <div class="reviewer-info">
+                            <h4>김민지</h4>
+                            <div class="review-stars">★★★★★</div>
+                        </div>
+                    </div>
+                    <p class="review-text">"배송도 빠르고 상품 퀄리티가 정말 좋아요! 사진보다 실물이 더 예뻐서 만족스럽습니다. 다음에 또 구매할게요."</p>
+                </div>
+
+                <div class="review-card">
+                    <div class="review-header">
+                        <div class="reviewer-image"></div>
+                        <div class="reviewer-info">
+                            <h4>이준호</h4>
+                            <div class="review-stars">★★★★★</div>
+                        </div>
+                    </div>
+                    <p class="review-text">"가격 대비 품질이 훌륭합니다. 디자인도 깔끔하고 착용감도 좋아요. 주변에 추천하고 있습니다!"</p>
+                </div>
+
+                <div class="review-card">
+                    <div class="review-header">
+                        <div class="reviewer-image"></div>
+                        <div class="reviewer-info">
+                            <h4>박서연</h4>
+                            <div class="review-stars">★★★★☆</div>
+                        </div>
+                    </div>
+                    <p class="review-text">"사이즈가 딱 맞고 색상도 화면과 동일해요. 포장도 꼼꼼하게 되어 있어서 선물용으로도 좋을 것 같아요."</p>
+                </div>
+
+                <div class="review-card">
+                    <div class="review-header">
+                        <div class="reviewer-image"></div>
+                        <div class="reviewer-info">
+                            <h4>최동욱</h4>
+                            <div class="review-stars">★★★★★</div>
+                        </div>
+                    </div>
+                    <p class="review-text">"가성비 최고! 이 가격에 이런 제품은 찾기 힘들어요. 여러 개 추가 구매했습니다."</p>
+                </div>
+
+                <div class="review-card">
+                    <div class="review-header">
+                        <div class="reviewer-image"></div>
+                        <div class="reviewer-info">
+                            <h4>정수빈</h4>
+                            <div class="review-stars">★★★★★</div>
+                        </div>
+                    </div>
+                    <p class="review-text">"고객센터 응대도 친절하고 교환/반품 절차도 간편해요. 믿고 쇼핑할 수 있는 곳입니다!"</p>
+                </div>
+
+                <div class="review-card">
+                    <div class="review-header">
+                        <div class="reviewer-image"></div>
+                        <div class="reviewer-info">
+                            <h4>강태현</h4>
+                            <div class="review-stars">★★★★☆</div>
+                        </div>
+                    </div>
+                    <p class="review-text">"트렌디한 디자인이 마음에 들어요. 품질도 좋고 배송도 빨라서 만족합니다. 재구매 의향 100%!"</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="newsletter-section">
+            <div class="newsletter-content">
+                <h2>🎁 특별 혜택 받기</h2>
+                <p>이메일 구독하고 신상품 소식과 독점 할인 쿠폰을 받아보세요</p>
+                <form class="newsletter-form">
+                    <input type="email" class="newsletter-input" placeholder="이메일 주소를 입력하세요" required>
+                    <button type="submit" class="newsletter-btn">구독하기</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>트렌디몰</h3>
+                <p>트렌디하고 합리적인 쇼핑의 시작, 트렌디몰과 함께하세요. 모든 상품은 정품이며, 안전한 결제 시스템을 제공합니다.</p>
+                <div class="social-links">
+                    <div class="social-icon">📷</div>
+                    <div class="social-icon">📘</div>
+                    <div class="social-icon">🐦</div>
+                    <div class="social-icon">📺</div>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>쇼핑 정보</h3>
+                <ul class="footer-links">
+                    <li><a href="#">신상품</a></li>
+                    <li><a href="#">베스트</a></li>
+                    <li><a href="#">세일</a></li>
+                    <li><a href="#">이벤트</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>고객 지원</h3>
+                <ul class="footer-links">
+                    <li><a href="#">공지사항</a></li>
+                    <li><a href="#">자주 묻는 질문</a></li>
+                    <li><a href="#">배송/교환/반품</a></li>
+                    <li><a href="#">1:1 문의</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>회사 정보</h3>
+                <ul class="footer-links">
+                    <li><a href="#">회사 소개</a></li>
+                    <li><a href="#">이용약관</a></li>
+                    <li><a href="#">개인정보처리방침</a></li>
+                    <li><a href="#">제휴 문의</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 트렌디몰. All Rights Reserved. | 대표: 홍길동 | 사업자등록번호: 123-45-67890</p>
+        </div>
+    </footer>
+
+    <script>
+        function showPage(pageId) {
+            document.querySelectorAll('.page-section').forEach(section => {
+                section.classList.remove('active');
+            });
+
+            const targetPage = document.getElementById(pageId);
+            if (targetPage) {
+                targetPage.classList.add('active');
+                window.scrollTo(0, 0);
+            }
+        }
+
+        document.querySelectorAll('[data-page]').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const pageId = link.getAttribute('data-page');
+                showPage(pageId);
+                window.location.hash = pageId;
+            });
+        });
+
+        window.addEventListener('hashchange', () => {
+            const pageId = window.location.hash.slice(1) || 'home';
+            showPage(pageId);
+        });
+
+        window.addEventListener('DOMContentLoaded', () => {
+            const pageId = window.location.hash.slice(1) || 'products';
+            showPage(pageId);
+        });
+    </script>
+</body>
+</html>

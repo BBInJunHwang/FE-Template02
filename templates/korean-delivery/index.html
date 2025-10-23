@@ -1,0 +1,1209 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>빠른배달 - 맛있는 음식을 빠르게</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            line-height: 1.6;
+            overflow-x: hidden;
+            color: #333;
+            background: #fff;
+        }
+
+        .page-section {
+            display: none;
+        }
+
+        .page-section.active {
+            display: block;
+        }
+
+        /* Header */
+        header {
+            background: #fff;
+            padding: 15px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        nav {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 30px;
+        }
+
+        .logo {
+            font-size: 32px;
+            color: #FF6B00;
+            font-weight: 900;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 35px;
+        }
+
+        .nav-links a {
+            color: #333;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #FF6B00;
+        }
+
+        .nav-actions {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .location-btn {
+            padding: 10px 20px;
+            background: #f8f9fa;
+            border: none;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .order-btn {
+            padding: 12px 25px;
+            background: #FF6B00;
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            font-size: 15px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+        }
+
+        .order-btn:hover {
+            background: #E56000;
+            transform: translateY(-2px);
+        }
+
+        /* Hero Section */
+        .hero {
+            margin-top: 70px;
+            padding: 100px 30px;
+            background: linear-gradient(135deg, #FF6B00 0%, #FF8C42 100%);
+            color: #fff;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg width="80" height="80" xmlns="http://www.w3.org/2000/svg"><circle cx="40" cy="40" r="2" fill="white" opacity="0.1"/></svg>');
+            animation: float 25s linear infinite;
+        }
+
+        @keyframes float {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(-50px, -50px); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            padding: 10px 25px;
+            border-radius: 25px;
+            font-size: 14px;
+            margin-bottom: 30px;
+            font-weight: 600;
+        }
+
+        .hero h1 {
+            font-size: 58px;
+            font-weight: 900;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 20px;
+            margin-bottom: 40px;
+            opacity: 0.95;
+        }
+
+        .search-box {
+            max-width: 600px;
+            margin: 0 auto;
+            display: flex;
+            gap: 10px;
+            background: #fff;
+            padding: 8px;
+            border-radius: 50px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .search-input {
+            flex: 1;
+            padding: 15px 25px;
+            border: none;
+            font-size: 16px;
+            font-family: inherit;
+            outline: none;
+            color: #333;
+        }
+
+        .search-btn {
+            padding: 15px 35px;
+            background: #FF6B00;
+            color: #fff;
+            border: none;
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .search-btn:hover {
+            background: #E56000;
+        }
+
+        .popular-searches {
+            margin-top: 30px;
+            font-size: 14px;
+        }
+
+        .popular-searches span {
+            display: inline-block;
+            margin: 0 10px;
+            padding: 8px 18px;
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .popular-searches span:hover {
+            background: rgba(255, 255, 255, 0.25);
+        }
+
+        /* Category Section */
+        .category-section {
+            padding: 80px 30px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-header h2 {
+            font-size: 42px;
+            font-weight: 900;
+            margin-bottom: 15px;
+            color: #1a1a1a;
+        }
+
+        .section-header p {
+            font-size: 17px;
+            color: #666;
+        }
+
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 25px;
+        }
+
+        .category-card {
+            text-align: center;
+            padding: 30px 20px;
+            background: #fff;
+            border-radius: 20px;
+            box-shadow: 0 3px 15px rgba(0, 0, 0, 0.08);
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .category-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .category-icon {
+            font-size: 52px;
+            margin-bottom: 15px;
+        }
+
+        .category-card h3 {
+            font-size: 16px;
+            font-weight: 700;
+            color: #333;
+        }
+
+        /* Restaurant Section */
+        .restaurant-section {
+            padding: 80px 30px;
+            background: #f8f9fa;
+        }
+
+        .restaurant-grid {
+            max-width: 1400px;
+            margin: 50px auto 0;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .restaurant-card {
+            background: #fff;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .restaurant-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+        }
+
+        .restaurant-image {
+            position: relative;
+            height: 220px;
+            overflow: hidden;
+        }
+
+        .restaurant-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .restaurant-card:hover .restaurant-image img {
+            transform: scale(1.1);
+        }
+
+        .restaurant-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: #FF6B00;
+            color: #fff;
+            padding: 6px 15px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+        .restaurant-badge.new {
+            background: #4ECDC4;
+        }
+
+        .restaurant-info {
+            padding: 25px;
+        }
+
+        .restaurant-name {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: #1a1a1a;
+        }
+
+        .restaurant-meta {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 12px;
+            font-size: 14px;
+            color: #666;
+        }
+
+        .rating {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            color: #FFD700;
+        }
+
+        .restaurant-tags {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .tag {
+            padding: 5px 12px;
+            background: #f0f0f0;
+            border-radius: 15px;
+            font-size: 12px;
+            color: #666;
+        }
+
+        /* Benefits Section */
+        .benefits-section {
+            padding: 100px 30px;
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            color: #fff;
+            text-align: center;
+        }
+
+        .benefits-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .benefits-section h2 {
+            font-size: 42px;
+            font-weight: 900;
+            margin-bottom: 60px;
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 40px;
+        }
+
+        .benefit-item {
+            padding: 40px 30px;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .benefit-icon {
+            font-size: 56px;
+            margin-bottom: 20px;
+        }
+
+        .benefit-item h3 {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .benefit-item p {
+            font-size: 14px;
+            color: #ccc;
+            line-height: 1.6;
+        }
+
+        /* App Download Section */
+        .app-section {
+            padding: 100px 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .app-content {
+            display: flex;
+            align-items: center;
+            gap: 80px;
+        }
+
+        .app-text {
+            flex: 1;
+        }
+
+        .app-text h2 {
+            font-size: 48px;
+            font-weight: 900;
+            margin-bottom: 25px;
+            color: #1a1a1a;
+        }
+
+        .app-text p {
+            font-size: 18px;
+            color: #666;
+            margin-bottom: 35px;
+            line-height: 1.8;
+        }
+
+        .app-features {
+            list-style: none;
+            margin-bottom: 40px;
+        }
+
+        .app-features li {
+            padding: 12px 0;
+            font-size: 16px;
+            position: relative;
+            padding-left: 30px;
+        }
+
+        .app-features li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #FF6B00;
+            font-weight: 900;
+            font-size: 20px;
+        }
+
+        .download-buttons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .download-btn {
+            padding: 15px 30px;
+            background: #1a1a1a;
+            color: #fff;
+            border-radius: 10px;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .download-btn:hover {
+            background: #000;
+            transform: translateY(-3px);
+        }
+
+        .app-image {
+            flex: 1;
+            text-align: center;
+        }
+
+        .phone-mockup {
+            width: 300px;
+            height: 600px;
+            background: linear-gradient(135deg, #FF6B00, #FF8C42);
+            border-radius: 40px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 72px;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Reviews Section */
+        .reviews-section {
+            padding: 100px 30px;
+            background: #f8f9fa;
+        }
+
+        .reviews-content {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .review-card {
+            background: #fff;
+            padding: 35px;
+            border-radius: 20px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        .review-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .reviewer-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #FF6B00, #FF8C42);
+        }
+
+        .reviewer-info h4 {
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .review-stars {
+            color: #FFD700;
+            font-size: 14px;
+        }
+
+        .review-text {
+            font-size: 15px;
+            line-height: 1.7;
+            color: #666;
+        }
+
+        /* Footer */
+        footer {
+            background: #1a1a1a;
+            color: #fff;
+            padding: 60px 30px 30px;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 50px;
+            margin-bottom: 40px;
+        }
+
+        .footer-section h3 {
+            font-size: 18px;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .footer-section p {
+            font-size: 14px;
+            color: #ccc;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links a {
+            color: #ccc;
+            text-decoration: none;
+            font-size: 14px;
+            line-height: 2.2;
+            display: block;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: #FF6B00;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid #333;
+            font-size: 13px;
+            color: #888;
+        }
+
+        @media (max-width: 1024px) {
+            .category-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .restaurant-grid,
+            .reviews-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .benefits-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .app-content {
+                flex-direction: column;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 38px;
+            }
+
+            .category-grid,
+            .restaurant-grid,
+            .reviews-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .benefits-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="#home" class="logo" data-page="home">🍕 빠른배달</a>
+            <ul class="nav-links">
+                <li><a href="#restaurants" data-page="restaurants">맛집</a></li>
+                <li><a href="#home" data-page="home">홈</a></li>
+                <li><a href="#benefits" data-page="benefits">혜택</a></li>
+                <li><a href="#reviews" data-page="reviews">리뷰</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button class="location-btn">📍 서울시 강남구</button>
+                <a href="#restaurants" data-page="restaurants" class="order-btn">주문하기</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- HOME Page -->
+    <section id="home" class="page-section">
+        <div class="hero">
+            <div class="hero-content">
+                <div class="hero-badge">🎉 첫 주문 3,000원 할인</div>
+                <h1>맛있는 음식을<br>빠르게 배달해드려요</h1>
+                <p>동네 맛집부터 유명 프랜차이즈까지, 다양한 음식을 30분 내로 받아보세요</p>
+                <div class="search-box">
+                    <input type="text" class="search-input" placeholder="치킨, 피자, 족발... 먹고 싶은 음식을 검색하세요">
+                    <button class="search-btn">검색</button>
+                </div>
+                <div class="popular-searches">
+                    <span>🍗 치킨</span>
+                    <span>🍕 피자</span>
+                    <span>🍜 중식</span>
+                    <span>🍔 햄버거</span>
+                    <span>🍱 한식</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="category-section">
+            <div class="section-header">
+                <h2>어떤 음식을 찾으세요?</h2>
+                <p>카테고리별로 맛집을 찾아보세요</p>
+            </div>
+            <div class="category-grid">
+                <div class="category-card">
+                    <div class="category-icon">🍗</div>
+                    <h3>치킨</h3>
+                </div>
+                <div class="category-card">
+                    <div class="category-icon">🍕</div>
+                    <h3>피자</h3>
+                </div>
+                <div class="category-card">
+                    <div class="category-icon">🍔</div>
+                    <h3>버거</h3>
+                </div>
+                <div class="category-card">
+                    <div class="category-icon">🍜</div>
+                    <h3>중식</h3>
+                </div>
+                <div class="category-card">
+                    <div class="category-icon">🍱</div>
+                    <h3>한식</h3>
+                </div>
+                <div class="category-card">
+                    <div class="category-icon">🍝</div>
+                    <h3>양식</h3>
+                </div>
+                <div class="category-card">
+                    <div class="category-icon">🍣</div>
+                    <h3>일식</h3>
+                </div>
+                <div class="category-card">
+                    <div class="category-icon">☕</div>
+                    <h3>카페</h3>
+                </div>
+                <div class="category-card">
+                    <div class="category-icon">🌮</div>
+                    <h3>아시안</h3>
+                </div>
+                <div class="category-card">
+                    <div class="category-icon">🍖</div>
+                    <h3>고기/구이</h3>
+                </div>
+                <div class="category-card">
+                    <div class="category-icon">🍲</div>
+                    <h3>찌개/탕</h3>
+                </div>
+                <div class="category-card">
+                    <div class="category-icon">🥗</div>
+                    <h3>샐러드</h3>
+                </div>
+            </div>
+        </div>
+
+        <div class="benefits-section">
+            <div class="benefits-content">
+                <h2>빠른배달을 선택해야 하는 이유</h2>
+                <div class="benefits-grid">
+                    <div class="benefit-item">
+                        <div class="benefit-icon">⚡</div>
+                        <h3>빠른 배달</h3>
+                        <p>평균 30분 이내 배달로 따뜻한 음식을 즐기세요</p>
+                    </div>
+                    <div class="benefit-item">
+                        <div class="benefit-icon">💰</div>
+                        <h3>최저가 보장</h3>
+                        <p>매일 다양한 할인과 쿠폰으로 저렴하게</p>
+                    </div>
+                    <div class="benefit-item">
+                        <div class="benefit-icon">⭐</div>
+                        <h3>검증된 맛집</h3>
+                        <p>실제 리뷰를 바탕으로 엄선한 맛집들</p>
+                    </div>
+                    <div class="benefit-item">
+                        <div class="benefit-icon">🎁</div>
+                        <h3>풍성한 혜택</h3>
+                        <p>주문할 때마다 쌓이는 포인트와 적립금</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- RESTAURANTS Page -->
+    <section id="restaurants" class="page-section active">
+        <div class="restaurant-section">
+            <div class="section-header">
+                <h2>🔥 지금 인기 맛집</h2>
+                <p>많은 분들이 주문하고 있는 맛집을 확인하세요</p>
+            </div>
+            <div class="restaurant-grid">
+                <div class="restaurant-card">
+                    <div class="restaurant-image">
+                        <img src="https://images.unsplash.com/photo-1626082927389-6cd097cdc6ec?w=500&q=80" alt="치킨">
+                        <div class="restaurant-badge">인기</div>
+                    </div>
+                    <div class="restaurant-info">
+                        <h3 class="restaurant-name">교촌치킨 강남점</h3>
+                        <div class="restaurant-meta">
+                            <div class="rating">⭐ 4.8</div>
+                            <span>배달 25분</span>
+                            <span>배달비 2,000원</span>
+                        </div>
+                        <div class="restaurant-tags">
+                            <span class="tag">치킨</span>
+                            <span class="tag">최소주문 15,000원</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="restaurant-card">
+                    <div class="restaurant-image">
+                        <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=500&q=80" alt="피자">
+                        <div class="restaurant-badge new">NEW</div>
+                    </div>
+                    <div class="restaurant-info">
+                        <h3 class="restaurant-name">도미노피자 역삼점</h3>
+                        <div class="restaurant-meta">
+                            <div class="rating">⭐ 4.9</div>
+                            <span>배달 30분</span>
+                            <span>배달비 무료</span>
+                        </div>
+                        <div class="restaurant-tags">
+                            <span class="tag">피자</span>
+                            <span class="tag">최소주문 20,000원</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="restaurant-card">
+                    <div class="restaurant-image">
+                        <img src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=500&q=80" alt="햄버거">
+                        <div class="restaurant-badge">인기</div>
+                    </div>
+                    <div class="restaurant-info">
+                        <h3 class="restaurant-name">쉐이크쉑 청담점</h3>
+                        <div class="restaurant-meta">
+                            <div class="rating">⭐ 4.7</div>
+                            <span>배달 20분</span>
+                            <span>배달비 3,000원</span>
+                        </div>
+                        <div class="restaurant-tags">
+                            <span class="tag">버거</span>
+                            <span class="tag">최소주문 12,000원</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="restaurant-card">
+                    <div class="restaurant-image">
+                        <img src="https://images.unsplash.com/photo-1569718212165-3a8278d5f624?w=500&q=80" alt="중식">
+                        <div class="restaurant-badge">인기</div>
+                    </div>
+                    <div class="restaurant-info">
+                        <h3 class="restaurant-name">홍콩반점 선릉점</h3>
+                        <div class="restaurant-meta">
+                            <div class="rating">⭐ 4.6</div>
+                            <span>배달 35분</span>
+                            <span>배달비 2,500원</span>
+                        </div>
+                        <div class="restaurant-tags">
+                            <span class="tag">중식</span>
+                            <span class="tag">최소주문 15,000원</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="restaurant-card">
+                    <div class="restaurant-image">
+                        <img src="https://images.unsplash.com/photo-1563379926898-05f4575a45d8?w=500&q=80" alt="한식">
+                        <div class="restaurant-badge new">NEW</div>
+                    </div>
+                    <div class="restaurant-info">
+                        <h3 class="restaurant-name">청년밥상 삼성점</h3>
+                        <div class="restaurant-meta">
+                            <div class="rating">⭐ 4.8</div>
+                            <span>배달 25분</span>
+                            <span>배달비 2,000원</span>
+                        </div>
+                        <div class="restaurant-tags">
+                            <span class="tag">한식</span>
+                            <span class="tag">최소주문 10,000원</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="restaurant-card">
+                    <div class="restaurant-image">
+                        <img src="https://images.unsplash.com/photo-1579631542720-3a87824fff86?w=500&q=80" alt="일식">
+                        <div class="restaurant-badge">인기</div>
+                    </div>
+                    <div class="restaurant-info">
+                        <h3 class="restaurant-name">스시로 대치점</h3>
+                        <div class="restaurant-meta">
+                            <div class="rating">⭐ 4.9</div>
+                            <span>배달 40분</span>
+                            <span>배달비 무료</span>
+                        </div>
+                        <div class="restaurant-tags">
+                            <span class="tag">일식</span>
+                            <span class="tag">최소주문 25,000원</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="restaurant-card">
+                    <div class="restaurant-image">
+                        <img src="https://images.unsplash.com/photo-1621996346565-e3dbc646d9a9?w=500&q=80" alt="족발">
+                        <div class="restaurant-badge">인기</div>
+                    </div>
+                    <div class="restaurant-info">
+                        <h3 class="restaurant-name">원할머니보쌈 논현점</h3>
+                        <div class="restaurant-meta">
+                            <div class="rating">⭐ 4.7</div>
+                            <span>배달 30분</span>
+                            <span>배달비 3,000원</span>
+                        </div>
+                        <div class="restaurant-tags">
+                            <span class="tag">족발/보쌈</span>
+                            <span class="tag">최소주문 20,000원</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="restaurant-card">
+                    <div class="restaurant-image">
+                        <img src="https://images.unsplash.com/photo-1473093295043-cdd812d0e601?w=500&q=80" alt="샐러드">
+                        <div class="restaurant-badge new">NEW</div>
+                    </div>
+                    <div class="restaurant-info">
+                        <h3 class="restaurant-name">샐러디 역삼점</h3>
+                        <div class="restaurant-meta">
+                            <div class="rating">⭐ 4.8</div>
+                            <span>배달 20분</span>
+                            <span>배달비 2,000원</span>
+                        </div>
+                        <div class="restaurant-tags">
+                            <span class="tag">샐러드</span>
+                            <span class="tag">최소주문 8,000원</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="restaurant-card">
+                    <div class="restaurant-image">
+                        <img src="https://images.unsplash.com/photo-1564489563601-c53cfc451e93?w=500&q=80" alt="카페">
+                        <div class="restaurant-badge">인기</div>
+                    </div>
+                    <div class="restaurant-info">
+                        <h3 class="restaurant-name">스타벅스 강남대로점</h3>
+                        <div class="restaurant-meta">
+                            <div class="rating">⭐ 4.9</div>
+                            <span>배달 15분</span>
+                            <span>배달비 무료</span>
+                        </div>
+                        <div class="restaurant-tags">
+                            <span class="tag">카페/디저트</span>
+                            <span class="tag">최소주문 5,000원</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- BENEFITS Page -->
+    <section id="benefits" class="page-section">
+        <div class="app-section">
+            <div class="app-content">
+                <div class="app-text">
+                    <h2>앱으로 더 편리하게<br>주문하세요</h2>
+                    <p>빠른배달 앱을 다운로드하고 특별한 혜택을 받아보세요. 앱 전용 할인과 쿠폰이 매일 업데이트됩니다.</p>
+                    <ul class="app-features">
+                        <li>앱 전용 할인 쿠폰 매일 제공</li>
+                        <li>주문할 때마다 포인트 적립</li>
+                        <li>실시간 배달 추적</li>
+                        <li>찜한 가게 빠른 재주문</li>
+                        <li>푸시 알림으로 할인 소식 받기</li>
+                    </ul>
+                    <div class="download-buttons">
+                        <a href="#" class="download-btn">
+                            <span>📱</span>
+                            <div>
+                                <div style="font-size: 11px; opacity: 0.8;">Download on the</div>
+                                <div>App Store</div>
+                            </div>
+                        </a>
+                        <a href="#" class="download-btn">
+                            <span>🤖</span>
+                            <div>
+                                <div style="font-size: 11px; opacity: 0.8;">GET IT ON</div>
+                                <div>Google Play</div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="app-image">
+                    <div class="phone-mockup">📱</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="benefits-section">
+            <div class="benefits-content">
+                <h2>💎 프리미엄 멤버십 혜택</h2>
+                <div class="benefits-grid">
+                    <div class="benefit-item">
+                        <div class="benefit-icon">🚀</div>
+                        <h3>무료 배달</h3>
+                        <p>모든 주문 배달비 무료</p>
+                    </div>
+                    <div class="benefit-item">
+                        <div class="benefit-icon">💵</div>
+                        <h3>5% 추가 할인</h3>
+                        <p>전 메뉴 5% 할인 적용</p>
+                    </div>
+                    <div class="benefit-item">
+                        <div class="benefit-icon">🎁</div>
+                        <h3>월별 쿠폰</h3>
+                        <p>매월 10,000원 쿠폰 제공</p>
+                    </div>
+                    <div class="benefit-item">
+                        <div class="benefit-icon">⏰</div>
+                        <h3>우선 배달</h3>
+                        <p>주문 우선 처리로 더 빠르게</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- REVIEWS Page -->
+    <section id="reviews" class="page-section">
+        <div class="reviews-section">
+            <div class="reviews-content">
+                <div class="section-header">
+                    <h2>고객 리뷰</h2>
+                    <p>빠른배달을 이용하신 고객님들의 생생한 후기</p>
+                </div>
+                <div class="reviews-grid">
+                    <div class="review-card">
+                        <div class="review-header">
+                            <div class="reviewer-avatar"></div>
+                            <div class="reviewer-info">
+                                <h4>김민준</h4>
+                                <div class="review-stars">⭐⭐⭐⭐⭐</div>
+                            </div>
+                        </div>
+                        <p class="review-text">"배달이 정말 빨라요! 주문하고 20분만에 도착했습니다. 음식도 따뜻하고 맛있었어요. 앱도 사용하기 편리합니다."</p>
+                    </div>
+
+                    <div class="review-card">
+                        <div class="review-header">
+                            <div class="reviewer-avatar"></div>
+                            <div class="reviewer-info">
+                                <h4>이서연</h4>
+                                <div class="review-stars">⭐⭐⭐⭐⭐</div>
+                            </div>
+                        </div>
+                        <p class="review-text">"할인 쿠폰이 자주 나와서 좋아요. 다른 앱보다 저렴하게 주문할 수 있어서 자주 이용합니다. 포인트도 잘 쌓여요!"</p>
+                    </div>
+
+                    <div class="review-card">
+                        <div class="review-header">
+                            <div class="reviewer-avatar"></div>
+                            <div class="reviewer-info">
+                                <h4>박지호</h4>
+                                <div class="review-stars">⭐⭐⭐⭐⭐</div>
+                            </div>
+                        </div>
+                        <p class="review-text">"맛집 리뷰가 정확해서 믿고 주문해요. 배달 추적 기능도 편리하고, 고객센터 응대도 친절합니다."</p>
+                    </div>
+
+                    <div class="review-card">
+                        <div class="review-header">
+                            <div class="reviewer-avatar"></div>
+                            <div class="reviewer-info">
+                                <h4>최수빈</h4>
+                                <div class="review-stars">⭐⭐⭐⭐⭐</div>
+                            </div>
+                        </div>
+                        <p class="review-text">"프리미엄 멤버십 가입했는데 완전 만족해요. 배달비 무료에 할인까지 받으니 금방 본전 뽑았습니다!"</p>
+                    </div>
+
+                    <div class="review-card">
+                        <div class="review-header">
+                            <div class="reviewer-avatar"></div>
+                            <div class="reviewer-info">
+                                <h4>정현우</h4>
+                                <div class="review-stars">⭐⭐⭐⭐⭐</div>
+                            </div>
+                        </div>
+                        <p class="review-text">"야식 주문할 때 최고예요. 새벽에도 배달이 빠르고 정확합니다. 라이더분들도 항상 친절하세요."</p>
+                    </div>
+
+                    <div class="review-card">
+                        <div class="review-header">
+                            <div class="reviewer-avatar"></div>
+                            <div class="reviewer-info">
+                                <h4>강유진</h4>
+                                <div class="review-stars">⭐⭐⭐⭐⭐</div>
+                            </div>
+                        </div>
+                        <p class="review-text">"재주문 기능이 정말 편해요. 자주 시키는 메뉴 바로 주문할 수 있어서 시간이 절약됩니다. 강추!"</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="benefits-section">
+            <div class="benefits-content">
+                <h2>지금 바로 시작하세요!</h2>
+                <p style="font-size: 18px; margin-bottom: 40px;">첫 주문 3,000원 할인 쿠폰을 드립니다</p>
+                <a href="#restaurants" data-page="restaurants" class="btn-hero-primary" style="display: inline-block;">지금 주문하기</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>빠른배달</h3>
+                <p>맛있는 음식을 빠르게 배달하는 No.1 배달앱. 전국 어디서나 다양한 맛집의 음식을 30분 내로 받아보세요.</p>
+            </div>
+            <div class="footer-section">
+                <h3>서비스</h3>
+                <ul class="footer-links">
+                    <li><a href="#">음식 주문</a></li>
+                    <li><a href="#">멤버십</a></li>
+                    <li><a href="#">이벤트</a></li>
+                    <li><a href="#">쿠폰</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>고객지원</h3>
+                <ul class="footer-links">
+                    <li><a href="#">공지사항</a></li>
+                    <li><a href="#">자주 묻는 질문</a></li>
+                    <li><a href="#">1:1 문의</a></li>
+                    <li><a href="#">리뷰 작성</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>회사 정보</h3>
+                <ul class="footer-links">
+                    <li><a href="#">회사 소개</a></li>
+                    <li><a href="#">이용약관</a></li>
+                    <li><a href="#">개인정보처리방침</a></li>
+                    <li><a href="#">입점 문의</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 빠른배달. All Rights Reserved. | 대표: 홍길동 | 사업자등록번호: 123-45-67890</p>
+        </div>
+    </footer>
+
+    <script>
+        function showPage(pageId) {
+            document.querySelectorAll('.page-section').forEach(section => {
+                section.classList.remove('active');
+            });
+
+            const targetPage = document.getElementById(pageId);
+            if (targetPage) {
+                targetPage.classList.add('active');
+                window.scrollTo(0, 0);
+            }
+        }
+
+        document.querySelectorAll('[data-page]').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const pageId = link.getAttribute('data-page');
+                showPage(pageId);
+                window.location.hash = pageId;
+            });
+        });
+
+        window.addEventListener('hashchange', () => {
+            const pageId = window.location.hash.slice(1) || 'home';
+            showPage(pageId);
+        });
+
+        window.addEventListener('DOMContentLoaded', () => {
+            const pageId = window.location.hash.slice(1) || 'restaurants';
+            showPage(pageId);
+        });
+    </script>
+</body>
+</html>

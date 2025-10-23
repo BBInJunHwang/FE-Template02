@@ -1,0 +1,1058 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>워크플로우 - 팀 협업의 새로운 기준</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            line-height: 1.6;
+            overflow-x: hidden;
+            color: #333;
+            background: #fff;
+        }
+
+        .page-section {
+            display: none;
+        }
+
+        .page-section.active {
+            display: block;
+        }
+
+        /* Header */
+        header {
+            background: rgba(255, 255, 255, 0.98);
+            padding: 20px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid #eee;
+            backdrop-filter: blur(10px);
+        }
+
+        nav {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 40px;
+        }
+
+        .logo {
+            font-size: 28px;
+            color: #4F46E5;
+            font-weight: 900;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo-icon {
+            width: 35px;
+            height: 35px;
+            background: linear-gradient(135deg, #4F46E5, #7C3AED);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 20px;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 40px;
+        }
+
+        .nav-links a {
+            color: #333;
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #4F46E5;
+        }
+
+        .nav-cta {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .btn-login {
+            padding: 10px 25px;
+            background: transparent;
+            color: #333;
+            border: none;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+        }
+
+        .btn-login:hover {
+            color: #4F46E5;
+        }
+
+        .btn-signup {
+            padding: 12px 28px;
+            background: #4F46E5;
+            color: #fff;
+            border: none;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            border-radius: 8px;
+        }
+
+        .btn-signup:hover {
+            background: #4338CA;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(79, 70, 229, 0.3);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #fff;
+            position: relative;
+            overflow: hidden;
+            margin-top: 75px;
+            padding: 80px 40px;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="1.5" fill="white" opacity="0.1"/></svg>');
+            animation: float 40s linear infinite;
+        }
+
+        @keyframes float {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(-100px, -100px); }
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            padding: 10px 25px;
+            border-radius: 25px;
+            font-size: 14px;
+            margin-bottom: 30px;
+            font-weight: 500;
+        }
+
+        .hero h1 {
+            font-size: 64px;
+            font-weight: 900;
+            margin-bottom: 25px;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 22px;
+            font-weight: 300;
+            margin-bottom: 45px;
+            opacity: 0.95;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin-bottom: 60px;
+        }
+
+        .btn-hero-primary {
+            padding: 18px 45px;
+            background: #fff;
+            color: #4F46E5;
+            border: none;
+            font-size: 17px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+            border-radius: 10px;
+        }
+
+        .btn-hero-primary:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-hero-secondary {
+            padding: 18px 45px;
+            background: transparent;
+            color: #fff;
+            border: 2px solid #fff;
+            font-size: 17px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+            border-radius: 10px;
+        }
+
+        .btn-hero-secondary:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .trusted-by {
+            margin-top: 60px;
+        }
+
+        .trusted-by p {
+            font-size: 14px;
+            margin-bottom: 25px;
+            opacity: 0.8;
+        }
+
+        .company-logos {
+            display: flex;
+            gap: 50px;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .company-logo {
+            padding: 12px 30px;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: 700;
+        }
+
+        /* Features Section */
+        .features-section {
+            padding: 120px 40px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        .section-badge {
+            display: inline-block;
+            background: #EEF2FF;
+            color: #4F46E5;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        .section-header h2 {
+            font-size: 48px;
+            font-weight: 900;
+            margin-bottom: 20px;
+            color: #1a1a1a;
+        }
+
+        .section-header p {
+            font-size: 18px;
+            color: #666;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+        }
+
+        .feature-card {
+            padding: 45px 35px;
+            background: #fff;
+            border: 2px solid #f0f0f0;
+            border-radius: 20px;
+            transition: all 0.3s;
+        }
+
+        .feature-card:hover {
+            border-color: #4F46E5;
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(79, 70, 229, 0.1);
+        }
+
+        .feature-icon {
+            width: 65px;
+            height: 65px;
+            background: linear-gradient(135deg, #4F46E5, #7C3AED);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            margin-bottom: 25px;
+        }
+
+        .feature-card h3 {
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: #1a1a1a;
+        }
+
+        .feature-card p {
+            font-size: 15px;
+            color: #666;
+            line-height: 1.8;
+        }
+
+        /* Stats Section */
+        .stats-section {
+            padding: 100px 40px;
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            color: #fff;
+        }
+
+        .stats-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .stats-section h2 {
+            font-size: 42px;
+            font-weight: 900;
+            margin-bottom: 60px;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 50px;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 56px;
+            font-weight: 900;
+            color: #4F46E5;
+            margin-bottom: 10px;
+            line-height: 1;
+        }
+
+        .stat-label {
+            font-size: 16px;
+            color: #ccc;
+            font-weight: 500;
+        }
+
+        /* Pricing Section */
+        .pricing-section {
+            padding: 120px 40px;
+            background: #f8f9fa;
+        }
+
+        .pricing-grid {
+            max-width: 1200px;
+            margin: 80px auto 0;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .pricing-card {
+            background: #fff;
+            border-radius: 20px;
+            padding: 45px 40px;
+            border: 2px solid #e0e0e0;
+            transition: all 0.3s;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
+        }
+
+        .pricing-card.featured {
+            border-color: #4F46E5;
+            transform: scale(1.05);
+            box-shadow: 0 20px 50px rgba(79, 70, 229, 0.2);
+        }
+
+        .pricing-badge {
+            display: inline-block;
+            background: #4F46E5;
+            color: #fff;
+            padding: 6px 15px;
+            border-radius: 15px;
+            font-size: 12px;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .pricing-card h3 {
+            font-size: 26px;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .pricing-description {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 30px;
+        }
+
+        .pricing-amount {
+            font-size: 52px;
+            font-weight: 900;
+            color: #1a1a1a;
+            margin-bottom: 10px;
+        }
+
+        .pricing-amount span {
+            font-size: 20px;
+            color: #666;
+            font-weight: 500;
+        }
+
+        .pricing-features {
+            list-style: none;
+            margin: 35px 0;
+        }
+
+        .pricing-features li {
+            padding: 12px 0;
+            font-size: 15px;
+            color: #333;
+            position: relative;
+            padding-left: 30px;
+        }
+
+        .pricing-features li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #4F46E5;
+            font-weight: 900;
+            font-size: 18px;
+        }
+
+        .pricing-btn {
+            width: 100%;
+            padding: 16px;
+            background: #4F46E5;
+            color: #fff;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .pricing-btn:hover {
+            background: #4338CA;
+        }
+
+        .pricing-card.featured .pricing-btn {
+            background: linear-gradient(135deg, #4F46E5, #7C3AED);
+        }
+
+        /* Testimonials */
+        .testimonials-section {
+            padding: 120px 40px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 35px;
+            margin-top: 80px;
+        }
+
+        .testimonial-card {
+            background: #fff;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.08);
+        }
+
+        .testimonial-stars {
+            color: #FFD700;
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+
+        .testimonial-text {
+            font-size: 16px;
+            line-height: 1.8;
+            color: #333;
+            margin-bottom: 25px;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .author-image {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #4F46E5, #7C3AED);
+        }
+
+        .author-info h4 {
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .author-info p {
+            font-size: 13px;
+            color: #666;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 120px 40px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #fff;
+            text-align: center;
+        }
+
+        .cta-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .cta-section h2 {
+            font-size: 48px;
+            font-weight: 900;
+            margin-bottom: 25px;
+        }
+
+        .cta-section p {
+            font-size: 20px;
+            margin-bottom: 45px;
+            opacity: 0.95;
+        }
+
+        .cta-form {
+            display: flex;
+            gap: 15px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .cta-input {
+            flex: 1;
+            padding: 18px 25px;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            font-family: inherit;
+        }
+
+        .cta-btn {
+            padding: 18px 45px;
+            background: #1a1a1a;
+            color: #fff;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .cta-btn:hover {
+            background: #000;
+            transform: translateY(-3px);
+        }
+
+        /* Footer */
+        footer {
+            background: #1a1a1a;
+            color: #fff;
+            padding: 80px 40px 40px;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 60px;
+            margin-bottom: 50px;
+        }
+
+        .footer-section h3 {
+            font-size: 18px;
+            margin-bottom: 25px;
+            font-weight: 700;
+        }
+
+        .footer-section p {
+            font-size: 14px;
+            color: #ccc;
+            line-height: 1.8;
+            margin-bottom: 25px;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links a {
+            color: #ccc;
+            text-decoration: none;
+            font-size: 14px;
+            line-height: 2.2;
+            display: block;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: #4F46E5;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 40px;
+            border-top: 1px solid #333;
+            font-size: 13px;
+            color: #888;
+        }
+
+        @media (max-width: 1024px) {
+            .features-grid,
+            .pricing-grid,
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 42px;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+            }
+
+            .cta-form {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="#home" class="logo" data-page="home">
+                <div class="logo-icon">⚡</div>
+                워크플로우
+            </a>
+            <ul class="nav-links">
+                <li><a href="#home" data-page="home">홈</a></li>
+                <li><a href="#features" data-page="features">기능</a></li>
+                <li><a href="#pricing" data-page="pricing">요금제</a></li>
+                <li><a href="#testimonials" data-page="testimonials">고객후기</a></li>
+            </ul>
+            <div class="nav-cta">
+                <a href="#" class="btn-login">로그인</a>
+                <a href="#" class="btn-signup">무료 체험</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- HOME Page -->
+    <section id="home" class="page-section active">
+        <div class="hero">
+            <div class="hero-content">
+                <div class="hero-badge">🚀 7일 무료 체험 진행 중</div>
+                <h1>팀 협업의<br>새로운 기준</h1>
+                <p>워크플로우로 프로젝트 관리부터 팀 커뮤니케이션까지 한 곳에서 해결하세요</p>
+                <div class="hero-buttons">
+                    <a href="#pricing" data-page="pricing" class="btn-hero-primary">무료로 시작하기</a>
+                    <a href="#features" data-page="features" class="btn-hero-secondary">자세히 알아보기</a>
+                </div>
+                <div class="trusted-by">
+                    <p>1,000개 이상의 기업이 신뢰하는 협업 도구</p>
+                    <div class="company-logos">
+                        <div class="company-logo">네이버</div>
+                        <div class="company-logo">카카오</div>
+                        <div class="company-logo">쿠팡</div>
+                        <div class="company-logo">배달의민족</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="stats-section">
+            <div class="stats-content">
+                <h2>숫자로 보는 워크플로우</h2>
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <div class="stat-number">50만+</div>
+                        <div class="stat-label">활성 사용자</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">99.9%</div>
+                        <div class="stat-label">가동률</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">24/7</div>
+                        <div class="stat-label">고객 지원</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">4.9★</div>
+                        <div class="stat-label">고객 만족도</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FEATURES Page -->
+    <section id="features" class="page-section">
+        <div class="features-section">
+            <div class="section-header">
+                <div class="section-badge">Features</div>
+                <h2>모든 기능을 한 곳에서</h2>
+                <p>팀 생산성을 극대화하는 강력한 기능들을 만나보세요</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">📋</div>
+                    <h3>프로젝트 관리</h3>
+                    <p>칸반보드, 타임라인, 캘린더 뷰로 프로젝트를 효율적으로 관리하세요. 드래그 앤 드롭으로 간편하게 작업을 조정할 수 있습니다.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">💬</div>
+                    <h3>실시간 채팅</h3>
+                    <p>프로젝트별, 팀별로 채널을 만들어 실시간으로 소통하세요. 파일 공유와 스레드 기능으로 대화를 체계적으로 관리합니다.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📊</div>
+                    <h3>분석 대시보드</h3>
+                    <p>프로젝트 진행 상황과 팀 성과를 한눈에 파악하세요. 커스터마이징 가능한 대시보드로 필요한 정보만 확인할 수 있습니다.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔗</div>
+                    <h3>통합 연동</h3>
+                    <p>Slack, Google Drive, GitHub 등 100개 이상의 도구와 연동됩니다. API를 통해 커스텀 연동도 가능합니다.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔒</div>
+                    <h3>보안 & 권한</h3>
+                    <p>엔터프라이즈급 보안으로 데이터를 안전하게 보호합니다. 역할 기반 권한 관리로 정보 접근을 제어하세요.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📱</div>
+                    <h3>모바일 앱</h3>
+                    <p>iOS와 Android 앱으로 언제 어디서나 팀과 연결되세요. 푸시 알림으로 중요한 업데이트를 놓치지 마세요.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="cta-section">
+            <div class="cta-content">
+                <h2>지금 바로 시작하세요</h2>
+                <p>7일 무료 체험으로 모든 기능을 경험해보세요. 신용카드 등록 불필요합니다.</p>
+                <form class="cta-form">
+                    <input type="email" class="cta-input" placeholder="이메일 주소를 입력하세요" required>
+                    <button type="submit" class="cta-btn">무료 시작하기</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- PRICING Page -->
+    <section id="pricing" class="page-section">
+        <div class="pricing-section">
+            <div class="section-header">
+                <div class="section-badge">Pricing</div>
+                <h2>모든 팀을 위한 요금제</h2>
+                <p>스타트업부터 대기업까지, 팀 규모에 맞는 플랜을 선택하세요</p>
+            </div>
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <h3>스타터</h3>
+                    <p class="pricing-description">소규모 팀을 위한 기본 플랜</p>
+                    <div class="pricing-amount">₩9,900<span>/월</span></div>
+                    <ul class="pricing-features">
+                        <li>팀원 최대 10명</li>
+                        <li>프로젝트 무제한</li>
+                        <li>10GB 저장공간</li>
+                        <li>기본 통합 연동</li>
+                        <li>이메일 지원</li>
+                    </ul>
+                    <button class="pricing-btn">시작하기</button>
+                </div>
+
+                <div class="pricing-card featured">
+                    <div class="pricing-badge">인기</div>
+                    <h3>프로</h3>
+                    <p class="pricing-description">성장하는 팀을 위한 최적의 선택</p>
+                    <div class="pricing-amount">₩29,900<span>/월</span></div>
+                    <ul class="pricing-features">
+                        <li>팀원 최대 50명</li>
+                        <li>프로젝트 무제한</li>
+                        <li>100GB 저장공간</li>
+                        <li>모든 통합 연동</li>
+                        <li>우선 이메일 지원</li>
+                        <li>고급 분석 대시보드</li>
+                        <li>커스텀 워크플로우</li>
+                    </ul>
+                    <button class="pricing-btn">시작하기</button>
+                </div>
+
+                <div class="pricing-card">
+                    <h3>엔터프라이즈</h3>
+                    <p class="pricing-description">대규모 조직을 위한 맞춤형 솔루션</p>
+                    <div class="pricing-amount">문의<span>하기</span></div>
+                    <ul class="pricing-features">
+                        <li>팀원 무제한</li>
+                        <li>프로젝트 무제한</li>
+                        <li>무제한 저장공간</li>
+                        <li>모든 통합 연동</li>
+                        <li>24/7 전화 지원</li>
+                        <li>전담 고객 관리자</li>
+                        <li>SSO & 고급 보안</li>
+                        <li>온프레미스 배포 옵션</li>
+                    </ul>
+                    <button class="pricing-btn">문의하기</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TESTIMONIALS Page -->
+    <section id="testimonials" class="page-section">
+        <div class="testimonials-section">
+            <div class="section-header">
+                <div class="section-badge">Testimonials</div>
+                <h2>고객들의 이야기</h2>
+                <p>워크플로우를 사용하는 팀들의 실제 경험을 들어보세요</p>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-stars">★★★★★</div>
+                    <p class="testimonial-text">"워크플로우 도입 후 팀 생산성이 40% 향상되었습니다. 모든 커뮤니케이션과 작업이 한 곳에서 이루어지니 업무 효율이 정말 좋아졌어요."</p>
+                    <div class="testimonial-author">
+                        <div class="author-image"></div>
+                        <div class="author-info">
+                            <h4>김민수</h4>
+                            <p>프로젝트 매니저, 네이버</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="testimonial-stars">★★★★★</div>
+                    <p class="testimonial-text">"직관적인 UI와 강력한 기능들이 완벽하게 조화를 이룹니다. 특히 모바일 앱이 정말 잘 만들어져서 이동 중에도 업무를 놓치지 않을 수 있어요."</p>
+                    <div class="testimonial-author">
+                        <div class="author-image"></div>
+                        <div class="author-info">
+                            <h4>이지은</h4>
+                            <p>팀 리더, 카카오</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="testimonial-stars">★★★★★</div>
+                    <p class="testimonial-text">"다른 협업 도구들을 여러 개 사용했지만, 워크플로우만큼 우리 팀에 잘 맞는 도구는 없었습니다. 고객 지원도 정말 친절하고 빠릅니다."</p>
+                    <div class="testimonial-author">
+                        <div class="author-image"></div>
+                        <div class="author-info">
+                            <h4>박준영</h4>
+                            <p>CTO, 스타트업</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="testimonial-stars">★★★★★</div>
+                    <p class="testimonial-text">"분석 대시보드가 정말 유용해요. 팀의 작업 현황과 병목 지점을 한눈에 파악할 수 있어서 의사결정이 훨씬 빨라졌습니다."</p>
+                    <div class="testimonial-author">
+                        <div class="author-image"></div>
+                        <div class="author-info">
+                            <h4>최서연</h4>
+                            <p>운영 팀장, 쿠팡</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="testimonial-stars">★★★★★</div>
+                    <p class="testimonial-text">"보안이 중요한 프로젝트를 진행하는데 워크플로우의 엔터프라이즈 보안 기능이 정말 든든합니다. 감사 로그와 권한 관리가 완벽해요."</p>
+                    <div class="testimonial-author">
+                        <div class="author-image"></div>
+                        <div class="author-info">
+                            <h4>정태훈</h4>
+                            <p>보안 담당, 금융사</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="testimonial-stars">★★★★★</div>
+                    <p class="testimonial-text">"API 연동이 정말 쉬워요. 우리 회사의 기존 시스템과 연동하는 데 개발자 한 명이 하루만에 완료했습니다. 문서도 잘 되어 있어요."</p>
+                    <div class="testimonial-author">
+                        <div class="author-image"></div>
+                        <div class="author-info">
+                            <h4>강민지</h4>
+                            <p>개발팀장, IT 기업</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="cta-section">
+            <div class="cta-content">
+                <h2>아직도 고민 중이신가요?</h2>
+                <p>7일 무료 체험으로 워크플로우의 모든 기능을 경험해보세요</p>
+                <form class="cta-form">
+                    <input type="email" class="cta-input" placeholder="회사 이메일을 입력하세요" required>
+                    <button type="submit" class="cta-btn">무료 체험 시작</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>워크플로우</h3>
+                <p>팀 협업을 혁신하는 올인원 솔루션. 프로젝트 관리부터 커뮤니케이션까지, 워크플로우와 함께 더 스마트하게 일하세요.</p>
+            </div>
+            <div class="footer-section">
+                <h3>제품</h3>
+                <ul class="footer-links">
+                    <li><a href="#">기능</a></li>
+                    <li><a href="#">요금제</a></li>
+                    <li><a href="#">통합 연동</a></li>
+                    <li><a href="#">모바일 앱</a></li>
+                    <li><a href="#">API</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>고객 지원</h3>
+                <ul class="footer-links">
+                    <li><a href="#">헬프 센터</a></li>
+                    <li><a href="#">가이드</a></li>
+                    <li><a href="#">튜토리얼</a></li>
+                    <li><a href="#">문의하기</a></li>
+                    <li><a href="#">상태 페이지</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>회사</h3>
+                <ul class="footer-links">
+                    <li><a href="#">회사 소개</a></li>
+                    <li><a href="#">채용</a></li>
+                    <li><a href="#">블로그</a></li>
+                    <li><a href="#">보안</a></li>
+                    <li><a href="#">개인정보처리방침</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 워크플로우. All Rights Reserved. | 사업자등록번호: 123-45-67890</p>
+        </div>
+    </footer>
+
+    <script>
+        function showPage(pageId) {
+            document.querySelectorAll('.page-section').forEach(section => {
+                section.classList.remove('active');
+            });
+
+            const targetPage = document.getElementById(pageId);
+            if (targetPage) {
+                targetPage.classList.add('active');
+                window.scrollTo(0, 0);
+            }
+        }
+
+        document.querySelectorAll('[data-page]').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const pageId = link.getAttribute('data-page');
+                showPage(pageId);
+                window.location.hash = pageId;
+            });
+        });
+
+        window.addEventListener('hashchange', () => {
+            const pageId = window.location.hash.slice(1) || 'home';
+            showPage(pageId);
+        });
+
+        window.addEventListener('DOMContentLoaded', () => {
+            const pageId = window.location.hash.slice(1) || 'home';
+            showPage(pageId);
+        });
+    </script>
+</body>
+</html>

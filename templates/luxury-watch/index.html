@@ -1,0 +1,790 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CHRONOS - Luxury Timepieces</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.6;
+            overflow-x: hidden;
+            color: #2c2c2c;
+            background: #fff;
+        }
+
+        .page-section {
+            display: none;
+        }
+
+        .page-section.active {
+            display: block;
+        }
+
+        /* Header */
+        header {
+            background: rgba(255, 255, 255, 0.98);
+            padding: 25px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid #e8e8e8;
+            backdrop-filter: blur(10px);
+        }
+
+        nav {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 50px;
+        }
+
+        .logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 36px;
+            color: #1a1a1a;
+            font-weight: 600;
+            text-decoration: none;
+            letter-spacing: 3px;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 45px;
+        }
+
+        .nav-links a {
+            color: #2c2c2c;
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 500;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #b8956a;
+        }
+
+        .nav-actions {
+            display: flex;
+            gap: 25px;
+            align-items: center;
+        }
+
+        .nav-actions a {
+            color: #2c2c2c;
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 500;
+            letter-spacing: 1px;
+            transition: color 0.3s;
+        }
+
+        .nav-actions a:hover {
+            color: #b8956a;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: #fff;
+            position: relative;
+            margin-top: 90px;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.3);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 900px;
+            padding: 0 20px;
+        }
+
+        .hero h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 90px;
+            font-weight: 600;
+            margin-bottom: 25px;
+            letter-spacing: 5px;
+            text-shadow: 2px 2px 20px rgba(0, 0, 0, 0.5);
+        }
+
+        .hero p {
+            font-size: 18px;
+            font-weight: 300;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 40px;
+        }
+
+        .hero-btn {
+            padding: 18px 50px;
+            background: transparent;
+            color: #fff;
+            border: 2px solid #fff;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.4s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .hero-btn:hover {
+            background: #fff;
+            color: #1a1a1a;
+        }
+
+        /* Content */
+        .content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 120px 50px;
+        }
+
+        .content-header {
+            text-align: center;
+            margin-bottom: 90px;
+        }
+
+        .content-header h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 56px;
+            font-weight: 600;
+            color: #1a1a1a;
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+        }
+
+        .content-header p {
+            font-size: 16px;
+            color: #666;
+            font-weight: 300;
+            letter-spacing: 1px;
+        }
+
+        /* Collection Grid */
+        .collection-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 50px;
+            margin-top: 80px;
+        }
+
+        .collection-card {
+            background: #fff;
+            overflow: hidden;
+            transition: transform 0.4s;
+            cursor: pointer;
+        }
+
+        .collection-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .collection-image {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            transition: transform 0.6s;
+        }
+
+        .collection-card:hover .collection-image {
+            transform: scale(1.05);
+        }
+
+        .collection-info {
+            padding: 35px 20px;
+            text-align: center;
+        }
+
+        .collection-info h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 28px;
+            margin-bottom: 12px;
+            color: #1a1a1a;
+            font-weight: 600;
+        }
+
+        .collection-info p {
+            color: #888;
+            font-size: 13px;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+        }
+
+        .collection-price {
+            font-size: 20px;
+            font-weight: 600;
+            color: #b8956a;
+            margin-top: 15px;
+        }
+
+        /* Feature Section */
+        .feature-section {
+            display: flex;
+            gap: 80px;
+            align-items: center;
+            margin: 100px 0;
+        }
+
+        .feature-image {
+            flex: 1;
+        }
+
+        .feature-image img {
+            width: 100%;
+            height: auto;
+        }
+
+        .feature-content {
+            flex: 1;
+        }
+
+        .feature-content h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 48px;
+            margin-bottom: 25px;
+            color: #1a1a1a;
+            font-weight: 600;
+        }
+
+        .feature-content p {
+            font-size: 16px;
+            line-height: 1.9;
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        .feature-list {
+            list-style: none;
+            margin-top: 35px;
+        }
+
+        .feature-list li {
+            font-size: 15px;
+            color: #2c2c2c;
+            margin-bottom: 18px;
+            padding-left: 30px;
+            position: relative;
+        }
+
+        .feature-list li::before {
+            content: '✓';
+            color: #b8956a;
+            font-size: 18px;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+
+        /* Stats Section */
+        .stats-section {
+            background: #f8f8f8;
+            padding: 80px 50px;
+            margin: 120px 0;
+        }
+
+        .stats-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 50px;
+            text-align: center;
+        }
+
+        .stat-item h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 56px;
+            color: #b8956a;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .stat-item p {
+            font-size: 14px;
+            color: #666;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        /* Testimonial Section */
+        .testimonial-section {
+            max-width: 900px;
+            margin: 100px auto;
+            text-align: center;
+            padding: 80px 50px;
+        }
+
+        .testimonial-content {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 28px;
+            line-height: 1.8;
+            color: #2c2c2c;
+            margin-bottom: 30px;
+            font-style: italic;
+        }
+
+        .testimonial-author {
+            font-size: 14px;
+            color: #b8956a;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: #1a1a1a;
+            color: #fff;
+            padding: 100px 50px;
+            text-align: center;
+        }
+
+        .cta-section h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 52px;
+            margin-bottom: 25px;
+            font-weight: 600;
+        }
+
+        .cta-section p {
+            font-size: 16px;
+            margin-bottom: 45px;
+            letter-spacing: 1px;
+        }
+
+        .cta-btn {
+            padding: 18px 50px;
+            background: #b8956a;
+            color: #fff;
+            border: none;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.4s;
+        }
+
+        .cta-btn:hover {
+            background: #a07d54;
+        }
+
+        /* Footer */
+        footer {
+            background: #0a0a0a;
+            color: #fff;
+            padding: 80px 50px 40px;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 60px;
+            margin-bottom: 50px;
+        }
+
+        .footer-section h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 20px;
+            margin-bottom: 25px;
+            color: #b8956a;
+        }
+
+        .footer-section p, .footer-section a {
+            font-size: 13px;
+            color: #ccc;
+            line-height: 2;
+            text-decoration: none;
+            display: block;
+        }
+
+        .footer-section a:hover {
+            color: #b8956a;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 40px;
+            border-top: 1px solid #333;
+            font-size: 12px;
+            color: #888;
+        }
+
+        @media (max-width: 1024px) {
+            .collection-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .feature-section {
+                flex-direction: column;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .collection-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero h1 {
+                font-size: 50px;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s, transform 0.8s;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="#home" class="logo" data-page="home">CHRONOS</a>
+            <ul class="nav-links">
+                <li><a href="#home" data-page="home">Home</a></li>
+                <li><a href="#collection" data-page="collection">Collection</a></li>
+                <li><a href="#heritage" data-page="heritage">Heritage</a></li>
+                <li><a href="#contact" data-page="contact">Contact</a></li>
+            </ul>
+            <div class="nav-actions">
+                <a href="#">Search</a>
+                <a href="#">Account</a>
+                <a href="#">Cart (0)</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- HOME Page -->
+    <section id="home" class="page-section active">
+        <div class="hero" style="background-image: url('https://images.unsplash.com/photo-1523170335258-f5ed11844a49?w=1920&q=80');">
+            <div class="hero-content fade-in">
+                <h1>CHRONOS</h1>
+                <p>Timeless Elegance Since 1892</p>
+                <a href="#collection" data-page="collection" class="hero-btn">Explore Collection</a>
+            </div>
+        </div>
+
+        <div class="content">
+            <div class="stats-section" style="margin: 0;">
+                <div class="stats-grid">
+                    <div class="stat-item fade-in">
+                        <h3>130+</h3>
+                        <p>Years of Excellence</p>
+                    </div>
+                    <div class="stat-item fade-in">
+                        <h3>500+</h3>
+                        <p>Master Craftsmen</p>
+                    </div>
+                    <div class="stat-item fade-in">
+                        <h3>50+</h3>
+                        <p>Countries Worldwide</p>
+                    </div>
+                    <div class="stat-item fade-in">
+                        <h3>100%</h3>
+                        <p>Swiss Made</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- COLLECTION Page -->
+    <section id="collection" class="page-section">
+        <div class="content">
+            <div class="content-header fade-in">
+                <h2>Iconic Collections</h2>
+                <p>Discover our meticulously crafted timepieces</p>
+            </div>
+
+            <div class="collection-grid">
+                <div class="collection-card fade-in">
+                    <img src="https://images.unsplash.com/photo-1587836374828-4dbafa94cf0e?w=600&q=80" alt="Royal Collection" class="collection-image">
+                    <div class="collection-info">
+                        <h3>Royal Collection</h3>
+                        <p>18K Gold | Automatic Movement</p>
+                        <p class="collection-price">$45,900</p>
+                    </div>
+                </div>
+
+                <div class="collection-card fade-in">
+                    <img src="https://images.unsplash.com/photo-1622434641406-a158123450f9?w=600&q=80" alt="Heritage Series" class="collection-image">
+                    <div class="collection-info">
+                        <h3>Heritage Series</h3>
+                        <p>Stainless Steel | Chronograph</p>
+                        <p class="collection-price">$28,500</p>
+                    </div>
+                </div>
+
+                <div class="collection-card fade-in">
+                    <img src="https://images.unsplash.com/photo-1594534475808-b18fc33b045e?w=600&q=80" alt="Prestige Edition" class="collection-image">
+                    <div class="collection-info">
+                        <h3>Prestige Edition</h3>
+                        <p>Platinum | Tourbillon</p>
+                        <p class="collection-price">$89,000</p>
+                    </div>
+                </div>
+
+                <div class="collection-card fade-in">
+                    <img src="https://images.unsplash.com/photo-1533139502658-0198f920d8e8?w=600&q=80" alt="Classic Elegance" class="collection-image">
+                    <div class="collection-info">
+                        <h3>Classic Elegance</h3>
+                        <p>Rose Gold | Perpetual Calendar</p>
+                        <p class="collection-price">$52,300</p>
+                    </div>
+                </div>
+
+                <div class="collection-card fade-in">
+                    <img src="https://images.unsplash.com/photo-1509048191080-d2984bad6ae5?w=600&q=80" alt="Sport Edition" class="collection-image">
+                    <div class="collection-info">
+                        <h3>Sport Edition</h3>
+                        <p>Titanium | GMT Function</p>
+                        <p class="collection-price">$34,800</p>
+                    </div>
+                </div>
+
+                <div class="collection-card fade-in">
+                    <img src="https://images.unsplash.com/photo-1524592094714-0f0654e20314?w=600&q=80" alt="Limited Edition" class="collection-image">
+                    <div class="collection-info">
+                        <h3>Limited Edition</h3>
+                        <p>White Gold | Minute Repeater</p>
+                        <p class="collection-price">$125,000</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- HERITAGE Page -->
+    <section id="heritage" class="page-section">
+        <div class="content">
+            <div class="content-header fade-in">
+                <h2>Our Heritage</h2>
+                <p>Over a century of horological excellence</p>
+            </div>
+
+            <div class="feature-section">
+                <div class="feature-image fade-in">
+                    <img src="https://images.unsplash.com/photo-1611078489935-0cb964de46d6?w=800&q=80" alt="Craftsmanship">
+                </div>
+                <div class="feature-content fade-in">
+                    <h2>Swiss Craftsmanship</h2>
+                    <p>Every CHRONOS timepiece is a testament to Swiss watchmaking tradition. Our master craftsmen dedicate hundreds of hours to perfecting each component, ensuring that every watch meets our exacting standards.</p>
+                    <p>From the intricate movements to the finest finishing touches, we combine traditional techniques with modern innovation to create timepieces that will last for generations.</p>
+                    <ul class="feature-list">
+                        <li>Hand-assembled by master watchmakers</li>
+                        <li>Over 300 individual components per movement</li>
+                        <li>Rigorous 28-day testing protocol</li>
+                        <li>Lifetime warranty and service support</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="feature-section" style="flex-direction: row-reverse;">
+                <div class="feature-image fade-in">
+                    <img src="https://images.unsplash.com/photo-1610648866585-2b8e6c3e2d00?w=800&q=80" alt="Innovation">
+                </div>
+                <div class="feature-content fade-in">
+                    <h2>Timeless Innovation</h2>
+                    <p>Since 1892, CHRONOS has been at the forefront of horological innovation. We pioneered several groundbreaking complications and continue to push the boundaries of what's possible in watchmaking.</p>
+                    <p>Our in-house research and development team works tirelessly to develop new materials, movements, and complications that set new standards for the industry.</p>
+                    <ul class="feature-list">
+                        <li>Proprietary automatic movement calibers</li>
+                        <li>Advanced anti-magnetic technology</li>
+                        <li>Patented perpetual calendar mechanism</li>
+                        <li>Innovative shock protection system</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="testimonial-section fade-in">
+                <p class="testimonial-content">"A CHRONOS watch is not just a timepiece, it's an heirloom. The attention to detail and craftsmanship is unparalleled. It's a work of art that happens to tell time perfectly."</p>
+                <p class="testimonial-author">James Morrison - Collector</p>
+            </div>
+        </div>
+
+        <div class="cta-section">
+            <h2>Experience Excellence</h2>
+            <p>Visit our boutiques worldwide or schedule a private consultation</p>
+            <button class="cta-btn" onclick="document.querySelector('[data-page=contact]').click()">Book Appointment</button>
+        </div>
+    </section>
+
+    <!-- CONTACT Page -->
+    <section id="contact" class="page-section">
+        <div class="content">
+            <div class="content-header fade-in">
+                <h2>Get In Touch</h2>
+                <p>Visit our boutiques or contact us for inquiries</p>
+            </div>
+
+            <div class="feature-section">
+                <div class="feature-content fade-in">
+                    <h2>Visit Our Boutique</h2>
+                    <p style="margin-bottom: 30px;">Experience our timepieces in person at our flagship boutique. Our expert consultants are available to guide you through our collection and help you find the perfect watch.</p>
+
+                    <h3 style="font-size: 20px; margin-bottom: 15px; color: #b8956a;">Seoul Flagship</h3>
+                    <p>123 Gangnam-daero, Gangnam-gu<br>Seoul, South Korea 06000</p>
+                    <p style="margin-top: 10px;">Mon - Sat: 10:00 - 20:00<br>Sunday: 11:00 - 19:00</p>
+                    <p style="margin-top: 20px; color: #b8956a;">+82 2-1234-5678</p>
+
+                    <h3 style="font-size: 20px; margin: 40px 0 15px; color: #b8956a;">Geneva Headquarters</h3>
+                    <p>456 Rue du Rhône<br>1204 Geneva, Switzerland</p>
+                    <p style="margin-top: 10px;">Mon - Fri: 09:00 - 18:00<br>Weekends: By appointment</p>
+                    <p style="margin-top: 20px; color: #b8956a;">+41 22 123 4567</p>
+                </div>
+                <div class="feature-image fade-in">
+                    <img src="https://images.unsplash.com/photo-1555421689-491a97ff2040?w=800&q=80" alt="Boutique">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>CHRONOS</h3>
+                <p>Crafting timeless excellence since 1892. Every timepiece tells a story of precision, passion, and uncompromising quality.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Collections</h3>
+                <a href="#">Royal Collection</a>
+                <a href="#">Heritage Series</a>
+                <a href="#">Sport Edition</a>
+                <a href="#">Limited Editions</a>
+            </div>
+            <div class="footer-section">
+                <h3>Services</h3>
+                <a href="#">Watch Service</a>
+                <a href="#">Warranty</a>
+                <a href="#">Customization</a>
+                <a href="#">Authentication</a>
+            </div>
+            <div class="footer-section">
+                <h3>Company</h3>
+                <a href="#">About Us</a>
+                <a href="#">Careers</a>
+                <a href="#">Press</a>
+                <a href="#">Contact</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 CHRONOS. All rights reserved. Swiss Made with Pride.</p>
+        </div>
+    </footer>
+
+    <script>
+        function showPage(pageId) {
+            document.querySelectorAll('.page-section').forEach(section => {
+                section.classList.remove('active');
+            });
+
+            const targetPage = document.getElementById(pageId);
+            if (targetPage) {
+                targetPage.classList.add('active');
+                window.scrollTo(0, 0);
+                initializeAnimations();
+            }
+        }
+
+        document.querySelectorAll('[data-page]').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const pageId = link.getAttribute('data-page');
+                showPage(pageId);
+                window.location.hash = pageId;
+            });
+        });
+
+        window.addEventListener('hashchange', () => {
+            const pageId = window.location.hash.slice(1) || 'home';
+            showPage(pageId);
+        });
+
+        window.addEventListener('DOMContentLoaded', () => {
+            const pageId = window.location.hash.slice(1) || 'home';
+            showPage(pageId);
+        });
+
+        function initializeAnimations() {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            });
+
+            const activePage = document.querySelector('.page-section.active');
+            if (activePage) {
+                activePage.querySelectorAll('.fade-in').forEach(el => {
+                    el.classList.remove('visible');
+                    observer.observe(el);
+                });
+
+                setTimeout(() => {
+                    activePage.querySelectorAll('.hero .fade-in').forEach(el => {
+                        el.classList.add('visible');
+                    });
+                }, 100);
+            }
+        }
+    </script>
+</body>
+</html>

@@ -374,17 +374,33 @@
             color: white;
             text-decoration: none;
             border-radius: 12px;
-            font-weight: 600;
+            font-weight: 700;
             font-size: 1rem;
             transition: all 0.3s ease;
             border: none;
             cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .template-link::before {
+            content: '→';
+            position: absolute;
+            right: 1.5rem;
+            opacity: 0;
+            transition: all 0.3s ease;
         }
 
         .template-link:hover {
             background: linear-gradient(135deg, #4f46e5 0%, #6366f1 100%);
             transform: translateY(-2px);
             box-shadow: 0 8px 16px rgba(79, 70, 229, 0.3);
+            padding-right: 2.5rem;
+        }
+
+        .template-link:hover::before {
+            opacity: 1;
+            right: 1.5rem;
         }
 
         /* Section Headers */
@@ -623,8 +639,8 @@
 <body>
     <div class="container">
         <header>
-            <h1>Premium Web Templates</h1>
-            <p class="subtitle">19개의 프리미엄 프로덕션급 템플릿 컬렉션</p>
+            <h1>✨ Premium Web Templates</h1>
+            <p class="subtitle">23개의 프리미엄 프로덕션급 템플릿 컬렉션 | 한국 시장 특화 템플릿 포함 🇰🇷</p>
 
             <div class="search-filter-container">
                 <div class="search-wrapper">
@@ -642,7 +658,7 @@
 
         <div class="stats-bar">
             <div class="stat-item">
-                <span class="stat-number">19</span>
+                <span class="stat-number">23</span>
                 <span class="stat-label">Templates</span>
             </div>
             <div class="stat-item">
@@ -660,6 +676,102 @@
             <p class="section-description">현대적이고 트렌디한 디자인의 프리미엄 랜딩 페이지 템플릿</p>
         </div>
         <div class="templates-grid" data-category="premium">
+            <div class="template-card" data-category="premium">
+                <div class="template-placeholder" style="background: linear-gradient(135deg, rgba(255, 107, 0, 0.5) 0%, rgba(255, 140, 66, 0.5) 100%), url('https://images.unsplash.com/photo-1523381210434-271e8be1f52b?w=800&q=80') center/cover;">
+                </div>
+                <div class="template-content">
+                    <div class="template-header">
+                        <span class="template-badge premium">Premium</span>
+                        <div class="difficulty-indicator">
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star empty">★</span>
+                        </div>
+                    </div>
+                    <h3 class="template-title">🇰🇷 트렌디몰 - 한국 쇼핑몰</h3>
+                    <p class="template-description">
+                        한국형 이커머스 쇼핑몰 템플릿 - 패션/뷰티/리빙
+                    </p>
+                    <div class="template-actions">
+                        <a href="./templates/korean-shopping/" class="template-link">미리보기</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="template-card" data-category="premium">
+                <div class="template-placeholder" style="background: linear-gradient(135deg, rgba(255, 107, 0, 0.5) 0%, rgba(255, 140, 66, 0.5) 100%), url('https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=800&q=80') center/cover;">
+                </div>
+                <div class="template-content">
+                    <div class="template-header">
+                        <span class="template-badge premium">Premium</span>
+                        <div class="difficulty-indicator">
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star empty">★</span>
+                        </div>
+                    </div>
+                    <h3 class="template-title">🇰🇷 빠른배달 - 음식 배달</h3>
+                    <p class="template-description">
+                        한국형 음식 배달 서비스 앱 - 맛집 주문 플랫폼
+                    </p>
+                    <div class="template-actions">
+                        <a href="./templates/korean-delivery/" class="template-link">미리보기</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="template-card" data-category="premium">
+                <div class="template-placeholder" style="background: linear-gradient(135deg, rgba(111, 78, 55, 0.5) 0%, rgba(139, 90, 60, 0.5) 100%), url('https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=800&q=80') center/cover;">
+                </div>
+                <div class="template-content">
+                    <div class="template-header">
+                        <span class="template-badge premium">Premium</span>
+                        <div class="difficulty-indicator">
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star empty">★</span>
+                        </div>
+                    </div>
+                    <h3 class="template-title">🇰🇷 어반커피 - 한국 카페</h3>
+                    <p class="template-description">
+                        한국형 카페 소개 페이지 - 메뉴/갤러리/매장안내
+                    </p>
+                    <div class="template-actions">
+                        <a href="./templates/korean-cafe/" class="template-link">미리보기</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="template-card" data-category="premium">
+                <div class="template-placeholder" style="background: linear-gradient(135deg, rgba(79, 70, 229, 0.5) 0%, rgba(124, 58, 237, 0.5) 100%), url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80') center/cover;">
+                </div>
+                <div class="template-content">
+                    <div class="template-header">
+                        <span class="template-badge premium">Premium</span>
+                        <div class="difficulty-indicator">
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star empty">★</span>
+                        </div>
+                    </div>
+                    <h3 class="template-title">🇰🇷 워크플로우 - 한국 SaaS</h3>
+                    <p class="template-description">
+                        한국형 SaaS 서비스 랜딩페이지 - 팀 협업 도구
+                    </p>
+                    <div class="template-actions">
+                        <a href="./templates/korean-saas/" class="template-link">미리보기</a>
+                    </div>
+                </div>
+            </div>
+
             <div class="template-card" data-category="premium">
                 <div class="template-placeholder" style="background: linear-gradient(135deg, rgba(102, 126, 234, 0.5) 0%, rgba(118, 75, 162, 0.5) 100%), url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80') center/cover;">
                 </div>
@@ -800,6 +912,126 @@
                     </p>
                     <div class="template-actions">
                         <a href="./templates/landing-crypto/" class="template-link">미리보기</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="template-card" data-category="premium">
+                <div class="template-placeholder" style="background: linear-gradient(135deg, rgba(212, 175, 55, 0.5) 0%, rgba(26, 26, 26, 0.5) 100%), url('https://images.unsplash.com/photo-1523170335258-f5ed11844a49?w=800&q=80') center/cover;">
+                </div>
+                <div class="template-content">
+                    <div class="template-header">
+                        <span class="template-badge premium">Premium</span>
+                        <div class="difficulty-indicator">
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                        </div>
+                    </div>
+                    <h3 class="template-title">CHRONOS - Luxury Watch</h3>
+                    <p class="template-description">
+                        스위스 명품 시계 브랜드 쇼핑몰 - 3스타 미슐랭급 디자인
+                    </p>
+                    <div class="template-actions">
+                        <a href="./templates/luxury-watch/" class="template-link">미리보기</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="template-card" data-category="premium">
+                <div class="template-placeholder" style="background: linear-gradient(135deg, rgba(102, 126, 234, 0.5) 0%, rgba(118, 75, 162, 0.5) 100%), url('https://images.unsplash.com/photo-1592286927505-b45a3e6b0334?w=800&q=80') center/cover;">
+                </div>
+                <div class="template-content">
+                    <div class="template-header">
+                        <span class="template-badge premium">Premium</span>
+                        <div class="difficulty-indicator">
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                        </div>
+                    </div>
+                    <h3 class="template-title">APEX Pro - Smart Device</h3>
+                    <p class="template-description">
+                        프리미엄 폴더블 스마트폰 제품 소개 - Apple 스타일 디자인
+                    </p>
+                    <div class="template-actions">
+                        <a href="./templates/tech-product/" class="template-link">미리보기</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="template-card" data-category="premium">
+                <div class="template-placeholder" style="background: linear-gradient(135deg, rgba(26, 77, 46, 0.5) 0%, rgba(20, 61, 37, 0.5) 100%), url('https://images.unsplash.com/photo-1582719508461-905c673771fd?w=800&q=80') center/cover;">
+                </div>
+                <div class="template-content">
+                    <div class="template-header">
+                        <span class="template-badge premium">Premium</span>
+                        <div class="difficulty-indicator">
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                        </div>
+                    </div>
+                    <h3 class="template-title">Azure Bay Resort & Spa</h3>
+                    <p class="template-description">
+                        5성급 부티크 리조트 예약 사이트 - 럭셔리 호텔 경험
+                    </p>
+                    <div class="template-actions">
+                        <a href="./templates/luxury-hotel/" class="template-link">미리보기</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="template-card" data-category="premium">
+                <div class="template-placeholder" style="background: linear-gradient(135deg, rgba(99, 102, 241, 0.5) 0%, rgba(139, 92, 246, 0.5) 100%), url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80') center/cover;">
+                </div>
+                <div class="template-content">
+                    <div class="template-header">
+                        <span class="template-badge premium">Premium</span>
+                        <div class="difficulty-indicator">
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                        </div>
+                    </div>
+                    <h3 class="template-title">NEXUS Digital Agency</h3>
+                    <p class="template-description">
+                        디지털 마케팅 에이전시 랜딩 - 데이터 중심 성장 전략
+                    </p>
+                    <div class="template-actions">
+                        <a href="./templates/digital-agency/" class="template-link">미리보기</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="template-card" data-category="premium">
+                <div class="template-placeholder" style="background: linear-gradient(135deg, rgba(212, 175, 55, 0.5) 0%, rgba(26, 26, 26, 0.5) 100%), url('https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800&q=80') center/cover;">
+                </div>
+                <div class="template-content">
+                    <div class="template-header">
+                        <span class="template-badge premium">Premium</span>
+                        <div class="difficulty-indicator">
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                        </div>
+                    </div>
+                    <h3 class="template-title">Étoile Noire Restaurant</h3>
+                    <p class="template-description">
+                        미슐랭 3스타 파인 다이닝 레스토랑 - 프리미엄 예약 경험
+                    </p>
+                    <div class="template-actions">
+                        <a href="./templates/fine-dining/" class="template-link">미리보기</a>
                     </div>
                 </div>
             </div>
@@ -953,6 +1185,7 @@
                     </div>
                 </div>
             </div>
+
         </div>
 
         <div class="section-wrapper" data-section="basic">
@@ -1112,7 +1345,7 @@
 
                 <div class="footer-stats">
                     <div class="footer-stat">
-                        <span class="footer-stat-number">19</span>
+                        <span class="footer-stat-number">23</span>
                         <span class="footer-stat-label">프리미엄 템플릿</span>
                     </div>
                     <div class="footer-stat">

@@ -1,0 +1,915 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEXUS Digital - Transform Your Brand</title>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            overflow-x: hidden;
+            color: #0f172a;
+            background: #ffffff;
+        }
+
+        .page-section {
+            display: none;
+        }
+
+        .page-section.active {
+            display: block;
+        }
+
+        /* Header */
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 20px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(15, 23, 42, 0.06);
+            backdrop-filter: blur(12px);
+        }
+
+        nav {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 50px;
+        }
+
+        .logo {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 28px;
+            color: #0f172a;
+            font-weight: 700;
+            text-decoration: none;
+            letter-spacing: -0.5px;
+        }
+
+        .logo span {
+            color: #6366f1;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 40px;
+        }
+
+        .nav-links a {
+            color: #475569;
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #6366f1;
+        }
+
+        .contact-btn {
+            padding: 12px 30px;
+            background: #6366f1;
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+        }
+
+        .contact-btn:hover {
+            background: #4f46e5;
+            transform: translateY(-2px);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #fff;
+            position: relative;
+            margin-top: 80px;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="grid" width="100" height="100" patternUnits="userSpaceOnUse"><path d="M 100 0 L 0 0 0 100" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="1"/></pattern></defs><rect width="100%" height="100%" fill="url(%23grid)"/></svg>');
+            opacity: 0.5;
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            text-align: center;
+            padding: 0 50px;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 72px;
+            font-weight: 700;
+            margin-bottom: 30px;
+            letter-spacing: -2px;
+            line-height: 1.1;
+        }
+
+        .hero p {
+            font-size: 24px;
+            font-weight: 300;
+            margin-bottom: 50px;
+            opacity: 0.95;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .primary-btn {
+            padding: 18px 40px;
+            background: #fff;
+            color: #6366f1;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .primary-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .secondary-btn {
+            padding: 18px 40px;
+            background: transparent;
+            color: #fff;
+            border: 2px solid #fff;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .secondary-btn:hover {
+            background: #fff;
+            color: #6366f1;
+        }
+
+        .clients-section {
+            padding: 60px 50px;
+            background: rgba(255, 255, 255, 0.1);
+            margin-top: 80px;
+        }
+
+        .clients-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+            align-items: center;
+        }
+
+        .client-logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: rgba(255, 255, 255, 0.8);
+            text-align: center;
+        }
+
+        /* Content */
+        .content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 120px 50px;
+        }
+
+        .content-header {
+            text-align: center;
+            margin-bottom: 90px;
+        }
+
+        .content-header h2 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 56px;
+            font-weight: 700;
+            color: #0f172a;
+            margin-bottom: 20px;
+            letter-spacing: -1px;
+        }
+
+        .content-header p {
+            font-size: 20px;
+            color: #64748b;
+            font-weight: 400;
+        }
+
+        /* Services Grid */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            margin-top: 80px;
+        }
+
+        .service-card {
+            background: #fff;
+            padding: 50px 40px;
+            border-radius: 16px;
+            border: 1px solid #e2e8f0;
+            transition: all 0.4s;
+            cursor: pointer;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(99, 102, 241, 0.15);
+            border-color: #6366f1;
+        }
+
+        .service-icon {
+            width: 64px;
+            height: 64px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            margin-bottom: 25px;
+        }
+
+        .service-card h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 28px;
+            margin-bottom: 15px;
+            color: #0f172a;
+            font-weight: 600;
+        }
+
+        .service-card p {
+            font-size: 16px;
+            color: #64748b;
+            line-height: 1.8;
+            margin-bottom: 25px;
+        }
+
+        .service-card ul {
+            list-style: none;
+        }
+
+        .service-card ul li {
+            font-size: 15px;
+            color: #475569;
+            margin-bottom: 10px;
+            padding-left: 25px;
+            position: relative;
+        }
+
+        .service-card ul li::before {
+            content: '→';
+            color: #6366f1;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+
+        /* Case Studies */
+        .case-study {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+            margin: 120px 0;
+        }
+
+        .case-study.reverse {
+            direction: rtl;
+        }
+
+        .case-study.reverse > * {
+            direction: ltr;
+        }
+
+        .case-image {
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
+        }
+
+        .case-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .case-content h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 42px;
+            margin-bottom: 15px;
+            color: #0f172a;
+            font-weight: 700;
+        }
+
+        .case-tag {
+            display: inline-block;
+            padding: 6px 16px;
+            background: #ede9fe;
+            color: #6366f1;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        .case-content p {
+            font-size: 18px;
+            line-height: 1.8;
+            color: #64748b;
+            margin-bottom: 25px;
+        }
+
+        .case-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .stat-item h4 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 36px;
+            color: #6366f1;
+            margin-bottom: 5px;
+            font-weight: 700;
+        }
+
+        .stat-item p {
+            font-size: 14px;
+            color: #64748b;
+        }
+
+        /* Process Section */
+        .process-section {
+            background: #f8fafc;
+            padding: 120px 50px;
+            margin: 100px 0;
+        }
+
+        .process-grid {
+            max-width: 1200px;
+            margin: 60px auto 0;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 40px;
+        }
+
+        .process-step {
+            text-align: center;
+            position: relative;
+        }
+
+        .process-number {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #fff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: 700;
+            margin: 0 auto 25px;
+        }
+
+        .process-step h3 {
+            font-size: 20px;
+            margin-bottom: 15px;
+            color: #0f172a;
+            font-weight: 600;
+        }
+
+        .process-step p {
+            font-size: 15px;
+            color: #64748b;
+            line-height: 1.7;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #fff;
+            padding: 120px 50px;
+            text-align: center;
+            margin: 100px 0 0;
+        }
+
+        .cta-section h2 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 56px;
+            margin-bottom: 25px;
+            font-weight: 700;
+            letter-spacing: -1px;
+        }
+
+        .cta-section p {
+            font-size: 22px;
+            margin-bottom: 50px;
+            opacity: 0.95;
+        }
+
+        /* Footer */
+        footer {
+            background: #0f172a;
+            color: #cbd5e1;
+            padding: 80px 50px 40px;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 60px;
+            margin-bottom: 50px;
+        }
+
+        .footer-section h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 20px;
+            margin-bottom: 25px;
+            color: #fff;
+            font-weight: 600;
+        }
+
+        .footer-section p {
+            font-size: 14px;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        .footer-section a {
+            display: block;
+            font-size: 14px;
+            color: #cbd5e1;
+            line-height: 2.2;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-section a:hover {
+            color: #6366f1;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 40px;
+            border-top: 1px solid #1e293b;
+            font-size: 14px;
+        }
+
+        @media (max-width: 1024px) {
+            .services-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .case-study, .case-study.reverse {
+                grid-template-columns: 1fr;
+                direction: ltr;
+            }
+
+            .process-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .clients-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 48px;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .process-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+
+            .clients-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s, transform 0.8s;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="#home" class="logo" data-page="home">NEXUS<span>.</span></a>
+            <ul class="nav-links">
+                <li><a href="#home" data-page="home">Home</a></li>
+                <li><a href="#services" data-page="services">Services</a></li>
+                <li><a href="#work" data-page="work">Our Work</a></li>
+                <li><a href="#contact" data-page="contact">Contact</a></li>
+            </ul>
+            <a href="#contact" data-page="contact" class="contact-btn">Get Started</a>
+        </nav>
+    </header>
+
+    <!-- HOME Page -->
+    <section id="home" class="page-section active">
+        <div class="hero">
+            <div class="hero-content">
+                <h1 class="fade-in">Transform Your Digital Presence</h1>
+                <p class="fade-in">We craft data-driven digital experiences that drive growth and engage audiences</p>
+                <div class="hero-buttons fade-in">
+                    <a href="#services" data-page="services" class="primary-btn">Explore Services</a>
+                    <a href="#work" data-page="work" class="secondary-btn">View Our Work</a>
+                </div>
+            </div>
+            <div class="clients-section">
+                <div class="clients-grid">
+                    <div class="client-logo">TESLA</div>
+                    <div class="client-logo">STRIPE</div>
+                    <div class="client-logo">SPOTIFY</div>
+                    <div class="client-logo">AIRBNB</div>
+                    <div class="client-logo">UBER</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICES Page -->
+    <section id="services" class="page-section">
+        <div class="content">
+            <div class="content-header fade-in">
+                <h2>What We Do</h2>
+                <p>Comprehensive digital solutions tailored to your business needs</p>
+            </div>
+
+            <div class="services-grid">
+                <div class="service-card fade-in">
+                    <div class="service-icon">🎨</div>
+                    <h3>Brand Strategy</h3>
+                    <p>Building authentic brands that resonate with your target audience and stand out in the market.</p>
+                    <ul>
+                        <li>Brand Identity Design</li>
+                        <li>Market Positioning</li>
+                        <li>Visual Identity Systems</li>
+                        <li>Brand Guidelines</li>
+                    </ul>
+                </div>
+
+                <div class="service-card fade-in">
+                    <div class="service-icon">💻</div>
+                    <h3>Web Development</h3>
+                    <p>Creating fast, scalable, and beautiful websites that convert visitors into customers.</p>
+                    <ul>
+                        <li>Custom Website Development</li>
+                        <li>E-commerce Solutions</li>
+                        <li>Progressive Web Apps</li>
+                        <li>CMS Integration</li>
+                    </ul>
+                </div>
+
+                <div class="service-card fade-in">
+                    <div class="service-icon">📱</div>
+                    <h3>Mobile Apps</h3>
+                    <p>Developing intuitive mobile experiences for iOS and Android platforms.</p>
+                    <ul>
+                        <li>Native App Development</li>
+                        <li>Cross-Platform Solutions</li>
+                        <li>App Design & UX</li>
+                        <li>App Store Optimization</li>
+                    </ul>
+                </div>
+
+                <div class="service-card fade-in">
+                    <div class="service-icon">📈</div>
+                    <h3>Digital Marketing</h3>
+                    <p>Data-driven marketing strategies that maximize ROI and drive sustainable growth.</p>
+                    <ul>
+                        <li>SEO & Content Strategy</li>
+                        <li>Paid Advertising (PPC)</li>
+                        <li>Social Media Marketing</li>
+                        <li>Email Campaigns</li>
+                    </ul>
+                </div>
+
+                <div class="service-card fade-in">
+                    <div class="service-icon">🎯</div>
+                    <h3>UX/UI Design</h3>
+                    <p>Designing user-centered experiences that are both beautiful and functional.</p>
+                    <ul>
+                        <li>User Research</li>
+                        <li>Wireframing & Prototyping</li>
+                        <li>Interface Design</li>
+                        <li>Usability Testing</li>
+                    </ul>
+                </div>
+
+                <div class="service-card fade-in">
+                    <div class="service-icon">⚡</div>
+                    <h3>Growth Strategy</h3>
+                    <p>Strategic consulting to accelerate your business growth and market expansion.</p>
+                    <ul>
+                        <li>Growth Hacking</li>
+                        <li>Analytics & Insights</li>
+                        <li>Conversion Optimization</li>
+                        <li>Performance Marketing</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="process-section">
+            <div class="content-header">
+                <h2 class="fade-in">Our Process</h2>
+                <p class="fade-in">A proven methodology for delivering exceptional results</p>
+            </div>
+            <div class="process-grid">
+                <div class="process-step fade-in">
+                    <div class="process-number">1</div>
+                    <h3>Discovery</h3>
+                    <p>We dive deep into your business, goals, and target audience to create a solid foundation.</p>
+                </div>
+                <div class="process-step fade-in">
+                    <div class="process-number">2</div>
+                    <h3>Strategy</h3>
+                    <p>Developing a comprehensive roadmap aligned with your business objectives.</p>
+                </div>
+                <div class="process-step fade-in">
+                    <div class="process-number">3</div>
+                    <h3>Execution</h3>
+                    <p>Bringing the strategy to life with pixel-perfect design and robust development.</p>
+                </div>
+                <div class="process-step fade-in">
+                    <div class="process-number">4</div>
+                    <h3>Growth</h3>
+                    <p>Continuous optimization and scaling to maximize your digital success.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- WORK Page -->
+    <section id="work" class="page-section">
+        <div class="content">
+            <div class="content-header fade-in">
+                <h2>Featured Work</h2>
+                <p>Real results for real businesses</p>
+            </div>
+
+            <div class="case-study fade-in">
+                <div class="case-image">
+                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80" alt="E-commerce Platform">
+                </div>
+                <div class="case-content">
+                    <span class="case-tag">E-commerce</span>
+                    <h3>Fashion Retail Platform</h3>
+                    <p>Redesigned and developed a complete e-commerce solution that increased conversion rates and reduced cart abandonment.</p>
+                    <div class="case-stats">
+                        <div class="stat-item">
+                            <h4>250%</h4>
+                            <p>Revenue Growth</p>
+                        </div>
+                        <div class="stat-item">
+                            <h4>45%</h4>
+                            <p>Conversion Rate</p>
+                        </div>
+                        <div class="stat-item">
+                            <h4>2M+</h4>
+                            <p>Monthly Users</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="case-study reverse fade-in">
+                <div class="case-image">
+                    <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?w=800&q=80" alt="Mobile App">
+                </div>
+                <div class="case-content">
+                    <span class="case-tag">Mobile App</span>
+                    <h3>FinTech Investment App</h3>
+                    <p>Built a secure and intuitive investment platform that makes financial planning accessible to everyone.</p>
+                    <div class="case-stats">
+                        <div class="stat-item">
+                            <h4>500K+</h4>
+                            <p>Downloads</p>
+                        </div>
+                        <div class="stat-item">
+                            <h4>4.8</h4>
+                            <p>App Store Rating</p>
+                        </div>
+                        <div class="stat-item">
+                            <h4>$50M+</h4>
+                            <p>Assets Managed</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="case-study fade-in">
+                <div class="case-image">
+                    <img src="https://images.unsplash.com/photo-1557804506-669a67965ba0?w=800&q=80" alt="SaaS Platform">
+                </div>
+                <div class="case-content">
+                    <span class="case-tag">SaaS</span>
+                    <h3>Project Management Platform</h3>
+                    <p>Designed and developed a collaborative platform that helps teams work smarter and achieve more.</p>
+                    <div class="case-stats">
+                        <div class="stat-item">
+                            <h4>10K+</h4>
+                            <p>Companies</p>
+                        </div>
+                        <div class="stat-item">
+                            <h4>95%</h4>
+                            <p>User Satisfaction</p>
+                        </div>
+                        <div class="stat-item">
+                            <h4>40%</h4>
+                            <p>Efficiency Gain</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT Page -->
+    <section id="contact" class="page-section">
+        <div class="cta-section">
+            <h2 class="fade-in">Ready to Grow Your Business?</h2>
+            <p class="fade-in">Let's build something amazing together</p>
+            <div class="hero-buttons fade-in">
+                <button class="primary-btn">Start a Project</button>
+                <button class="secondary-btn">Schedule a Call</button>
+            </div>
+        </div>
+
+        <div class="content">
+            <div class="services-grid">
+                <div class="service-card fade-in">
+                    <div class="service-icon">📧</div>
+                    <h3>Email Us</h3>
+                    <p>hello@nexusdigital.com<br>support@nexusdigital.com</p>
+                </div>
+                <div class="service-card fade-in">
+                    <div class="service-icon">📱</div>
+                    <h3>Call Us</h3>
+                    <p>+1 (555) 123-4567<br>Mon-Fri, 9AM-6PM EST</p>
+                </div>
+                <div class="service-card fade-in">
+                    <div class="service-icon">📍</div>
+                    <h3>Visit Us</h3>
+                    <p>123 Innovation Drive<br>San Francisco, CA 94105</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>NEXUS Digital</h3>
+                <p>We're a digital agency passionate about creating innovative solutions that drive business growth and deliver exceptional user experiences.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Services</h3>
+                <a href="#">Brand Strategy</a>
+                <a href="#">Web Development</a>
+                <a href="#">Mobile Apps</a>
+                <a href="#">Digital Marketing</a>
+            </div>
+            <div class="footer-section">
+                <h3>Company</h3>
+                <a href="#">About Us</a>
+                <a href="#">Careers</a>
+                <a href="#">Blog</a>
+                <a href="#">Contact</a>
+            </div>
+            <div class="footer-section">
+                <h3>Connect</h3>
+                <a href="#">LinkedIn</a>
+                <a href="#">Twitter</a>
+                <a href="#">Instagram</a>
+                <a href="#">Dribbble</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 NEXUS Digital Agency. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        function showPage(pageId) {
+            document.querySelectorAll('.page-section').forEach(section => {
+                section.classList.remove('active');
+            });
+
+            const targetPage = document.getElementById(pageId);
+            if (targetPage) {
+                targetPage.classList.add('active');
+                window.scrollTo(0, 0);
+                initializeAnimations();
+            }
+        }
+
+        document.querySelectorAll('[data-page]').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const pageId = link.getAttribute('data-page');
+                showPage(pageId);
+                window.location.hash = pageId;
+            });
+        });
+
+        window.addEventListener('hashchange', () => {
+            const pageId = window.location.hash.slice(1) || 'home';
+            showPage(pageId);
+        });
+
+        window.addEventListener('DOMContentLoaded', () => {
+            const pageId = window.location.hash.slice(1) || 'home';
+            showPage(pageId);
+        });
+
+        function initializeAnimations() {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, {
+                threshold: 0.1,
+                rootMargin: '0px 0px -80px 0px'
+            });
+
+            const activePage = document.querySelector('.page-section.active');
+            if (activePage) {
+                activePage.querySelectorAll('.fade-in').forEach(el => {
+                    el.classList.remove('visible');
+                    observer.observe(el);
+                });
+            }
+        }
+    </script>
+</body>
+</html>

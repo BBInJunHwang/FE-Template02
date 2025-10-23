@@ -1,0 +1,1146 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>어반커피 - 도심 속 휴식 공간</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&family=Playfair+Display:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            line-height: 1.6;
+            overflow-x: hidden;
+            color: #333;
+            background: #fff;
+        }
+
+        .page-section {
+            display: none;
+        }
+
+        .page-section.active {
+            display: block;
+        }
+
+        /* Header */
+        header {
+            background: rgba(255, 255, 255, 0.98);
+            padding: 20px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid #f0f0f0;
+            backdrop-filter: blur(10px);
+        }
+
+        nav {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 40px;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 32px;
+            color: #6F4E37;
+            font-weight: 900;
+            text-decoration: none;
+            letter-spacing: -1px;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 40px;
+        }
+
+        .nav-links a {
+            color: #333;
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #6F4E37;
+        }
+
+        .nav-cta {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .order-btn {
+            padding: 12px 28px;
+            background: #6F4E37;
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            font-size: 15px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+        }
+
+        .order-btn:hover {
+            background: #5a3d2c;
+            transform: translateY(-2px);
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: #fff;
+            margin-top: 75px;
+        }
+
+        .hero-content {
+            max-width: 900px;
+            padding: 0 30px;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            padding: 10px 25px;
+            border-radius: 25px;
+            font-size: 14px;
+            margin-bottom: 30px;
+            font-weight: 600;
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 72px;
+            font-weight: 900;
+            margin-bottom: 25px;
+            line-height: 1.2;
+            text-shadow: 2px 2px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero p {
+            font-size: 22px;
+            margin-bottom: 45px;
+            opacity: 0.95;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .btn-primary {
+            padding: 18px 45px;
+            background: #6F4E37;
+            color: #fff;
+            border: none;
+            font-size: 17px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+            border-radius: 8px;
+        }
+
+        .btn-primary:hover {
+            background: #5a3d2c;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .btn-secondary {
+            padding: 18px 45px;
+            background: transparent;
+            color: #fff;
+            border: 2px solid #fff;
+            font-size: 17px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+            border-radius: 8px;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        /* Story Section */
+        .story-section {
+            padding: 120px 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .story-content {
+            display: flex;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .story-text {
+            flex: 1;
+        }
+
+        .section-badge {
+            display: inline-block;
+            background: #F5F5DC;
+            color: #6F4E37;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 700;
+            margin-bottom: 25px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .story-text h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 48px;
+            font-weight: 900;
+            margin-bottom: 25px;
+            color: #1a1a1a;
+            line-height: 1.2;
+        }
+
+        .story-text p {
+            font-size: 17px;
+            line-height: 1.9;
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        .story-image {
+            flex: 1;
+        }
+
+        .story-image img {
+            width: 100%;
+            height: 500px;
+            object-fit: cover;
+            border-radius: 15px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Menu Section */
+        .menu-section {
+            padding: 120px 40px;
+            background: #F5F5DC;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        .section-header h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 52px;
+            font-weight: 900;
+            margin-bottom: 20px;
+            color: #1a1a1a;
+        }
+
+        .section-header p {
+            font-size: 18px;
+            color: #666;
+        }
+
+        .menu-categories {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 60px;
+        }
+
+        .category-btn {
+            padding: 12px 30px;
+            background: #fff;
+            border: 2px solid #6F4E37;
+            color: #6F4E37;
+            border-radius: 25px;
+            font-size: 15px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .category-btn:hover,
+        .category-btn.active {
+            background: #6F4E37;
+            color: #fff;
+        }
+
+        .menu-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px;
+        }
+
+        .menu-item {
+            display: flex;
+            gap: 25px;
+            background: #fff;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s;
+        }
+
+        .menu-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+        }
+
+        .menu-image {
+            width: 140px;
+            height: 140px;
+            border-radius: 12px;
+            object-fit: cover;
+        }
+
+        .menu-info {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .menu-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: #1a1a1a;
+        }
+
+        .menu-description {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 15px;
+            line-height: 1.6;
+            flex: 1;
+        }
+
+        .menu-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .menu-price {
+            font-size: 22px;
+            font-weight: 900;
+            color: #6F4E37;
+        }
+
+        .add-btn {
+            padding: 10px 20px;
+            background: #6F4E37;
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .add-btn:hover {
+            background: #5a3d2c;
+        }
+
+        /* Gallery Section */
+        .gallery-section {
+            padding: 120px 40px;
+        }
+
+        .gallery-grid {
+            max-width: 1400px;
+            margin: 60px auto 0;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 15px;
+            height: 300px;
+            cursor: pointer;
+        }
+
+        .gallery-item:first-child {
+            grid-column: span 2;
+            grid-row: span 2;
+            height: 620px;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.7));
+            opacity: 0;
+            transition: opacity 0.3s;
+            display: flex;
+            align-items: flex-end;
+            padding: 25px;
+            color: #fff;
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+
+        .gallery-text h3 {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .gallery-text p {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+
+        /* Location Section */
+        .location-section {
+            padding: 120px 40px;
+            background: #1a1a1a;
+            color: #fff;
+        }
+
+        .location-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .location-info {
+            flex: 1;
+        }
+
+        .location-info h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 48px;
+            font-weight: 900;
+            margin-bottom: 30px;
+        }
+
+        .info-item {
+            margin-bottom: 25px;
+        }
+
+        .info-label {
+            font-size: 14px;
+            color: #999;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .info-value {
+            font-size: 18px;
+            font-weight: 500;
+        }
+
+        .location-map {
+            flex: 1;
+            height: 400px;
+            background: #333;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 48px;
+        }
+
+        /* Review Section */
+        .review-section {
+            padding: 120px 40px;
+        }
+
+        .review-grid {
+            max-width: 1200px;
+            margin: 60px auto 0;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 35px;
+        }
+
+        .review-card {
+            background: #fff;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.08);
+        }
+
+        .review-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .reviewer-image {
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #6F4E37, #8B5A3C);
+        }
+
+        .reviewer-info h4 {
+            font-size: 17px;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .review-stars {
+            color: #FFD700;
+            font-size: 14px;
+        }
+
+        .review-text {
+            font-size: 15px;
+            line-height: 1.8;
+            color: #666;
+        }
+
+        /* Instagram Section */
+        .instagram-section {
+            padding: 100px 40px;
+            background: linear-gradient(135deg, #833AB4, #C13584, #E1306C);
+            color: #fff;
+            text-align: center;
+        }
+
+        .instagram-content h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 48px;
+            font-weight: 900;
+            margin-bottom: 20px;
+        }
+
+        .instagram-content p {
+            font-size: 18px;
+            margin-bottom: 35px;
+            opacity: 0.95;
+        }
+
+        .instagram-btn {
+            padding: 18px 45px;
+            background: #fff;
+            color: #C13584;
+            border: none;
+            border-radius: 8px;
+            font-size: 17px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .instagram-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Footer */
+        footer {
+            background: #1a1a1a;
+            color: #fff;
+            padding: 80px 40px 40px;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 60px;
+            margin-bottom: 50px;
+        }
+
+        .footer-section h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 24px;
+            margin-bottom: 25px;
+            font-weight: 700;
+        }
+
+        .footer-section p {
+            font-size: 14px;
+            color: #ccc;
+            line-height: 1.8;
+            margin-bottom: 25px;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links a {
+            color: #ccc;
+            text-decoration: none;
+            font-size: 14px;
+            line-height: 2.2;
+            display: block;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: #6F4E37;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 40px;
+            border-top: 1px solid #333;
+            font-size: 13px;
+            color: #888;
+        }
+
+        @media (max-width: 1024px) {
+            .story-content,
+            .location-content {
+                flex-direction: column;
+            }
+
+            .menu-grid,
+            .review-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .gallery-item:first-child {
+                grid-column: span 1;
+                grid-row: span 1;
+                height: 300px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 42px;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+            }
+
+            .menu-categories {
+                flex-wrap: wrap;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="#home" class="logo" data-page="home">Urban Coffee</a>
+            <ul class="nav-links">
+                <li><a href="#home" data-page="home">홈</a></li>
+                <li><a href="#menu" data-page="menu">메뉴</a></li>
+                <li><a href="#gallery" data-page="gallery">갤러리</a></li>
+                <li><a href="#location" data-page="location">매장안내</a></li>
+            </ul>
+            <div class="nav-cta">
+                <a href="#menu" data-page="menu" class="order-btn">주문하기</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- HOME Page -->
+    <section id="home" class="page-section active">
+        <div class="hero">
+            <div class="hero-content">
+                <div class="hero-badge">☕ Since 2020</div>
+                <h1>Urban Coffee</h1>
+                <p>도심 속 휴식, 한 잔의 여유를 드립니다</p>
+                <div class="hero-buttons">
+                    <a href="#menu" data-page="menu" class="btn-primary">메뉴 보기</a>
+                    <a href="#location" data-page="location" class="btn-secondary">매장 찾기</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="story-section">
+            <div class="story-content">
+                <div class="story-text">
+                    <div class="section-badge">Our Story</div>
+                    <h2>커피 한 잔에<br>담긴 정성</h2>
+                    <p>어반커피는 2020년, 커피를 사랑하는 바리스타들이 모여 시작한 스페셜티 커피 전문점입니다.</p>
+                    <p>엄선된 원두만을 사용하여, 매일 아침 직접 로스팅한 신선한 커피를 제공합니다. 각 원두의 특성을 살린 최적의 추출 방법으로 커피 본연의 맛과 향을 느끼실 수 있습니다.</p>
+                    <p>바쁜 일상 속에서 잠시 쉬어가는 공간, 좋은 사람들과 함께하는 시간, 그리고 한 잔의 완벽한 커피. 어반커피가 여러분께 선사하는 특별한 경험입니다.</p>
+                </div>
+                <div class="story-image">
+                    <img src="https://images.unsplash.com/photo-1521017432531-fbd92d768814?w=800&q=80" alt="Barista">
+                </div>
+            </div>
+        </div>
+
+        <div class="instagram-section">
+            <div class="instagram-content">
+                <h2>📸 @urbancoffee_official</h2>
+                <p>인스타그램에서 어반커피의 일상을 만나보세요</p>
+                <a href="#" class="instagram-btn">팔로우하기</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- MENU Page -->
+    <section id="menu" class="page-section">
+        <div class="menu-section">
+            <div class="section-header">
+                <h2>Menu</h2>
+                <p>신선하고 품질 좋은 재료로 만든 어반커피의 시그니처 메뉴</p>
+            </div>
+            <div class="menu-categories">
+                <button class="category-btn active">전체</button>
+                <button class="category-btn">커피</button>
+                <button class="category-btn">논커피</button>
+                <button class="category-btn">디저트</button>
+            </div>
+            <div class="menu-grid">
+                <div class="menu-item">
+                    <img src="https://images.unsplash.com/photo-1461023058943-07fcbe16d735?w=300&q=80" alt="Espresso" class="menu-image">
+                    <div class="menu-info">
+                        <h3 class="menu-name">시그니처 에스프레소</h3>
+                        <p class="menu-description">에티오피아 예가체프 원두로 추출한 깊고 풍부한 맛의 에스프레소</p>
+                        <div class="menu-footer">
+                            <span class="menu-price">4,500원</span>
+                            <button class="add-btn">주문하기</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-item">
+                    <img src="https://images.unsplash.com/photo-1568209865332-a15790aed756?w=300&q=80" alt="Latte" class="menu-image">
+                    <div class="menu-info">
+                        <h3 class="menu-name">바닐라 라떼</h3>
+                        <p class="menu-description">부드러운 우유와 달콤한 바닐라 시럽이 조화를 이룬 라떼</p>
+                        <div class="menu-footer">
+                            <span class="menu-price">5,500원</span>
+                            <button class="add-btn">주문하기</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-item">
+                    <img src="https://images.unsplash.com/photo-1517487881594-2787fef5ebf7?w=300&q=80" alt="Cappuccino" class="menu-image">
+                    <div class="menu-info">
+                        <h3 class="menu-name">카푸치노</h3>
+                        <p class="menu-description">진한 에스프레소와 부드러운 우유 거품의 완벽한 밸런스</p>
+                        <div class="menu-footer">
+                            <span class="menu-price">5,000원</span>
+                            <button class="add-btn">주문하기</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-item">
+                    <img src="https://images.unsplash.com/photo-1572442388796-11668a67e53d?w=300&q=80" alt="Americano" class="menu-image">
+                    <div class="menu-info">
+                        <h3 class="menu-name">아이스 아메리카노</h3>
+                        <p class="menu-description">깔끔하고 시원한 아메리카노, 어반커피의 베스트셀러</p>
+                        <div class="menu-footer">
+                            <span class="menu-price">4,000원</span>
+                            <button class="add-btn">주문하기</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-item">
+                    <img src="https://images.unsplash.com/photo-1546173159-315724a31696?w=300&q=80" alt="Flatwhite" class="menu-image">
+                    <div class="menu-info">
+                        <h3 class="menu-name">플랫 화이트</h3>
+                        <p class="menu-description">벨벳같은 마이크로폼이 특징인 호주식 커피</p>
+                        <div class="menu-footer">
+                            <span class="menu-price">5,800원</span>
+                            <button class="add-btn">주문하기</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-item">
+                    <img src="https://images.unsplash.com/photo-1485808191679-5f86510681a2?w=300&q=80" alt="Cold Brew" class="menu-image">
+                    <div class="menu-info">
+                        <h3 class="menu-name">콜드브루</h3>
+                        <p class="menu-description">16시간 저온 추출한 부드럽고 깊은 맛의 커피</p>
+                        <div class="menu-footer">
+                            <span class="menu-price">5,500원</span>
+                            <button class="add-btn">주문하기</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-item">
+                    <img src="https://images.unsplash.com/photo-1556679343-c7306c1976bc?w=300&q=80" alt="Matcha" class="menu-image">
+                    <div class="menu-info">
+                        <h3 class="menu-name">말차 라떼</h3>
+                        <p class="menu-description">고급 일본산 말차로 만든 진하고 부드러운 라떼</p>
+                        <div class="menu-footer">
+                            <span class="menu-price">6,000원</span>
+                            <button class="add-btn">주문하기</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-item">
+                    <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=300&q=80" alt="Croissant" class="menu-image">
+                    <div class="menu-info">
+                        <h3 class="menu-name">버터 크루아상</h3>
+                        <p class="menu-description">매일 아침 직접 구워내는 겉은 바삭, 속은 촉촉한 크루아상</p>
+                        <div class="menu-footer">
+                            <span class="menu-price">4,200원</span>
+                            <button class="add-btn">주문하기</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-item">
+                    <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=300&q=80" alt="Cake" class="menu-image">
+                    <div class="menu-info">
+                        <h3 class="menu-name">뉴욕 치즈케이크</h3>
+                        <p class="menu-description">진한 크림치즈의 풍미가 가득한 클래식 치즈케이크</p>
+                        <div class="menu-footer">
+                            <span class="menu-price">6,500원</span>
+                            <button class="add-btn">주문하기</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-item">
+                    <img src="https://images.unsplash.com/photo-1558326567-98ae2405596b?w=300&q=80" alt="Cookie" class="menu-image">
+                    <div class="menu-info">
+                        <h3 class="menu-name">초코칩 쿠키</h3>
+                        <p class="menu-description">달콤한 초콜릿이 듬뿍 들어간 수제 쿠키</p>
+                        <div class="menu-footer">
+                            <span class="menu-price">3,500원</span>
+                            <button class="add-btn">주문하기</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- GALLERY Page -->
+    <section id="gallery" class="page-section">
+        <div class="gallery-section">
+            <div class="section-header">
+                <h2>Gallery</h2>
+                <p>어반커피의 특별한 순간들</p>
+            </div>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?w=800&q=80" alt="Cafe Interior">
+                    <div class="gallery-overlay">
+                        <div class="gallery-text">
+                            <h3>아늑한 공간</h3>
+                            <p>편안한 휴식을 위한 인테리어</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1442512595331-e89e73853f31?w=400&q=80" alt="Coffee Beans">
+                    <div class="gallery-overlay">
+                        <div class="gallery-text">
+                            <h3>프리미엄 원두</h3>
+                            <p>엄선된 최고급 원두</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1511920170033-f8396924c348?w=400&q=80" alt="Latte Art">
+                    <div class="gallery-overlay">
+                        <div class="gallery-text">
+                            <h3>라떼 아트</h3>
+                            <p>바리스타의 정성</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?w=400&q=80" alt="Coffee Cup">
+                    <div class="gallery-overlay">
+                        <div class="gallery-text">
+                            <h3>한 잔의 여유</h3>
+                            <p>완벽한 커피 경험</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=400&q=80" alt="Cafe">
+                    <div class="gallery-overlay">
+                        <div class="gallery-text">
+                            <h3>모닝 커피</h3>
+                            <p>활기찬 하루의 시작</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=400&q=80" alt="Pastry">
+                    <div class="gallery-overlay">
+                        <div class="gallery-text">
+                            <h3>베이커리</h3>
+                            <p>신선한 수제 베이커리</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1506619216599-9d16d0903dfd?w=400&q=80" alt="Outdoor">
+                    <div class="gallery-overlay">
+                        <div class="gallery-text">
+                            <h3>야외 테라스</h3>
+                            <p>자연을 느끼며</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="review-section">
+            <div class="section-header">
+                <h2>Reviews</h2>
+                <p>고객님들의 소중한 후기</p>
+            </div>
+            <div class="review-grid">
+                <div class="review-card">
+                    <div class="review-header">
+                        <div class="reviewer-image"></div>
+                        <div class="reviewer-info">
+                            <h4>김수진</h4>
+                            <div class="review-stars">⭐⭐⭐⭐⭐</div>
+                        </div>
+                    </div>
+                    <p class="review-text">"제가 가본 카페 중 최고예요! 커피 맛도 일품이고, 분위기도 정말 좋습니다. 바리스타분들도 친절하셔서 자주 방문하게 되네요."</p>
+                </div>
+
+                <div class="review-card">
+                    <div class="review-header">
+                        <div class="reviewer-image"></div>
+                        <div class="reviewer-info">
+                            <h4>이준혁</h4>
+                            <div class="review-stars">⭐⭐⭐⭐⭐</div>
+                        </div>
+                    </div>
+                    <p class="review-text">"콜드브루가 정말 맛있어요. 원두의 풍미가 살아있고, 텁텁하지 않아서 좋습니다. 디저트도 직접 만드신다는데 정말 맛있어요!"</p>
+                </div>
+
+                <div class="review-card">
+                    <div class="review-header">
+                        <div class="reviewer-image"></div>
+                        <div class="reviewer-info">
+                            <h4>박서연</h4>
+                            <div class="review-stars">⭐⭐⭐⭐⭐</div>
+                        </div>
+                    </div>
+                    <p class="review-text">"일하기 좋은 공간이에요. 와이파이도 빠르고 콘센트도 넉넉합니다. 커피 한 잔 마시면서 집중해서 작업하기 딱 좋아요."</p>
+                </div>
+
+                <div class="review-card">
+                    <div class="review-header">
+                        <div class="reviewer-image"></div>
+                        <div class="reviewer-info">
+                            <h4>최민우</h4>
+                            <div class="review-stars">⭐⭐⭐⭐⭐</div>
+                        </div>
+                    </div>
+                    <p class="review-text">"인테리어가 너무 예쁘고 아늑해요. 사진 찍기도 좋고, 친구들과 수다 떨기에도 완벽한 공간입니다. 재방문 의사 100%!"</p>
+                </div>
+
+                <div class="review-card">
+                    <div class="review-header">
+                        <div class="reviewer-image"></div>
+                        <div class="reviewer-info">
+                            <h4>정은희</h4>
+                            <div class="review-stars">⭐⭐⭐⭐⭐</div>
+                        </div>
+                    </div>
+                    <p class="review-text">"라떼 아트가 예술이에요! 매번 다른 디자인으로 그려주시는데, 마시기 아까울 정도로 예쁩니다. 맛도 물론 최고구요!"</p>
+                </div>
+
+                <div class="review-card">
+                    <div class="review-header">
+                        <div class="reviewer-image"></div>
+                        <div class="reviewer-info">
+                            <h4>강태민</h4>
+                            <div class="review-stars">⭐⭐⭐⭐⭐</div>
+                        </div>
+                    </div>
+                    <p class="review-text">"크루아상이 진짜 맛있어요. 겉은 바삭하고 속은 부드러워서 커피랑 같이 먹으면 환상적입니다. 매일 아침 먹고 싶네요!"</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- LOCATION Page -->
+    <section id="location" class="page-section">
+        <div class="location-section">
+            <div class="location-content">
+                <div class="location-info">
+                    <h2>Visit Us</h2>
+                    <div class="info-item">
+                        <div class="info-label">Address</div>
+                        <div class="info-value">서울특별시 강남구 테헤란로 123<br>어반빌딩 1층</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">Hours</div>
+                        <div class="info-value">
+                            평일: 07:00 - 22:00<br>
+                            주말: 09:00 - 23:00<br>
+                            연중무휴
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">Contact</div>
+                        <div class="info-value">
+                            Tel: 02-1234-5678<br>
+                            Email: info@urbancoffee.com
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">Parking</div>
+                        <div class="info-value">건물 지하 주차장 이용 가능<br>(2시간 무료)</div>
+                    </div>
+                </div>
+                <div class="location-map">🗺️</div>
+            </div>
+        </div>
+
+        <div class="instagram-section">
+            <div class="instagram-content">
+                <h2>Join Our Community</h2>
+                <p>뉴스레터 구독하고 특별한 혜택을 받아보세요</p>
+                <div style="max-width: 500px; margin: 0 auto; display: flex; gap: 10px;">
+                    <input type="email" placeholder="이메일 주소를 입력하세요" style="flex: 1; padding: 16px 25px; border: none; border-radius: 8px; font-size: 15px;">
+                    <button class="instagram-btn" style="padding: 16px 35px;">구독하기</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Urban Coffee</h3>
+                <p>도심 속 특별한 커피 경험을 선사하는 스페셜티 커피 전문점. 엄선된 원두와 숙련된 바리스타의 정성으로 최고의 커피를 만듭니다.</p>
+            </div>
+            <div class="footer-section">
+                <h3>메뉴</h3>
+                <ul class="footer-links">
+                    <li><a href="#">커피 메뉴</a></li>
+                    <li><a href="#">논커피 메뉴</a></li>
+                    <li><a href="#">디저트</a></li>
+                    <li><a href="#">MD 상품</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>고객센터</h3>
+                <ul class="footer-links">
+                    <li><a href="#">공지사항</a></li>
+                    <li><a href="#">자주 묻는 질문</a></li>
+                    <li><a href="#">제휴 문의</a></li>
+                    <li><a href="#">채용 정보</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>회사 정보</h3>
+                <ul class="footer-links">
+                    <li><a href="#">회사 소개</a></li>
+                    <li><a href="#">이용약관</a></li>
+                    <li><a href="#">개인정보처리방침</a></li>
+                    <li><a href="#">매장 안내</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Urban Coffee. All Rights Reserved. | 사업자등록번호: 123-45-67890</p>
+        </div>
+    </footer>
+
+    <script>
+        function showPage(pageId) {
+            document.querySelectorAll('.page-section').forEach(section => {
+                section.classList.remove('active');
+            });
+
+            const targetPage = document.getElementById(pageId);
+            if (targetPage) {
+                targetPage.classList.add('active');
+                window.scrollTo(0, 0);
+            }
+        }
+
+        document.querySelectorAll('[data-page]').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const pageId = link.getAttribute('data-page');
+                showPage(pageId);
+                window.location.hash = pageId;
+            });
+        });
+
+        window.addEventListener('hashchange', () => {
+            const pageId = window.location.hash.slice(1) || 'home';
+            showPage(pageId);
+        });
+
+        window.addEventListener('DOMContentLoaded', () => {
+            const pageId = window.location.hash.slice(1) || 'home';
+            showPage(pageId);
+        });
+    </script>
+</body>
+</html>

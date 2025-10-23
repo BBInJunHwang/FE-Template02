@@ -1,0 +1,1143 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Étoile Noire - Michelin 3-Star Restaurant</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.6;
+            overflow-x: hidden;
+            color: #2c2c2c;
+            background: #fff;
+        }
+
+        .page-section {
+            display: none;
+        }
+
+        .page-section.active {
+            display: block;
+        }
+
+        /* Header */
+        header {
+            background: rgba(20, 20, 20, 0.95);
+            padding: 25px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+        }
+
+        nav {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 50px;
+        }
+
+        .logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 32px;
+            color: #d4af37;
+            font-weight: 600;
+            text-decoration: none;
+            letter-spacing: 2px;
+            font-style: italic;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 40px;
+        }
+
+        .nav-links a {
+            color: #f5f5f5;
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 500;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #d4af37;
+        }
+
+        .reserve-btn {
+            padding: 12px 35px;
+            background: #d4af37;
+            color: #1a1a1a;
+            border: none;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+        }
+
+        .reserve-btn:hover {
+            background: #c9a02b;
+            transform: translateY(-2px);
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: #fff;
+            position: relative;
+            margin-top: 85px;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 900px;
+            padding: 0 20px;
+        }
+
+        .michelin-stars {
+            font-size: 48px;
+            margin-bottom: 20px;
+            letter-spacing: 10px;
+        }
+
+        .hero h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 80px;
+            font-weight: 600;
+            margin-bottom: 25px;
+            letter-spacing: 4px;
+            font-style: italic;
+            text-shadow: 2px 2px 20px rgba(0, 0, 0, 0.5);
+        }
+
+        .hero p {
+            font-size: 18px;
+            font-weight: 300;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 40px;
+        }
+
+        .hero-btn {
+            padding: 18px 50px;
+            background: #d4af37;
+            color: #1a1a1a;
+            border: none;
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.4s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .hero-btn:hover {
+            background: #fff;
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(212, 175, 55, 0.4);
+        }
+
+        /* Content */
+        .content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 120px 50px;
+        }
+
+        .content-header {
+            text-align: center;
+            margin-bottom: 90px;
+        }
+
+        .content-header h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 56px;
+            font-weight: 600;
+            color: #1a1a1a;
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+            font-style: italic;
+        }
+
+        .content-header p {
+            font-size: 18px;
+            color: #666;
+            font-weight: 300;
+            letter-spacing: 1px;
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.9;
+        }
+
+        /* Menu Section */
+        .menu-categories {
+            display: flex;
+            justify-content: center;
+            gap: 50px;
+            margin-bottom: 80px;
+            border-bottom: 1px solid #e0e0e0;
+            padding-bottom: 20px;
+        }
+
+        .menu-tab {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 24px;
+            color: #666;
+            cursor: pointer;
+            transition: all 0.3s;
+            border-bottom: 3px solid transparent;
+            padding-bottom: 15px;
+        }
+
+        .menu-tab.active {
+            color: #d4af37;
+            border-bottom-color: #d4af37;
+        }
+
+        .menu-content {
+            display: none;
+        }
+
+        .menu-content.active {
+            display: block;
+        }
+
+        .menu-items {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .menu-item {
+            margin-bottom: 50px;
+            padding-bottom: 40px;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .menu-item:last-child {
+            border-bottom: none;
+        }
+
+        .menu-item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 15px;
+        }
+
+        .menu-item h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 32px;
+            color: #1a1a1a;
+            font-weight: 600;
+            font-style: italic;
+        }
+
+        .menu-price {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 28px;
+            color: #d4af37;
+            font-weight: 600;
+        }
+
+        .menu-item p {
+            font-size: 16px;
+            line-height: 1.8;
+            color: #666;
+        }
+
+        .menu-note {
+            font-size: 14px;
+            font-style: italic;
+            color: #999;
+            margin-top: 10px;
+        }
+
+        /* Chef Section */
+        .chef-section {
+            display: flex;
+            gap: 80px;
+            align-items: center;
+            margin: 120px 0;
+        }
+
+        .chef-image {
+            flex: 1;
+        }
+
+        .chef-image img {
+            width: 100%;
+            height: auto;
+            filter: grayscale(20%);
+        }
+
+        .chef-content {
+            flex: 1;
+        }
+
+        .chef-content h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 52px;
+            margin-bottom: 15px;
+            color: #1a1a1a;
+            font-weight: 600;
+            font-style: italic;
+        }
+
+        .chef-title {
+            font-size: 16px;
+            color: #d4af37;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 30px;
+            font-weight: 600;
+        }
+
+        .chef-content p {
+            font-size: 17px;
+            line-height: 1.9;
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        .chef-awards {
+            margin-top: 40px;
+            padding-top: 30px;
+            border-top: 1px solid #e0e0e0;
+        }
+
+        .chef-awards h3 {
+            font-size: 20px;
+            margin-bottom: 20px;
+            color: #1a1a1a;
+            font-weight: 600;
+        }
+
+        .chef-awards ul {
+            list-style: none;
+        }
+
+        .chef-awards ul li {
+            font-size: 15px;
+            color: #666;
+            margin-bottom: 12px;
+            padding-left: 25px;
+            position: relative;
+        }
+
+        .chef-awards ul li::before {
+            content: '★';
+            color: #d4af37;
+            position: absolute;
+            left: 0;
+            font-size: 16px;
+        }
+
+        /* Ambiance Section */
+        .ambiance-section {
+            background: #1a1a1a;
+            color: #f5f5f5;
+            padding: 120px 50px;
+            margin: 120px 0;
+        }
+
+        .ambiance-grid {
+            max-width: 1400px;
+            margin: 60px auto 0;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+        }
+
+        .ambiance-card {
+            text-align: center;
+        }
+
+        .ambiance-card img {
+            width: 100%;
+            height: 350px;
+            object-fit: cover;
+            margin-bottom: 25px;
+        }
+
+        .ambiance-card h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 28px;
+            margin-bottom: 15px;
+            color: #d4af37;
+            font-style: italic;
+        }
+
+        .ambiance-card p {
+            font-size: 15px;
+            color: #ccc;
+            line-height: 1.7;
+        }
+
+        /* Experience Section */
+        .experience-section {
+            background: #f8f8f8;
+            padding: 120px 50px;
+        }
+
+        .experience-grid {
+            max-width: 1200px;
+            margin: 60px auto 0;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 50px;
+        }
+
+        .experience-card {
+            background: #fff;
+            padding: 50px 40px;
+            box-shadow: 0 5px 30px rgba(0, 0, 0, 0.08);
+        }
+
+        .experience-card h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 36px;
+            margin-bottom: 20px;
+            color: #1a1a1a;
+            font-style: italic;
+        }
+
+        .experience-price {
+            font-size: 28px;
+            color: #d4af37;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        .experience-card p {
+            font-size: 16px;
+            line-height: 1.8;
+            color: #666;
+            margin-bottom: 25px;
+        }
+
+        .experience-card ul {
+            list-style: none;
+            margin-bottom: 30px;
+        }
+
+        .experience-card ul li {
+            font-size: 15px;
+            color: #666;
+            margin-bottom: 12px;
+            padding-left: 25px;
+            position: relative;
+        }
+
+        .experience-card ul li::before {
+            content: '✓';
+            color: #d4af37;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+
+        .experience-btn {
+            width: 100%;
+            padding: 15px;
+            background: #1a1a1a;
+            color: #d4af37;
+            border: none;
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .experience-btn:hover {
+            background: #d4af37;
+            color: #1a1a1a;
+        }
+
+        /* Reservation Section */
+        .reservation-section {
+            padding: 120px 50px;
+            background: linear-gradient(rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.85)), url('https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: #fff;
+        }
+
+        .reservation-form {
+            max-width: 700px;
+            margin: 60px auto 0;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 60px 50px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 30px;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 12px;
+            color: #f5f5f5;
+            font-size: 13px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 16px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: #fff;
+            font-size: 16px;
+            font-family: inherit;
+            transition: all 0.3s;
+        }
+
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #d4af37;
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .form-group textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 18px;
+            background: #d4af37;
+            color: #1a1a1a;
+            border: none;
+            font-size: 14px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-top: 10px;
+        }
+
+        .submit-btn:hover {
+            background: #fff;
+        }
+
+        /* Footer */
+        footer {
+            background: #0a0a0a;
+            color: #f5f5f5;
+            padding: 80px 50px 40px;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 80px;
+            margin-bottom: 50px;
+        }
+
+        .footer-section h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 28px;
+            margin-bottom: 25px;
+            color: #d4af37;
+            font-style: italic;
+        }
+
+        .footer-section p,
+        .footer-section a {
+            font-size: 14px;
+            color: #ccc;
+            line-height: 2;
+            text-decoration: none;
+            display: block;
+        }
+
+        .footer-section a:hover {
+            color: #d4af37;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 40px;
+            border-top: 1px solid #222;
+            font-size: 13px;
+            color: #888;
+        }
+
+        @media (max-width: 1024px) {
+            .ambiance-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .experience-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .chef-section {
+                flex-direction: column;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 48px;
+            }
+
+            .menu-categories {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s, transform 0.8s;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="#home" class="logo" data-page="home">Étoile Noire</a>
+            <ul class="nav-links">
+                <li><a href="#home" data-page="home">Home</a></li>
+                <li><a href="#menu" data-page="menu">Menu</a></li>
+                <li><a href="#chef" data-page="chef">Chef</a></li>
+                <li><a href="#experience" data-page="experience">Experience</a></li>
+                <li><a href="#reserve" data-page="reserve">Reserve</a></li>
+            </ul>
+            <a href="#reserve" data-page="reserve" class="reserve-btn">Book Table</a>
+        </nav>
+    </header>
+
+    <!-- HOME Page -->
+    <section id="home" class="page-section active">
+        <div class="hero" style="background-image: url('https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1920&q=80');">
+            <div class="hero-content fade-in">
+                <div class="michelin-stars">⭐⭐⭐</div>
+                <h1>Étoile Noire</h1>
+                <p>Michelin Three-Star Experience</p>
+                <a href="#reserve" data-page="reserve" class="hero-btn">Reserve Your Table</a>
+            </div>
+        </div>
+
+        <div class="content">
+            <div class="content-header fade-in">
+                <h2>A Culinary Masterpiece</h2>
+                <p>Experience the pinnacle of fine dining where French culinary tradition meets modern innovation. Each dish is a work of art, meticulously crafted to perfection.</p>
+            </div>
+        </div>
+
+        <div class="ambiance-section">
+            <div class="content-header">
+                <h2 class="fade-in" style="color: #d4af37;">Our Ambiance</h2>
+                <p class="fade-in" style="color: #ccc;">An intimate setting for unforgettable moments</p>
+            </div>
+            <div class="ambiance-grid">
+                <div class="ambiance-card fade-in">
+                    <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=600&q=80" alt="Main Dining">
+                    <h3>Main Dining Room</h3>
+                    <p>Elegant 24-seat dining room with custom chandeliers and velvet upholstery</p>
+                </div>
+                <div class="ambiance-card fade-in">
+                    <img src="https://images.unsplash.com/photo-1559339352-11d035aa65de?w=600&q=80" alt="Private Room">
+                    <h3>Private Salon</h3>
+                    <p>Exclusive 8-seat private dining experience with personalized service</p>
+                </div>
+                <div class="ambiance-card fade-in">
+                    <img src="https://images.unsplash.com/photo-1555244162-803834f70033?w=600&q=80" alt="Wine Cellar">
+                    <h3>Wine Cellar</h3>
+                    <p>Temperature-controlled cellar with over 5,000 bottles from around the world</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MENU Page -->
+    <section id="menu" class="page-section">
+        <div class="content">
+            <div class="content-header fade-in">
+                <h2>Tasting Menu</h2>
+                <p>A seven-course journey through the seasons, featuring the finest ingredients from local artisans and international purveyors</p>
+            </div>
+
+            <div class="menu-categories fade-in">
+                <div class="menu-tab active" data-menu="spring">Spring Menu</div>
+                <div class="menu-tab" data-menu="summer">Summer Menu</div>
+                <div class="menu-tab" data-menu="winter">Winter Menu</div>
+            </div>
+
+            <div class="menu-content active" data-menu="spring">
+                <div class="menu-items">
+                    <div class="menu-item fade-in">
+                        <div class="menu-item-header">
+                            <h3>Amuse-Bouche</h3>
+                        </div>
+                        <p>Foie Gras Macaron with Cherry Compote and Aged Balsamic</p>
+                        <p class="menu-note">Paired with Champagne Krug Grande Cuvée</p>
+                    </div>
+
+                    <div class="menu-item fade-in">
+                        <div class="menu-item-header">
+                            <h3>First Course</h3>
+                        </div>
+                        <p>Hokkaido Sea Urchin with Cauliflower Panna Cotta, Oscietra Caviar, and Champagne Foam</p>
+                        <p class="menu-note">Paired with Chablis Grand Cru Les Clos 2018</p>
+                    </div>
+
+                    <div class="menu-item fade-in">
+                        <div class="menu-item-header">
+                            <h3>Second Course</h3>
+                        </div>
+                        <p>Pan-Seared Scallops with White Asparagus, Morel Mushrooms, and Black Truffle Emulsion</p>
+                        <p class="menu-note">Paired with Meursault Les Perrières 2017</p>
+                    </div>
+
+                    <div class="menu-item fade-in">
+                        <div class="menu-item-header">
+                            <h3>Third Course</h3>
+                        </div>
+                        <p>Langoustine Ravioli in Bisque with Fresh Peas, Mint, and Lemon Zest</p>
+                        <p class="menu-note">Paired with Pouilly-Fumé 2019</p>
+                    </div>
+
+                    <div class="menu-item fade-in">
+                        <div class="menu-item-header">
+                            <h3>Main Course</h3>
+                        </div>
+                        <p>Wagyu Beef Tenderloin with Spring Vegetables, Pommes Anna, and Red Wine Reduction</p>
+                        <p class="menu-note">Paired with Château Margaux 2015</p>
+                    </div>
+
+                    <div class="menu-item fade-in">
+                        <div class="menu-item-header">
+                            <h3>Cheese Course</h3>
+                        </div>
+                        <p>Selection of French Artisanal Cheeses with House-Made Preserves and Walnut Bread</p>
+                        <p class="menu-note">Paired with Vintage Port</p>
+                    </div>
+
+                    <div class="menu-item fade-in">
+                        <div class="menu-item-header">
+                            <h3>Dessert</h3>
+                        </div>
+                        <p>Rhubarb Soufflé with Vanilla Bean Ice Cream and Strawberry Coulis</p>
+                        <p class="menu-note">Paired with Château d'Yquem Sauternes 2016</p>
+                    </div>
+
+                    <div class="menu-item fade-in">
+                        <div class="menu-item-header">
+                            <h3>Petit Fours</h3>
+                        </div>
+                        <p>Selection of House-Made Confections and Chocolates</p>
+                    </div>
+
+                    <div style="text-align: center; margin-top: 60px;" class="fade-in">
+                        <p class="menu-price">$385 per person</p>
+                        <p style="color: #999; font-size: 14px; margin-top: 15px;">Wine Pairing +$195</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="menu-content" data-menu="summer">
+                <div class="menu-items">
+                    <div class="menu-item fade-in">
+                        <div class="menu-item-header">
+                            <h3>Summer Tasting Menu</h3>
+                        </div>
+                        <p>Seven courses celebrating the abundance of summer, featuring heirloom tomatoes, fresh seafood, and seasonal fruits.</p>
+                        <div style="text-align: center; margin-top: 60px;">
+                            <p class="menu-price">$385 per person</p>
+                            <p style="color: #999; font-size: 14px; margin-top: 15px;">Available June - August</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="menu-content" data-menu="winter">
+                <div class="menu-items">
+                    <div class="menu-item fade-in">
+                        <div class="menu-item-header">
+                            <h3>Winter Tasting Menu</h3>
+                        </div>
+                        <p>Seven courses embracing the richness of winter, featuring game, root vegetables, and black truffles.</p>
+                        <div style="text-align: center; margin-top: 60px;">
+                            <p class="menu-price">$385 per person</p>
+                            <p style="color: #999; font-size: 14px; margin-top: 15px;">Available December - February</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CHEF Page -->
+    <section id="chef" class="page-section">
+        <div class="content">
+            <div class="chef-section fade-in">
+                <div class="chef-image">
+                    <img src="https://images.unsplash.com/photo-1577219491135-ce391730fb2c?w=800&q=80" alt="Chef Laurent Dubois">
+                </div>
+                <div class="chef-content">
+                    <h2>Chef Laurent Dubois</h2>
+                    <p class="chef-title">Executive Chef & Culinary Director</p>
+                    <p>With over 25 years of culinary excellence, Chef Laurent Dubois brings his passion for perfection to every dish. Trained under legendary chefs in Lyon and Paris, he has earned three Michelin stars for his innovative approach to classic French cuisine.</p>
+                    <p>His philosophy is simple: respect the ingredient, honor the tradition, and never stop innovating. Each plate that leaves his kitchen is a testament to his dedication to the culinary arts.</p>
+
+                    <div class="chef-awards">
+                        <h3>Accolades</h3>
+                        <ul>
+                            <li>Three Michelin Stars (2018 - Present)</li>
+                            <li>World's 50 Best Restaurants #12 (2023)</li>
+                            <li>James Beard Award - Best Chef</li>
+                            <li>Gault & Millau 19.5/20</li>
+                            <li>La Liste Top 10 Restaurants Worldwide</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- EXPERIENCE Page -->
+    <section id="experience" class="page-section">
+        <div class="experience-section">
+            <div class="content-header">
+                <h2 class="fade-in">Exclusive Experiences</h2>
+                <p class="fade-in">Unforgettable culinary journeys designed for the discerning palate</p>
+            </div>
+
+            <div class="experience-grid">
+                <div class="experience-card fade-in">
+                    <h3>Chef's Table</h3>
+                    <p class="experience-price">$750 per person</p>
+                    <p>Experience an intimate evening in our kitchen, where Chef Laurent personally guides you through a 10-course tasting menu.</p>
+                    <ul>
+                        <li>10-course exclusive tasting menu</li>
+                        <li>Personal interaction with Chef Laurent</li>
+                        <li>Kitchen tour and cooking demonstration</li>
+                        <li>Premium wine pairing</li>
+                        <li>Signed menu and recipe book</li>
+                    </ul>
+                    <button class="experience-btn">Book Experience</button>
+                </div>
+
+                <div class="experience-card fade-in">
+                    <h3>Private Dining</h3>
+                    <p class="experience-price">$5,500 minimum</p>
+                    <p>Host an unforgettable event in our private salon, accommodating up to 12 guests with a customized menu.</p>
+                    <ul>
+                        <li>Exclusive private dining room</li>
+                        <li>Customized tasting menu</li>
+                        <li>Dedicated sommelier and service team</li>
+                        <li>Personalized table settings</li>
+                        <li>Custom menu design</li>
+                    </ul>
+                    <button class="experience-btn">Book Experience</button>
+                </div>
+
+                <div class="experience-card fade-in">
+                    <h3>Wine Cellar Dinner</h3>
+                    <p class="experience-price">$950 per person</p>
+                    <p>Dine surrounded by our prestigious wine collection with rare vintages paired to each course.</p>
+                    <ul>
+                        <li>Exclusive wine cellar setting</li>
+                        <li>7-course menu with rare wine pairings</li>
+                        <li>Personal sommelier presentation</li>
+                        <li>Limited to 8 guests per evening</li>
+                        <li>Cellar tour included</li>
+                    </ul>
+                    <button class="experience-btn">Book Experience</button>
+                </div>
+
+                <div class="experience-card fade-in">
+                    <h3>Culinary Masterclass</h3>
+                    <p class="experience-price">$1,200 per person</p>
+                    <p>Learn the secrets of Michelin-starred cooking in our professional kitchen with Chef Laurent.</p>
+                    <ul>
+                        <li>4-hour hands-on cooking class</li>
+                        <li>Learn 3 signature dishes</li>
+                        <li>Technique demonstrations</li>
+                        <li>Lunch with wine pairing</li>
+                        <li>Recipe booklet and apron</li>
+                    </ul>
+                    <button class="experience-btn">Book Experience</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- RESERVE Page -->
+    <section id="reserve" class="page-section">
+        <div class="reservation-section">
+            <div class="content-header">
+                <h2 class="fade-in" style="color: #d4af37;">Reserve Your Table</h2>
+                <p class="fade-in" style="color: #f5f5f5;">Reservations are required and accepted up to 3 months in advance</p>
+            </div>
+
+            <div class="reservation-form fade-in">
+                <form>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>First Name</label>
+                            <input type="text" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Last Name</label>
+                            <input type="text" required>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Email</label>
+                            <input type="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Phone</label>
+                            <input type="tel" required>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Date</label>
+                            <input type="date" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Time</label>
+                            <select required>
+                                <option value="">Select Time</option>
+                                <option value="18:00">6:00 PM</option>
+                                <option value="18:30">6:30 PM</option>
+                                <option value="19:00">7:00 PM</option>
+                                <option value="19:30">7:30 PM</option>
+                                <option value="20:00">8:00 PM</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Party Size</label>
+                            <select required>
+                                <option value="">Select Guests</option>
+                                <option value="2">2 Guests</option>
+                                <option value="3">3 Guests</option>
+                                <option value="4">4 Guests</option>
+                                <option value="5">5 Guests</option>
+                                <option value="6">6+ Guests</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Experience</label>
+                            <select required>
+                                <option value="tasting">Tasting Menu</option>
+                                <option value="chef">Chef's Table</option>
+                                <option value="private">Private Dining</option>
+                                <option value="cellar">Wine Cellar</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Special Requests</label>
+                        <textarea placeholder="Dietary restrictions, allergies, special occasions..."></textarea>
+                    </div>
+
+                    <button type="submit" class="submit-btn">Confirm Reservation</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="content">
+            <div class="content-header fade-in">
+                <h2>Visit Us</h2>
+            </div>
+            <div style="max-width: 800px; margin: 0 auto; text-align: center;" class="fade-in">
+                <p style="font-size: 18px; color: #666; line-height: 1.9; margin-bottom: 30px;">
+                    Located in the heart of the city, our intimate 24-seat restaurant offers an unparalleled fine dining experience.
+                </p>
+                <p style="font-size: 16px; color: #666; margin-bottom: 10px;"><strong>Address:</strong> 456 Culinary Boulevard, Suite 100</p>
+                <p style="font-size: 16px; color: #666; margin-bottom: 10px;"><strong>Phone:</strong> +1 (555) 987-6543</p>
+                <p style="font-size: 16px; color: #666; margin-bottom: 10px;"><strong>Email:</strong> reservations@etoilenoire.com</p>
+                <p style="font-size: 16px; color: #666; margin-bottom: 30px;"><strong>Hours:</strong> Tuesday - Saturday, 6:00 PM - 10:00 PM</p>
+                <p style="font-size: 14px; color: #999; font-style: italic;">Closed Sunday & Monday</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Étoile Noire</h3>
+                <p>Three Michelin-starred restaurant offering an exceptional fine dining experience in an intimate setting.</p>
+                <p style="margin-top: 20px; color: #d4af37;">⭐⭐⭐ Michelin Guide</p>
+            </div>
+            <div class="footer-section">
+                <h3>Contact</h3>
+                <p>456 Culinary Boulevard<br>Suite 100<br>New York, NY 10001</p>
+                <p style="margin-top: 20px;">+1 (555) 987-6543<br>reservations@etoilenoire.com</p>
+            </div>
+            <div class="footer-section">
+                <h3>Hours</h3>
+                <p>Tuesday - Saturday<br>6:00 PM - 10:00 PM</p>
+                <p style="margin-top: 20px;">Closed Sunday & Monday</p>
+                <p style="margin-top: 20px; font-size: 13px; font-style: italic;">Reservations Required</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Étoile Noire. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        function showPage(pageId) {
+            document.querySelectorAll('.page-section').forEach(section => {
+                section.classList.remove('active');
+            });
+
+            const targetPage = document.getElementById(pageId);
+            if (targetPage) {
+                targetPage.classList.add('active');
+                window.scrollTo(0, 0);
+                initializeAnimations();
+            }
+        }
+
+        document.querySelectorAll('[data-page]').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const pageId = link.getAttribute('data-page');
+                showPage(pageId);
+                window.location.hash = pageId;
+            });
+        });
+
+        window.addEventListener('hashchange', () => {
+            const pageId = window.location.hash.slice(1) || 'home';
+            showPage(pageId);
+        });
+
+        window.addEventListener('DOMContentLoaded', () => {
+            const pageId = window.location.hash.slice(1) || 'home';
+            showPage(pageId);
+        });
+
+        // Menu tabs
+        document.querySelectorAll('.menu-tab').forEach(tab => {
+            tab.addEventListener('click', () => {
+                const menuType = tab.dataset.menu;
+
+                document.querySelectorAll('.menu-tab').forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+
+                document.querySelectorAll('.menu-content').forEach(content => {
+                    if (content.dataset.menu === menuType) {
+                        content.classList.add('active');
+                    } else {
+                        content.classList.remove('active');
+                    }
+                });
+            });
+        });
+
+        function initializeAnimations() {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            });
+
+            const activePage = document.querySelector('.page-section.active');
+            if (activePage) {
+                activePage.querySelectorAll('.fade-in').forEach(el => {
+                    el.classList.remove('visible');
+                    observer.observe(el);
+                });
+            }
+        }
+    </script>
+</body>
+</html>
