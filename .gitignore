@@ -135,3 +135,7 @@ yarn-error.log*
 
 # Generated PDFs (optional - 주석 처리하면 Git에 포함됨)
 # *.pdf
+
+# Windows special files
+nul
+NUL
