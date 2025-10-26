@@ -621,23 +621,9 @@
             flex-direction: column;
         }
 
-        /* 층간 이동 시 헤더 축소 - 초기화 버튼만 표시 */
+        /* 층간 이동 시 헤더 숨기기 */
         .map-container.dual-floor-view .map-header {
-            padding: 0.5rem 1rem;
-            min-height: auto;
-            justify-content: flex-end;
-        }
-
-        .map-container.dual-floor-view .map-header .map-title {
             display: none;
-        }
-
-        .map-container.dual-floor-view .map-header .path-controls {
-            display: none;
-        }
-
-        .map-container.dual-floor-view .map-header .map-controls {
-            display: flex;
         }
 
         /* 층간 이동 시 오른쪽 사이드바 숨기기 */
@@ -656,7 +642,7 @@
         .dual-floor-item {
             background: var(--bg-primary);
             border-right: 1px solid rgba(165, 180, 252, 0.2);
-            padding: 0.25rem;
+            padding: 0.5rem;
             overflow: auto;
             display: flex;
             flex-direction: column;
