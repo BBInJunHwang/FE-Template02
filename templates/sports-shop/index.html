@@ -1,0 +1,1106 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ATHLETE - 스포츠의 모든 것</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&family=Bebas+Neue&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            line-height: 1.6;
+            overflow-x: hidden;
+            color: #1a1a1a;
+            background: #fff;
+        }
+
+        .page-section {
+            display: none;
+            animation: slideIn 0.4s ease-out;
+        }
+
+        .page-section.active {
+            display: block;
+        }
+
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateX(-30px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        /* Header */
+        header {
+            background: #fff;
+            padding: 15px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        nav {
+            max-width: 1500px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 40px;
+        }
+
+        .logo {
+            font-family: 'Bebas Neue', cursive;
+            font-size: 42px;
+            color: #FF4500;
+            text-decoration: none;
+            letter-spacing: 2px;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 40px;
+        }
+
+        .nav-links a {
+            color: #1a1a1a;
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #FF4500;
+        }
+
+        .nav-icons {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .icon-btn {
+            background: none;
+            border: none;
+            font-size: 22px;
+            cursor: pointer;
+            color: #1a1a1a;
+            transition: transform 0.2s;
+        }
+
+        .icon-btn:hover {
+            transform: scale(1.15);
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(135deg, rgba(255, 69, 0, 0.9), rgba(255, 140, 0, 0.8)), url('https://images.unsplash.com/photo-1461896836934-ffe607ba8211?w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: left;
+            color: #fff;
+            margin-top: 70px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><path d="M0 0L50 50L0 100" stroke="white" stroke-width="0.5" opacity="0.1" fill="none"/></svg>');
+            animation: heroPattern 20s linear infinite;
+        }
+
+        @keyframes heroPattern {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(100px); }
+        }
+
+        .hero-content {
+            max-width: 1400px;
+            padding: 0 40px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            padding: 10px 25px;
+            border-radius: 25px;
+            font-size: 13px;
+            margin-bottom: 30px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .hero h1 {
+            font-family: 'Bebas Neue', cursive;
+            font-size: 120px;
+            font-weight: 400;
+            margin-bottom: 20px;
+            line-height: 0.9;
+            letter-spacing: 3px;
+        }
+
+        .hero p {
+            font-size: 24px;
+            margin-bottom: 50px;
+            font-weight: 300;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+        }
+
+        .btn-primary {
+            padding: 18px 45px;
+            background: #fff;
+            color: #FF4500;
+            border: none;
+            font-size: 16px;
+            font-weight: 900;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+        }
+
+        .btn-secondary {
+            padding: 18px 45px;
+            background: transparent;
+            color: #fff;
+            border: 2px solid #fff;
+            font-size: 16px;
+            font-weight: 900;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .btn-secondary:hover {
+            background: #fff;
+            color: #FF4500;
+        }
+
+        /* Categories Section */
+        .categories-section {
+            padding: 100px 40px;
+            background: #f5f5f5;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 70px;
+        }
+
+        .section-header h2 {
+            font-family: 'Bebas Neue', cursive;
+            font-size: 64px;
+            margin-bottom: 15px;
+            color: #1a1a1a;
+            letter-spacing: 2px;
+        }
+
+        .section-header p {
+            font-size: 18px;
+            color: #666;
+        }
+
+        .categories-grid {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 25px;
+        }
+
+        .category-card {
+            position: relative;
+            height: 350px;
+            border-radius: 10px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .category-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .category-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .category-card:hover img {
+            transform: scale(1.1);
+        }
+
+        .category-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.9), transparent);
+            padding: 30px;
+            color: #fff;
+        }
+
+        .category-name {
+            font-family: 'Bebas Neue', cursive;
+            font-size: 32px;
+            margin-bottom: 5px;
+            letter-spacing: 1px;
+        }
+
+        .category-count {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+
+        /* Products Section */
+        .products-section {
+            padding: 100px 40px;
+        }
+
+        .products-filter {
+            max-width: 1400px;
+            margin: 0 auto 50px;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 12px 30px;
+            background: #f5f5f5;
+            border: 2px solid transparent;
+            color: #1a1a1a;
+            font-size: 14px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: #FF4500;
+            color: #fff;
+            border-color: #FF4500;
+        }
+
+        .products-grid {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+        }
+
+        .product-card {
+            background: #fff;
+            border-radius: 10px;
+            overflow: hidden;
+            transition: all 0.3s;
+            cursor: pointer;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        .product-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .product-image {
+            position: relative;
+            overflow: hidden;
+            height: 350px;
+            background: #f5f5f5;
+        }
+
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .product-card:hover .product-image img {
+            transform: scale(1.1);
+        }
+
+        .product-badge {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: #FF4500;
+            color: #fff;
+            padding: 6px 15px;
+            font-size: 11px;
+            font-weight: 900;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .product-badge.sale {
+            background: #FFD700;
+            color: #000;
+        }
+
+        .product-info {
+            padding: 25px;
+        }
+
+        .product-brand {
+            font-size: 12px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: #999;
+            margin-bottom: 8px;
+            font-weight: 700;
+        }
+
+        .product-name {
+            font-size: 17px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: #1a1a1a;
+        }
+
+        .product-price {
+            font-size: 20px;
+            font-weight: 900;
+            color: #FF4500;
+            margin-bottom: 15px;
+        }
+
+        .product-rating {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 15px;
+        }
+
+        .stars {
+            color: #FFD700;
+        }
+
+        .add-to-cart {
+            width: 100%;
+            padding: 14px;
+            background: #1a1a1a;
+            color: #fff;
+            border: none;
+            font-size: 13px;
+            font-weight: 900;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .add-to-cart:hover {
+            background: #FF4500;
+        }
+
+        /* Featured Banner */
+        .featured-banner {
+            padding: 0;
+            position: relative;
+            height: 600px;
+            overflow: hidden;
+        }
+
+        .featured-banner img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .banner-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: #fff;
+            z-index: 2;
+        }
+
+        .banner-content h2 {
+            font-family: 'Bebas Neue', cursive;
+            font-size: 80px;
+            margin-bottom: 20px;
+            letter-spacing: 3px;
+        }
+
+        .banner-content p {
+            font-size: 20px;
+            margin-bottom: 35px;
+        }
+
+        /* Brands Section */
+        .brands-section {
+            padding: 80px 40px;
+            background: #1a1a1a;
+            color: #fff;
+        }
+
+        .brands-grid {
+            max-width: 1400px;
+            margin: 50px auto 0;
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 40px;
+            align-items: center;
+        }
+
+        .brand-logo {
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Bebas Neue', cursive;
+            font-size: 32px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .brand-logo:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-5px);
+        }
+
+        /* Newsletter Section */
+        .newsletter-section {
+            padding: 100px 40px;
+            background: linear-gradient(135deg, #FF4500, #FF8C00);
+            color: #fff;
+            text-align: center;
+        }
+
+        .newsletter-content {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .newsletter-section h2 {
+            font-family: 'Bebas Neue', cursive;
+            font-size: 56px;
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+        }
+
+        .newsletter-section p {
+            font-size: 18px;
+            margin-bottom: 40px;
+        }
+
+        .newsletter-form {
+            display: flex;
+            gap: 15px;
+            max-width: 550px;
+            margin: 0 auto;
+        }
+
+        .newsletter-input {
+            flex: 1;
+            padding: 18px 25px;
+            border: none;
+            font-size: 15px;
+            font-family: inherit;
+        }
+
+        .newsletter-btn {
+            padding: 18px 40px;
+            background: #1a1a1a;
+            color: #fff;
+            border: none;
+            font-size: 14px;
+            font-weight: 900;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .newsletter-btn:hover {
+            background: #000;
+        }
+
+        /* Footer */
+        footer {
+            background: #000;
+            color: #fff;
+            padding: 80px 40px 40px;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 60px;
+            margin-bottom: 50px;
+        }
+
+        .footer-section h3 {
+            font-family: 'Bebas Neue', cursive;
+            font-size: 28px;
+            margin-bottom: 25px;
+            letter-spacing: 1px;
+        }
+
+        .footer-section p {
+            font-size: 14px;
+            color: #999;
+            line-height: 1.8;
+            margin-bottom: 25px;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links a {
+            color: #999;
+            text-decoration: none;
+            font-size: 14px;
+            line-height: 2.5;
+            display: block;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: #FF4500;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 25px;
+        }
+
+        .social-icon {
+            width: 45px;
+            height: 45px;
+            background: #1a1a1a;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 18px;
+        }
+
+        .social-icon:hover {
+            background: #FF4500;
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 40px;
+            border-top: 1px solid #222;
+            font-size: 13px;
+            color: #666;
+        }
+
+        @media (max-width: 1200px) {
+            .categories-grid,
+            .products-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .brands-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 64px;
+            }
+
+            .categories-grid,
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="#home" class="logo" data-page="home">ATHLETE</a>
+            <ul class="nav-links">
+                <li><a href="#home" data-page="home">홈</a></li>
+                <li><a href="#categories" data-page="categories">카테고리</a></li>
+                <li><a href="#products" data-page="products">상품</a></li>
+                <li><a href="#brands" data-page="brands">브랜드</a></li>
+            </ul>
+            <div class="nav-icons">
+                <button class="icon-btn">🔍</button>
+                <button class="icon-btn">❤️</button>
+                <button class="icon-btn">🛒</button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- HOME Page -->
+    <section id="home" class="page-section active">
+        <div class="hero">
+            <div class="hero-content">
+                <div class="hero-badge">2024 New Season</div>
+                <h1>PUSH YOUR<br>LIMITS</h1>
+                <p>최고의 퍼포먼스를 위한 스포츠 장비</p>
+                <div class="hero-buttons">
+                    <a href="#products" data-page="products" class="btn-primary">Shop Now</a>
+                    <a href="#categories" data-page="categories" class="btn-secondary">Categories</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="categories-section">
+            <div class="section-header">
+                <h2>CATEGORIES</h2>
+                <p>모든 스포츠를 위한 완벽한 장비</p>
+            </div>
+            <div class="categories-grid">
+                <div class="category-card">
+                    <img src="https://images.unsplash.com/photo-1571902943202-507ec2618e8f?w=500&q=80" alt="Running">
+                    <div class="category-overlay">
+                        <div class="category-name">RUNNING</div>
+                        <div class="category-count">250+ 상품</div>
+                    </div>
+                </div>
+                <div class="category-card">
+                    <img src="https://images.unsplash.com/photo-1534258936925-c58bed479fcb?w=500&q=80" alt="Training">
+                    <div class="category-overlay">
+                        <div class="category-name">TRAINING</div>
+                        <div class="category-count">180+ 상품</div>
+                    </div>
+                </div>
+                <div class="category-card">
+                    <img src="https://images.unsplash.com/photo-1571902943202-507ec2618e8f?w=500&q=80" alt="Basketball">
+                    <div class="category-overlay">
+                        <div class="category-name">BASKETBALL</div>
+                        <div class="category-count">120+ 상품</div>
+                    </div>
+                </div>
+                <div class="category-card">
+                    <img src="https://images.unsplash.com/photo-1587280501635-68a0e82cd5ff?w=500&q=80" alt="Soccer">
+                    <div class="category-overlay">
+                        <div class="category-name">SOCCER</div>
+                        <div class="category-count">200+ 상품</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PRODUCTS Page -->
+    <section id="products" class="page-section">
+        <div class="products-section">
+            <div class="section-header">
+                <h2>NEW ARRIVALS</h2>
+                <p>최신 스포츠 아이템을 만나보세요</p>
+            </div>
+            <div class="products-filter">
+                <button class="filter-btn active">ALL</button>
+                <button class="filter-btn">RUNNING</button>
+                <button class="filter-btn">TRAINING</button>
+                <button class="filter-btn">BASKETBALL</button>
+                <button class="filter-btn">SOCCER</button>
+            </div>
+            <div class="products-grid">
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=500&q=80" alt="Product">
+                        <div class="product-badge">New</div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-brand">SPEEDMAX</div>
+                        <div class="product-name">에어 런닝 슈즈 프로</div>
+                        <div class="product-price">₩ 189,000</div>
+                        <div class="product-rating">
+                            <span class="stars">★★★★★</span>
+                            <span>(1,234)</span>
+                        </div>
+                        <button class="add-to-cart">장바구니 추가</button>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1556906781-9a412961c28c?w=500&q=80" alt="Product">
+                        <div class="product-badge sale">Sale</div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-brand">POWERFIT</div>
+                        <div class="product-name">트레이닝 세트</div>
+                        <div class="product-price">₩ 129,000</div>
+                        <div class="product-rating">
+                            <span class="stars">★★★★☆</span>
+                            <span>(856)</span>
+                        </div>
+                        <button class="add-to-cart">장바구니 추가</button>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1579952363873-27f3bade9f55?w=500&q=80" alt="Product">
+                        <div class="product-badge">Hot</div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-brand">COURTKING</div>
+                        <div class="product-name">농구화 엘리트</div>
+                        <div class="product-price">₩ 219,000</div>
+                        <div class="product-rating">
+                            <span class="stars">★★★★★</span>
+                            <span>(2,341)</span>
+                        </div>
+                        <button class="add-to-cart">장바구니 추가</button>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1539185441755-769473a23570?w=500&q=80" alt="Product">
+                    </div>
+                    <div class="product-info">
+                        <div class="product-brand">SPORTPRO</div>
+                        <div class="product-name">스포츠 백팩 40L</div>
+                        <div class="product-price">₩ 89,000</div>
+                        <div class="product-rating">
+                            <span class="stars">★★★★★</span>
+                            <span>(567)</span>
+                        </div>
+                        <button class="add-to-cart">장바구니 추가</button>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1622279457486-62dcc4a431d6?w=500&q=80" alt="Product">
+                        <div class="product-badge">New</div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-brand">FLEXCORE</div>
+                        <div class="product-name">요가 매트 프리미엄</div>
+                        <div class="product-price">₩ 59,000</div>
+                        <div class="product-rating">
+                            <span class="stars">★★★★☆</span>
+                            <span>(432)</span>
+                        </div>
+                        <button class="add-to-cart">장바구니 추가</button>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=500&q=80" alt="Product">
+                    </div>
+                    <div class="product-info">
+                        <div class="product-brand">GYMTECH</div>
+                        <div class="product-name">덤벨 세트 20kg</div>
+                        <div class="product-price">₩ 159,000</div>
+                        <div class="product-rating">
+                            <span class="stars">★★★★★</span>
+                            <span>(3,245)</span>
+                        </div>
+                        <button class="add-to-cart">장바구니 추가</button>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1552674605-db6ffd4facb5?w=500&q=80" alt="Product">
+                        <div class="product-badge">Hot</div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-brand">TRACKSTAR</div>
+                        <div class="product-name">스마트 워치 GPS</div>
+                        <div class="product-price">₩ 299,000</div>
+                        <div class="product-rating">
+                            <span class="stars">★★★★★</span>
+                            <span>(789)</span>
+                        </div>
+                        <button class="add-to-cart">장바구니 추가</button>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1614016800582-e0e1ffe28fad?w=500&q=80" alt="Product">
+                        <div class="product-badge sale">Sale</div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-brand">AQUAFLOW</div>
+                        <div class="product-name">물통 2L + 벨트</div>
+                        <div class="product-price">₩ 39,000</div>
+                        <div class="product-rating">
+                            <span class="stars">★★★★☆</span>
+                            <span>(1,123)</span>
+                        </div>
+                        <button class="add-to-cart">장바구니 추가</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CATEGORIES Page -->
+    <section id="categories" class="page-section">
+        <div class="featured-banner">
+            <img src="https://images.unsplash.com/photo-1517838277536-f5f99be501cd?w=1920&q=80" alt="Featured">
+            <div class="banner-content">
+                <h2>SUMMER COLLECTION</h2>
+                <p>여름 시즌 특별 할인 최대 50%</p>
+                <a href="#products" data-page="products" class="btn-primary">Shop Now</a>
+            </div>
+        </div>
+
+        <div class="categories-section">
+            <div class="section-header">
+                <h2>ALL CATEGORIES</h2>
+                <p>모든 스포츠 카테고리를 한눈에</p>
+            </div>
+            <div class="categories-grid">
+                <div class="category-card">
+                    <img src="https://images.unsplash.com/photo-1538805060514-97d9cc17730c?w=500&q=80" alt="Fitness">
+                    <div class="category-overlay">
+                        <div class="category-name">FITNESS</div>
+                        <div class="category-count">320+ 상품</div>
+                    </div>
+                </div>
+                <div class="category-card">
+                    <img src="https://images.unsplash.com/photo-1530549387789-4c1017266635?w=500&q=80" alt="Cycling">
+                    <div class="category-overlay">
+                        <div class="category-name">CYCLING</div>
+                        <div class="category-count">150+ 상품</div>
+                    </div>
+                </div>
+                <div class="category-card">
+                    <img src="https://images.unsplash.com/photo-1600965962102-9d260a71890d?w=500&q=80" alt="Swimming">
+                    <div class="category-overlay">
+                        <div class="category-name">SWIMMING</div>
+                        <div class="category-count">90+ 상품</div>
+                    </div>
+                </div>
+                <div class="category-card">
+                    <img src="https://images.unsplash.com/photo-1551958219-acbc608c6377?w=500&q=80" alt="Tennis">
+                    <div class="category-overlay">
+                        <div class="category-name">TENNIS</div>
+                        <div class="category-count">110+ 상품</div>
+                    </div>
+                </div>
+                <div class="category-card">
+                    <img src="https://images.unsplash.com/photo-1624526267942-ab0ff8a3e972?w=500&q=80" alt="Golf">
+                    <div class="category-overlay">
+                        <div class="category-name">GOLF</div>
+                        <div class="category-count">200+ 상품</div>
+                    </div>
+                </div>
+                <div class="category-card">
+                    <img src="https://images.unsplash.com/photo-1551698618-1dfe5d97d256?w=500&q=80" alt="Hiking">
+                    <div class="category-overlay">
+                        <div class="category-name">HIKING</div>
+                        <div class="category-count">180+ 상품</div>
+                    </div>
+                </div>
+                <div class="category-card">
+                    <img src="https://images.unsplash.com/photo-1549060279-7e168fcee0c2?w=500&q=80" alt="Baseball">
+                    <div class="category-overlay">
+                        <div class="category-name">BASEBALL</div>
+                        <div class="category-count">140+ 상품</div>
+                    </div>
+                </div>
+                <div class="category-card">
+                    <img src="https://images.unsplash.com/photo-1529900748604-07564a03e7a6?w=500&q=80" alt="Volleyball">
+                    <div class="category-overlay">
+                        <div class="category-name">VOLLEYBALL</div>
+                        <div class="category-count">85+ 상품</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- BRANDS Page -->
+    <section id="brands" class="page-section">
+        <div class="brands-section">
+            <div class="section-header">
+                <h2>PARTNER BRANDS</h2>
+                <p>최고의 스포츠 브랜드와 함께합니다</p>
+            </div>
+            <div class="brands-grid">
+                <div class="brand-logo">NIKE</div>
+                <div class="brand-logo">ADIDAS</div>
+                <div class="brand-logo">PUMA</div>
+                <div class="brand-logo">REEBOK</div>
+                <div class="brand-logo">ASICS</div>
+                <div class="brand-logo">MIZUNO</div>
+                <div class="brand-logo">FILA</div>
+                <div class="brand-logo">CONVERSE</div>
+                <div class="brand-logo">VANS</div>
+                <div class="brand-logo">NEW BALANCE</div>
+                <div class="brand-logo">UNDER ARMOUR</div>
+                <div class="brand-logo">SALOMON</div>
+            </div>
+        </div>
+
+        <div class="newsletter-section">
+            <div class="newsletter-content">
+                <h2>JOIN THE TEAM</h2>
+                <p>뉴스레터 구독하고 특별 혜택을 받아보세요</p>
+                <form class="newsletter-form">
+                    <input type="email" class="newsletter-input" placeholder="이메일 주소 입력" required>
+                    <button type="submit" class="newsletter-btn">구독하기</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>ATHLETE</h3>
+                <p>최고의 스포츠 장비와 의류를 제공하는 온라인 스포츠 전문 쇼핑몰입니다. 모든 운동선수와 스포츠 애호가를 위한 완벽한 솔루션을 제공합니다.</p>
+                <div class="social-links">
+                    <div class="social-icon">📷</div>
+                    <div class="social-icon">📘</div>
+                    <div class="social-icon">🐦</div>
+                    <div class="social-icon">📺</div>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>SHOP</h3>
+                <ul class="footer-links">
+                    <li><a href="#">신상품</a></li>
+                    <li><a href="#">베스트</a></li>
+                    <li><a href="#">세일</a></li>
+                    <li><a href="#">브랜드</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>SUPPORT</h3>
+                <ul class="footer-links">
+                    <li><a href="#">고객센터</a></li>
+                    <li><a href="#">배송/반품</a></li>
+                    <li><a href="#">사이즈 가이드</a></li>
+                    <li><a href="#">FAQ</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>COMPANY</h3>
+                <ul class="footer-links">
+                    <li><a href="#">회사소개</a></li>
+                    <li><a href="#">제휴문의</a></li>
+                    <li><a href="#">이용약관</a></li>
+                    <li><a href="#">개인정보처리방침</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 ATHLETE. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        function showPage(pageId) {
+            document.querySelectorAll('.page-section').forEach(section => {
+                section.classList.remove('active');
+            });
+
+            const targetPage = document.getElementById(pageId);
+            if (targetPage) {
+                targetPage.classList.add('active');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+        }
+
+        document.querySelectorAll('[data-page]').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const pageId = link.getAttribute('data-page');
+                showPage(pageId);
+                window.location.hash = pageId;
+            });
+        });
+
+        window.addEventListener('hashchange', () => {
+            const pageId = window.location.hash.slice(1) || 'home';
+            showPage(pageId);
+        });
+
+        window.addEventListener('DOMContentLoaded', () => {
+            const pageId = window.location.hash.slice(1) || 'home';
+            showPage(pageId);
+        });
+
+        // Filter buttons
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+
+        // Add to cart animation
+        document.querySelectorAll('.add-to-cart').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const originalText = this.textContent;
+                this.textContent = '추가됨 ✓';
+                this.style.background = '#FF4500';
+                setTimeout(() => {
+                    this.textContent = originalText;
+                    this.style.background = '#1a1a1a';
+                }, 1500);
+            });
+        });
+    </script>
+</body>
+</html>

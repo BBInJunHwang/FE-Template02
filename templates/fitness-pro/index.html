@@ -1,0 +1,1010 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>POWERHOUSE - 프리미엄 피트니스</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&family=Oswald:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            line-height: 1.6;
+            overflow-x: hidden;
+            color: #1a1a1a;
+            background: #fff;
+        }
+
+        .page-section {
+            display: none;
+            animation: fadeUp 0.5s ease-out;
+        }
+
+        .page-section.active {
+            display: block;
+        }
+
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Header */
+        header {
+            background: rgba(0, 0, 0, 0.95);
+            padding: 18px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 3px solid #00FF00;
+        }
+
+        nav {
+            max-width: 1500px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 40px;
+        }
+
+        .logo {
+            font-family: 'Oswald', sans-serif;
+            font-size: 36px;
+            color: #00FF00;
+            text-decoration: none;
+            font-weight: 700;
+            letter-spacing: 2px;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 40px;
+        }
+
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 600;
+            transition: color 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .nav-links a:hover {
+            color: #00FF00;
+        }
+
+        .nav-cta {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .join-btn {
+            padding: 12px 30px;
+            background: #00FF00;
+            color: #000;
+            border: none;
+            font-size: 14px;
+            font-weight: 900;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .join-btn:hover {
+            background: #00CC00;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0, 255, 0, 0.3);
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: left;
+            color: #fff;
+            margin-top: 70px;
+            position: relative;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: repeating-linear-gradient(
+                0deg,
+                transparent,
+                transparent 2px,
+                rgba(0, 255, 0, 0.03) 2px,
+                rgba(0, 255, 0, 0.03) 4px
+            );
+        }
+
+        .hero-content {
+            max-width: 1400px;
+            padding: 0 40px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: rgba(0, 255, 0, 0.2);
+            border: 2px solid #00FF00;
+            color: #00FF00;
+            padding: 10px 25px;
+            font-size: 13px;
+            margin-bottom: 30px;
+            font-weight: 900;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .hero h1 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 100px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            line-height: 0.95;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+
+        .hero h1 span {
+            color: #00FF00;
+        }
+
+        .hero p {
+            font-size: 24px;
+            margin-bottom: 50px;
+            font-weight: 300;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+        }
+
+        .btn-primary {
+            padding: 20px 50px;
+            background: #00FF00;
+            color: #000;
+            border: none;
+            font-size: 16px;
+            font-weight: 900;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .btn-primary:hover {
+            background: #00CC00;
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(0, 255, 0, 0.3);
+        }
+
+        .btn-secondary {
+            padding: 20px 50px;
+            background: transparent;
+            color: #fff;
+            border: 2px solid #fff;
+            font-size: 16px;
+            font-weight: 900;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .btn-secondary:hover {
+            background: #fff;
+            color: #000;
+        }
+
+        /* Programs Section */
+        .programs-section {
+            padding: 120px 40px;
+            background: #0a0a0a;
+            color: #fff;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        .section-header h2 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 64px;
+            margin-bottom: 15px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .section-header h2 span {
+            color: #00FF00;
+        }
+
+        .section-header p {
+            font-size: 18px;
+            color: #999;
+        }
+
+        .programs-grid {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 35px;
+        }
+
+        .program-card {
+            background: #1a1a1a;
+            border: 2px solid #222;
+            padding: 40px;
+            transition: all 0.3s;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .program-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 255, 0, 0.1));
+            transition: width 0.5s;
+        }
+
+        .program-card:hover {
+            border-color: #00FF00;
+            transform: translateY(-10px);
+        }
+
+        .program-card:hover::before {
+            width: 100%;
+        }
+
+        .program-icon {
+            font-size: 52px;
+            margin-bottom: 25px;
+        }
+
+        .program-name {
+            font-family: 'Oswald', sans-serif;
+            font-size: 28px;
+            margin-bottom: 15px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .program-description {
+            font-size: 15px;
+            color: #bbb;
+            line-height: 1.8;
+            margin-bottom: 25px;
+        }
+
+        .program-features {
+            list-style: none;
+            margin-bottom: 30px;
+        }
+
+        .program-features li {
+            padding: 8px 0;
+            padding-left: 25px;
+            position: relative;
+            color: #999;
+        }
+
+        .program-features li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #00FF00;
+            font-weight: 900;
+        }
+
+        .program-btn {
+            width: 100%;
+            padding: 14px;
+            background: transparent;
+            color: #00FF00;
+            border: 2px solid #00FF00;
+            font-size: 13px;
+            font-weight: 900;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .program-btn:hover {
+            background: #00FF00;
+            color: #000;
+        }
+
+        /* Trainers Section */
+        .trainers-section {
+            padding: 120px 40px;
+            background: #fff;
+        }
+
+        .trainers-grid {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+        }
+
+        .trainer-card {
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+
+        .trainer-image {
+            height: 400px;
+            overflow: hidden;
+        }
+
+        .trainer-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+            filter: grayscale(100%);
+        }
+
+        .trainer-card:hover .trainer-image img {
+            transform: scale(1.1);
+            filter: grayscale(0%);
+        }
+
+        .trainer-info {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.95), transparent);
+            padding: 30px;
+            color: #fff;
+            transform: translateY(60px);
+            transition: transform 0.3s;
+        }
+
+        .trainer-card:hover .trainer-info {
+            transform: translateY(0);
+        }
+
+        .trainer-name {
+            font-family: 'Oswald', sans-serif;
+            font-size: 24px;
+            margin-bottom: 5px;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .trainer-specialty {
+            font-size: 13px;
+            color: #00FF00;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        /* Pricing Section */
+        .pricing-section {
+            padding: 120px 40px;
+            background: #0a0a0a;
+            color: #fff;
+        }
+
+        .pricing-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 35px;
+        }
+
+        .pricing-card {
+            background: #1a1a1a;
+            border: 2px solid #222;
+            padding: 50px 40px;
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .pricing-card.featured {
+            border-color: #00FF00;
+            transform: scale(1.05);
+        }
+
+        .pricing-card:hover {
+            border-color: #00FF00;
+            transform: scale(1.08);
+        }
+
+        .pricing-name {
+            font-family: 'Oswald', sans-serif;
+            font-size: 32px;
+            margin-bottom: 20px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .pricing-price {
+            font-size: 56px;
+            font-weight: 900;
+            color: #00FF00;
+            margin-bottom: 10px;
+        }
+
+        .pricing-period {
+            font-size: 16px;
+            color: #999;
+            margin-bottom: 35px;
+        }
+
+        .pricing-features {
+            list-style: none;
+            margin-bottom: 40px;
+            text-align: left;
+        }
+
+        .pricing-features li {
+            padding: 12px 0;
+            padding-left: 30px;
+            position: relative;
+            border-bottom: 1px solid #222;
+        }
+
+        .pricing-features li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #00FF00;
+            font-weight: 900;
+            font-size: 18px;
+        }
+
+        .pricing-btn {
+            width: 100%;
+            padding: 16px;
+            background: #00FF00;
+            color: #000;
+            border: none;
+            font-size: 14px;
+            font-weight: 900;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .pricing-btn:hover {
+            background: #00CC00;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 100px 40px;
+            background: linear-gradient(135deg, rgba(0, 255, 0, 0.9), rgba(0, 200, 0, 0.9)), url('https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            text-align: center;
+            color: #000;
+        }
+
+        .cta-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .cta-content h2 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 64px;
+            margin-bottom: 25px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .cta-content p {
+            font-size: 20px;
+            margin-bottom: 40px;
+            font-weight: 500;
+        }
+
+        /* Footer */
+        footer {
+            background: #000;
+            color: #fff;
+            padding: 80px 40px 40px;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 60px;
+            margin-bottom: 50px;
+        }
+
+        .footer-section h3 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 28px;
+            margin-bottom: 25px;
+            color: #00FF00;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .footer-section p {
+            font-size: 14px;
+            color: #999;
+            line-height: 1.8;
+            margin-bottom: 25px;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links a {
+            color: #999;
+            text-decoration: none;
+            font-size: 14px;
+            line-height: 2.5;
+            display: block;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: #00FF00;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 40px;
+            border-top: 1px solid #222;
+            font-size: 13px;
+            color: #666;
+        }
+
+        @media (max-width: 1200px) {
+            .programs-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .trainers-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 56px;
+            }
+
+            .programs-grid,
+            .pricing-grid,
+            .trainers-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="#home" class="logo" data-page="home">POWERHOUSE</a>
+            <ul class="nav-links">
+                <li><a href="#home" data-page="home">Home</a></li>
+                <li><a href="#programs" data-page="programs">Programs</a></li>
+                <li><a href="#trainers" data-page="trainers">Trainers</a></li>
+                <li><a href="#pricing" data-page="pricing">Pricing</a></li>
+            </ul>
+            <div class="nav-cta">
+                <a href="#pricing" data-page="pricing" class="join-btn">Join Now</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- HOME Page -->
+    <section id="home" class="page-section active">
+        <div class="hero">
+            <div class="hero-content">
+                <div class="hero-badge">💪 Premium Fitness</div>
+                <h1>BUILD YOUR<br><span>POWER</span></h1>
+                <p>최고의 트레이너와 함께 최고의 몸을 만드세요</p>
+                <div class="hero-buttons">
+                    <a href="#pricing" data-page="pricing" class="btn-primary">Get Started</a>
+                    <a href="#programs" data-page="programs" class="btn-secondary">View Programs</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="programs-section">
+            <div class="section-header">
+                <h2>OUR <span>PROGRAMS</span></h2>
+                <p>당신의 목표에 맞는 프로그램을 선택하세요</p>
+            </div>
+            <div class="programs-grid">
+                <div class="program-card">
+                    <div class="program-icon">🏋️</div>
+                    <div class="program-name">Strength Training</div>
+                    <div class="program-description">근력 향상과 근육량 증가를 위한 체계적인 웨이트 트레이닝 프로그램</div>
+                    <ul class="program-features">
+                        <li>1:1 PT 세션</li>
+                        <li>맞춤형 운동 프로그램</li>
+                        <li>식단 관리</li>
+                        <li>체성분 분석</li>
+                    </ul>
+                    <button class="program-btn">Learn More</button>
+                </div>
+
+                <div class="program-card">
+                    <div class="program-icon">🔥</div>
+                    <div class="program-name">Fat Burning</div>
+                    <div class="program-description">고강도 유산소와 서킷 트레이닝으로 빠른 체지방 감량</div>
+                    <ul class="program-features">
+                        <li>HIIT 트레이닝</li>
+                        <li>체지방 집중 감량</li>
+                        <li>대사 활성화</li>
+                        <li>식단 컨설팅</li>
+                    </ul>
+                    <button class="program-btn">Learn More</button>
+                </div>
+
+                <div class="program-card">
+                    <div class="program-icon">🥊</div>
+                    <div class="program-name">Boxing Fitness</div>
+                    <div class="program-description">복싱 기술과 피트니스를 결합한 강력한 전신 운동</div>
+                    <ul class="program-features">
+                        <li>복싱 기초 & 실전</li>
+                        <li>전신 근력 강화</li>
+                        <li>스트레스 해소</li>
+                        <li>체력 향상</li>
+                    </ul>
+                    <button class="program-btn">Learn More</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROGRAMS Page -->
+    <section id="programs" class="page-section">
+        <div class="programs-section">
+            <div class="section-header">
+                <h2>ALL <span>PROGRAMS</span></h2>
+                <p>전문가가 설계한 다양한 운동 프로그램</p>
+            </div>
+            <div class="programs-grid">
+                <div class="program-card">
+                    <div class="program-icon">💪</div>
+                    <div class="program-name">CrossFit</div>
+                    <div class="program-description">기능적 움직임과 고강도 운동의 조합</div>
+                    <ul class="program-features">
+                        <li>전신 기능성 운동</li>
+                        <li>커뮤니티 워크아웃</li>
+                        <li>경쟁 프로그램</li>
+                        <li>영양 가이드</li>
+                    </ul>
+                    <button class="program-btn">Learn More</button>
+                </div>
+
+                <div class="program-card">
+                    <div class="program-icon">🧘</div>
+                    <div class="program-name">Yoga & Pilates</div>
+                    <div class="program-description">유연성과 코어 강화를 위한 마인드 바디 프로그램</div>
+                    <ul class="program-features">
+                        <li>요가 & 필라테스</li>
+                        <li>자세 교정</li>
+                        <li>스트레칭</li>
+                        <li>명상 & 호흡</li>
+                    </ul>
+                    <button class="program-btn">Learn More</button>
+                </div>
+
+                <div class="program-card">
+                    <div class="program-icon">🏃</div>
+                    <div class="program-name">Athletic Performance</div>
+                    <div class="program-description">운동선수를 위한 전문 퍼포먼스 향상 프로그램</div>
+                    <ul class="program-features">
+                        <li>스피드 & 민첩성</li>
+                        <li>파워 트레이닝</li>
+                        <li>스포츠별 맞춤</li>
+                        <li>부상 예방</li>
+                    </ul>
+                    <button class="program-btn">Learn More</button>
+                </div>
+
+                <div class="program-card">
+                    <div class="program-icon">🤸</div>
+                    <div class="program-name">Functional Training</div>
+                    <div class="program-description">일상생활에 필요한 기능적 체력 강화</div>
+                    <ul class="program-features">
+                        <li>기능적 움직임</li>
+                        <li>밸런스 & 안정성</li>
+                        <li>부상 재활</li>
+                        <li>시니어 프로그램</li>
+                    </ul>
+                    <button class="program-btn">Learn More</button>
+                </div>
+
+                <div class="program-card">
+                    <div class="program-icon">🏊</div>
+                    <div class="program-name">Swimming</div>
+                    <div class="program-description">전신 유산소 운동의 최고봉, 수영</div>
+                    <ul class="program-features">
+                        <li>영법 교정</li>
+                        <li>수영 레슨</li>
+                        <li>관절 무리 없음</li>
+                        <li>심폐 강화</li>
+                    </ul>
+                    <button class="program-btn">Learn More</button>
+                </div>
+
+                <div class="program-card">
+                    <div class="program-icon">🚴</div>
+                    <div class="program-name">Cycling Studio</div>
+                    <div class="program-description">음악과 함께하는 고강도 실내 사이클링</div>
+                    <ul class="program-features">
+                        <li>그룹 사이클링</li>
+                        <li>음악 동기화</li>
+                        <li>칼로리 소모 극대화</li>
+                        <li>하체 강화</li>
+                    </ul>
+                    <button class="program-btn">Learn More</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TRAINERS Page -->
+    <section id="trainers" class="page-section">
+        <div class="trainers-section">
+            <div class="section-header">
+                <h2 style="color: #1a1a1a;">EXPERT <span style="color: #00FF00;">TRAINERS</span></h2>
+                <p>최고의 자격을 갖춘 전문 트레이너들</p>
+            </div>
+            <div class="trainers-grid">
+                <div class="trainer-card">
+                    <div class="trainer-image">
+                        <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400&q=80" alt="Trainer">
+                    </div>
+                    <div class="trainer-info">
+                        <div class="trainer-name">ALEX KIM</div>
+                        <div class="trainer-specialty">Strength Coach</div>
+                    </div>
+                </div>
+
+                <div class="trainer-card">
+                    <div class="trainer-image">
+                        <img src="https://images.unsplash.com/photo-1534258936925-c58bed479fcb?w=400&q=80" alt="Trainer">
+                    </div>
+                    <div class="trainer-info">
+                        <div class="trainer-name">SARAH LEE</div>
+                        <div class="trainer-specialty">Yoga Master</div>
+                    </div>
+                </div>
+
+                <div class="trainer-card">
+                    <div class="trainer-image">
+                        <img src="https://images.unsplash.com/photo-1595078475328-1ab05d0a6a0e?w=400&q=80" alt="Trainer">
+                    </div>
+                    <div class="trainer-info">
+                        <div class="trainer-name">MIKE PARK</div>
+                        <div class="trainer-specialty">Boxing Coach</div>
+                    </div>
+                </div>
+
+                <div class="trainer-card">
+                    <div class="trainer-image">
+                        <img src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=400&q=80" alt="Trainer">
+                    </div>
+                    <div class="trainer-info">
+                        <div class="trainer-name">EMMA CHOI</div>
+                        <div class="trainer-specialty">Pilates Instructor</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="cta-section">
+            <div class="cta-content">
+                <h2>START YOUR TRANSFORMATION TODAY</h2>
+                <p>무료 체험 수업으로 시작하세요</p>
+                <a href="#pricing" data-page="pricing" class="btn-primary">Free Trial</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- PRICING Page -->
+    <section id="pricing" class="page-section">
+        <div class="pricing-section">
+            <div class="section-header">
+                <h2>MEMBERSHIP <span>PLANS</span></h2>
+                <p>당신에게 맞는 멤버십을 선택하세요</p>
+            </div>
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <div class="pricing-name">Basic</div>
+                    <div class="pricing-price">89,000<small style="font-size: 24px;">원</small></div>
+                    <div class="pricing-period">/월</div>
+                    <ul class="pricing-features">
+                        <li>헬스장 무제한 이용</li>
+                        <li>그룹 클래스 참여</li>
+                        <li>락커 이용</li>
+                        <li>샤워실 & 사우나</li>
+                        <li>주차 2시간 무료</li>
+                    </ul>
+                    <button class="pricing-btn">가입하기</button>
+                </div>
+
+                <div class="pricing-card featured">
+                    <div class="pricing-name">Premium</div>
+                    <div class="pricing-price">149,000<small style="font-size: 24px;">원</small></div>
+                    <div class="pricing-period">/월</div>
+                    <ul class="pricing-features">
+                        <li>Basic 혜택 포함</li>
+                        <li>PT 4회 제공</li>
+                        <li>식단 컨설팅</li>
+                        <li>체성분 분석 월 2회</li>
+                        <li>개인 락커 제공</li>
+                        <li>수영장 이용</li>
+                        <li>주차 무제한</li>
+                    </ul>
+                    <button class="pricing-btn">가입하기</button>
+                </div>
+
+                <div class="pricing-card">
+                    <div class="pricing-name">Elite</div>
+                    <div class="pricing-price">249,000<small style="font-size: 24px;">원</small></div>
+                    <div class="pricing-period">/월</div>
+                    <ul class="pricing-features">
+                        <li>Premium 혜택 포함</li>
+                        <li>PT 무제한</li>
+                        <li>전문 영양사 관리</li>
+                        <li>운동복 세탁 서비스</li>
+                        <li>마사지 월 4회</li>
+                        <li>우선 예약권</li>
+                    </ul>
+                    <button class="pricing-btn">가입하기</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="cta-section">
+            <div class="cta-content">
+                <h2>JOIN POWERHOUSE</h2>
+                <p>지금 가입하고 첫 달 50% 할인 혜택을 받으세요</p>
+                <a href="#" class="btn-primary">Limited Offer</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>POWERHOUSE</h3>
+                <p>최첨단 시설과 최고의 트레이너가 함께하는 프리미엄 피트니스 센터. 당신의 건강한 변화를 응원합니다.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Programs</h3>
+                <ul class="footer-links">
+                    <li><a href="#">Strength Training</a></li>
+                    <li><a href="#">CrossFit</a></li>
+                    <li><a href="#">Boxing</a></li>
+                    <li><a href="#">Yoga & Pilates</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Support</h3>
+                <ul class="footer-links">
+                    <li><a href="#">이용안내</a></li>
+                    <li><a href="#">시설안내</a></li>
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href="#">문의하기</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Contact</h3>
+                <ul class="footer-links">
+                    <li><a href="#">Tel: 02-1234-5678</a></li>
+                    <li><a href="#">영업시간: 05:00 - 24:00</a></li>
+                    <li><a href="#">서울시 강남구 테헤란로</a></li>
+                    <li><a href="#">info@powerhouse.com</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 POWERHOUSE. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        function showPage(pageId) {
+            document.querySelectorAll('.page-section').forEach(section => {
+                section.classList.remove('active');
+            });
+
+            const targetPage = document.getElementById(pageId);
+            if (targetPage) {
+                targetPage.classList.add('active');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+        }
+
+        document.querySelectorAll('[data-page]').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const pageId = link.getAttribute('data-page');
+                showPage(pageId);
+                window.location.hash = pageId;
+            });
+        });
+
+        window.addEventListener('hashchange', () => {
+            const pageId = window.location.hash.slice(1) || 'home';
+            showPage(pageId);
+        });
+
+        window.addEventListener('DOMContentLoaded', () => {
+            const pageId = window.location.hash.slice(1) || 'home';
+            showPage(pageId);
+        });
+
+        // Button animations
+        document.querySelectorAll('.program-btn, .pricing-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const originalText = this.textContent;
+                this.textContent = '신청 완료 ✓';
+                setTimeout(() => {
+                    this.textContent = originalText;
+                }, 2000);
+            });
+        });
+    </script>
+</body>
+</html>

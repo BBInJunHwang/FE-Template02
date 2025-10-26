@@ -1,0 +1,905 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sweet Dreams - 디저트 카페</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            line-height: 1.6;
+            overflow-x: hidden;
+            color: #333;
+            background: #fff;
+        }
+
+        .page-section {
+            display: none;
+            animation: fadeSlide 0.5s ease-out;
+        }
+
+        .page-section.active {
+            display: block;
+        }
+
+        @keyframes fadeSlide {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Header */
+        header {
+            background: #FFF5F7;
+            padding: 20px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 2px solid #FFB6C1;
+        }
+
+        nav {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 40px;
+        }
+
+        .logo {
+            font-family: 'Dancing Script', cursive;
+            font-size: 38px;
+            color: #FF69B4;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 40px;
+        }
+
+        .nav-links a {
+            color: #333;
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #FF69B4;
+        }
+
+        .nav-cta {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .order-btn {
+            padding: 12px 28px;
+            background: #FF69B4;
+            color: #fff;
+            border: none;
+            border-radius: 25px;
+            font-size: 14px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+        }
+
+        .order-btn:hover {
+            background: #FF1493;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 105, 180, 0.3);
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(255, 245, 247, 0.8), rgba(255, 182, 193, 0.8)), url('https://images.unsplash.com/photo-1488477181946-6428a0291777?w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: #333;
+            margin-top: 80px;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            padding: 0 30px;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: #FF69B4;
+            color: #fff;
+            padding: 10px 25px;
+            border-radius: 25px;
+            font-size: 13px;
+            margin-bottom: 30px;
+            font-weight: 600;
+        }
+
+        .hero h1 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 82px;
+            font-weight: 700;
+            margin-bottom: 25px;
+            line-height: 1.2;
+            color: #FF1493;
+        }
+
+        .hero p {
+            font-size: 20px;
+            margin-bottom: 45px;
+            color: #666;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+        }
+
+        .btn-primary {
+            padding: 18px 45px;
+            background: #FF69B4;
+            color: #fff;
+            border: none;
+            border-radius: 30px;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary:hover {
+            background: #FF1493;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(255, 105, 180, 0.3);
+        }
+
+        .btn-secondary {
+            padding: 18px 45px;
+            background: transparent;
+            color: #FF69B4;
+            border: 2px solid #FF69B4;
+            border-radius: 30px;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-secondary:hover {
+            background: #FF69B4;
+            color: #fff;
+        }
+
+        /* Menu Section */
+        .menu-section {
+            padding: 100px 40px;
+            background: #FFF5F7;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 70px;
+        }
+
+        .section-header h2 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 58px;
+            margin-bottom: 15px;
+            color: #FF1493;
+        }
+
+        .section-header p {
+            font-size: 17px;
+            color: #666;
+        }
+
+        .menu-grid {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 35px;
+        }
+
+        .menu-card {
+            background: #fff;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(255, 105, 180, 0.1);
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .menu-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(255, 105, 180, 0.2);
+        }
+
+        .menu-image {
+            position: relative;
+            overflow: hidden;
+            height: 320px;
+        }
+
+        .menu-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .menu-card:hover .menu-image img {
+            transform: scale(1.1);
+        }
+
+        .menu-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: #FF69B4;
+            color: #fff;
+            padding: 8px 18px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+        .menu-info {
+            padding: 30px;
+        }
+
+        .menu-name {
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: #333;
+        }
+
+        .menu-description {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .menu-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .menu-price {
+            font-size: 24px;
+            font-weight: 900;
+            color: #FF69B4;
+        }
+
+        .order-item-btn {
+            padding: 10px 25px;
+            background: #FFB6C1;
+            color: #fff;
+            border: none;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .order-item-btn:hover {
+            background: #FF69B4;
+        }
+
+        /* Gallery Section */
+        .gallery-section {
+            padding: 100px 40px;
+        }
+
+        .gallery-grid {
+            max-width: 1400px;
+            margin: 60px auto 0;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 15px;
+            height: 350px;
+            cursor: pointer;
+        }
+
+        .gallery-item:first-child {
+            grid-column: span 2;
+            height: 725px;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.15);
+        }
+
+        /* Story Section */
+        .story-section {
+            padding: 100px 40px;
+            background: #FFF5F7;
+        }
+
+        .story-content {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .story-text h2 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 52px;
+            margin-bottom: 25px;
+            color: #FF1493;
+        }
+
+        .story-text p {
+            font-size: 16px;
+            line-height: 1.9;
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        .story-image img {
+            width: 100%;
+            height: 450px;
+            object-fit: cover;
+            border-radius: 20px;
+            box-shadow: 0 15px 40px rgba(255, 105, 180, 0.2);
+        }
+
+        /* Newsletter Section */
+        .newsletter-section {
+            padding: 80px 40px;
+            background: linear-gradient(135deg, #FF69B4, #FFB6C1);
+            color: #fff;
+            text-align: center;
+        }
+
+        .newsletter-content {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .newsletter-section h2 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+
+        .newsletter-section p {
+            font-size: 17px;
+            margin-bottom: 35px;
+        }
+
+        .newsletter-form {
+            display: flex;
+            gap: 10px;
+            max-width: 550px;
+            margin: 0 auto;
+        }
+
+        .newsletter-input {
+            flex: 1;
+            padding: 16px 25px;
+            border: none;
+            border-radius: 25px;
+            font-size: 15px;
+            font-family: inherit;
+        }
+
+        .newsletter-btn {
+            padding: 16px 35px;
+            background: #fff;
+            color: #FF69B4;
+            border: none;
+            border-radius: 25px;
+            font-size: 15px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .newsletter-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Footer */
+        footer {
+            background: #2a2a2a;
+            color: #fff;
+            padding: 70px 40px 35px;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 50px;
+            margin-bottom: 40px;
+        }
+
+        .footer-section h3 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 28px;
+            margin-bottom: 20px;
+            color: #FFB6C1;
+        }
+
+        .footer-section p {
+            font-size: 14px;
+            color: #bbb;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links a {
+            color: #bbb;
+            text-decoration: none;
+            font-size: 14px;
+            line-height: 2.3;
+            display: block;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: #FFB6C1;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid #444;
+            font-size: 13px;
+            color: #888;
+        }
+
+        @media (max-width: 1200px) {
+            .menu-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 48px;
+            }
+
+            .menu-grid,
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .gallery-item:first-child {
+                grid-column: span 1;
+                height: 350px;
+            }
+
+            .story-content {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="#home" class="logo" data-page="home">Sweet Dreams</a>
+            <ul class="nav-links">
+                <li><a href="#home" data-page="home">홈</a></li>
+                <li><a href="#menu" data-page="menu">메뉴</a></li>
+                <li><a href="#gallery" data-page="gallery">갤러리</a></li>
+                <li><a href="#story" data-page="story">스토리</a></li>
+            </ul>
+            <div class="nav-cta">
+                <a href="#menu" data-page="menu" class="order-btn">주문하기</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- HOME Page -->
+    <section id="home" class="page-section active">
+        <div class="hero">
+            <div class="hero-content">
+                <div class="hero-badge">🍰 Handmade Daily</div>
+                <h1>Sweet Dreams</h1>
+                <p>매일 아침 만드는 달콤한 행복</p>
+                <div class="hero-buttons">
+                    <a href="#menu" data-page="menu" class="btn-primary">메뉴 보기</a>
+                    <a href="#story" data-page="story" class="btn-secondary">스토리</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="menu-section">
+            <div class="section-header">
+                <h2>Signature Desserts</h2>
+                <p>시그니처 디저트</p>
+            </div>
+            <div class="menu-grid">
+                <div class="menu-card">
+                    <div class="menu-image">
+                        <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=500&q=80" alt="Cheesecake">
+                        <div class="menu-badge">Best</div>
+                    </div>
+                    <div class="menu-info">
+                        <div class="menu-name">바스크 치즈케이크</div>
+                        <div class="menu-description">진한 크림치즈와 캐러멜라이즈된 윗면이 환상적인 조화</div>
+                        <div class="menu-footer">
+                            <span class="menu-price">7,500원</span>
+                            <button class="order-item-btn">주문하기</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-card">
+                    <div class="menu-image">
+                        <img src="https://images.unsplash.com/photo-1565958011703-44f9829ba187?w=500&q=80" alt="Tiramisu">
+                        <div class="menu-badge">New</div>
+                    </div>
+                    <div class="menu-info">
+                        <div class="menu-name">티라미수</div>
+                        <div class="menu-description">마스카포네 크림과 에스프레소의 완벽한 하모니</div>
+                        <div class="menu-footer">
+                            <span class="menu-price">8,000원</span>
+                            <button class="order-item-btn">주문하기</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-card">
+                    <div class="menu-image">
+                        <img src="https://images.unsplash.com/photo-1488477181946-6428a0291777?w=500&q=80" alt="Macaron">
+                    </div>
+                    <div class="menu-info">
+                        <div class="menu-name">프렌치 마카롱 세트</div>
+                        <div class="menu-description">5가지 맛의 컬러풀한 마카롱 (5개입)</div>
+                        <div class="menu-footer">
+                            <span class="menu-price">12,000원</span>
+                            <button class="order-item-btn">주문하기</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MENU Page -->
+    <section id="menu" class="page-section">
+        <div class="menu-section">
+            <div class="section-header">
+                <h2>Our Menu</h2>
+                <p>달콤한 행복을 전해드립니다</p>
+            </div>
+            <div class="menu-grid">
+                <div class="menu-card">
+                    <div class="menu-image">
+                        <img src="https://images.unsplash.com/photo-1464349095431-e9a21285b5f3?w=500&q=80" alt="Cake">
+                        <div class="menu-badge">Best</div>
+                    </div>
+                    <div class="menu-info">
+                        <div class="menu-name">딸기 생크림 케이크</div>
+                        <div class="menu-description">신선한 딸기와 부드러운 생크림의 클래식</div>
+                        <div class="menu-footer">
+                            <span class="menu-price">9,500원</span>
+                            <button class="order-item-btn">주문하기</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-card">
+                    <div class="menu-image">
+                        <img src="https://images.unsplash.com/photo-1486427944299-d1955d23e34d?w=500&q=80" alt="Croissant">
+                    </div>
+                    <div class="menu-info">
+                        <div class="menu-name">버터 크루아상</div>
+                        <div class="menu-description">256겹의 고급 버터로 만든 바삭한 크루아상</div>
+                        <div class="menu-footer">
+                            <span class="menu-price">4,500원</span>
+                            <button class="order-item-btn">주문하기</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-card">
+                    <div class="menu-image">
+                        <img src="https://images.unsplash.com/photo-1558312657-a4b62fa2b4bc?w=500&q=80" alt="Cookie">
+                        <div class="menu-badge">New</div>
+                    </div>
+                    <div class="menu-info">
+                        <div class="menu-name">초코칩 쿠키 (3개)</div>
+                        <div class="menu-description">벨기에 초콜릿이 듬뿍 들어간 수제 쿠키</div>
+                        <div class="menu-footer">
+                            <span class="menu-price">6,000원</span>
+                            <button class="order-item-btn">주문하기</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-card">
+                    <div class="menu-image">
+                        <img src="https://images.unsplash.com/photo-1519915212116-7cfef71f1d3e?w=500&q=80" alt="Tart">
+                    </div>
+                    <div class="menu-info">
+                        <div class="menu-name">과일 타르트</div>
+                        <div class="menu-description">제철 과일과 커스터드 크림의 조화</div>
+                        <div class="menu-footer">
+                            <span class="menu-price">8,500원</span>
+                            <button class="order-item-btn">주문하기</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-card">
+                    <div class="menu-image">
+                        <img src="https://images.unsplash.com/photo-1576618148400-f54bed99fcfd?w=500&q=80" alt="Eclair">
+                    </div>
+                    <div class="menu-info">
+                        <div class="menu-name">초코 에클레어</div>
+                        <div class="menu-description">바삭한 슈에 진한 초콜릿 크림</div>
+                        <div class="menu-footer">
+                            <span class="menu-price">5,500원</span>
+                            <button class="order-item-btn">주문하기</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-card">
+                    <div class="menu-image">
+                        <img src="https://images.unsplash.com/photo-1563805042-7684c019e1cb?w=500&q=80" alt="Muffin">
+                    </div>
+                    <div class="menu-info">
+                        <div class="menu-name">블루베리 머핀</div>
+                        <div class="menu-description">통통한 블루베리가 가득한 촉촉한 머핀</div>
+                        <div class="menu-footer">
+                            <span class="menu-price">4,800원</span>
+                            <button class="order-item-btn">주문하기</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-card">
+                    <div class="menu-image">
+                        <img src="https://images.unsplash.com/photo-1587241321921-91a834d990fb?w=500&q=80" alt="Parfait">
+                        <div class="menu-badge">Best</div>
+                    </div>
+                    <div class="menu-info">
+                        <div class="menu-name">딸기 파르페</div>
+                        <div class="menu-description">신선한 딸기와 요거트, 그래놀라의 건강한 조합</div>
+                        <div class="menu-footer">
+                            <span class="menu-price">10,000원</span>
+                            <button class="order-item-btn">주문하기</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-card">
+                    <div class="menu-image">
+                        <img src="https://images.unsplash.com/photo-1587314168485-3236d6710814?w=500&q=80" alt="Pudding">
+                    </div>
+                    <div class="menu-info">
+                        <div class="menu-name">카라멜 푸딩</div>
+                        <div class="menu-description">부드러운 식감과 달콤쌉싸름한 카라멜</div>
+                        <div class="menu-footer">
+                            <span class="menu-price">5,000원</span>
+                            <button class="order-item-btn">주문하기</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-card">
+                    <div class="menu-image">
+                        <img src="https://images.unsplash.com/photo-1517244683847-7456b63c5969?w=500&q=80" alt="Roll Cake">
+                        <div class="menu-badge">New</div>
+                    </div>
+                    <div class="menu-info">
+                        <div class="menu-name">말차 롤케이크</div>
+                        <div class="menu-description">일본산 프리미엄 말차로 만든 롤케이크</div>
+                        <div class="menu-footer">
+                            <span class="menu-price">7,000원</span>
+                            <button class="order-item-btn">주문하기</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- GALLERY Page -->
+    <section id="gallery" class="page-section">
+        <div class="gallery-section">
+            <div class="section-header">
+                <h2>Gallery</h2>
+                <p>Sweet Dreams의 달콤한 순간들</p>
+            </div>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1555507036-ab1f4038808a?w=800&q=80" alt="Interior">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1550617931-e17a7b70dce2?w=400&q=80" alt="Dessert">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1495147466023-ac5c588e2e94?w=400&q=80" alt="Cakes">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1481391319762-47dff72954d9?w=400&q=80" alt="Bakery">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1426869884541-df7117556757?w=400&q=80" alt="Pastry">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1557925923-cd4648e211a0?w=400&q=80" alt="Desserts">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- STORY Page -->
+    <section id="story" class="page-section">
+        <div class="story-section">
+            <div class="section-header">
+                <h2>Our Story</h2>
+                <p>Sweet Dreams의 이야기</p>
+            </div>
+            <div class="story-content">
+                <div class="story-text">
+                    <h2>달콤한 꿈을<br>현실로</h2>
+                    <p>Sweet Dreams는 2018년, 프랑스에서 제과를 공부한 파티시에가 오픈한 디저트 전문 카페입니다.</p>
+                    <p>매일 아침 신선한 재료로 만드는 수제 디저트는 최고급 재료만을 사용하며, 인공첨가물은 일체 사용하지 않습니다.</p>
+                    <p>한 입 베어 물 때마다 느껴지는 행복, 그것이 바로 우리가 추구하는 가치입니다.</p>
+                </div>
+                <div class="story-image">
+                    <img src="https://images.unsplash.com/photo-1556910103-1c02745aae4d?w=600&q=80" alt="Patisserie">
+                </div>
+            </div>
+        </div>
+
+        <div class="newsletter-section">
+            <div class="newsletter-content">
+                <h2>Sweet News</h2>
+                <p>신메뉴 소식과 특별 이벤트를 가장 먼저 받아보세요</p>
+                <form class="newsletter-form">
+                    <input type="email" class="newsletter-input" placeholder="이메일 주소" required>
+                    <button type="submit" class="newsletter-btn">구독하기</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Sweet Dreams</h3>
+                <p>매일 아침 만드는 신선한 디저트. 최고의 재료와 정성으로 달콤한 행복을 전해드립니다.</p>
+            </div>
+            <div class="footer-section">
+                <h3>메뉴</h3>
+                <ul class="footer-links">
+                    <li><a href="#">케이크</a></li>
+                    <li><a href="#">마카롱</a></li>
+                    <li><a href="#">쿠키</a></li>
+                    <li><a href="#">타르트</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>정보</h3>
+                <ul class="footer-links">
+                    <li><a href="#">매장안내</a></li>
+                    <li><a href="#">주문/배송</a></li>
+                    <li><a href="#">케이터링</a></li>
+                    <li><a href="#">FAQ</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>고객센터</h3>
+                <ul class="footer-links">
+                    <li><a href="#">Tel: 02-1234-5678</a></li>
+                    <li><a href="#">영업시간: 09:00 - 21:00</a></li>
+                    <li><a href="#">주소: 서울시 강남구</a></li>
+                    <li><a href="#">이메일 문의</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Sweet Dreams. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        function showPage(pageId) {
+            document.querySelectorAll('.page-section').forEach(section => {
+                section.classList.remove('active');
+            });
+
+            const targetPage = document.getElementById(pageId);
+            if (targetPage) {
+                targetPage.classList.add('active');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+        }
+
+        document.querySelectorAll('[data-page]').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const pageId = link.getAttribute('data-page');
+                showPage(pageId);
+                window.location.hash = pageId;
+            });
+        });
+
+        window.addEventListener('hashchange', () => {
+            const pageId = window.location.hash.slice(1) || 'home';
+            showPage(pageId);
+        });
+
+        window.addEventListener('DOMContentLoaded', () => {
+            const pageId = window.location.hash.slice(1) || 'home';
+            showPage(pageId);
+        });
+
+        // Order button animation
+        document.querySelectorAll('.order-item-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const originalText = this.textContent;
+                this.textContent = '추가됨 ✓';
+                this.style.background = '#FF69B4';
+                setTimeout(() => {
+                    this.textContent = originalText;
+                    this.style.background = '#FFB6C1';
+                }, 1500);
+            });
+        });
+    </script>
+</body>
+</html>

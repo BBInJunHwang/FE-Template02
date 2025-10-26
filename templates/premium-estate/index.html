@@ -1,0 +1,955 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PRIME ESTATE - 프리미엄 부동산</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&family=Montserrat:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            line-height: 1.6;
+            overflow-x: hidden;
+            color: #1a1a1a;
+            background: #fff;
+        }
+
+        .page-section {
+            display: none;
+            animation: smoothFade 0.6s ease;
+        }
+
+        .page-section.active {
+            display: block;
+        }
+
+        @keyframes smoothFade {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* Header */
+        header {
+            background: rgba(255, 255, 255, 0.98);
+            padding: 20px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
+            backdrop-filter: blur(10px);
+        }
+
+        nav {
+            max-width: 1600px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 50px;
+        }
+
+        .logo {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 32px;
+            color: #1a4d2e;
+            text-decoration: none;
+            font-weight: 900;
+            letter-spacing: -1px;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 45px;
+        }
+
+        .nav-links a {
+            color: #333;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+            transition: color 0.3s;
+            letter-spacing: 0.5px;
+        }
+
+        .nav-links a:hover {
+            color: #1a4d2e;
+        }
+
+        .nav-cta {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .contact-btn {
+            padding: 12px 30px;
+            background: #1a4d2e;
+            color: #fff;
+            border: none;
+            font-size: 13px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            letter-spacing: 0.5px;
+        }
+
+        .contact-btn:hover {
+            background: #134020;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(26, 77, 46, 0.3);
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: #fff;
+            margin-top: 80px;
+            position: relative;
+        }
+
+        .hero-content {
+            max-width: 1000px;
+            padding: 0 40px;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            padding: 12px 30px;
+            font-size: 13px;
+            margin-bottom: 35px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .hero h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 80px;
+            font-weight: 900;
+            margin-bottom: 25px;
+            line-height: 1.1;
+            letter-spacing: -2px;
+        }
+
+        .hero p {
+            font-size: 22px;
+            margin-bottom: 50px;
+            font-weight: 300;
+            letter-spacing: 1px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .btn-primary {
+            padding: 18px 45px;
+            background: #1a4d2e;
+            color: #fff;
+            border: none;
+            font-size: 15px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+            letter-spacing: 0.5px;
+        }
+
+        .btn-primary:hover {
+            background: #134020;
+            transform: translateY(-3px);
+            box-shadow: 0 12px 30px rgba(26, 77, 46, 0.4);
+        }
+
+        .btn-secondary {
+            padding: 18px 45px;
+            background: transparent;
+            color: #fff;
+            border: 2px solid #fff;
+            font-size: 15px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+            letter-spacing: 0.5px;
+        }
+
+        .btn-secondary:hover {
+            background: #fff;
+            color: #1a4d2e;
+        }
+
+        /* Stats Section */
+        .stats-section {
+            padding: 80px 50px;
+            background: #1a4d2e;
+            color: #fff;
+        }
+
+        .stats-grid {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 50px;
+            text-align: center;
+        }
+
+        .stat-item h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 56px;
+            font-weight: 900;
+            margin-bottom: 10px;
+        }
+
+        .stat-item p {
+            font-size: 16px;
+            opacity: 0.9;
+            letter-spacing: 0.5px;
+        }
+
+        /* Properties Section */
+        .properties-section {
+            padding: 120px 50px;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 70px;
+        }
+
+        .section-subtitle {
+            font-size: 13px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: #1a4d2e;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .section-header h2 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 52px;
+            font-weight: 900;
+            color: #1a1a1a;
+            letter-spacing: -1px;
+        }
+
+        .properties-grid {
+            max-width: 1600px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 35px;
+        }
+
+        .property-card {
+            background: #fff;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .property-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+        }
+
+        .property-image {
+            position: relative;
+            overflow: hidden;
+            height: 320px;
+        }
+
+        .property-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s;
+        }
+
+        .property-card:hover .property-image img {
+            transform: scale(1.1);
+        }
+
+        .property-badge {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: #1a4d2e;
+            color: #fff;
+            padding: 8px 18px;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .property-info {
+            padding: 35px;
+        }
+
+        .property-type {
+            font-size: 12px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: #999;
+            margin-bottom: 12px;
+            font-weight: 700;
+        }
+
+        .property-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: #1a1a1a;
+        }
+
+        .property-location {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .property-features {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 25px;
+            padding-bottom: 25px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .feature {
+            font-size: 13px;
+            color: #666;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .property-price {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 28px;
+            font-weight: 900;
+            color: #1a4d2e;
+        }
+
+        /* Services Section */
+        .services-section {
+            padding: 120px 50px;
+            background: #f8f9fa;
+        }
+
+        .services-grid {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+        }
+
+        .service-card {
+            background: #fff;
+            padding: 50px 40px;
+            text-align: center;
+            box-shadow: 0 5px 30px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.12);
+        }
+
+        .service-icon {
+            font-size: 56px;
+            margin-bottom: 25px;
+        }
+
+        .service-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .service-description {
+            font-size: 15px;
+            color: #666;
+            line-height: 1.8;
+        }
+
+        /* Newsletter Section */
+        .newsletter-section {
+            padding: 100px 50px;
+            background: #1a1a1a;
+            color: #fff;
+            text-align: center;
+        }
+
+        .newsletter-content {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .newsletter-section h2 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 48px;
+            font-weight: 900;
+            margin-bottom: 20px;
+            letter-spacing: -1px;
+        }
+
+        .newsletter-section p {
+            font-size: 17px;
+            margin-bottom: 40px;
+            opacity: 0.9;
+        }
+
+        .newsletter-form {
+            display: flex;
+            gap: 15px;
+            max-width: 550px;
+            margin: 0 auto;
+        }
+
+        .newsletter-input {
+            flex: 1;
+            padding: 18px 25px;
+            border: 1px solid #444;
+            background: transparent;
+            color: #fff;
+            font-size: 15px;
+            font-family: inherit;
+        }
+
+        .newsletter-input::placeholder {
+            color: #777;
+        }
+
+        .newsletter-btn {
+            padding: 18px 40px;
+            background: #1a4d2e;
+            color: #fff;
+            border: none;
+            font-size: 14px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+            letter-spacing: 0.5px;
+        }
+
+        .newsletter-btn:hover {
+            background: #134020;
+        }
+
+        /* Footer */
+        footer {
+            background: #000;
+            color: #fff;
+            padding: 80px 50px 40px;
+        }
+
+        .footer-content {
+            max-width: 1600px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 70px;
+            margin-bottom: 50px;
+        }
+
+        .footer-section h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 24px;
+            margin-bottom: 25px;
+            font-weight: 700;
+        }
+
+        .footer-section p {
+            font-size: 14px;
+            color: #999;
+            line-height: 1.9;
+            margin-bottom: 25px;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links a {
+            color: #999;
+            text-decoration: none;
+            font-size: 14px;
+            line-height: 2.5;
+            display: block;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: #1a4d2e;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 40px;
+            border-top: 1px solid #222;
+            font-size: 13px;
+            color: #666;
+        }
+
+        @media (max-width: 1200px) {
+            .properties-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 42px;
+            }
+
+            .properties-grid,
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="#home" class="logo" data-page="home">PRIME ESTATE</a>
+            <ul class="nav-links">
+                <li><a href="#home" data-page="home">HOME</a></li>
+                <li><a href="#properties" data-page="properties">PROPERTIES</a></li>
+                <li><a href="#services" data-page="services">SERVICES</a></li>
+                <li><a href="#contact" data-page="contact">CONTACT</a></li>
+            </ul>
+            <div class="nav-cta">
+                <a href="#contact" data-page="contact" class="contact-btn">무료 상담</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- HOME Page -->
+    <section id="home" class="page-section active">
+        <div class="hero">
+            <div class="hero-content">
+                <div class="hero-badge">🏆 No.1 Premium Estate</div>
+                <h1>당신의 꿈을<br>현실로 만듭니다</h1>
+                <p>최고의 프리미엄 부동산 솔루션</p>
+                <div class="hero-buttons">
+                    <a href="#properties" data-page="properties" class="btn-primary">매물 보기</a>
+                    <a href="#services" data-page="services" class="btn-secondary">서비스 안내</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="stats-section">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <h3>15+</h3>
+                    <p>업계 경력 (년)</p>
+                </div>
+                <div class="stat-item">
+                    <h3>5,000+</h3>
+                    <p>거래 성사 건수</p>
+                </div>
+                <div class="stat-item">
+                    <h3>98%</h3>
+                    <p>고객 만족도</p>
+                </div>
+                <div class="stat-item">
+                    <h3>24/7</h3>
+                    <p>상담 서비스</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="properties-section">
+            <div class="section-header">
+                <div class="section-subtitle">Featured</div>
+                <h2>추천 매물</h2>
+            </div>
+            <div class="properties-grid">
+                <div class="property-card">
+                    <div class="property-image">
+                        <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=600&q=80" alt="Property">
+                        <div class="property-badge">Featured</div>
+                    </div>
+                    <div class="property-info">
+                        <div class="property-type">Apartment</div>
+                        <div class="property-title">강남 프리미엄 펜트하우스</div>
+                        <div class="property-location">📍 서울시 강남구 청담동</div>
+                        <div class="property-features">
+                            <span class="feature">🛏️ 4개</span>
+                            <span class="feature">🚿 3개</span>
+                            <span class="feature">📐 180㎡</span>
+                        </div>
+                        <div class="property-price">25억 원</div>
+                    </div>
+                </div>
+
+                <div class="property-card">
+                    <div class="property-image">
+                        <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=600&q=80" alt="Property">
+                        <div class="property-badge">New</div>
+                    </div>
+                    <div class="property-info">
+                        <div class="property-type">Villa</div>
+                        <div class="property-title">한남동 단독 빌라</div>
+                        <div class="property-location">📍 서울시 용산구 한남동</div>
+                        <div class="property-features">
+                            <span class="feature">🛏️ 5개</span>
+                            <span class="feature">🚿 4개</span>
+                            <span class="feature">📐 280㎡</span>
+                        </div>
+                        <div class="property-price">45억 원</div>
+                    </div>
+                </div>
+
+                <div class="property-card">
+                    <div class="property-image">
+                        <img src="https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=600&q=80" alt="Property">
+                    </div>
+                    <div class="property-info">
+                        <div class="property-type">Office</div>
+                        <div class="property-title">역삼동 프리미엄 오피스</div>
+                        <div class="property-location">📍 서울시 강남구 역삼동</div>
+                        <div class="property-features">
+                            <span class="feature">🏢 15층</span>
+                            <span class="feature">🚗 50대</span>
+                            <span class="feature">📐 450㎡</span>
+                        </div>
+                        <div class="property-price">38억 원</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROPERTIES Page -->
+    <section id="properties" class="page-section">
+        <div class="properties-section">
+            <div class="section-header">
+                <div class="section-subtitle">All Properties</div>
+                <h2>전체 매물</h2>
+            </div>
+            <div class="properties-grid">
+                <div class="property-card">
+                    <div class="property-image">
+                        <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=600&q=80" alt="Property">
+                        <div class="property-badge">Hot</div>
+                    </div>
+                    <div class="property-info">
+                        <div class="property-type">Luxury House</div>
+                        <div class="property-title">성북동 럭셔리 주택</div>
+                        <div class="property-location">📍 서울시 성북구 성북동</div>
+                        <div class="property-features">
+                            <span class="feature">🛏️ 6개</span>
+                            <span class="feature">🚿 5개</span>
+                            <span class="feature">📐 350㎡</span>
+                        </div>
+                        <div class="property-price">52억 원</div>
+                    </div>
+                </div>
+
+                <div class="property-card">
+                    <div class="property-image">
+                        <img src="https://images.unsplash.com/photo-1580587771525-78b9dba3b914?w=600&q=80" alt="Property">
+                    </div>
+                    <div class="property-info">
+                        <div class="property-type">Apartment</div>
+                        <div class="property-title">송파 프리미엄 아파트</div>
+                        <div class="property-location">📍 서울시 송파구 잠실동</div>
+                        <div class="property-features">
+                            <span class="feature">🛏️ 3개</span>
+                            <span class="feature">🚿 2개</span>
+                            <span class="feature">📐 130㎡</span>
+                        </div>
+                        <div class="property-price">18억 원</div>
+                    </div>
+                </div>
+
+                <div class="property-card">
+                    <div class="property-image">
+                        <img src="https://images.unsplash.com/photo-1613977257363-707ba9348227?w=600&q=80" alt="Property">
+                        <div class="property-badge">New</div>
+                    </div>
+                    <div class="property-info">
+                        <div class="property-type">Commercial</div>
+                        <div class="property-title">강남역 상가 건물</div>
+                        <div class="property-location">📍 서울시 강남구 역삼동</div>
+                        <div class="property-features">
+                            <span class="feature">🏢 10층</span>
+                            <span class="feature">🚗 30대</span>
+                            <span class="feature">📐 600㎡</span>
+                        </div>
+                        <div class="property-price">68억 원</div>
+                    </div>
+                </div>
+
+                <div class="property-card">
+                    <div class="property-image">
+                        <img src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=600&q=80" alt="Property">
+                    </div>
+                    <div class="property-info">
+                        <div class="property-type">Penthouse</div>
+                        <div class="property-title">여의도 스카이 펜트하우스</div>
+                        <div class="property-location">📍 서울시 영등포구 여의도동</div>
+                        <div class="property-features">
+                            <span class="feature">🛏️ 5개</span>
+                            <span class="feature">🚿 4개</span>
+                            <span class="feature">📐 250㎡</span>
+                        </div>
+                        <div class="property-price">35억 원</div>
+                    </div>
+                </div>
+
+                <div class="property-card">
+                    <div class="property-image">
+                        <img src="https://images.unsplash.com/photo-1558036117-15d82a90b9b1?w=600&q=80" alt="Property">
+                        <div class="property-badge">Featured</div>
+                    </div>
+                    <div class="property-info">
+                        <div class="property-type">Villa</div>
+                        <div class="property-title">평창동 프라이빗 빌라</div>
+                        <div class="property-location">📍 서울시 종로구 평창동</div>
+                        <div class="property-features">
+                            <span class="feature">🛏️ 7개</span>
+                            <span class="feature">🚿 6개</span>
+                            <span class="feature">📐 400㎡</span>
+                        </div>
+                        <div class="property-price">62억 원</div>
+                    </div>
+                </div>
+
+                <div class="property-card">
+                    <div class="property-image">
+                        <img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=600&q=80" alt="Property">
+                    </div>
+                    <div class="property-info">
+                        <div class="property-type">Apartment</div>
+                        <div class="property-title">서초 럭셔리 아파트</div>
+                        <div class="property-location">📍 서울시 서초구 반포동</div>
+                        <div class="property-features">
+                            <span class="feature">🛏️ 4개</span>
+                            <span class="feature">🚿 3개</span>
+                            <span class="feature">📐 165㎡</span>
+                        </div>
+                        <div class="property-price">28억 원</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICES Page -->
+    <section id="services" class="page-section">
+        <div class="services-section">
+            <div class="section-header">
+                <div class="section-subtitle">Services</div>
+                <h2>프리미엄 서비스</h2>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">🏠</div>
+                    <div class="service-title">매매 중개</div>
+                    <div class="service-description">프리미엄 부동산 매매 전문. 최상의 조건으로 빠르고 안전한 거래를 도와드립니다.</div>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">📊</div>
+                    <div class="service-title">투자 컨설팅</div>
+                    <div class="service-description">부동산 시장 분석과 투자 전략 수립. 수익성 높은 투자 기회를 제공합니다.</div>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">⚖️</div>
+                    <div class="service-title">법률 자문</div>
+                    <div class="service-description">전문 변호사와 협력하여 계약서 검토, 법률 자문 등 안전한 거래를 지원합니다.</div>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">💰</div>
+                    <div class="service-title">대출 상담</div>
+                    <div class="service-description">최적의 금융 조건으로 대출 상담 및 금융기관 연계 서비스를 제공합니다.</div>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">🔍</div>
+                    <div class="service-title">매물 리서치</div>
+                    <div class="service-description">고객 맞춤형 매물 발굴. 원하시는 조건에 딱 맞는 부동산을 찾아드립니다.</div>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">🏗️</div>
+                    <div class="service-title">리모델링 컨설팅</div>
+                    <div class="service-description">인테리어 설계부터 시공까지 프리미엄 리모델링 토털 서비스를 제공합니다.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT Page -->
+    <section id="contact" class="page-section">
+        <div class="services-section">
+            <div class="section-header">
+                <div class="section-subtitle">Contact</div>
+                <h2>무료 상담 신청</h2>
+            </div>
+            <div style="max-width: 800px; margin: 0 auto; background: #fff; padding: 60px; box-shadow: 0 10px 50px rgba(0,0,0,0.1);">
+                <form style="display: flex; flex-direction: column; gap: 25px;">
+                    <div>
+                        <input type="text" placeholder="이름" required style="width: 100%; padding: 18px 20px; border: 1px solid #ddd; font-size: 15px; font-family: inherit;">
+                    </div>
+                    <div>
+                        <input type="tel" placeholder="연락처" required style="width: 100%; padding: 18px 20px; border: 1px solid #ddd; font-size: 15px; font-family: inherit;">
+                    </div>
+                    <div>
+                        <input type="email" placeholder="이메일" required style="width: 100%; padding: 18px 20px; border: 1px solid #ddd; font-size: 15px; font-family: inherit;">
+                    </div>
+                    <div>
+                        <select style="width: 100%; padding: 18px 20px; border: 1px solid #ddd; font-size: 15px; font-family: inherit;">
+                            <option>관심 매물 유형 선택</option>
+                            <option>아파트</option>
+                            <option>빌라/주택</option>
+                            <option>오피스/상가</option>
+                            <option>펜트하우스</option>
+                        </select>
+                    </div>
+                    <div>
+                        <textarea placeholder="상담 내용" rows="5" style="width: 100%; padding: 18px 20px; border: 1px solid #ddd; font-size: 15px; font-family: inherit; resize: vertical;"></textarea>
+                    </div>
+                    <button type="submit" class="btn-primary" style="width: 100%; padding: 20px;">상담 신청하기</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="newsletter-section">
+            <div class="newsletter-content">
+                <h2>뉴스레터 구독</h2>
+                <p>최신 매물 정보와 부동산 시장 뉴스를 받아보세요</p>
+                <form class="newsletter-form">
+                    <input type="email" class="newsletter-input" placeholder="이메일 주소" required>
+                    <button type="submit" class="newsletter-btn">구독하기</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>PRIME ESTATE</h3>
+                <p>15년 경력의 프리미엄 부동산 전문 기업. 고객의 꿈을 실현하는 최고의 파트너가 되겠습니다.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Services</h3>
+                <ul class="footer-links">
+                    <li><a href="#">매매 중개</a></li>
+                    <li><a href="#">투자 컨설팅</a></li>
+                    <li><a href="#">법률 자문</a></li>
+                    <li><a href="#">대출 상담</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Properties</h3>
+                <ul class="footer-links">
+                    <li><a href="#">아파트</a></li>
+                    <li><a href="#">빌라/주택</a></li>
+                    <li><a href="#">오피스/상가</a></li>
+                    <li><a href="#">펜트하우스</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Contact</h3>
+                <ul class="footer-links">
+                    <li><a href="#">Tel: 02-1234-5678</a></li>
+                    <li><a href="#">영업시간: 09:00 - 19:00</a></li>
+                    <li><a href="#">서울시 강남구 테헤란로</a></li>
+                    <li><a href="#">info@primeestate.com</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 PRIME ESTATE. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        function showPage(pageId) {
+            document.querySelectorAll('.page-section').forEach(section => {
+                section.classList.remove('active');
+            });
+
+            const targetPage = document.getElementById(pageId);
+            if (targetPage) {
+                targetPage.classList.add('active');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+        }
+
+        document.querySelectorAll('[data-page]').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const pageId = link.getAttribute('data-page');
+                showPage(pageId);
+                window.location.hash = pageId;
+            });
+        });
+
+        window.addEventListener('hashchange', () => {
+            const pageId = window.location.hash.slice(1) || 'home';
+            showPage(pageId);
+        });
+
+        window.addEventListener('DOMContentLoaded', () => {
+            const pageId = window.location.hash.slice(1) || 'home';
+            showPage(pageId);
+        });
+    </script>
+</body>
+</html>
